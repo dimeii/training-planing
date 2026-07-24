@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#EDEEEA" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Tractions" />
+<title>Carnet — Tractions & Explosivité</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #EDEEEA; }
+  #boot { font-family: system-ui, sans-serif; text-align: center; padding-top: 80px; color: #5C6470; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js"></script>
+<script src="./program.js"></script>
+<script>
+  /* Force le runtime JSX "classic" (React.createElement) : le runtime
+     "automatic", devenu défaut sur les versions récentes de Babel, génère
+     un `import ... from "react/jsx-runtime"` qui casse hors module ES. */
+  if (window.Babel && Babel.registerPreset) {
+    Babel.registerPreset("react-classic", {
+      presets: [[Babel.availablePresets["react"], { runtime: "classic" }]],
+    });
+  }
+</script>
+</head>
+<body>
+<div id="root"><div id="boot">Chargement du carnet…</div></div>
+<script type="text/babel" data-presets="react-classic">
+const { useState, useEffect } = React;
+/* ================================================================== */
+/* Protocole Tractions & Explosivité — 12 semaines                     */
+/* Le CONTENU du programme (exos, phases, objectifs) vit dans          */
+/* program.js — fichier dédié, à modifier sans toucher à l'appli.      */
+/* Les données perso (séances faites, bilans, mesures) restent dans    */
+/* le localStorage du navigateur — fiable et hors ligne.               */
+/* ================================================================== */
+const PROGRAM = window.PROGRAM;
+if (!PROGRAM || !Array.isArray(PROGRAM.weeks) || !PROGRAM.weeks.length) {
+  document.getElementById("root").innerHTML =
+    '<div id="boot">⚠️ Fichier <code>program.js</code> introuvable ou invalide.<br/>Il doit être dans le même dossier que index.html.</div>';
+  throw new Error("program.js manquant ou invalide");
+}
+const _start = String(PROGRAM.startDate || "2026-07-20").split("-").map(Number);
+const START_YEAR = _start[0], START_MONTH = _start[1] - 1, START_DAY = _start[2];
+const TYPE_META = {
+  force:  { label: "Force",        color: "#B3402E" },
+  jambes: { label: "Jambes/Renfo", color: "#2E7D7B" },
+  volume: { label: "Volume",       color: "#3E5F8A" },
+  explo:  { label: "Explosivité",  color: "#C77F00" },
+  deload: { label: "Deload",       color: "#5C6470" },
+  test:   { label: "Test",         color: "#7A4FA3" },
+  course: { label: "Course",       color: "#3C7A4E" },
+};
+/* Contenu du programme — tout vient de program.js */
+const PHASES = PROGRAM.phases || [];
+const METRICS = PROGRAM.metrics || [];
+const ECHAUFFEMENT = PROGRAM.warmup || [];
+const WEEKS = PROGRAM.weeks;
+const GOALS = PROGRAM.goals || [];
+const FOOTER_NOTES = PROGRAM.notes || [];
+const DAY_NAMES = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
+const MONTHS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+function sessionDate(weekIdx, dayOffset) {
+  const d = new Date(START_YEAR, START_MONTH, START_DAY);
+  d.setDate(d.getDate() + weekIdx * 7 + dayOffset);
+  return d;
+}
+function fmtDate(d) {
+  return DAY_NAMES[(d.getDay() + 6) % 7] + " " + d.getDate() + " " + MONTHS[d.getMonth()];
+}
+function isToday(d) {
+  const t = new Date();
+  return d.getFullYear() === t.getFullYear() && d.getMonth() === t.getMonth() && d.getDate() === t.getDate();
+}
+function currentWeekIndex() {
+  const start = new Date(START_YEAR, START_MONTH, START_DAY);
+  const diff = Math.floor((Date.now() - start.getTime()) / (7 * 24 * 3600 * 1000));
+  return Math.min(Math.max(diff, 0), WEEKS.length - 1);
+}
+function phaseOfWeek(w) {
+  for (const p of PHASES) {
+    if (w + 1 >= p.start && w + 1 <= p.end) return p;
+  }
+  return PHASES[0];
+}
+/* Une semaine est marquée deload/test dès qu'elle contient une séance
+   de ce type — dérivé de program.js, donc toujours à jour. */
+function weekFlags(i) {
+  let deload = false, test = false;
+  WEEKS[i].forEach((s) => {
+    if (s.type === "deload") deload = true;
+    if (s.type === "test") test = true;
+  });
+  return { deload, test, label: deload && test ? "Deload & test" : test ? "Test" : deload ? "Deload" : null };
+}
+/* Séances effectives d'une semaine : celles du programme (avec leur jour
+   éventuellement décalé via data.moves — l'identifiant, donc l'historique,
+   reste attaché à la séance) + les séances perso (data.custom), le tout
+   trié par jour effectif. */
+function weekSessions(data, i) {
+  const moves = data.moves || {};
+  const base = WEEKS[i].map((s) => {
+    const id = "s" + i + "-d" + s.day;
+    return { id, origDay: s.day, day: moves[id] !== undefined ? moves[id] : s.day, type: s.type, title: s.title, ex: s.ex, custom: false };
+  });
+  const cust = ((data.custom || {})[i] || []).map((c) => (
+    { id: "s" + i + "-" + c.id, cid: c.id, origDay: c.day, day: c.day, type: c.type, title: c.title, ex: c.ex || [], custom: true }
+  ));
+  return base.concat(cust).sort((a, b) => a.day - b.day);
+}
+/* Utilitaires dates & nombres pour le suivi */
+function todayStr() {
+  const d = new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + mm + "-" + dd;
+}
+function fmtShort(s) {
+  const parts = String(s).split("-");
+  return parts.length === 3 ? parts[2] + "/" + parts[1] : s;
+}
+function fmtNum(n) {
+  const r = Math.round(n * 10) / 10;
+  return (r % 1 === 0 ? String(r) : String(r)).replace(".", ",");
+}
+const STORAGE_KEY = "protocole-tractions-v1";
+const EMPTY = { completed: {}, notes: {}, edits: {}, added: {}, feedback: {}, moves: {}, custom: {}, measures: { reps: [], pull1rm: [], bw: [] } };
+function normMeasures(m) {
+  m = m || {};
+  return {
+    reps: Array.isArray(m.reps) ? m.reps : [],
+    pull1rm: Array.isArray(m.pull1rm) ? m.pull1rm : [],
+    bw: Array.isArray(m.bw) ? m.bw : [],
+  };
+}
+/* -------- Bilan Markdown pour relecture (coach / IA) --------------- */
+const RPE_LABELS = { facile: "Facile", correct: "Correct", dur: "Dur", echec: "Échec(s)" };
+function buildReviewMarkdown(data) {
+  const L = [];
+  L.push("# Bilan d'entraînement — Tractions & Explosivité");
+  L.push("");
+  L.push("_Export du " + todayStr() + " · Semaine en cours : " + (currentWeekIndex() + 1) + "/" + WEEKS.length + "._");
+  L.push("_Objectif de ce document : être relu (coach, IA…) pour adapter la suite du programme en fonction des remarques, douleurs et ajustements ci-dessous._");
+  L.push("");
+  L.push("## Progression des métriques");
+  const measures = normMeasures(data.measures);
+  METRICS.forEach((m) => {
+    L.push("");
+    L.push("### " + m.label);
+    L.push("- Départ : " + fmtNum(m.start) + " " + m.unit + " · Objectif : " + fmtNum(m.target) + " " + m.unit);
+    const pts = measures[m.key].slice().sort((a, b) => (a.d < b.d ? -1 : 1));
+    if (!pts.length) {
+      L.push("- Aucune mesure enregistrée");
+      return;
+    }
+    pts.forEach((p) => L.push("- " + p.d + " : " + fmtNum(p.v) + " " + m.unit));
+    const delta = pts[pts.length - 1].v - m.start;
+    L.push("- **Dernière valeur : " + fmtNum(pts[pts.length - 1].v) + " " + m.unit + " (" + (delta > 0 ? "+" : "") + fmtNum(delta) + " depuis le départ)**");
+  });
+  L.push("");
+  L.push("## Séances — résultats, ajustements et remarques");
+  let any = false;
+  WEEKS.forEach((w, i) => {
+    const rows = [];
+    weekSessions(data, i).forEach((s) => {
+      const id = s.id;
+      const done = !!data.completed[id];
+      const fb = data.feedback[id];
+      const hasFb = !!(fb && (fb.rpe || fb.pain !== null && fb.pain !== undefined || fb.comment));
+      const edits = s.ex.map((line, k) => ({ line, mod: data.edits[id + ":" + k] })).filter((e) => e.mod !== undefined);
+      const added = data.added[id] || [];
+      const moved = !s.custom && s.day !== s.origDay;
+      if (!done && !hasFb && !edits.length && !added.length && !moved && !s.custom) return;
+      rows.push("");
+      rows.push("#### " + fmtDate(sessionDate(i, s.day)) + " — " + s.title + " (" + (TYPE_META[s.type] || TYPE_META.course).label + ")");
+      if (s.custom) rows.push("- Séance ajoutée manuellement (hors programme)");
+      if (moved) rows.push("- Décalée : prévue " + DAY_NAMES[s.origDay] + ", déplacée au " + DAY_NAMES[s.day]);
+      rows.push("- Statut : " + (done ? "✅ faite" : "⬜ non cochée"));
+      if (fb && fb.rpe) rows.push("- Ressenti : " + (RPE_LABELS[fb.rpe] || fb.rpe));
+      if (fb && fb.pain !== null && fb.pain !== undefined) rows.push("- Douleur épaule : " + (fb.pain ? "⚠️ OUI" : "non"));
+      if (fb && fb.comment) rows.push("- Remarque : " + fb.comment);
+      edits.forEach((e) => rows.push("- Ajusté : « " + e.line + " » → « " + e.mod + " »"));
+      added.forEach((x) => rows.push("- Exercice ajouté : " + x.text));
+    });
+    if (rows.length) {
+      any = true;
+      const p = phaseOfWeek(i);
+      L.push("");
+      L.push("### Semaine " + (i + 1) + " — Phase " + p.id + " (" + p.name + ")");
+      rows.forEach((r) => L.push(r));
+    }
+  });
+  if (!any) {
+    L.push("");
+    L.push("Aucune séance renseignée pour l'instant.");
+  }
+  L.push("");
+  L.push("---");
+  L.push("_Généré automatiquement par le carnet (le programme complet est dans program.js)._");
+  return L.join("\n");
+}
+/* Rend les flèches de progression ↗ (charge/intensité en hausse) et
+   ↘ (allégé) en couleur dans les lignes d'exercice. Il suffit d'écrire
+   le caractère ↗ ou ↘ dans program.js ou dans un exercice ajusté. */
+function renderExText(text) {
+  return String(text).split(/(↗|↘)/).map((part, i) => (
+    part === "↗" ? <span key={i} style={S.arrowUp}>↗</span>
+      : part === "↘" ? <span key={i} style={S.arrowDown}>↘</span>
+      : part
+  ));
+}
+/* Migration : les anciennes données étaient indexées par position (s0-1),
+   fragile quand on ajoute une séance. On passe à des clés par jour (s0-d2),
+   stables. Ancien ordre : 0=Lun force, 1=Mer volume, 2=Ven explo, 3=Sam course. */
+const OLD_INDEX_TO_DAY = { 0: 0, 1: 2, 2: 4, 3: 5 };
+function migrateOldKeys(data) {
+  let changed = false;
+  const remapId = (m) => {
+    const day = OLD_INDEX_TO_DAY[parseInt(m[2], 10)];
+    return day === undefined ? null : "s" + m[1] + "-d" + day;
+  };
+  ["completed", "notes"].forEach((section) => {
+    Object.keys(data[section]).forEach((k) => {
+      const m = k.match(/^s(\d+)-(\d+)$/);
+      if (m) {
+        const nk = remapId(m);
+        if (nk && data[section][nk] === undefined) data[section][nk] = data[section][k];
+        delete data[section][k];
+        changed = true;
+      }
+    });
+  });
+  Object.keys(data.edits).forEach((k) => {
+    const m = k.match(/^s(\d+)-(\d+):(\d+)$/);
+    if (m) {
+      const nid = remapId(m);
+      if (nid && data.edits[nid + ":" + m[3]] === undefined) data.edits[nid + ":" + m[3]] = data.edits[k];
+      delete data.edits[k];
+      changed = true;
+    }
+  });
+  return changed;
+}
+/* Migration : les anciennes "notes de séance" libres deviennent le champ
+   commentaire du nouveau bilan structuré, sans rien perdre. */
+function migrateNotesToFeedback(data) {
+  let changed = false;
+  Object.keys(data.notes).forEach((id) => {
+    const text = data.notes[id];
+    if (text && !data.feedback[id]) {
+      data.feedback[id] = { rpe: null, pain: null, comment: text };
+      changed = true;
+    }
+  });
+  return changed;
+}
+/* -------- Stockage : localStorage natif du navigateur (fiable, hors ligne) -------- */
+async function loadData() {
+  try {
+    if (typeof localStorage === "undefined") return EMPTY;
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      const data = {
+        completed: parsed.completed || {},
+        notes: parsed.notes || {},
+        edits: parsed.edits || {},
+        added: parsed.added || {},
+        feedback: parsed.feedback || {},
+        moves: parsed.moves || {},
+        custom: parsed.custom || {},
+        measures: normMeasures(parsed.measures),
+      };
+      const migratedKeys = migrateOldKeys(data);
+      const migratedFeedback = migrateNotesToFeedback(data);
+      if (migratedKeys || migratedFeedback) await saveData(data);
+      return data;
+    }
+  } catch (e) {
+    // clé inexistante ou stockage indisponible : on démarre vide
+  }
+  return EMPTY;
+}
+async function saveData(data) {
+  if (typeof localStorage === "undefined") {
+    return { ok: false, error: "localStorage indisponible dans cet environnement" };
+  }
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: (e && e.message) ? e.message : String(e) };
+  }
+}
+/* ------------------------- Error boundary ------------------------- */
+class Boundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { error };
+  }
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{ padding: 24, fontFamily: "sans-serif" }}>
+          <h2 style={{ color: "#B3402E" }}>Une erreur est survenue</h2>
+          <pre style={{ whiteSpace: "pre-wrap", fontSize: 13, background: "#f5f5f5", padding: 12, borderRadius: 8 }}>
+            {String(this.state.error && this.state.error.message ? this.state.error.message : this.state.error)}
+          </pre>
+          <p>Recharge la page. Si le problème persiste, note ce message.</p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+/* ------------------------- Graphique (SVG) ------------------------ */
+function Chart(props) {
+  const pts = props.points.slice().sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0));
+  const W = 320, H = 152, padL = 34, padR = 16, padT = 14, padB = 24;
+  const vals = pts.map((p) => p.v);
+  const anchor = vals.length ? vals : [props.target, props.start];
+  let lo = Math.min(props.target, props.start, ...anchor);
+  let hi = Math.max(props.target, props.start, ...anchor);
+  if (lo === hi) { lo -= 1; hi += 1; }
+  const rawSpan = hi - lo;
+  lo -= rawSpan * 0.12; hi += rawSpan * 0.12;
+  const span = hi - lo || 1;
+  const yOf = (v) => padT + (H - padT - padB) * (1 - (v - lo) / span);
+  const times = pts.map((p) => new Date(p.d + "T00:00:00").getTime());
+  let tmin = times.length ? Math.min.apply(null, times) : 0;
+  let tmax = times.length ? Math.max.apply(null, times) : 1;
+  if (tmin === tmax) { tmin -= 86400000; tmax += 86400000; }
+  const xOf = (t) => padL + (W - padL - padR) * ((t - tmin) / (tmax - tmin));
+  const coords = pts.map((p) => ({ x: xOf(new Date(p.d + "T00:00:00").getTime()), y: yOf(p.v), p }));
+  const linePath = coords.map((c, i) => (i ? "L" : "M") + c.x.toFixed(1) + " " + c.y.toFixed(1)).join(" ");
+  const ticks = [hi, (hi + lo) / 2, lo];
+  const targetY = yOf(props.target);
+  return (
+    <svg viewBox={"0 0 " + W + " " + H} style={S.chartSvg} role="img"
+      aria-label={props.label + " : " + (pts.length ? pts.length + " mesures, objectif " + props.target + " " + props.unit : "aucune mesure")}>
+      {ticks.map((t, i) => (
+        <g key={i}>
+          <line x1={padL} x2={W - padR} y1={yOf(t)} y2={yOf(t)} stroke="#E4E6E1" strokeWidth="1" />
+          <text x={padL - 5} y={yOf(t) + 3} textAnchor="end" style={S.chartTick}>{fmtNum(t)}</text>
+        </g>
+      ))}
+      <line x1={padL} x2={W - padR} y1={targetY} y2={targetY} stroke={props.color} strokeWidth="1.5" strokeDasharray="5 4" opacity="0.85" />
+      <text x={W - padR} y={targetY - 4} textAnchor="end" style={Object.assign({}, S.chartTargetLbl, { fill: props.color })}>
+        objectif {fmtNum(props.target)}
+      </text>
+      {coords.length > 1 ? (
+        <path d={linePath} fill="none" stroke={props.color} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+      ) : null}
+      {coords.map((c, i) => (
+        <g key={i}>
+          <circle cx={c.x} cy={c.y} r={i === coords.length - 1 ? 4.5 : 3.5} fill={props.color} stroke="#fff" strokeWidth="1.5" />
+          <title>{fmtShort(c.p.d) + " · " + fmtNum(c.p.v) + " " + props.unit}</title>
+        </g>
+      ))}
+      {coords.length ? (
+        <text x={Math.min(coords[coords.length - 1].x, W - padR - 2)} y={Math.max(coords[coords.length - 1].y - 8, 10)} textAnchor="middle" style={Object.assign({}, S.chartPtLbl, { fill: "#1B1D22" })}>
+          {fmtNum(coords[coords.length - 1].p.v)}
+        </text>
+      ) : null}
+      {coords.length ? (
+        <text x={padL} y={H - 8} textAnchor="start" style={S.chartTick}>{fmtShort(pts[0].d)}</text>
+      ) : null}
+      {coords.length > 1 ? (
+        <text x={W - padR} y={H - 8} textAnchor="end" style={S.chartTick}>{fmtShort(pts[pts.length - 1].d)}</text>
+      ) : null}
+      {!coords.length ? (
+        <text x={W / 2} y={H / 2} textAnchor="middle" style={S.chartEmpty}>Aucune mesure — ajoute la première ci-dessous</text>
+      ) : null}
+    </svg>
+  );
+}
+function MetricCard(props) {
+  const m = props.m;
+  const data = props.data || [];
+  const [val, setVal] = useState("");
+  const [date, setDate] = useState(todayStr());
+  const pts = data.slice().sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0));
+  const latest = pts.length ? pts[pts.length - 1].v : null;
+  const delta = latest != null ? latest - m.start : null;
+  const good = delta == null ? null : (m.dir === "up" ? delta >= 0 : delta <= 0);
+  const submit = () => {
+    const v = parseFloat(String(val).replace(",", "."));
+    if (isNaN(v)) return;
+    props.onAdd(m.key, date, v);
+    setVal("");
+    setDate(todayStr());
+  };
+  return (
+    <div style={S.metricCard}>
+      <div style={S.metricHead}>
+        <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={Object.assign({}, S.dot, { background: m.color, width: 11, height: 11 })} />
+          <span style={S.metricLabel}>{m.label}</span>
+        </span>
+        <span style={S.metricTarget}>Objectif {fmtNum(m.target)} {m.unit}</span>
+      </div>
+      <div style={S.metricNowRow}>
+        <span style={Object.assign({}, S.metricNow, { color: m.color })}>
+          {latest != null ? fmtNum(latest) : "—"} <span style={S.metricUnit}>{m.unit}</span>
+        </span>
+        {delta != null ? (
+          <span style={Object.assign({}, S.metricDelta, { color: good ? "#3C7A4E" : "#B3402E" })}>
+            {delta > 0 ? "+" : ""}{fmtNum(delta)} {m.unit} depuis le départ ({fmtNum(m.start)})
+          </span>
+        ) : (
+          <span style={S.metricDeltaMuted}>Départ {fmtNum(m.start)} {m.unit}</span>
+        )}
+      </div>
+      <Chart points={pts} target={m.target} start={m.start} color={m.color} unit={m.unit} label={m.label} />
+      <div style={S.addRow}>
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={S.dateInput} aria-label="Date de la mesure" />
+        <input type="number" inputMode="decimal" step="any" value={val} onChange={(e) => setVal(e.target.value)} placeholder={"valeur (" + m.unit + ")"} style={S.numInput} aria-label="Valeur" />
+        <button style={S.smallBtnPrimary} onClick={submit} disabled={val === ""}>Ajouter</button>
+      </div>
+      {pts.length ? (
+        <ul style={S.entryList}>
+          {pts.slice().reverse().map((p) => (
+            <li key={p.id} style={S.entryItem}>
+              <span>{fmtShort(p.d)} — <strong>{fmtNum(p.v)} {m.unit}</strong></span>
+              <button style={S.delX} onClick={() => props.onDel(m.key, p.id)} aria-label="Supprimer cette mesure">×</button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+function ProgressionPanel(props) {
+  const measures = normMeasures(props.measures);
+  return (
+    <div style={S.progInner}>
+      <p style={S.progHint}>
+        Note une valeur à chaque test (fin de phase) ou pesée. Les courbes montrent ta trajectoire vers l'objectif — la ligne pointillée est la cible.
+      </p>
+      {METRICS.map((m) => (
+        <MetricCard key={m.key} m={m} data={measures[m.key]} onAdd={props.onAdd} onDel={props.onDel} />
+      ))}
+    </div>
+  );
+}
+/* ----------------------------- App -------------------------------- */
+function Calendar() {
+  const [week, setWeek] = useState(currentWeekIndex());
+  const [data, setData] = useState(EMPTY);
+  const dataRef = React.useRef(EMPTY);
+  const [loaded, setLoaded] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [editText, setEditText] = useState("");
+  const [addingFor, setAddingFor] = useState(null);
+  const [addText, setAddText] = useState("");
+  const [addingSession, setAddingSession] = useState(false);
+  const [nsDay, setNsDay] = useState(0);
+  const [nsType, setNsType] = useState("course");
+  const [nsTitle, setNsTitle] = useState("");
+  const [nsEx, setNsEx] = useState("");
+  const [noteOpen, setNoteOpen] = useState({});
+  useEffect(() => {
+    setAddingSession(false);
+    setEditing(null);
+    setAddingFor(null);
+  }, [week]);
+  const [showWarmup, setShowWarmup] = useState(false);
+  const [showProg, setShowProg] = useState(false);
+  const [saveMsg, setSaveMsg] = useState("");
+  const [saveError, setSaveError] = useState("");
+  const [storageOk, setStorageOk] = useState(null);
+  useEffect(() => {
+    let mounted = true;
+    loadData().then((d) => {
+      if (mounted) {
+        dataRef.current = d;
+        setData(d);
+        setLoaded(true);
+      }
+    });
+    (async () => {
+      try {
+        if (typeof localStorage === "undefined") { if (mounted) setStorageOk(false); return; }
+        localStorage.setItem("diag-ping", String(Date.now()));
+        localStorage.getItem("diag-ping");
+        if (mounted) setStorageOk(true);
+      } catch (e) {
+        if (mounted) setStorageOk(false);
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
+  const persist = (updater) => {
+    const prev = dataRef.current;
+    const next = typeof updater === "function" ? updater(prev) : updater;
+    dataRef.current = next;
+    setData(next);
+    setSaveMsg("Enregistrement…");
+    setSaveError("");
+    saveData(next).then((res) => {
+      if (res.ok) {
+        setSaveMsg("✓ Enregistré");
+        setSaveError("");
+        setTimeout(() => setSaveMsg(""), 1500);
+      } else {
+        setSaveMsg("");
+        setSaveError(res.error || "échec inconnu");
+      }
+    });
+  };
+  const testStorage = async () => {
+    setSaveMsg("Test en cours…");
+    setSaveError("");
+    const res = await saveData(dataRef.current);
+    if (res.ok) {
+      setSaveMsg("✓ Test réussi — le stockage fonctionne");
+      setStorageOk(true);
+      setTimeout(() => setSaveMsg(""), 3000);
+    } else {
+      setSaveMsg("");
+      setSaveError("Test échoué : " + res.error);
+    }
+  };
+  const [showBackup, setShowBackup] = useState(false);
+  const [importText, setImportText] = useState("");
+  const [backupMsg, setBackupMsg] = useState("");
+  const [showReview, setShowReview] = useState(false);
+  const [reviewMsg, setReviewMsg] = useState("");
+  const exportText = JSON.stringify(data);
+  const downloadReview = () => {
+    try {
+      const blob = new Blob([buildReviewMarkdown(dataRef.current)], { type: "text/markdown" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "bilan-tractions-" + todayStr() + ".md";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setReviewMsg("✓ Bilan téléchargé");
+    } catch (e) {
+      setReviewMsg("Téléchargement indisponible — utilise « Copier le texte »");
+    }
+    setTimeout(() => setReviewMsg(""), 4000);
+  };
+  const copyReview = async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(buildReviewMarkdown(dataRef.current));
+        setReviewMsg("✓ Bilan copié — colle-le où tu veux le faire relire");
+      } else {
+        setReviewMsg("Copie indisponible — utilise « Télécharger »");
+      }
+    } catch (e) {
+      setReviewMsg("Copie indisponible — utilise « Télécharger »");
+    }
+    setTimeout(() => setReviewMsg(""), 4000);
+  };
+  const downloadBackup = () => {
+    try {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "carnet-tractions-sauvegarde-" + todayStr() + ".json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setBackupMsg("✓ Fichier téléchargé");
+    } catch (e) {
+      setBackupMsg("Téléchargement indisponible — utilise le copier-coller ci-dessous");
+    }
+    setTimeout(() => setBackupMsg(""), 4000);
+  };
+  const copyBackup = async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(exportText);
+        setBackupMsg("✓ Copié — colle ça dans une note pour le garder");
+      } else {
+        setBackupMsg("Sélectionne le texte ci-dessous et copie-le manuellement");
+      }
+    } catch (e) {
+      setBackupMsg("Sélectionne le texte ci-dessous et copie-le manuellement");
+    }
+    setTimeout(() => setBackupMsg(""), 4000);
+  };
+  const restoreBackup = () => {
+    try {
+      const parsed = JSON.parse(importText);
+      const restored = {
+        completed: parsed.completed || {},
+        notes: parsed.notes || {},
+        edits: parsed.edits || {},
+        added: parsed.added || {},
+        feedback: parsed.feedback || {},
+        moves: parsed.moves || {},
+        custom: parsed.custom || {},
+        measures: normMeasures(parsed.measures),
+      };
+      dataRef.current = restored;
+      setData(restored);
+      persist(() => restored);
+      setBackupMsg("✓ Données restaurées");
+      setImportText("");
+    } catch (e) {
+      setBackupMsg("⚠ Texte invalide — vérifie que c'est bien une sauvegarde complète copiée depuis ce carnet");
+    }
+  };
+  const toggleDone = (id) => {
+    persist((prev) => {
+      const completed = Object.assign({}, prev.completed);
+      completed[id] = !completed[id];
+      return Object.assign({}, prev, { completed });
+    });
+  };
+  const setFeedback = (id, patch) => {
+    persist((prev) => {
+      const current = prev.feedback[id] || { rpe: null, pain: null, comment: "" };
+      const feedback = Object.assign({}, prev.feedback, { [id]: Object.assign({}, current, patch) });
+      return Object.assign({}, prev, { feedback });
+    });
+  };
+  const addMeasure = (key, dateStr, value) => {
+    persist((prev) => {
+      const measures = normMeasures(prev.measures);
+      const arr = measures[key].slice();
+      arr.push({ d: dateStr, v: value, id: "m" + Date.now() + "-" + Math.floor(Math.random() * 100000) });
+      arr.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0));
+      const nextMeasures = Object.assign({}, measures, { [key]: arr });
+      return Object.assign({}, prev, { measures: nextMeasures });
+    });
+  };
+  const delMeasure = (key, id) => {
+    persist((prev) => {
+      const measures = normMeasures(prev.measures);
+      const nextMeasures = Object.assign({}, measures, { [key]: measures[key].filter((p) => p.id !== id) });
+      return Object.assign({}, prev, { measures: nextMeasures });
+    });
+  };
+  const applyEdit = (id, idx, original) => {
+    const key = id + ":" + idx;
+    const v = editText.trim();
+    persist((prev) => {
+      const edits = Object.assign({}, prev.edits);
+      if (!v || v === original) {
+        delete edits[key];
+      } else {
+        edits[key] = v;
+      }
+      return Object.assign({}, prev, { edits });
+    });
+    setEditing(null);
+  };
+  const resetEdit = (id, idx) => {
+    persist((prev) => {
+      const edits = Object.assign({}, prev.edits);
+      delete edits[id + ":" + idx];
+      return Object.assign({}, prev, { edits });
+    });
+    setEditing(null);
+  };
+  const addExercise = (id) => {
+    const text = addText.trim();
+    if (!text) return;
+    persist((prev) => {
+      const list = (prev.added[id] || []).concat([{ id: "x" + Date.now() + "-" + Math.floor(Math.random() * 100000), text }]);
+      return Object.assign({}, prev, { added: Object.assign({}, prev.added, { [id]: list }) });
+    });
+    setAddText("");
+    setAddingFor(null);
+  };
+  const applyEditAdded = (sid, xid) => {
+    const v = editText.trim();
+    persist((prev) => {
+      const list = (prev.added[sid] || []).map((x) => (x.id === xid ? Object.assign({}, x, { text: v || x.text }) : x));
+      return Object.assign({}, prev, { added: Object.assign({}, prev.added, { [sid]: list }) });
+    });
+    setEditing(null);
+  };
+  const removeAdded = (sid, xid) => {
+    persist((prev) => {
+      const list = (prev.added[sid] || []).filter((x) => x.id !== xid);
+      const added = Object.assign({}, prev.added, { [sid]: list });
+      if (!list.length) delete added[sid];
+      return Object.assign({}, prev, { added });
+    });
+    setEditing(null);
+  };
+  const moveSession = (s, newDay) => {
+    if (s.custom) {
+      persist((prev) => {
+        const list = (prev.custom[week] || []).map((c) => (c.id === s.cid ? Object.assign({}, c, { day: newDay }) : c));
+        return Object.assign({}, prev, { custom: Object.assign({}, prev.custom, { [week]: list }) });
+      });
+    } else {
+      persist((prev) => {
+        const moves = Object.assign({}, prev.moves);
+        if (newDay === s.origDay) delete moves[s.id];
+        else moves[s.id] = newDay;
+        return Object.assign({}, prev, { moves });
+      });
+    }
+  };
+  const addSession = () => {
+    const title = nsTitle.trim() || (TYPE_META[nsType] ? TYPE_META[nsType].label : "Séance");
+    const ex = nsEx.split("\n").map((t) => t.trim()).filter(Boolean);
+    persist((prev) => {
+      const list = (prev.custom[week] || []).concat([{ id: "c" + Date.now() + "-" + Math.floor(Math.random() * 100000), day: nsDay, type: nsType, title, ex }]);
+      return Object.assign({}, prev, { custom: Object.assign({}, prev.custom, { [week]: list }) });
+    });
+    setAddingSession(false);
+    setNsTitle("");
+    setNsEx("");
+    setNsDay(0);
+    setNsType("course");
+  };
+  const removeSession = (cid) => {
+    if (!window.confirm("Supprimer cette séance et ses données (bilan, exos) ?")) return;
+    const sid = "s" + week + "-" + cid;
+    persist((prev) => {
+      const custom = Object.assign({}, prev.custom);
+      const list = (custom[week] || []).filter((c) => c.id !== cid);
+      if (list.length) custom[week] = list; else delete custom[week];
+      const completed = Object.assign({}, prev.completed);
+      delete completed[sid];
+      const feedback = Object.assign({}, prev.feedback);
+      delete feedback[sid];
+      const added = Object.assign({}, prev.added);
+      delete added[sid];
+      const edits = Object.assign({}, prev.edits);
+      Object.keys(edits).forEach((k) => { if (k.indexOf(sid + ":") === 0) delete edits[k]; });
+      return Object.assign({}, prev, { custom, completed, feedback, added, edits });
+    });
+  };
+  const sessions = weekSessions(data, week);
+  const phase = phaseOfWeek(week);
+  let totalDone = 0;
+  Object.keys(data.completed).forEach((k) => { if (data.completed[k]) totalDone++; });
+  const customCount = Object.keys(data.custom).reduce((a, k) => a + data.custom[k].length, 0);
+  const totalSessions = WEEKS.reduce((a, w) => a + w.length, 0) + customCount;
+  if (!loaded) {
+    return (
+      <div style={S.page}>
+        <div style={{ textAlign: "center", paddingTop: 80, color: "#5C6470" }}>Chargement du carnet…</div>
+      </div>
+    );
+  }
+  return (
+    <div style={S.page}>
+      <style>{CSS}</style>
+      <header style={{ marginBottom: 16 }}>
+        <div style={S.eyebrow}>Carnet d'entraînement · 12 semaines</div>
+        <h1 style={S.h1}>Tractions & Explosivité</h1>
+        <div style={S.goals}>
+          {GOALS.map((g, i) => <Goal key={i} label={g.label} value={g.value} />)}
+        </div>
+        <div style={S.progressLine}>
+          <span>{totalDone} / {totalSessions} séances faites</span>
+          <span style={{ color: "#8A8F98" }}>{saveMsg}</span>
+        </div>
+        {storageOk === false ? (
+          <div style={S.errorBanner}>
+            ⚠️ Le stockage ne répond pas dans cet environnement — rien ne sera sauvegardé. Ouvre ce fichier dans un vrai navigateur (pas un aperçu intégré).
+          </div>
+        ) : null}
+        {saveError ? (
+          <div style={S.errorBanner}>
+            ⚠️ Échec de l'enregistrement : {saveError}
+            <button style={S.retryBtn} onClick={testStorage}>Réessayer</button>
+          </div>
+        ) : null}
+        <div style={S.progCard}>
+          <button style={S.warmupToggle} onClick={() => setShowProg(!showProg)}>
+            <span>📈 Ma progression vers les objectifs</span>
+            <span>{showProg ? "−" : "+"}</span>
+          </button>
+          {showProg ? (
+            <ProgressionPanel measures={data.measures} onAdd={addMeasure} onDel={delMeasure} />
+          ) : null}
+        </div>
+        <div style={S.backupCard}>
+          <button style={S.warmupToggle} onClick={() => setShowBackup(!showBackup)}>
+            <span>💾 Sauvegarde / restauration de mes données</span>
+            <span>{showBackup ? "−" : "+"}</span>
+          </button>
+          {showBackup ? (
+            <div style={{ padding: "0 14px 12px" }}>
+              <p style={S.backupHint}>
+                Tes données sont enregistrées automatiquement dans ce navigateur. Pour les transférer sur un autre appareil (ou par sécurité), télécharge le fichier — ou copie le texte et colle-le dans « Restaurer » sur l'autre appareil.
+              </p>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button style={S.smallBtnPrimary} onClick={downloadBackup}>Télécharger (.json)</button>
+                <button style={S.smallBtn} onClick={copyBackup}>Copier le texte</button>
+              </div>
+              {backupMsg ? <span style={S.backupMsg}>{backupMsg}</span> : null}
+              <textarea readOnly value={exportText} rows={3} style={Object.assign({}, S.noteArea, { marginTop: 8, fontSize: 11 })} onFocus={(e) => e.target.select()} />
+              <div style={{ marginTop: 10 }}>
+                <div style={S.noteLabel}>Restaurer une sauvegarde</div>
+                <textarea
+                  value={importText}
+                  onChange={(e) => setImportText(e.target.value)}
+                  placeholder="Colle ici le texte copié précédemment"
+                  rows={3}
+                  style={S.noteArea}
+                />
+                <button style={Object.assign({}, S.smallBtn, { marginTop: 6 })} onClick={restoreBackup} disabled={!importText.trim()}>
+                  Restaurer
+                </button>
+              </div>
+            </div>
+          ) : null}
+        </div>
+        <div style={S.reviewCard}>
+          <button style={S.warmupToggle} onClick={() => setShowReview(!showReview)}>
+            <span>📤 Export bilan pour relecture</span>
+            <span>{showReview ? "−" : "+"}</span>
+          </button>
+          {showReview ? (
+            <div style={{ padding: "0 14px 12px" }}>
+              <p style={S.backupHint}>
+                Génère un bilan lisible (Markdown) : progression des métriques, séances faites, ressentis, douleurs, remarques, exercices ajustés et ajoutés. Fais-le relire (coach, IA…) pour adapter la suite du programme.
+              </p>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button style={S.smallBtnPrimary} onClick={downloadReview}>Télécharger (.md)</button>
+                <button style={S.smallBtn} onClick={copyReview}>Copier le texte</button>
+              </div>
+              {reviewMsg ? <span style={S.backupMsg}>{reviewMsg}</span> : null}
+            </div>
+          ) : null}
+        </div>
+      </header>
+      <div style={S.phaseBarWrap}>
+        {WEEKS.map((w, i) => {
+          const p = phaseOfWeek(i);
+          const active = i === week;
+          const flags = weekFlags(i);
+          let weekDone = true;
+          const ids = w.map((s) => "s" + i + "-d" + s.day).concat(((data.custom || {})[i] || []).map((c) => "s" + i + "-" + c.id));
+          for (let j = 0; j < ids.length; j++) {
+            if (!data.completed[ids[j]]) { weekDone = false; break; }
+          }
+          return (
+            <button
+              key={i}
+              onClick={() => setWeek(i)}
+              aria-label={"Semaine " + (i + 1) + (flags.label ? " — " + flags.label.toLowerCase() : "")}
+              style={Object.assign({}, S.phaseSeg, {
+                background: active ? p.color : p.color + "33",
+                color: active ? "#fff" : "#1B1D22",
+                fontWeight: active ? 800 : 600,
+                borderBottom: weekDone ? "3px solid #3C7A4E" : "3px solid transparent",
+              })}
+            >
+              {i + 1}
+              <span style={Object.assign({}, S.deloadDot, { visibility: flags.label ? "visible" : "hidden" })} />
+            </button>
+          );
+        })}
+      </div>
+      <div style={S.phaseLegend}>
+        {PHASES.map((p) => (
+          <span key={p.id} style={S.phaseLegendItem}>
+            <span style={Object.assign({}, S.dot, { background: p.color })} /> P{p.id} · {p.name}
+          </span>
+        ))}
+        <span style={S.phaseLegendItem}>
+          <span style={Object.assign({}, S.deloadDot, { display: "inline-block", margin: 0, background: "#5C6470" })} /> semaine deload / test
+        </span>
+        <span style={S.phaseLegendItem}>
+          <span style={S.arrowUp}>↗</span> charge en hausse · <span style={S.arrowDown}>↘</span> allégé
+        </span>
+      </div>
+      <div style={S.weekNav}>
+        <button style={S.navBtn} onClick={() => setWeek(Math.max(0, week - 1))} disabled={week === 0} aria-label="Semaine précédente">←</button>
+        <div style={{ textAlign: "center" }}>
+          <div style={Object.assign({}, S.weekTitle, { color: phase.color })}>
+            Semaine {week + 1}
+            {weekFlags(week).label ? <span style={S.deloadPill}>{weekFlags(week).label}</span> : null}
+          </div>
+          <div style={S.weekSub}>{fmtDate(sessionDate(week, 0))} → {fmtDate(sessionDate(week, 6))} · Phase {phase.id}</div>
+        </div>
+        <button style={S.navBtn} onClick={() => setWeek(Math.min(WEEKS.length - 1, week + 1))} disabled={week === WEEKS.length - 1} aria-label="Semaine suivante">→</button>
+      </div>
+      {week !== currentWeekIndex() ? (
+        <button style={S.todayBtn} onClick={() => setWeek(currentWeekIndex())}>Revenir à aujourd'hui</button>
+      ) : null}
+      <div style={S.warmupCard}>
+        <button style={S.warmupToggle} onClick={() => setShowWarmup(!showWarmup)}>
+          <span>⚠️ Échauffement obligatoire avant chaque séance</span>
+          <span>{showWarmup ? "−" : "+"}</span>
+        </button>
+        {showWarmup ? (
+          <ul style={S.warmupList}>
+            {ECHAUFFEMENT.map((e, i) => <li key={i} style={{ marginBottom: 4 }}>{e}</li>)}
+            <li style={{ marginTop: 8, fontWeight: 600 }}>
+              Si douleur pendant l'échauffement : pas de charge ce jour-là — volume léger + mobilité uniquement.
+            </li>
+          </ul>
+        ) : null}
+      </div>
+      <div style={S.sessions}>
+        {sessions.map((s) => {
+          const id = s.id;
+          const meta = TYPE_META[s.type] || TYPE_META.course;
+          const date = sessionDate(week, s.day);
+          const moved = !s.custom && s.day !== s.origDay;
+          const done = !!data.completed[id];
+          const fb = data.feedback[id] || { rpe: null, pain: null, comment: "" };
+          const hasFeedback = !!(fb.rpe || fb.pain !== null || fb.comment);
+          const openFeedback = noteOpen[id] || done || hasFeedback;
+          return (
+            <article key={id} style={Object.assign({}, S.card, { borderLeft: "5px solid " + meta.color, opacity: done ? 0.72 : 1 })}>
+              <div style={S.cardHead}>
+                <div>
+                  <div style={S.cardDate}>
+                    <select
+                      value={s.day}
+                      onChange={(e) => moveSession(s, parseInt(e.target.value, 10))}
+                      style={S.daySelect}
+                      aria-label="Jour de la séance"
+                    >
+                      {DAY_NAMES.map((d, di) => <option key={di} value={di}>{d}</option>)}
+                    </select>
+                    <span>{date.getDate() + " " + MONTHS[date.getMonth()]}</span>
+                    {isToday(date) ? <span style={S.todayPill}>Aujourd'hui</span> : null}
+                    {moved ? <span style={S.movedTag}>décalée · prévue {DAY_NAMES[s.origDay]}</span> : null}
+                    {s.custom ? <span style={S.persoTag}>perso</span> : null}
+                  </div>
+                  <h2 style={S.cardTitle}>{s.title}</h2>
+                  <span style={Object.assign({}, S.typePill, { background: meta.color + "1A", color: meta.color })}>{meta.label}</span>
+                </div>
+                <button
+                  onClick={() => toggleDone(id)}
+                  style={Object.assign({}, S.doneBtn, {
+                    background: done ? "#3C7A4E" : "#fff",
+                    color: done ? "#fff" : "#1B1D22",
+                    borderColor: done ? "#3C7A4E" : "#C9CCD1",
+                  })}
+                >
+                  {done ? "✓ Fait" : "Fait ?"}
+                </button>
+              </div>
+              <ul style={S.exList}>
+                {s.ex.map((line, k) => {
+                  const key = id + ":" + k;
+                  const value = data.edits[key] !== undefined ? data.edits[key] : line;
+                  const modified = data.edits[key] !== undefined;
+                  const isEditing = editing === key;
+                  return (
+                    <li key={k} style={S.exItem}>
+                      {isEditing ? (
+                        <div style={{ flex: 1 }}>
+                          <textarea
+                            value={editText}
+                            onChange={(e) => setEditText(e.target.value)}
+                            rows={2}
+                            style={S.editArea}
+                          />
+                          <div style={{ display: "flex", gap: 8, marginTop: 6, flexWrap: "wrap" }}>
+                            <button style={S.smallBtnPrimary} onClick={() => applyEdit(id, k, line)}>Enregistrer</button>
+                            {modified ? (
+                              <button style={S.smallBtn} onClick={() => resetEdit(id, k)}>Rétablir l'original</button>
+                            ) : null}
+                            <button style={S.smallBtn} onClick={() => setEditing(null)}>Annuler</button>
+                          </div>
+                        </div>
+                      ) : (
+                        <React.Fragment>
+                          <span style={S.exText}>
+                            {renderExText(value)}
+                            {modified ? <span style={S.modifiedTag}>ajusté</span> : null}
+                          </span>
+                          <button
+                            style={S.editBtn}
+                            onClick={() => { setEditing(key); setEditText(value); }}
+                            aria-label="Ajuster cet exercice"
+                          >✎</button>
+                        </React.Fragment>
+                      )}
+                    </li>
+                  );
+                })}
+                {(data.added[id] || []).map((x) => {
+                  const key = id + ":add:" + x.id;
+                  const isEditing = editing === key;
+                  return (
+                    <li key={x.id} style={S.exItem}>
+                      {isEditing ? (
+                        <div style={{ flex: 1 }}>
+                          <textarea
+                            value={editText}
+                            onChange={(e) => setEditText(e.target.value)}
+                            rows={2}
+                            style={S.editArea}
+                          />
+                          <div style={{ display: "flex", gap: 8, marginTop: 6, flexWrap: "wrap" }}>
+                            <button style={S.smallBtnPrimary} onClick={() => applyEditAdded(id, x.id)}>Enregistrer</button>
+                            <button style={S.smallBtnDanger} onClick={() => removeAdded(id, x.id)}>Supprimer</button>
+                            <button style={S.smallBtn} onClick={() => setEditing(null)}>Annuler</button>
+                          </div>
+                        </div>
+                      ) : (
+                        <React.Fragment>
+                          <span style={S.exText}>
+                            {renderExText(x.text)}
+                            <span style={S.addedTag}>ajouté</span>
+                          </span>
+                          <button
+                            style={S.editBtn}
+                            onClick={() => { setEditing(key); setEditText(x.text); }}
+                            aria-label="Modifier ou supprimer cet exercice ajouté"
+                          >✎</button>
+                        </React.Fragment>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+              {addingFor === id ? (
+                <div style={{ marginTop: 8 }}>
+                  <textarea
+                    value={addText}
+                    onChange={(e) => setAddText(e.target.value)}
+                    rows={2}
+                    placeholder="Ex : Curl biceps 3x12 léger"
+                    style={S.editArea}
+                  />
+                  <div style={{ display: "flex", gap: 8, marginTop: 6, flexWrap: "wrap" }}>
+                    <button style={S.smallBtnPrimary} onClick={() => addExercise(id)} disabled={!addText.trim()}>Ajouter</button>
+                    <button style={S.smallBtn} onClick={() => { setAddingFor(null); setAddText(""); }}>Annuler</button>
+                  </div>
+                </div>
+              ) : (
+                <button style={Object.assign({}, S.addNoteBtn, { marginTop: 8 })} onClick={() => { setAddingFor(id); setAddText(""); }}>
+                  + Ajouter un exercice
+                </button>
+              )}
+              <div style={{ marginTop: 10 }}>
+                {openFeedback ? (
+                  <FeedbackField id={id} feedback={fb} onChange={setFeedback} />
+                ) : (
+                  <button style={S.addNoteBtn} onClick={() => setNoteOpen(Object.assign({}, noteOpen, { [id]: true }))}>
+                    + Ajouter un bilan
+                  </button>
+                )}
+                {done && !hasFeedback ? (
+                  <div style={S.feedbackReminder}>Séance faite — pense à remplir ton bilan ci-dessus 👆</div>
+                ) : null}
+              </div>
+              {s.custom ? (
+                <div style={{ marginTop: 8, textAlign: "right" }}>
+                  <button style={S.deleteSessionBtn} onClick={() => removeSession(s.cid)}>Supprimer cette séance</button>
+                </div>
+              ) : null}
+            </article>
+          );
+        })}
+      </div>
+      <div style={{ marginTop: 14 }}>
+        {addingSession ? (
+          <div style={S.addSessionForm}>
+            <div style={S.noteLabel}>Nouvelle séance — semaine {week + 1}</div>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
+              <select value={nsDay} onChange={(e) => setNsDay(parseInt(e.target.value, 10))} style={S.daySelect} aria-label="Jour de la nouvelle séance">
+                {DAY_NAMES.map((d, di) => <option key={di} value={di}>{d}</option>)}
+              </select>
+              <select value={nsType} onChange={(e) => setNsType(e.target.value)} style={S.daySelect} aria-label="Type de la nouvelle séance">
+                {Object.keys(TYPE_META).map((t) => <option key={t} value={t}>{TYPE_META[t].label}</option>)}
+              </select>
+            </div>
+            <input
+              value={nsTitle}
+              onChange={(e) => setNsTitle(e.target.value)}
+              placeholder="Titre (ex : Course — 8 km facile)"
+              style={S.titleInput}
+              aria-label="Titre de la nouvelle séance"
+            />
+            <textarea
+              value={nsEx}
+              onChange={(e) => setNsEx(e.target.value)}
+              placeholder="Exercices — un par ligne (optionnel)"
+              rows={3}
+              style={Object.assign({}, S.noteArea, { marginTop: 6 })}
+              aria-label="Exercices de la nouvelle séance"
+            />
+            <div style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap" }}>
+              <button style={S.smallBtnPrimary} onClick={addSession} disabled={!nsTitle.trim() && !nsEx.trim()}>Ajouter la séance</button>
+              <button style={S.smallBtn} onClick={() => setAddingSession(false)}>Annuler</button>
+            </div>
+          </div>
+        ) : (
+          <button style={S.addSessionBtn} onClick={() => setAddingSession(true)}>
+            + Ajouter une séance cette semaine (course, rattrapage…)
+          </button>
+        )}
+      </div>
+      <footer style={S.footer}>
+        {FOOTER_NOTES.map((n, i) => (
+          <p key={i} style={{ margin: i === FOOTER_NOTES.length - 1 ? 0 : "0 0 8px" }}>
+            <strong>{n.label}</strong> : {n.text}
+          </p>
+        ))}
+      </footer>
+    </div>
+  );
+}
+const RPE_OPTIONS = [
+  { id: "facile", label: "😌 Facile" },
+  { id: "correct", label: "🙂 Correct" },
+  { id: "dur", label: "😓 Dur" },
+  { id: "echec", label: "🔴 Échec(s)" },
+];
+function FeedbackField(props) {
+  const fb = props.feedback;
+  const [comment, setComment] = useState(fb.comment || "");
+  const [dirty, setDirty] = useState(false);
+  useEffect(() => {
+    setComment(fb.comment || "");
+    setDirty(false);
+  }, [props.id]);
+  const saveComment = () => {
+    if (comment !== (fb.comment || "")) props.onChange(props.id, { comment });
+    setDirty(false);
+  };
+  return (
+    <div style={S.feedbackBox}>
+      <div style={S.noteLabel}>Bilan de séance — à remplir après exécution</div>
+      <div style={S.rpeRow}>
+        {RPE_OPTIONS.map((o) => (
+          <button
+            key={o.id}
+            onClick={() => props.onChange(props.id, { rpe: fb.rpe === o.id ? null : o.id })}
+            style={Object.assign({}, S.rpeBtn, fb.rpe === o.id ? S.rpeBtnActive : null)}
+          >
+            {o.label}
+          </button>
+        ))}
+      </div>
+      <div style={S.painRow}>
+        <span style={S.painLabel}>Douleur épaule ?</span>
+        <button
+          onClick={() => props.onChange(props.id, { pain: fb.pain === true ? null : true })}
+          style={Object.assign({}, S.painBtn, fb.pain === true ? S.painBtnActiveYes : null)}
+        >Oui</button>
+        <button
+          onClick={() => props.onChange(props.id, { pain: fb.pain === false ? null : false })}
+          style={Object.assign({}, S.painBtn, fb.pain === false ? S.painBtnActiveNo : null)}
+        >Non</button>
+      </div>
+      <textarea
+        value={comment}
+        placeholder="Charges réelles, sensations, à ajuster la prochaine fois…"
+        rows={2}
+        style={S.noteArea}
+        onChange={(e) => { setComment(e.target.value); setDirty(true); }}
+        onBlur={saveComment}
+      />
+      {dirty ? (
+        <button style={Object.assign({}, S.smallBtnPrimary, { marginTop: 6 })} onClick={saveComment}>
+          Enregistrer le commentaire
+        </button>
+      ) : null}
+    </div>
+  );
+}
+function Goal(props) {
+  return (
+    <div style={S.goal}>
+      <div style={S.goalLabel}>{props.label}</div>
+      <div style={S.goalValue}>{props.value}</div>
+    </div>
+  );
+}
+function App() {
+  return (
+    <Boundary>
+      <Calendar />
+    </Boundary>
+  );
+}
+/* ----------------------------- Styles ------------------------------ */
+const CSS = [
+  "@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap');",
+  "* { box-sizing: border-box; }",
+  "button { cursor: pointer; font-family: inherit; }",
+  "button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px solid #1B1D22; outline-offset: 2px; }",
+  "textarea, input { font-family: 'Barlow', sans-serif; }",
+  "@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }",
+].join("\n");
+const S = {
+  page: {
+    fontFamily: "'Barlow', system-ui, sans-serif",
+    background: "#EDEEEA",
+    color: "#1B1D22",
+    minHeight: "100vh",
+    maxWidth: 640,
+    margin: "0 auto",
+    padding: "20px 14px 40px",
+    fontSize: 15,
+    lineHeight: 1.45,
+  },
+  eyebrow: { fontFamily: "'Barlow Condensed', sans-serif", textTransform: "uppercase", letterSpacing: "0.12em", fontSize: 13, fontWeight: 700, color: "#5C6470" },
+  h1: { fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: 38, textTransform: "uppercase", margin: "2px 0 12px", lineHeight: 1 },
+  goals: { display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 },
+  goal: { background: "#fff", borderRadius: 8, padding: "8px 10px", border: "1px solid #DDDFDA" },
+  goalLabel: { fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: "#8A8F98", fontWeight: 600 },
+  goalValue: { fontFamily: "'Barlow Condensed', sans-serif", fontSize: 19, fontWeight: 700 },
+  progressLine: { display: "flex", justifyContent: "space-between", marginTop: 10, fontSize: 13, color: "#5C6470", minHeight: 18 },
+  errorBanner: { background: "#FBEAE7", border: "1px solid #E3B3AA", color: "#8A2E1F", borderRadius: 8, padding: "8px 10px", fontSize: 13, marginTop: 8, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" },
+  retryBtn: { border: "1px solid #8A2E1F", background: "#fff", color: "#8A2E1F", borderRadius: 6, padding: "3px 10px", fontSize: 12.5, fontWeight: 700 },
+  progCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 10, marginTop: 10 },
+  progInner: { padding: "0 12px 12px" },
+  progHint: { fontSize: 12.5, color: "#5C6470", margin: "0 0 10px" },
+  metricCard: { background: "#FBFBF9", border: "1px solid #E4E6E1", borderRadius: 10, padding: 12, marginBottom: 12 },
+  metricHead: { display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap" },
+  metricLabel: { fontFamily: "'Barlow Condensed', sans-serif", fontSize: 18, fontWeight: 700 },
+  metricTarget: { fontSize: 12, color: "#5C6470", fontWeight: 600 },
+  metricNowRow: { display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", margin: "4px 0 8px" },
+  metricNow: { fontFamily: "'Barlow Condensed', sans-serif", fontSize: 30, fontWeight: 800, lineHeight: 1 },
+  metricUnit: { fontSize: 14, fontWeight: 600 },
+  metricDelta: { fontSize: 12.5, fontWeight: 700 },
+  metricDeltaMuted: { fontSize: 12.5, color: "#8A8F98", fontWeight: 600 },
+  chartSvg: { width: "100%", height: "auto", display: "block", marginBottom: 8, touchAction: "manipulation" },
+  chartTick: { fontSize: 9, fill: "#8A8F98", fontFamily: "'Barlow', sans-serif" },
+  chartTargetLbl: { fontSize: 9, fontWeight: 700, fontFamily: "'Barlow', sans-serif" },
+  chartPtLbl: { fontSize: 11, fontWeight: 700, fontFamily: "'Barlow Condensed', sans-serif" },
+  chartEmpty: { fontSize: 10.5, fill: "#8A8F98", fontFamily: "'Barlow', sans-serif" },
+  addRow: { display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" },
+  dateInput: { border: "1px solid #C9CCD1", borderRadius: 6, padding: "6px 8px", fontSize: 13, background: "#fff" },
+  numInput: { border: "1px solid #C9CCD1", borderRadius: 6, padding: "6px 8px", fontSize: 13, background: "#fff", flex: "1 1 90px", minWidth: 90 },
+  entryList: { listStyle: "none", margin: "10px 0 0", padding: 0, display: "flex", flexDirection: "column", gap: 2 },
+  entryItem: { display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 13, color: "#3A3E46", padding: "3px 0", borderTop: "1px dashed #E4E6E1" },
+  delX: { border: "none", background: "none", color: "#B3402E", fontSize: 18, lineHeight: 1, padding: "0 4px", fontWeight: 700 },
+  backupCard: { background: "#EFF4F3", border: "1px solid #C9DAD7", borderRadius: 10, marginTop: 8 },
+  reviewCard: { background: "#F4F0FA", border: "1px solid #D8CBEC", borderRadius: 10, marginTop: 8 },
+  backupHint: { fontSize: 12.5, color: "#3A3E46", margin: "0 0 8px" },
+  backupMsg: { fontSize: 12.5, color: "#2E7D7B", fontWeight: 600, marginLeft: 8 },
+  phaseBarWrap: { display: "flex", gap: 3, marginBottom: 6 },
+  phaseSeg: { flex: 1, border: "none", borderRadius: 4, padding: "8px 0 5px", fontFamily: "'Barlow Condensed', sans-serif", fontSize: 15 },
+  deloadDot: { display: "block", width: 5, height: 5, borderRadius: "50%", background: "currentColor", margin: "2px auto 0", opacity: 0.75 },
+  deloadPill: { marginLeft: 8, fontSize: 12, verticalAlign: "middle", background: "#5C64701A", color: "#5C6470", border: "1px solid #5C647040", borderRadius: 20, padding: "2px 10px", fontWeight: 700, fontFamily: "'Barlow', sans-serif", textTransform: "none", letterSpacing: 0, whiteSpace: "nowrap" },
+  phaseLegend: { display: "flex", flexWrap: "wrap", gap: "4px 14px", fontSize: 12, color: "#5C6470", marginBottom: 16 },
+  phaseLegendItem: { display: "inline-flex", alignItems: "center", gap: 5 },
+  dot: { width: 9, height: 9, borderRadius: "50%", display: "inline-block" },
+  weekNav: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 },
+  navBtn: { width: 42, height: 42, borderRadius: 8, border: "1px solid #C9CCD1", background: "#fff", fontSize: 18, fontWeight: 600 },
+  weekTitle: { fontFamily: "'Barlow Condensed', sans-serif", fontSize: 28, fontWeight: 800, textTransform: "uppercase", lineHeight: 1 },
+  weekSub: { fontSize: 13, color: "#5C6470", marginTop: 2 },
+  todayBtn: { display: "block", margin: "0 auto 12px", border: "none", background: "none", textDecoration: "underline", color: "#3E5F8A", fontSize: 13, fontWeight: 600 },
+  warmupCard: { background: "#FFF7E8", border: "1px solid #E8D9B0", borderRadius: 10, marginBottom: 16 },
+  warmupToggle: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", padding: "10px 14px", fontWeight: 600, fontSize: 14, textAlign: "left" },
+  warmupList: { margin: 0, padding: "0 14px 12px 30px", fontSize: 14 },
+  sessions: { display: "flex", flexDirection: "column", gap: 14 },
+  card: { background: "#fff", borderRadius: 10, padding: "14px 14px 12px", border: "1px solid #DDDFDA" },
+  cardHead: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, marginBottom: 8 },
+  cardDate: { fontSize: 13, color: "#5C6470", fontWeight: 600, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" },
+  daySelect: { border: "1px solid #C9CCD1", borderRadius: 6, padding: "4px 6px", fontSize: 13, background: "#fff", fontWeight: 600, color: "#1B1D22" },
+  movedTag: { fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", background: "#C77F001A", color: "#C77F00", borderRadius: 4, padding: "1px 6px", letterSpacing: "0.05em" },
+  persoTag: { fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", background: "#7A4FA31A", color: "#7A4FA3", borderRadius: 4, padding: "1px 6px", letterSpacing: "0.05em" },
+  addSessionBtn: { width: "100%", border: "2px dashed #C9CCD1", background: "none", borderRadius: 10, padding: "12px 0", color: "#5C6470", fontWeight: 600, fontSize: 14 },
+  addSessionForm: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 10, padding: 12 },
+  titleInput: { width: "100%", border: "1px solid #C9CCD1", borderRadius: 6, padding: 8, fontSize: 14, background: "#FBFBF9" },
+  deleteSessionBtn: { border: "none", background: "none", color: "#B3402E", fontSize: 12.5, fontWeight: 600, textDecoration: "underline", padding: 0 },
+  todayPill: { background: "#1B1D22", color: "#fff", borderRadius: 20, fontSize: 11, padding: "1px 8px", fontWeight: 700 },
+  cardTitle: { fontFamily: "'Barlow Condensed', sans-serif", fontSize: 23, fontWeight: 700, margin: "2px 0 4px", lineHeight: 1.1 },
+  typePill: { fontSize: 12, fontWeight: 700, borderRadius: 20, padding: "2px 10px", display: "inline-block" },
+  doneBtn: { border: "1.5px solid", borderRadius: 8, padding: "8px 14px", fontWeight: 700, fontSize: 14, whiteSpace: "nowrap" },
+  exList: { listStyle: "none", margin: 0, padding: 0 },
+  exItem: { display: "flex", alignItems: "flex-start", gap: 8, padding: "7px 0", borderTop: "1px dashed #E4E6E1", fontSize: 14.5 },
+  exText: { flex: 1, whiteSpace: "pre-wrap" },
+  arrowUp: { color: "#3C7A4E", fontWeight: 800 },
+  arrowDown: { color: "#3E5F8A", fontWeight: 800 },
+  editBtn: { border: "none", background: "none", color: "#8A8F98", fontSize: 15, padding: "0 2px", lineHeight: 1.2 },
+  editArea: { width: "100%", border: "1px solid #C9CCD1", borderRadius: 6, padding: 8, fontSize: 14 },
+  modifiedTag: { marginLeft: 8, fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", background: "#3E5F8A1A", color: "#3E5F8A", borderRadius: 4, padding: "1px 6px", letterSpacing: "0.05em" },
+  addedTag: { marginLeft: 8, fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", background: "#2E7D7B1A", color: "#2E7D7B", borderRadius: 4, padding: "1px 6px", letterSpacing: "0.05em" },
+  smallBtn: { border: "1px solid #C9CCD1", background: "#fff", borderRadius: 6, padding: "5px 10px", fontSize: 13, fontWeight: 600 },
+  smallBtnDanger: { border: "1px solid #B3402E", background: "#fff", color: "#B3402E", borderRadius: 6, padding: "5px 10px", fontSize: 13, fontWeight: 600 },
+  smallBtnPrimary: { border: "1px solid #1B1D22", background: "#1B1D22", color: "#fff", borderRadius: 6, padding: "5px 10px", fontSize: 13, fontWeight: 600 },
+  noteLabel: { fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: "#8A8F98", fontWeight: 700, marginBottom: 4 },
+  noteArea: { width: "100%", border: "1px solid #C9CCD1", borderRadius: 6, padding: 8, fontSize: 14, background: "#FBFBF9" },
+  addNoteBtn: { border: "none", background: "none", color: "#3E5F8A", fontWeight: 600, fontSize: 13.5, padding: 0, textDecoration: "underline" },
+  feedbackBox: { background: "#F5F6F3", border: "1px solid #E4E6E1", borderRadius: 8, padding: 10 },
+  rpeRow: { display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 },
+  rpeBtn: { border: "1px solid #C9CCD1", background: "#fff", borderRadius: 20, padding: "5px 10px", fontSize: 13, fontWeight: 600 },
+  rpeBtnActive: { background: "#1B1D22", color: "#fff", borderColor: "#1B1D22" },
+  painRow: { display: "flex", alignItems: "center", gap: 8, marginBottom: 8 },
+  painLabel: { fontSize: 13, fontWeight: 600, color: "#3A3E46", marginRight: 4 },
+  painBtn: { border: "1px solid #C9CCD1", background: "#fff", borderRadius: 6, padding: "5px 12px", fontSize: 13, fontWeight: 600 },
+  painBtnActiveYes: { background: "#B3402E", color: "#fff", borderColor: "#B3402E" },
+  painBtnActiveNo: { background: "#3C7A4E", color: "#fff", borderColor: "#3C7A4E" },
+  feedbackReminder: { fontSize: 12.5, color: "#B3402E", fontWeight: 600, marginTop: 6 },
+  footer: { marginTop: 22, fontSize: 13.5, color: "#3A3E46", background: "#fff", border: "1px solid #DDDFDA", borderRadius: 10, padding: "12px 14px" },
+};
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
