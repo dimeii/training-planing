@@ -21,6 +21,7 @@ Départ du protocole : lundi 20 juillet 2026.
 - **Export / import** — téléchargement d'une sauvegarde `.json` (ou copier-coller) pour transférer les données vers un autre appareil.
 - **Export bilan pour relecture** — génère un fichier **Markdown** lisible (progression des métriques, séances faites, ressentis, douleurs, remarques, exercices ajustés/ajoutés), à faire relire par un coach ou une IA pour adapter la suite du programme.
 - **Accès protégé par mot de passe** — écran de verrouillage à l'ouverture ; un appareil authentifié reste autorisé **30 jours** (configurable dans `auth.js`). La carte « 🔒 Sécurité » permet de verrouiller l'appareil immédiatement, et de changer le mot de passe (génère un nouvel `auth.js` à pousser — ce qui **révoque tous les appareils**, idem en incrémentant `epoch`).
+- **Synchronisation cloud (optionnelle)** — carte « ☁️ Synchronisation » : les données sont sauvegardées automatiquement dans un fichier `carnet-data.json` d'un dépôt GitHub **privé** à toi, et synchronisées entre appareils (le plus récent gagne, arbitré par `updatedAt`). Persistance réelle : survivent à un nettoyage du navigateur, historique versionné par git côté dépôt de données.
 
 ## Modifier le programme
 
@@ -68,7 +69,15 @@ Le verrouillage est configuré dans **`auth.js`** : `hash` (SHA-256 de `salt:mot
 
 ## Où sont mes données ?
 
-Les données vivent dans le `localStorage` du navigateur, **liées à l'adresse du site et à l'appareil**. Elles ne se synchronisent pas automatiquement entre ton téléphone et ton ordinateur : pour transférer, utilise l'export `.json` (section « 💾 Sauvegarde / restauration ») puis « Restaurer » sur l'autre appareil. Vider les données de navigation du site efface le carnet — d'où l'intérêt de garder une sauvegarde de temps en temps.
+Par défaut, les données vivent dans le `localStorage` du navigateur, **liées à l'adresse du site et à l'appareil** ; vider les données de navigation efface le carnet, et rien ne se synchronise entre appareils (l'export/restauration `.json` reste possible manuellement).
+
+**Pour une persistance réelle, active la synchronisation cloud** (carte « ☁️ Synchronisation ») :
+
+1. Crée un dépôt **privé** dédié aux données, ex. `training-data` (https://github.com/new — surtout pas le dépôt public du carnet, sinon tes données seraient visibles).
+2. Crée un token *fine-grained* : github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → « Generate new token » ; dans « Repository access », sélectionne **uniquement** ce dépôt ; dans « Permissions » → Repository permissions, mets **Contents : Read and write**. Choisis une expiration (à renouveler ensuite).
+3. Dans le carnet, ouvre « ☁️ Synchronisation », colle `tonpseudo/training-data` et le token, « Activer ».
+
+Ensuite chaque modification est poussée automatiquement (~2 s après la saisie) dans `carnet-data.json`, et à chaque ouverture le carnet compare local et cloud : **le plus récent gagne**. Répète l'étape 3 sur chaque appareil (le token n'est stocké que dans le navigateur de chaque appareil). L'appli vérifie que le dépôt est bien privé et t'avertit s'il ne l'est pas. En cas d'écriture simultanée depuis deux appareils, c'est la sauvegarde la plus récente qui l'emporte (pas de fusion fine).
 
 ## Technique
 

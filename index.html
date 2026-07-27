@@ -128,7 +128,22 @@ function fmtNum(n) {
   return (r % 1 === 0 ? String(r) : String(r)).replace(".", ",");
 }
 const STORAGE_KEY = "protocole-tractions-v1";
-const EMPTY = { completed: {}, notes: {}, edits: {}, added: {}, feedback: {}, moves: {}, custom: {}, measures: { reps: [], pull1rm: [], bw: [] } };
+const EMPTY = { completed: {}, notes: {}, edits: {}, added: {}, feedback: {}, moves: {}, custom: {}, measures: { reps: [], pull1rm: [], bw: [] }, updatedAt: 0 };
+/* Normalise un objet de données brut (localStorage, import, cloud). */
+function normalizeData(parsed) {
+  parsed = parsed || {};
+  return {
+    completed: parsed.completed || {},
+    notes: parsed.notes || {},
+    edits: parsed.edits || {},
+    added: parsed.added || {},
+    feedback: parsed.feedback || {},
+    moves: parsed.moves || {},
+    custom: parsed.custom || {},
+    measures: normMeasures(parsed.measures),
+    updatedAt: parsed.updatedAt || 0,
+  };
+}
 function normMeasures(m) {
   m = m || {};
   return {
@@ -465,17 +480,7 @@ async function loadData() {
     if (typeof localStorage === "undefined") return EMPTY;
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
-      const parsed = JSON.parse(raw);
-      const data = {
-        completed: parsed.completed || {},
-        notes: parsed.notes || {},
-        edits: parsed.edits || {},
-        added: parsed.added || {},
-        feedback: parsed.feedback || {},
-        moves: parsed.moves || {},
-        custom: parsed.custom || {},
-        measures: normMeasures(parsed.measures),
-      };
+      const data = normalizeData(JSON.parse(raw));
       const migratedKeys = migrateOldKeys(data);
       const migratedFeedback = migrateNotesToFeedback(data);
       if (migratedKeys || migratedFeedback) await saveData(data);
@@ -496,6 +501,68 @@ async function saveData(data) {
   } catch (e) {
     return { ok: false, error: (e && e.message) ? e.message : String(e) };
   }
+}
+/* -------- Synchronisation cloud (optionnelle) ----------------------
+   Les données sont poussées dans un fichier carnet-data.json d'un dépôt
+   GitHub PRIVÉ appartenant à l'utilisateur, via l'API Contents et un
+   token à accès restreint. Le token ne quitte jamais le navigateur
+   (localStorage) ; stratégie de fusion : le plus récent (updatedAt)
+   gagne, appareil ou cloud. */
+const SYNC_KEY = "protocole-tractions-sync-v1";
+function loadSyncCfg() {
+  try {
+    const cfg = JSON.parse(localStorage.getItem(SYNC_KEY));
+    return cfg && cfg.repo && cfg.token ? cfg : null;
+  } catch (e) {
+    return null;
+  }
+}
+function saveSyncCfg(cfg) {
+  try { localStorage.setItem(SYNC_KEY, JSON.stringify(cfg)); } catch (e) {}
+}
+function clearSyncCfg() {
+  try { localStorage.removeItem(SYNC_KEY); } catch (e) {}
+}
+function b64encodeUtf8(str) { return btoa(unescape(encodeURIComponent(str))); }
+function b64decodeUtf8(b64) { return decodeURIComponent(escape(atob(String(b64).replace(/\s/g, "")))); }
+function ghHeaders(cfg) {
+  return {
+    "Authorization": "Bearer " + cfg.token,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+}
+async function ghCheckRepo(cfg) {
+  const res = await fetch("https://api.github.com/repos/" + cfg.repo, { headers: ghHeaders(cfg), cache: "no-store" });
+  if (res.status === 404) throw new Error("dépôt introuvable (nom incorrect, ou token sans accès à ce dépôt)");
+  if (res.status === 401) throw new Error("token invalide ou expiré");
+  if (!res.ok) throw new Error("GitHub a répondu " + res.status);
+  const j = await res.json();
+  return { isPrivate: !!j.private };
+}
+async function ghGetFile(cfg) {
+  const url = "https://api.github.com/repos/" + cfg.repo + "/contents/" + cfg.path + "?ref=" + (cfg.branch || "main");
+  const res = await fetch(url, { headers: ghHeaders(cfg), cache: "no-store" });
+  if (res.status === 404) return { exists: false };
+  if (!res.ok) throw new Error("lecture impossible (GitHub " + res.status + ")");
+  const j = await res.json();
+  return { exists: true, sha: j.sha, data: JSON.parse(b64decodeUtf8(j.content)) };
+}
+async function ghPutFile(cfg, data, sha) {
+  const url = "https://api.github.com/repos/" + cfg.repo + "/contents/" + cfg.path;
+  const body = {
+    message: "Sync carnet — " + new Date().toISOString(),
+    content: b64encodeUtf8(JSON.stringify(data, null, 2)),
+    branch: cfg.branch || "main",
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(url, { method: "PUT", headers: ghHeaders(cfg), body: JSON.stringify(body) });
+  if (!res.ok) throw new Error("écriture impossible (GitHub " + res.status + ")");
+  const j = await res.json();
+  return j.content.sha;
+}
+function fmtTime() {
+  return new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
 }
 /* ------------------------- Error boundary ------------------------- */
 class Boundary extends React.Component {
@@ -677,6 +744,14 @@ function Calendar(props) {
   const [saveMsg, setSaveMsg] = useState("");
   const [saveError, setSaveError] = useState("");
   const [storageOk, setStorageOk] = useState(null);
+  const [syncCfg, setSyncCfg] = useState(loadSyncCfg());
+  const [syncStatus, setSyncStatus] = useState("");
+  const [showSync, setShowSync] = useState(false);
+  const [syncRepoInput, setSyncRepoInput] = useState("");
+  const [syncTokenInput, setSyncTokenInput] = useState("");
+  const syncCfgRef = React.useRef(syncCfg);
+  const syncShaRef = React.useRef(null);
+  const syncTimerRef = React.useRef(null);
   useEffect(() => {
     let mounted = true;
     loadData().then((d) => {
@@ -684,6 +759,7 @@ function Calendar(props) {
         dataRef.current = d;
         setData(d);
         setLoaded(true);
+        if (syncCfgRef.current) syncNow();
       }
     });
     (async () => {
@@ -700,7 +776,8 @@ function Calendar(props) {
   }, []);
   const persist = (updater) => {
     const prev = dataRef.current;
-    const next = typeof updater === "function" ? updater(prev) : updater;
+    const base = typeof updater === "function" ? updater(prev) : updater;
+    const next = Object.assign({}, base, { updatedAt: Date.now() });
     dataRef.current = next;
     setData(next);
     setSaveMsg("Enregistrement…");
@@ -715,6 +792,92 @@ function Calendar(props) {
         setSaveError(res.error || "échec inconnu");
       }
     });
+    schedulePush();
+  };
+  /* ----- Synchronisation cloud : le plus récent (updatedAt) gagne ----- */
+  const adoptRemote = async (remoteData) => {
+    const adopted = normalizeData(remoteData);
+    dataRef.current = adopted;
+    setData(adopted);
+    await saveData(adopted);
+  };
+  const syncNow = async () => {
+    const cfg = syncCfgRef.current;
+    if (!cfg) return;
+    setSyncStatus("☁️ Synchronisation…");
+    try {
+      const remote = await ghGetFile(cfg);
+      if (remote.exists) syncShaRef.current = remote.sha;
+      const local = dataRef.current;
+      if (remote.exists && (remote.data.updatedAt || 0) > (local.updatedAt || 0)) {
+        await adoptRemote(remote.data);
+        setSyncStatus("☁️ Données du cloud récupérées · " + fmtTime());
+      } else if (!remote.exists || (local.updatedAt || 0) > (remote.data.updatedAt || 0)) {
+        syncShaRef.current = await ghPutFile(cfg, local, syncShaRef.current);
+        setSyncStatus("☁️ Sauvegardé dans le cloud · " + fmtTime());
+      } else {
+        setSyncStatus("☁️ À jour · " + fmtTime());
+      }
+    } catch (e) {
+      setSyncStatus("⚠️ Synchro échouée : " + (e && e.message ? e.message : e));
+    }
+  };
+  const pushToCloud = async () => {
+    const cfg = syncCfgRef.current;
+    if (!cfg) return;
+    setSyncStatus("☁️ Envoi…");
+    try {
+      try {
+        syncShaRef.current = await ghPutFile(cfg, dataRef.current, syncShaRef.current);
+      } catch (e) {
+        /* sha périmé (écrit depuis un autre appareil) : relire et trancher */
+        const remote = await ghGetFile(cfg);
+        syncShaRef.current = remote.exists ? remote.sha : null;
+        if (remote.exists && (remote.data.updatedAt || 0) > (dataRef.current.updatedAt || 0)) {
+          await adoptRemote(remote.data);
+          setSyncStatus("☁️ Données plus récentes du cloud adoptées · " + fmtTime());
+          return;
+        }
+        syncShaRef.current = await ghPutFile(cfg, dataRef.current, syncShaRef.current);
+      }
+      setSyncStatus("☁️ Sauvegardé dans le cloud · " + fmtTime());
+    } catch (e) {
+      setSyncStatus("⚠️ Envoi échoué : " + (e && e.message ? e.message : e) + " — réessaie via « Synchroniser maintenant »");
+    }
+  };
+  const schedulePush = () => {
+    if (!syncCfgRef.current) return;
+    clearTimeout(syncTimerRef.current);
+    syncTimerRef.current = setTimeout(pushToCloud, 1800);
+  };
+  const activateSync = async () => {
+    const repo = syncRepoInput.trim().replace(/^https:\/\/github\.com\//, "").replace(/\/$/, "");
+    const token = syncTokenInput.trim();
+    if (!repo || !token) return;
+    const cfg = { repo, token, branch: "main", path: "carnet-data.json" };
+    setSyncStatus("☁️ Vérification du dépôt…");
+    try {
+      const info = await ghCheckRepo(cfg);
+      saveSyncCfg(cfg);
+      syncCfgRef.current = cfg;
+      setSyncCfg(cfg);
+      setSyncTokenInput("");
+      setSyncRepoInput("");
+      await syncNow();
+      if (!info.isPrivate) {
+        setSyncStatus("⚠️ Synchro active, MAIS ce dépôt est PUBLIC : tes données y seront visibles de tous. Passe-le en privé sur GitHub (Settings → Danger Zone).");
+      }
+    } catch (e) {
+      setSyncStatus("⚠️ " + (e && e.message ? e.message : e));
+    }
+  };
+  const disableSync = () => {
+    clearTimeout(syncTimerRef.current);
+    clearSyncCfg();
+    syncCfgRef.current = null;
+    setSyncCfg(null);
+    setSyncStatus("");
+    syncShaRef.current = null;
   };
   const testStorage = async () => {
     setSaveMsg("Test en cours…");
@@ -797,17 +960,7 @@ function Calendar(props) {
   };
   const restoreBackup = () => {
     try {
-      const parsed = JSON.parse(importText);
-      const restored = {
-        completed: parsed.completed || {},
-        notes: parsed.notes || {},
-        edits: parsed.edits || {},
-        added: parsed.added || {},
-        feedback: parsed.feedback || {},
-        moves: parsed.moves || {},
-        custom: parsed.custom || {},
-        measures: normMeasures(parsed.measures),
-      };
+      const restored = normalizeData(JSON.parse(importText));
       dataRef.current = restored;
       setData(restored);
       persist(() => restored);
@@ -967,7 +1120,9 @@ function Calendar(props) {
         </div>
         <div style={S.progressLine}>
           <span>{totalDone} / {totalSessions} séances faites</span>
-          <span style={{ color: "#8A8F98" }}>{saveMsg}</span>
+          <span style={{ color: "#8A8F98" }}>
+            {syncStatus && syncStatus.indexOf("⚠️") === 0 ? syncStatus + " · " : ""}{saveMsg}
+          </span>
         </div>
         {storageOk === false ? (
           <div style={S.errorBanner}>
@@ -1036,6 +1191,62 @@ function Calendar(props) {
                 <button style={S.smallBtn} onClick={copyReview}>Copier le texte</button>
               </div>
               {reviewMsg ? <span style={S.backupMsg}>{reviewMsg}</span> : null}
+            </div>
+          ) : null}
+        </div>
+        <div style={S.syncCard}>
+          <button style={S.warmupToggle} onClick={() => setShowSync(!showSync)}>
+            <span>☁️ Synchronisation cloud {syncCfg ? "· active" : "· non configurée"}</span>
+            <span>{showSync ? "−" : "+"}</span>
+          </button>
+          {showSync ? (
+            <div style={{ padding: "0 14px 12px" }}>
+              {syncCfg ? (
+                <div>
+                  <p style={S.backupHint}>
+                    Données synchronisées avec <strong>{syncCfg.repo}</strong> (fichier {syncCfg.path}).
+                    Chaque modification est envoyée automatiquement ; à l'ouverture, la version la plus
+                    récente (cet appareil ou le cloud) gagne.
+                  </p>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    <button style={S.smallBtnPrimary} onClick={syncNow}>Synchroniser maintenant</button>
+                    <button style={S.smallBtn} onClick={disableSync}>Désactiver sur cet appareil</button>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <p style={S.backupHint}>
+                    Rends tes données persistantes : sauvegarde automatique dans un dépôt GitHub <strong>privé</strong> à
+                    toi, et synchronisation entre tes appareils. 1) Crée un dépôt <strong>privé</strong> sur github.com/new
+                    (ex : <code>dimeii/training-data</code>). 2) Crée un token « fine-grained » (github.com → Settings →
+                    Developer settings) limité à ce seul dépôt, permission <strong>Contents : Read and write</strong>.
+                    3) Colle les deux ci-dessous — le token reste uniquement dans ce navigateur.
+                  </p>
+                  <input
+                    value={syncRepoInput}
+                    onChange={(e) => setSyncRepoInput(e.target.value)}
+                    placeholder="dépôt (ex : dimeii/training-data)"
+                    style={S.titleInput}
+                    aria-label="Dépôt de synchronisation"
+                  />
+                  <input
+                    type="password"
+                    value={syncTokenInput}
+                    onChange={(e) => setSyncTokenInput(e.target.value)}
+                    placeholder="token GitHub (fine-grained)"
+                    style={Object.assign({}, S.titleInput, { marginTop: 6 })}
+                    aria-label="Token GitHub"
+                  />
+                  <button
+                    style={Object.assign({}, S.smallBtnPrimary, { marginTop: 8 })}
+                    onClick={activateSync}
+                    disabled={!syncRepoInput.trim() || !syncTokenInput.trim()}
+                  >
+                    Activer la synchronisation
+                  </button>
+                </div>
+              )}
+              {syncStatus ? <div style={S.syncStatus}>{syncStatus}</div> : null}
             </div>
           ) : null}
         </div>
@@ -1451,6 +1662,8 @@ const S = {
   backupCard: { background: "#EFF4F3", border: "1px solid #C9DAD7", borderRadius: 10, marginTop: 8 },
   reviewCard: { background: "#F4F0FA", border: "1px solid #D8CBEC", borderRadius: 10, marginTop: 8 },
   securityCard: { background: "#FBF0EE", border: "1px solid #E8CCC5", borderRadius: 10, marginTop: 8 },
+  syncCard: { background: "#EEF3F8", border: "1px solid #C6D6E4", borderRadius: 10, marginTop: 8 },
+  syncStatus: { fontSize: 12.5, color: "#3A3E46", fontWeight: 600, marginTop: 8 },
   lockCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 12, padding: "26px 20px", maxWidth: 420, margin: "60px auto 0", textAlign: "center" },
   lockHint: { fontSize: 13.5, color: "#5C6470", margin: "0 0 14px" },
   lockErr: { color: "#B3402E", fontSize: 13, fontWeight: 700, marginTop: 8 },
