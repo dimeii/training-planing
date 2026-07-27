@@ -15,6 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js"></script>
 <script src="./program.js"></script>
+<script src="./auth.js"></script>
 <script>
   /* Force le runtime JSX "classic" (React.createElement) : le runtime
      "automatic", devenu défaut sur les versions récentes de Babel, génère
@@ -211,6 +212,207 @@ function renderExText(text) {
       : part === "↘" ? <span key={i} style={S.arrowDown}>↘</span>
       : part
   ));
+}
+/* ---------------------- Accès protégé (auth.js) -------------------- */
+/* SHA-256 en pur JS : fonctionne partout (y compris file://), vérifié
+   contre l'implémentation de référence. */
+function sha256(str) {
+  const rrot = (v, c) => (v >>> c) | (v << (32 - c));
+  const K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+    0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+    0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+    0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+    0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+    0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+    0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+    0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  let H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  const utf8 = unescape(encodeURIComponent(str));
+  const l = utf8.length;
+  const words = [];
+  for (let i = 0; i < l; i++) words[i >> 2] = (words[i >> 2] || 0) | (utf8.charCodeAt(i) << (24 - (i % 4) * 8));
+  words[l >> 2] = (words[l >> 2] || 0) | (0x80 << (24 - (l % 4) * 8));
+  const chunks = ((l + 8) >> 6) + 1;
+  words[chunks * 16 - 1] = l * 8;
+  const w = [];
+  for (let j = 0; j < chunks * 16; j += 16) {
+    let a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];
+    for (let i = 0; i < 64; i++) {
+      let wi;
+      if (i < 16) {
+        wi = words[j + i] | 0;
+      } else {
+        const s0 = rrot(w[i - 15], 7) ^ rrot(w[i - 15], 18) ^ (w[i - 15] >>> 3);
+        const s1 = rrot(w[i - 2], 17) ^ rrot(w[i - 2], 19) ^ (w[i - 2] >>> 10);
+        wi = (w[i - 16] + s0 + w[i - 7] + s1) | 0;
+      }
+      w[i] = wi;
+      const S1 = rrot(e, 6) ^ rrot(e, 11) ^ rrot(e, 25);
+      const ch = (e & f) ^ (~e & g);
+      const t1 = (h + S1 + ch + K[i] + wi) | 0;
+      const S0 = rrot(a, 2) ^ rrot(a, 13) ^ rrot(a, 22);
+      const maj = (a & b) ^ (a & c) ^ (b & c);
+      const t2 = (S0 + maj) | 0;
+      h = g; g = f; f = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0;
+    }
+    H = [(H[0] + a) | 0, (H[1] + b) | 0, (H[2] + c) | 0, (H[3] + d) | 0, (H[4] + e) | 0, (H[5] + f) | 0, (H[6] + g) | 0, (H[7] + h) | 0];
+  }
+  return H.map((x) => (x >>> 0).toString(16).padStart(8, "0")).join("");
+}
+const AUTH = window.AUTH;
+const AUTH_LOCKED = !!(AUTH && AUTH.enabled && AUTH.hash);
+const AUTH_KEY = "protocole-tractions-auth-v1";
+const authDays = () => (AUTH && AUTH.validDays) || 30;
+/* Signature du jeton d'appareil : liée au hash ET à l'epoch — changer
+   l'un ou l'autre dans auth.js révoque tous les appareils. */
+function authSig() {
+  return sha256(AUTH.hash + "|" + (AUTH.epoch || 1));
+}
+function deviceGrant() {
+  if (!AUTH_LOCKED) return { ok: true, until: null };
+  try {
+    const t = JSON.parse(localStorage.getItem(AUTH_KEY));
+    const until = t.grantedAt + authDays() * 864e5;
+    if (t.sig === authSig() && Date.now() < until) return { ok: true, until };
+  } catch (e) {}
+  return { ok: false, until: null };
+}
+function grantDevice() {
+  try {
+    localStorage.setItem(AUTH_KEY, JSON.stringify({ sig: authSig(), grantedAt: Date.now() }));
+  } catch (e) {}
+}
+function revokeDevice() {
+  try { localStorage.removeItem(AUTH_KEY); } catch (e) {}
+}
+function checkPassword(pwd) {
+  return sha256(((AUTH && AUTH.salt) || "") + ":" + pwd) === AUTH.hash;
+}
+function buildAuthFile(newPwd) {
+  const salt = (AUTH && AUTH.salt) || "carnet-tractions";
+  const epoch = ((AUTH && AUTH.epoch) || 1) + 1;
+  return 'window.AUTH = {\n  "enabled": true,\n  "salt": "' + salt + '",\n  "hash": "'
+    + sha256(salt + ":" + newPwd) + '",\n  "epoch": ' + epoch + ',\n  "validDays": ' + authDays() + '\n};\n';
+}
+function LockScreen(props) {
+  const [pwd, setPwd] = useState("");
+  const [err, setErr] = useState(false);
+  const submit = (e) => {
+    e.preventDefault();
+    if (checkPassword(pwd)) {
+      grantDevice();
+      props.onUnlock();
+    } else {
+      setErr(true);
+      setPwd("");
+    }
+  };
+  return (
+    <div style={S.page}>
+      <style>{CSS}</style>
+      <form onSubmit={submit} style={S.lockCard}>
+        <div style={S.eyebrow}>Carnet d'entraînement</div>
+        <h1 style={Object.assign({}, S.h1, { fontSize: 30 })}>Accès protégé</h1>
+        <p style={S.lockHint}>
+          Entre le mot de passe pour ouvrir le carnet. Cet appareil restera ensuite autorisé pendant {authDays()} jours.
+        </p>
+        <input
+          type="password"
+          value={pwd}
+          autoFocus
+          onChange={(e) => { setPwd(e.target.value); setErr(false); }}
+          placeholder="Mot de passe"
+          style={S.titleInput}
+          aria-label="Mot de passe"
+        />
+        {err ? <div style={S.lockErr}>Mot de passe incorrect</div> : null}
+        <button type="submit" style={Object.assign({}, S.smallBtnPrimary, { marginTop: 10, padding: "9px 18px", fontSize: 14 })} disabled={!pwd}>
+          Déverrouiller
+        </button>
+      </form>
+    </div>
+  );
+}
+function SecurityCard(props) {
+  const [open, setOpen] = useState(false);
+  const [newPwd, setNewPwd] = useState("");
+  const [generated, setGenerated] = useState("");
+  const [msg, setMsg] = useState("");
+  const grant = deviceGrant();
+  const untilStr = grant.until ? new Date(grant.until).toLocaleDateString("fr-FR") : null;
+  const lockNow = () => {
+    revokeDevice();
+    props.onLock();
+  };
+  const generate = () => {
+    setGenerated(buildAuthFile(newPwd.trim()));
+    setMsg("");
+  };
+  const downloadAuth = () => {
+    try {
+      const blob = new Blob([generated], { type: "text/javascript" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "auth.js";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setMsg("✓ auth.js téléchargé — remplace le fichier du dépôt et pousse-le");
+    } catch (e) {
+      setMsg("Téléchargement indisponible — copie le texte ci-dessous");
+    }
+  };
+  return (
+    <div style={S.securityCard}>
+      <button style={S.warmupToggle} onClick={() => setOpen(!open)}>
+        <span>🔒 Sécurité de l'accès</span>
+        <span>{open ? "−" : "+"}</span>
+      </button>
+      {open ? (
+        <div style={{ padding: "0 14px 12px" }}>
+          <p style={S.backupHint}>
+            {untilStr ? "Cet appareil est autorisé jusqu'au " + untilStr + "." : "Cet appareil est autorisé."}
+          </p>
+          <button style={S.smallBtn} onClick={lockNow}>Verrouiller cet appareil maintenant</button>
+          <div style={{ marginTop: 12 }}>
+            <div style={S.noteLabel}>Changer le mot de passe / révoquer tous les appareils</div>
+            <p style={S.backupHint}>
+              Saisis un nouveau mot de passe : je génère le fichier <code>auth.js</code> correspondant (avec un numéro de
+              génération incrémenté). Remplace le fichier du dépôt et pousse-le — <strong>tous les appareils devront
+              ressaisir le mot de passe</strong>, y compris celui-ci.
+            </p>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <input
+                type="password"
+                value={newPwd}
+                onChange={(e) => setNewPwd(e.target.value)}
+                placeholder="Nouveau mot de passe"
+                style={Object.assign({}, S.titleInput, { flex: "1 1 160px", width: "auto" })}
+                aria-label="Nouveau mot de passe"
+              />
+              <button style={S.smallBtnPrimary} onClick={generate} disabled={newPwd.trim().length < 6}>
+                Générer auth.js
+              </button>
+            </div>
+            {newPwd.trim().length > 0 && newPwd.trim().length < 6 ? (
+              <div style={S.lockErr}>6 caractères minimum</div>
+            ) : null}
+            {generated ? (
+              <div style={{ marginTop: 8 }}>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <button style={S.smallBtnPrimary} onClick={downloadAuth}>Télécharger auth.js</button>
+                </div>
+                {msg ? <span style={S.backupMsg}>{msg}</span> : null}
+                <textarea readOnly value={generated} rows={7} style={Object.assign({}, S.noteArea, { marginTop: 8, fontSize: 11 })} onFocus={(e) => e.target.select()} />
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 /* Migration : les anciennes données étaient indexées par position (s0-1),
    fragile quand on ajoute une séance. On passe à des clés par jour (s0-d2),
@@ -450,7 +652,7 @@ function ProgressionPanel(props) {
   );
 }
 /* ----------------------------- App -------------------------------- */
-function Calendar() {
+function Calendar(props) {
   const [week, setWeek] = useState(currentWeekIndex());
   const [data, setData] = useState(EMPTY);
   const dataRef = React.useRef(EMPTY);
@@ -837,6 +1039,7 @@ function Calendar() {
             </div>
           ) : null}
         </div>
+        {AUTH_LOCKED ? <SecurityCard onLock={props.onLock} /> : null}
       </header>
       <div style={S.phaseBarWrap}>
         {WEEKS.map((w, i) => {
@@ -1181,9 +1384,14 @@ function Goal(props) {
   );
 }
 function App() {
+  const [unlocked, setUnlocked] = useState(() => deviceGrant().ok);
   return (
     <Boundary>
-      <Calendar />
+      {unlocked ? (
+        <Calendar onLock={() => setUnlocked(false)} />
+      ) : (
+        <LockScreen onUnlock={() => setUnlocked(true)} />
+      )}
     </Boundary>
   );
 }
@@ -1242,6 +1450,10 @@ const S = {
   delX: { border: "none", background: "none", color: "#B3402E", fontSize: 18, lineHeight: 1, padding: "0 4px", fontWeight: 700 },
   backupCard: { background: "#EFF4F3", border: "1px solid #C9DAD7", borderRadius: 10, marginTop: 8 },
   reviewCard: { background: "#F4F0FA", border: "1px solid #D8CBEC", borderRadius: 10, marginTop: 8 },
+  securityCard: { background: "#FBF0EE", border: "1px solid #E8CCC5", borderRadius: 10, marginTop: 8 },
+  lockCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 12, padding: "26px 20px", maxWidth: 420, margin: "60px auto 0", textAlign: "center" },
+  lockHint: { fontSize: 13.5, color: "#5C6470", margin: "0 0 14px" },
+  lockErr: { color: "#B3402E", fontSize: 13, fontWeight: 700, marginTop: 8 },
   backupHint: { fontSize: 12.5, color: "#3A3E46", margin: "0 0 8px" },
   backupMsg: { fontSize: 12.5, color: "#2E7D7B", fontWeight: 600, marginLeft: 8 },
   phaseBarWrap: { display: "flex", gap: 3, marginBottom: 6 },

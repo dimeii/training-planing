@@ -20,6 +20,7 @@ Départ du protocole : lundi 20 juillet 2026.
 - **Sauvegarde locale** — toutes les données sont enregistrées automatiquement dans le navigateur (`localStorage`). Fonctionne hors ligne.
 - **Export / import** — téléchargement d'une sauvegarde `.json` (ou copier-coller) pour transférer les données vers un autre appareil.
 - **Export bilan pour relecture** — génère un fichier **Markdown** lisible (progression des métriques, séances faites, ressentis, douleurs, remarques, exercices ajustés/ajoutés), à faire relire par un coach ou une IA pour adapter la suite du programme.
+- **Accès protégé par mot de passe** — écran de verrouillage à l'ouverture ; un appareil authentifié reste autorisé **30 jours** (configurable dans `auth.js`). La carte « 🔒 Sécurité » permet de verrouiller l'appareil immédiatement, et de changer le mot de passe (génère un nouvel `auth.js` à pousser — ce qui **révoque tous les appareils**, idem en incrémentant `epoch`).
 
 ## Modifier le programme
 
@@ -55,6 +56,16 @@ Ouvre simplement `index.html` dans un navigateur (double-clic, ou glisser-dépos
 
 Toute mise à jour se fait ensuite par un simple `git commit` + `git push`.
 
+## Sécurité de l'accès
+
+Le verrouillage est configuré dans **`auth.js`** : `hash` (SHA-256 de `salt:motdepasse` — jamais le mot de passe en clair), `epoch` (numéro de génération), `validDays` (durée d'autorisation d'un appareil, 30 par défaut), `enabled` (false pour tout désactiver).
+
+- **Autoriser un appareil** : saisir le mot de passe à l'ouverture — l'appareil reste autorisé `validDays` jours (jeton local, jamais envoyé nulle part).
+- **Verrouiller cet appareil** : carte « 🔒 Sécurité » → « Verrouiller cet appareil maintenant ».
+- **Révoquer tous les appareils / changer le mot de passe** : carte « 🔒 Sécurité » → saisir le nouveau mot de passe → télécharger le `auth.js` généré (epoch incrémenté) → remplacer le fichier du dépôt et pousser. Au prochain chargement, chaque appareil devra ressaisir le mot de passe.
+
+**Limite importante** : le site est statique (GitHub Pages), la vérification se fait donc dans le navigateur. Ça bloque la consultation de la page, mais quelqu'un de déterminé peut lire le code du dépôt public (dont le hash — choisis un mot de passe long, il est attaquable hors ligne). Les données de séances, elles, ne quittent jamais le navigateur de chaque appareil.
+
 ## Où sont mes données ?
 
 Les données vivent dans le `localStorage` du navigateur, **liées à l'adresse du site et à l'appareil**. Elles ne se synchronisent pas automatiquement entre ton téléphone et ton ordinateur : pour transférer, utilise l'export `.json` (section « 💾 Sauvegarde / restauration ») puis « Restaurer » sur l'autre appareil. Vider les données de navigation du site efface le carnet — d'où l'intérêt de garder une sauvegarde de temps en temps.
@@ -71,8 +82,9 @@ Les données vivent dans le `localStorage` du navigateur, **liées à l'adresse 
 
 ```
 .
-├── index.html   # l'application (suivi, graphiques, exports)
+├── index.html   # l'application (suivi, graphiques, exports, verrouillage)
 ├── program.js   # LE PROGRAMME : exos, phases, objectifs — à éditer ici
+├── auth.js      # accès : hash du mot de passe, epoch (révocation), durée
 ├── README.md
 └── .gitignore
 ```
