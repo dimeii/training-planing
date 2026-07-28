@@ -129,10 +129,13 @@ window.PROGRAM = {
 
     /* ------ Semaine 3 — Phase 1 (adaptée après bilan S1) ------ */
     [
-      { "day": 0, "type": "force", "title": "Force — reprise de la montée", "ex": [
-        "Tractions lestées 4x4 @25 kg ↗ — repos 3 min (passer à 4x5 seulement si les 4 séries passent sans échec)",
-        "Tirage assisté / poulie 3x6 @70-75 kg ↗",
-        "Renfo épaule 3x12"
+      { "day": 0, "type": "force", "title": "Force — petite montée", "ex": [
+        "Tractions lestées 4x4 @23-24 kg ↗ — repos 3 min (S2 : 4x4 @22,5 kg au max des reps — on monte par petits pas, le test S4 donnera le vrai niveau)",
+        "Tirage assisté / poulie 3x6 à RPE 8-9 (S2 : les kg varient trop d'une machine à l'autre — 40 dur ici, 70 là-bas — règle la charge pour que la 6e rep soit difficile)",
+        "Renfo épaule 3x12 (rotations externes + élévations frontales unilat. @8 kg — S2)",
+        "Développé couché haltères 3x8-10 @30 kg (adopté en S2 : 10/9/7)",
+        "Écarté poulie 2x10 @26 kg (adopté en S2)",
+        "Superset curl unilat. + extension triceps 2-3 séries @14 kg (adopté en S2)"
       ]},
       { "day": 1, "type": "jambes", "title": "Jambes & renfo — charge", "ex": [
         "Leg press 4x6 @210-220 kg ↗ — repos 2:30",
@@ -164,7 +167,8 @@ window.PROGRAM = {
     [
       { "day": 0, "type": "deload", "title": "Force légère — pré-test", "ex": [
         "Tractions lestées 3x3 @20-22 kg ↘ loin de l'échec (objectif : arriver frais au test de vendredi)",
-        "Renfo épaule léger 2x12"
+        "Renfo épaule léger 2x12",
+        "Optionnel : développé couché haltères léger 2x10 @20-24 kg ↘ + curl/triceps léger (semaine de test — rien au max)"
       ]},
       { "day": 1, "type": "deload", "title": "Jambes — deload & mobilité", "ex": [
         "Leg press léger 3x10 @120-130 kg ↘ (~60% des charges habituelles)",

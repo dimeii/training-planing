@@ -4,6 +4,18 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-07-28 (soir) — Synchro cloud active + recalibrage S3 après le lundi S2
+
+- **Synchro cloud activée** : dépôt privé `dimeii/training-data`, token fine-grained (permission Contents rw). Pièges rencontrés : dépôt non coché dans le token (404), puis permission Contents absente (403). Les données sont maintenant persistantes hors localStorage.
+- **Bilan du lundi S2 (Force — consolidation)** :
+  - Tractions : 4x4 @22,5 kg passées mais « au max des reps » → la S3 prévue @25 kg était trop agressive, recalée à **4x4 @23-24 kg**. Le test S4 donnera le vrai 1RM.
+  - Tirage poulie : machines incomparables entre salles (40 kg dur vs 70 ailleurs) → consigne passée en **RPE 8-9** au lieu de kg.
+  - Renfo épaule : élévations frontales unilat. @8 kg notées au programme.
+  - **Bloc push/bras adopté** (il l'a ajouté de lui-même) : développé couché haltères 3x8-10 @30 kg, écarté poulie 2x10 @26 kg, superset curl/triceps @14 kg → intégré au lundi S3 ; version légère optionnelle en S4 (semaine de test).
+- Toujours **aucune mesure** dans « 📈 Ma progression » — au minimum le poids de corps à saisir.
+
+---
+
 ## 2026-07-28 — Où on en est
 
 ### Le protocole (semaine 2 / 12 — phase 1, Base & technique)
