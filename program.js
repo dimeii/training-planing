@@ -147,10 +147,10 @@ window.PROGRAM = {
         "Gainage latéral 3x45s/côté",
         "Étirements + mobilité ischios 10 min"
       ]},
-      { "day": 2, "type": "volume", "title": "Volume — pyramide +", "ex": [
-        "Tractions PDC pyramide 14-12-10-8-6 ↗ — repos 90s-2 min",
-        "Rowing horizontal 4x10 @65 kg ↗",
-        "Dips lestés 4x8 @27,5-30 kg ↗ (~60% du 1RM estimé)",
+      { "day": 2, "type": "volume", "title": "Volume — pyramide, série max ↗", "ex": [
+        "Tractions PDC pyramide 13-11-9-7-5 + série max cible 10-11 ↗ — repos 90s-2 min, 2 min pleines après le 11 et le 9 (S2 : 54 reps, max 9 avec de la réserve — pyramide inchangée tant que les séries de 11 et 9 finissent à 2-3 reps de l'échec, on allonge la série max d'abord)",
+        "Rowing horizontal 4x10 @60 kg, passe à 65 si les 4 séries sont propres (S2 : échec à ~70 en 1re série, forme dégradée en fin — priorité à la propreté, pas à la charge)",
+        "Dips lestés 4x8 @27,5-30 kg ↗ (~60% du 1RM estimé — S2 : 4x8 @25 valides avec 1-2 reps de réserve)",
         "Circuit abdos x2 (+2,5 kg sur les poulies si S2 facile ↗)"
       ]},
       { "day": 4, "type": "explo", "title": "Explosivité", "ex": [
@@ -183,7 +183,7 @@ window.PROGRAM = {
         "Gainage 3x30s"
       ]},
       { "day": 4, "type": "test", "title": "Test fin de phase 1", "ex": [
-        "Test max reps tractions PDC (départ 17 — noter le résultat dans « Ma progression »)",
+        "Test max reps tractions PDC (départ 17 — repère : 9 reps en série max APRÈS la pyramide complète en S2, donc frais tu vaux nettement plus — noter le résultat dans « Ma progression »)",
         "Test 1RM lesté tractions : montée progressive 20 → 25 → 30 kg puis +2,5 kg selon sensations (départ estimé 35)"
       ]},
       { "day": 5, "type": "course", "title": "Course — sortie facile", "ex": [
