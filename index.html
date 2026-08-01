@@ -38,14 +38,12 @@ const { useState, useEffect } = React;
 /* Les données perso (séances faites, bilans, mesures) restent dans    */
 /* le localStorage du navigateur — fiable et hors ligne.               */
 /* ================================================================== */
-const PROGRAM = window.PROGRAM;
-if (!PROGRAM || !Array.isArray(PROGRAM.weeks) || !PROGRAM.weeks.length) {
+const DEFAULT_PROGRAM = window.PROGRAM;
+if (!DEFAULT_PROGRAM || !Array.isArray(DEFAULT_PROGRAM.weeks) || !DEFAULT_PROGRAM.weeks.length) {
   document.getElementById("root").innerHTML =
     '<div id="boot">⚠️ Fichier <code>program.js</code> introuvable ou invalide.<br/>Il doit être dans le même dossier que index.html.</div>';
   throw new Error("program.js manquant ou invalide");
 }
-const _start = String(PROGRAM.startDate || "2026-07-20").split("-").map(Number);
-const START_YEAR = _start[0], START_MONTH = _start[1] - 1, START_DAY = _start[2];
 const TYPE_META = {
   force:  { label: "Force",        color: "#B3402E" },
   jambes: { label: "Jambes/Renfo", color: "#2E7D7B" },
@@ -55,13 +53,31 @@ const TYPE_META = {
   test:   { label: "Test",         color: "#7A4FA3" },
   course: { label: "Course",       color: "#3C7A4E" },
 };
-/* Contenu du programme — tout vient de program.js */
-const PHASES = PROGRAM.phases || [];
-const METRICS = PROGRAM.metrics || [];
-const ECHAUFFEMENT = PROGRAM.warmup || [];
-const WEEKS = PROGRAM.weeks;
-const GOALS = PROGRAM.goals || [];
-const FOOTER_NOTES = PROGRAM.notes || [];
+/* ---- Programme actif (dynamique) ----------------------------------
+   program.js fournit le programme par défaut du site. Chaque profil
+   peut le remplacer par un programme embarqué dans SES données
+   (data.program) — par exemple généré par une IA depuis le « pack
+   coach ». applyProgram() recalcule toutes les valeurs dérivées ;
+   elle est appelée à l'ouverture d'un profil et à chaque adoption
+   de programme (import, restauration, synchro cloud). */
+let PROGRAM, START_YEAR, START_MONTH, START_DAY, PHASES, METRICS,
+    ECHAUFFEMENT, WEEKS, GOALS, FOOTER_NOTES, PROGRAM_REMARKS,
+    PROGRAM_TITLE, PROGRAM_SUBTITLE;
+function applyProgram(prog) {
+  PROGRAM = prog;
+  const st = String(prog.startDate || "2026-07-20").split("-").map(Number);
+  START_YEAR = st[0]; START_MONTH = st[1] - 1; START_DAY = st[2];
+  PHASES = prog.phases || [];
+  METRICS = prog.metrics || [];
+  ECHAUFFEMENT = prog.warmup || [];
+  WEEKS = prog.weeks;
+  GOALS = prog.goals || [];
+  FOOTER_NOTES = prog.notes || [];
+  PROGRAM_REMARKS = Array.isArray(prog.remarks) ? prog.remarks : (prog.remarks ? [String(prog.remarks)] : []);
+  PROGRAM_TITLE = prog.title || "Tractions & Explosivité";
+  PROGRAM_SUBTITLE = prog.subtitle || ("Carnet d'entraînement · " + prog.weeks.length + " semaines");
+}
+applyProgram(DEFAULT_PROGRAM);
 const DAY_NAMES = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 const MONTHS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
 function sessionDate(weekIdx, dayOffset) {
@@ -127,9 +143,53 @@ function fmtNum(n) {
   const r = Math.round(n * 10) / 10;
   return (r % 1 === 0 ? String(r) : String(r)).replace(".", ",");
 }
-const STORAGE_KEY = "protocole-tractions-v1";
-const EMPTY = { completed: {}, notes: {}, edits: {}, added: {}, feedback: {}, moves: {}, custom: {}, measures: { reps: [], pull1rm: [], bw: [] }, updatedAt: 0 };
-/* Normalise un objet de données brut (localStorage, import, cloud). */
+/* -------- Profils : plusieurs utilisateurs sur le même carnet ------
+   Chaque profil a ses propres clés de stockage (données + synchro).
+   Le profil « legacy » (données antérieures au multi-profil) garde
+   les clés historiques : rien ne bouge pour l'utilisateur d'origine,
+   y compris sa synchronisation cloud déjà configurée. */
+const PROFILES_KEY = "carnet-profiles-v1";
+const LEGACY_DATA_KEY = "protocole-tractions-v1";
+const LEGACY_SYNC_KEY = "protocole-tractions-sync-v1";
+let ACTIVE_DATA_KEY = LEGACY_DATA_KEY;
+let ACTIVE_SYNC_KEY = LEGACY_SYNC_KEY;
+function loadProfilesReg() {
+  try {
+    const reg = JSON.parse(localStorage.getItem(PROFILES_KEY));
+    if (reg && Array.isArray(reg.profiles)) return reg;
+  } catch (e) {}
+  return null;
+}
+function saveProfilesReg(reg) {
+  try { localStorage.setItem(PROFILES_KEY, JSON.stringify(reg)); } catch (e) {}
+}
+/* Première ouverture : si des données pré-multi-profil existent sur
+   cet appareil, elles deviennent un profil (clés legacy conservées). */
+function initProfiles() {
+  let reg = loadProfilesReg();
+  if (!reg) {
+    reg = { profiles: [], lastId: null };
+    try {
+      if (localStorage.getItem(LEGACY_DATA_KEY) || localStorage.getItem(LEGACY_SYNC_KEY)) {
+        reg.profiles.push({ id: "legacy", name: "Mehdi", createdAt: Date.now(), legacy: true });
+        reg.lastId = "legacy";
+      }
+    } catch (e) {}
+    saveProfilesReg(reg);
+  }
+  return reg;
+}
+function profileDataKey(p) { return p.legacy ? LEGACY_DATA_KEY : LEGACY_DATA_KEY + ":" + p.id; }
+function profileSyncKey(p) { return p.legacy ? LEGACY_SYNC_KEY : LEGACY_SYNC_KEY + ":" + p.id; }
+function activateProfileKeys(p) {
+  ACTIVE_DATA_KEY = profileDataKey(p);
+  ACTIVE_SYNC_KEY = profileSyncKey(p);
+}
+function emptyData() {
+  return normalizeData({});
+}
+/* Normalise un objet de données brut (localStorage, import, cloud).
+   `program` : programme embarqué du profil (null = programme du site). */
 function normalizeData(parsed) {
   parsed = parsed || {};
   return {
@@ -141,22 +201,26 @@ function normalizeData(parsed) {
     moves: parsed.moves || {},
     custom: parsed.custom || {},
     measures: normMeasures(parsed.measures),
+    program: parsed.program || null,
     updatedAt: parsed.updatedAt || 0,
   };
 }
+/* Une entrée par métrique du programme actif ; les mesures de clés
+   inconnues (autre programme) sont conservées, jamais perdues. */
 function normMeasures(m) {
   m = m || {};
-  return {
-    reps: Array.isArray(m.reps) ? m.reps : [],
-    pull1rm: Array.isArray(m.pull1rm) ? m.pull1rm : [],
-    bw: Array.isArray(m.bw) ? m.bw : [],
-  };
+  const out = {};
+  METRICS.forEach((mm) => { out[mm.key] = Array.isArray(m[mm.key]) ? m[mm.key] : []; });
+  Object.keys(m).forEach((k) => {
+    if (!(k in out) && Array.isArray(m[k])) out[k] = m[k];
+  });
+  return out;
 }
 /* -------- Bilan Markdown pour relecture (coach / IA) --------------- */
 const RPE_LABELS = { facile: "Facile", correct: "Correct", dur: "Dur", echec: "Échec(s)" };
 function buildReviewMarkdown(data) {
   const L = [];
-  L.push("# Bilan d'entraînement — Tractions & Explosivité");
+  L.push("# Bilan d'entraînement — " + PROGRAM_TITLE);
   L.push("");
   L.push("_Export du " + todayStr() + " · Semaine en cours : " + (currentWeekIndex() + 1) + "/" + WEEKS.length + "._");
   L.push("_Objectif de ce document : être relu (coach, IA…) pour adapter la suite du programme en fonction des remarques, douleurs et ajustements ci-dessous._");
@@ -215,7 +279,135 @@ function buildReviewMarkdown(data) {
   }
   L.push("");
   L.push("---");
-  L.push("_Généré automatiquement par le carnet (le programme complet est dans program.js)._");
+  L.push("_Généré automatiquement par le carnet._");
+  return L.join("\n");
+}
+/* -------- Coach IA : validation d'un programme importé -------------
+   Accepte le JSON produit par n'importe quelle IA à partir du « pack
+   coach », le vérifie et le normalise (défauts, couleurs, types).
+   Retourne { ok, error, prog }. */
+const PHASE_FALLBACK_COLORS = ["#3E5F8A", "#B3402E", "#C77F00", "#2E7D7B", "#7A4FA3"];
+function isHexColor(c) { return /^#[0-9A-Fa-f]{6}$/.test(String(c || "")); }
+function validateProgram(p) {
+  if (!p || typeof p !== "object" || Array.isArray(p)) {
+    return { ok: false, error: "le contenu n'est pas un objet JSON ({ ... })" };
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(p.startDate || ""))) {
+    return { ok: false, error: "startDate manquante ou invalide — attendu \"AAAA-MM-JJ\" (le lundi de la semaine 1)" };
+  }
+  if (!Array.isArray(p.weeks) || !p.weeks.length) {
+    return { ok: false, error: "weeks doit être un tableau non vide : un tableau de séances par semaine" };
+  }
+  const weeks = [];
+  for (let i = 0; i < p.weeks.length; i++) {
+    const w = p.weeks[i];
+    if (!Array.isArray(w)) return { ok: false, error: "semaine " + (i + 1) + " : attendu un tableau de séances" };
+    const sessions = [];
+    for (let j = 0; j < w.length; j++) {
+      const s = w[j] || {};
+      const day = parseInt(s.day, 10);
+      if (isNaN(day) || day < 0 || day > 6) {
+        return { ok: false, error: "semaine " + (i + 1) + ", séance " + (j + 1) + " : day doit être un entier de 0 (lundi) à 6 (dimanche)" };
+      }
+      if (!s.title || typeof s.title !== "string") {
+        return { ok: false, error: "semaine " + (i + 1) + ", séance " + (j + 1) + " : title (titre de la séance) manquant" };
+      }
+      const type = TYPE_META[s.type] ? s.type : "course";
+      const ex = Array.isArray(s.ex) ? s.ex.map(String) : [];
+      sessions.push({ day, type, title: String(s.title), ex });
+    }
+    weeks.push(sessions);
+  }
+  let phases = (Array.isArray(p.phases) ? p.phases : [])
+    .filter((ph) => ph && ph.name && +ph.start >= 1 && +ph.end >= +ph.start)
+    .map((ph, k) => ({
+      id: ph.id || k + 1,
+      name: String(ph.name),
+      start: +ph.start,
+      end: Math.min(+ph.end, weeks.length),
+      color: isHexColor(ph.color) ? ph.color : PHASE_FALLBACK_COLORS[k % PHASE_FALLBACK_COLORS.length],
+    }));
+  if (!phases.length) phases = [{ id: 1, name: "Programme", start: 1, end: weeks.length, color: "#3E5F8A" }];
+  const metrics = (Array.isArray(p.metrics) ? p.metrics : [])
+    .filter((m) => m && m.key && m.label && isFinite(+m.start) && isFinite(+m.target))
+    .map((m, k) => ({
+      key: String(m.key),
+      label: String(m.label),
+      unit: String(m.unit || ""),
+      color: isHexColor(m.color) ? m.color : PHASE_FALLBACK_COLORS[k % PHASE_FALLBACK_COLORS.length],
+      start: +m.start,
+      target: +m.target,
+      dir: m.dir === "down" ? "down" : "up",
+    }));
+  const goals = (Array.isArray(p.goals) ? p.goals : [])
+    .filter((g) => g && g.label && g.value)
+    .map((g) => ({ label: String(g.label), value: String(g.value) }));
+  const warmup = Array.isArray(p.warmup) ? p.warmup.map(String) : [];
+  const notes = (Array.isArray(p.notes) ? p.notes : [])
+    .filter((n) => n && n.text)
+    .map((n) => ({ label: String(n.label || ""), text: String(n.text) }));
+  const remarks = Array.isArray(p.remarks) ? p.remarks.map(String).filter(Boolean) : (p.remarks ? [String(p.remarks)] : []);
+  return {
+    ok: true,
+    prog: {
+      title: p.title ? String(p.title) : null,
+      subtitle: p.subtitle ? String(p.subtitle) : null,
+      startDate: String(p.startDate),
+      remarks, phases, goals, metrics, warmup, notes, weeks,
+    },
+  };
+}
+/* -------- Coach IA : « pack coach » à donner à une IA --------------
+   Un seul document Markdown : consignes + format JSON attendu + bilan
+   + programme actuel. À coller dans n'importe quelle IA ; le JSON
+   rendu se réimporte dans la carte « Coach IA ». */
+function buildCoachPack(data) {
+  const template = {
+    title: "Titre court du programme",
+    subtitle: "Sous-titre affiché en petit (optionnel)",
+    startDate: "AAAA-MM-JJ",
+    remarks: ["Tes remarques et conseils au sportif — elles seront affichées en haut de son carnet"],
+    phases: [{ id: 1, name: "Nom de la phase", start: 1, end: 4, color: "#3E5F8A" }],
+    goals: [{ label: "Objectif", value: "17 → 25" }],
+    metrics: [{ key: "cle_metrique", label: "Nom de la métrique", unit: "kg", color: "#B3402E", start: 0, target: 0, dir: "up" }],
+    warmup: ["Une ligne par étape d'échauffement obligatoire"],
+    notes: [{ label: "Titre", text: "Rappel affiché en bas du carnet" }],
+    weeks: [
+      [{ day: 0, type: "force", title: "Titre de la séance", ex: ["Un exercice par ligne — séries x reps @ charge"] }]
+    ],
+  };
+  const L = [];
+  L.push("# Pack coach — génération d'un nouveau programme d'entraînement");
+  L.push("");
+  L.push("## 1. Consignes pour l'IA");
+  L.push("");
+  L.push("Tu es un coach sportif expérimenté. Analyse le bilan d'entraînement (section 2) et le programme actuel (section 3), puis produis un NOUVEAU programme adapté : progression réaliste des charges et du volume, prise en compte des ressentis, des douleurs signalées et des exercices ajustés.");
+  L.push("");
+  L.push("Réponds UNIQUEMENT avec un objet JSON valide (aucun texte avant ou après), exactement au format suivant :");
+  L.push("");
+  L.push("```json");
+  L.push(JSON.stringify(template, null, 2));
+  L.push("```");
+  L.push("");
+  L.push("Règles :");
+  L.push("- `weeks` : un tableau PAR SEMAINE ; chaque séance a `day` (0=lundi … 6=dimanche), `type` parmi `force` | `jambes` | `volume` | `explo` | `deload` | `test` | `course`, `title`, et `ex` (une ligne de texte par exercice).");
+  L.push("- Mets le caractère ↗ dans une ligne d'exercice dont la charge/intensité monte par rapport à la semaine précédente, ↘ dans une ligne allégée (deload) — le carnet les colore.");
+  L.push("- `startDate` : un lundi (début de la semaine 1).");
+  L.push("- `remarks` : tes conseils au sportif (récupération, nutrition, points de vigilance…) — ils s'affichent dans son carnet.");
+  if (METRICS.length) {
+    L.push("- `metrics` : réutilise les clés existantes (" + METRICS.map((m) => "`" + m.key + "`").join(", ") + ") pour que l'historique de mesures soit conservé ; tu peux en ajouter.");
+  }
+  L.push("- Prévois des semaines de deload et des séances de test aux fins de phase.");
+  L.push("");
+  L.push("## 2. Bilan d'entraînement");
+  L.push("");
+  L.push(buildReviewMarkdown(data));
+  L.push("");
+  L.push("## 3. Programme actuel (JSON)");
+  L.push("");
+  L.push("```json");
+  L.push(JSON.stringify(PROGRAM, null, 2));
+  L.push("```");
   return L.join("\n");
 }
 /* Rend les flèches de progression ↗ (charge/intensité en hausse) et
@@ -477,8 +669,8 @@ function migrateNotesToFeedback(data) {
 /* -------- Stockage : localStorage natif du navigateur (fiable, hors ligne) -------- */
 async function loadData() {
   try {
-    if (typeof localStorage === "undefined") return EMPTY;
-    const raw = localStorage.getItem(STORAGE_KEY);
+    if (typeof localStorage === "undefined") return emptyData();
+    const raw = localStorage.getItem(ACTIVE_DATA_KEY);
     if (raw) {
       const data = normalizeData(JSON.parse(raw));
       const migratedKeys = migrateOldKeys(data);
@@ -489,14 +681,14 @@ async function loadData() {
   } catch (e) {
     // clé inexistante ou stockage indisponible : on démarre vide
   }
-  return EMPTY;
+  return emptyData();
 }
 async function saveData(data) {
   if (typeof localStorage === "undefined") {
     return { ok: false, error: "localStorage indisponible dans cet environnement" };
   }
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(ACTIVE_DATA_KEY, JSON.stringify(data));
     return { ok: true };
   } catch (e) {
     return { ok: false, error: (e && e.message) ? e.message : String(e) };
@@ -508,20 +700,19 @@ async function saveData(data) {
    token à accès restreint. Le token ne quitte jamais le navigateur
    (localStorage) ; stratégie de fusion : le plus récent (updatedAt)
    gagne, appareil ou cloud. */
-const SYNC_KEY = "protocole-tractions-sync-v1";
 function loadSyncCfg() {
   try {
-    const cfg = JSON.parse(localStorage.getItem(SYNC_KEY));
+    const cfg = JSON.parse(localStorage.getItem(ACTIVE_SYNC_KEY));
     return cfg && cfg.repo && cfg.token ? cfg : null;
   } catch (e) {
     return null;
   }
 }
 function saveSyncCfg(cfg) {
-  try { localStorage.setItem(SYNC_KEY, JSON.stringify(cfg)); } catch (e) {}
+  try { localStorage.setItem(ACTIVE_SYNC_KEY, JSON.stringify(cfg)); } catch (e) {}
 }
 function clearSyncCfg() {
-  try { localStorage.removeItem(SYNC_KEY); } catch (e) {}
+  try { localStorage.removeItem(ACTIVE_SYNC_KEY); } catch (e) {}
 }
 function b64encodeUtf8(str) { return btoa(unescape(encodeURIComponent(str))); }
 function b64decodeUtf8(b64) { return decodeURIComponent(escape(atob(String(b64).replace(/\s/g, "")))); }
@@ -712,6 +903,9 @@ function ProgressionPanel(props) {
       <p style={S.progHint}>
         Note une valeur à chaque test (fin de phase) ou pesée. Les courbes montrent ta trajectoire vers l'objectif — la ligne pointillée est la cible.
       </p>
+      {!METRICS.length ? (
+        <p style={S.progHint}>Ce programme ne définit aucune métrique suivie (champ « metrics » du programme).</p>
+      ) : null}
       {METRICS.map((m) => (
         <MetricCard key={m.key} m={m} data={measures[m.key]} onAdd={props.onAdd} onDel={props.onDel} />
       ))}
@@ -721,8 +915,9 @@ function ProgressionPanel(props) {
 /* ----------------------------- App -------------------------------- */
 function Calendar(props) {
   const [week, setWeek] = useState(currentWeekIndex());
-  const [data, setData] = useState(EMPTY);
-  const dataRef = React.useRef(EMPTY);
+  const [data, setData] = useState(emptyData);
+  const dataRef = React.useRef(null);
+  if (dataRef.current === null) dataRef.current = emptyData();
   const [loaded, setLoaded] = useState(false);
   const [editing, setEditing] = useState(null);
   const [editText, setEditText] = useState("");
@@ -794,11 +989,25 @@ function Calendar(props) {
     });
     schedulePush();
   };
+  /* Applique le programme embarqué des données (ou celui du site) —
+     après restauration ou récupération cloud, jamais en cours de saisie. */
+  const syncProgramWithData = (d) => {
+    let target = DEFAULT_PROGRAM;
+    if (d.program) {
+      const v = validateProgram(d.program);
+      if (v.ok) target = v.prog;
+    }
+    if (target !== PROGRAM) {
+      applyProgram(target);
+      setWeek(Math.min(Math.max(currentWeekIndex(), 0), WEEKS.length - 1));
+    }
+  };
   /* ----- Synchronisation cloud : le plus récent (updatedAt) gagne ----- */
   const adoptRemote = async (remoteData) => {
     const adopted = normalizeData(remoteData);
     dataRef.current = adopted;
     setData(adopted);
+    syncProgramWithData(adopted);
     await saveData(adopted);
   };
   const syncNow = async () => {
@@ -854,7 +1063,12 @@ function Calendar(props) {
     const repo = syncRepoInput.trim().replace(/^https:\/\/github\.com\//, "").replace(/\/$/, "");
     const token = syncTokenInput.trim();
     if (!repo || !token) return;
-    const cfg = { repo, token, branch: "main", path: "carnet-data.json" };
+    /* Un fichier par profil dans le dépôt de données (le profil historique
+       garde carnet-data.json — synchro existante inchangée). */
+    const cfg = {
+      repo, token, branch: "main",
+      path: props.profile && !props.profile.legacy ? "carnet-data-" + props.profile.id + ".json" : "carnet-data.json",
+    };
     setSyncStatus("☁️ Vérification du dépôt…");
     try {
       const info = await ghCheckRepo(cfg);
@@ -897,6 +1111,75 @@ function Calendar(props) {
   const [backupMsg, setBackupMsg] = useState("");
   const [showReview, setShowReview] = useState(false);
   const [reviewMsg, setReviewMsg] = useState("");
+  /* ----- Coach IA : export du pack, import du programme généré ----- */
+  const [showCoach, setShowCoach] = useState(false);
+  const [coachMsg, setCoachMsg] = useState("");
+  const [progImportText, setProgImportText] = useState("");
+  const [progPreview, setProgPreview] = useState(null);
+  const downloadCoachPack = () => {
+    try {
+      const blob = new Blob([buildCoachPack(dataRef.current)], { type: "text/markdown" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "pack-coach-" + todayStr() + ".md";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setCoachMsg("✓ Pack téléchargé — donne-le à l'IA de ton choix");
+    } catch (e) {
+      setCoachMsg("Téléchargement indisponible — utilise « Copier le pack »");
+    }
+    setTimeout(() => setCoachMsg(""), 5000);
+  };
+  const copyCoachPack = async () => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(buildCoachPack(dataRef.current));
+        setCoachMsg("✓ Pack copié — colle-le dans l'IA de ton choix");
+      } else {
+        setCoachMsg("Copie indisponible — utilise « Télécharger »");
+      }
+    } catch (e) {
+      setCoachMsg("Copie indisponible — utilise « Télécharger »");
+    }
+    setTimeout(() => setCoachMsg(""), 5000);
+  };
+  const verifyProgram = () => {
+    setProgPreview(null);
+    try {
+      /* tolère un bloc ```json … ``` collé tel quel depuis l'IA */
+      const txt = progImportText.trim().replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
+      const v = validateProgram(JSON.parse(txt));
+      if (!v.ok) {
+        setCoachMsg("⚠ Programme refusé : " + v.error);
+        return;
+      }
+      setProgPreview(v.prog);
+      setCoachMsg("");
+    } catch (e) {
+      setCoachMsg("⚠ JSON invalide : " + (e && e.message ? e.message : e));
+    }
+  };
+  const adoptProgram = () => {
+    const prog = progPreview;
+    if (!prog) return;
+    persist((prev) => Object.assign({}, prev, { program: prog }));
+    applyProgram(prog);
+    setWeek(Math.min(Math.max(currentWeekIndex(), 0), WEEKS.length - 1));
+    setProgPreview(null);
+    setProgImportText("");
+    setCoachMsg("✓ Programme adopté — les remarques du coach sont affichées en haut du carnet");
+  };
+  const revertProgram = () => {
+    if (!window.confirm("Revenir au programme d'origine du site ? Tes séances, bilans et mesures sont conservés.")) return;
+    persist((prev) => Object.assign({}, prev, { program: null }));
+    applyProgram(DEFAULT_PROGRAM);
+    setWeek(Math.min(Math.max(currentWeekIndex(), 0), WEEKS.length - 1));
+    setProgPreview(null);
+    setCoachMsg("✓ Programme du site rétabli");
+  };
   const exportText = JSON.stringify(data);
   const downloadReview = () => {
     try {
@@ -964,6 +1247,7 @@ function Calendar(props) {
       dataRef.current = restored;
       setData(restored);
       persist(() => restored);
+      syncProgramWithData(restored);
       setBackupMsg("✓ Données restaurées");
       setImportText("");
     } catch (e) {
@@ -1113,11 +1397,23 @@ function Calendar(props) {
     <div style={S.page}>
       <style>{CSS}</style>
       <header style={{ marginBottom: 16 }}>
-        <div style={S.eyebrow}>Carnet d'entraînement · 12 semaines</div>
-        <h1 style={S.h1}>Tractions & Explosivité</h1>
+        <div style={S.profileRow}>
+          <span style={S.profileName}>👤 {props.profile ? props.profile.name : "Profil"}</span>
+          <button style={S.profileSwitch} onClick={props.onSwitchProfile}>Changer de profil</button>
+        </div>
+        <div style={S.eyebrow}>{PROGRAM_SUBTITLE}</div>
+        <h1 style={S.h1}>{PROGRAM_TITLE}</h1>
         <div style={S.goals}>
           {GOALS.map((g, i) => <Goal key={i} label={g.label} value={g.value} />)}
         </div>
+        {PROGRAM_REMARKS.length ? (
+          <div style={S.remarksCard}>
+            <div style={S.noteLabel}>💬 Remarques du coach</div>
+            <ul style={S.remarksList}>
+              {PROGRAM_REMARKS.map((r, i) => <li key={i} style={{ marginBottom: 4 }}>{r}</li>)}
+            </ul>
+          </div>
+        ) : null}
         <div style={S.progressLine}>
           <span>{totalDone} / {totalSessions} séances faites</span>
           <span style={{ color: "#8A8F98" }}>
@@ -1191,6 +1487,60 @@ function Calendar(props) {
                 <button style={S.smallBtn} onClick={copyReview}>Copier le texte</button>
               </div>
               {reviewMsg ? <span style={S.backupMsg}>{reviewMsg}</span> : null}
+            </div>
+          ) : null}
+        </div>
+        <div style={S.coachCard}>
+          <button style={S.warmupToggle} onClick={() => setShowCoach(!showCoach)}>
+            <span>🤖 Coach IA — nouveau programme{data.program ? " · programme importé actif" : ""}</span>
+            <span>{showCoach ? "−" : "+"}</span>
+          </button>
+          {showCoach ? (
+            <div style={{ padding: "0 14px 12px" }}>
+              <p style={S.backupHint}>
+                1) Exporte le <strong>pack coach</strong> (bilan + programme actuel + consignes de format) et colle-le
+                dans l'IA de ton choix (ChatGPT, Claude, Gemini…). 2) Colle ci-dessous le JSON qu'elle te rend :
+                il devient ton programme, et ses remarques s'affichent en haut du carnet.
+              </p>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button style={S.smallBtnPrimary} onClick={downloadCoachPack}>Télécharger le pack (.md)</button>
+                <button style={S.smallBtn} onClick={copyCoachPack}>Copier le pack</button>
+              </div>
+              <div style={{ marginTop: 12 }}>
+                <div style={S.noteLabel}>Importer le programme généré (JSON)</div>
+                <textarea
+                  value={progImportText}
+                  onChange={(e) => { setProgImportText(e.target.value); setProgPreview(null); }}
+                  placeholder="Colle ici le JSON produit par l'IA"
+                  rows={4}
+                  style={S.noteArea}
+                  aria-label="Programme JSON à importer"
+                />
+                <div style={{ display: "flex", gap: 8, marginTop: 6, flexWrap: "wrap" }}>
+                  <button style={S.smallBtn} onClick={verifyProgram} disabled={!progImportText.trim()}>Vérifier</button>
+                  {progPreview ? (
+                    <button style={S.smallBtnPrimary} onClick={adoptProgram}>Adopter ce programme</button>
+                  ) : null}
+                </div>
+                {progPreview ? (
+                  <div style={S.previewBox}>
+                    <strong>{progPreview.title || "Programme sans titre"}</strong>
+                    {" — " + progPreview.weeks.length + " semaine" + (progPreview.weeks.length > 1 ? "s" : "")}
+                    {", départ le " + progPreview.startDate}
+                    <br />
+                    Phases : {progPreview.phases.map((p) => p.name).join(" · ") || "—"}
+                    <br />
+                    Métriques suivies : {progPreview.metrics.length ? progPreview.metrics.map((m) => m.label).join(" · ") : "aucune"}
+                    {" · Remarques du coach : " + progPreview.remarks.length}
+                  </div>
+                ) : null}
+              </div>
+              {data.program ? (
+                <button style={Object.assign({}, S.smallBtn, { marginTop: 10 })} onClick={revertProgram}>
+                  Revenir au programme du site
+                </button>
+              ) : null}
+              {coachMsg ? <div style={S.syncStatus}>{coachMsg}</div> : null}
             </div>
           ) : null}
         </div>
@@ -1594,14 +1944,110 @@ function Goal(props) {
     </div>
   );
 }
+/* ---------------------- Choix de profil à l'entrée ------------------ */
+function ProfileScreen(props) {
+  const [reg, setReg] = useState(initProfiles);
+  const [name, setName] = useState("");
+  const create = () => {
+    const n = name.trim();
+    if (!n) return;
+    const p = { id: "p" + Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36), name: n, createdAt: Date.now() };
+    const next = { profiles: reg.profiles.concat([p]), lastId: p.id };
+    saveProfilesReg(next);
+    setReg(next);
+    props.onOpen(p);
+  };
+  const remove = (p) => {
+    if (!window.confirm("Supprimer le profil « " + p.name + " » et toutes ses données sur cet appareil ?")) return;
+    try {
+      localStorage.removeItem(profileDataKey(p));
+      localStorage.removeItem(profileSyncKey(p));
+    } catch (e) {}
+    const next = { profiles: reg.profiles.filter((x) => x.id !== p.id), lastId: reg.lastId === p.id ? null : reg.lastId };
+    saveProfilesReg(next);
+    setReg(next);
+  };
+  return (
+    <div style={S.page}>
+      <style>{CSS}</style>
+      <div style={S.profileScreenCard}>
+        <div style={S.eyebrow}>Carnet d'entraînement</div>
+        <h1 style={Object.assign({}, S.h1, { fontSize: 30 })}>Qui s'entraîne ?</h1>
+        {reg.profiles.length ? (
+          <div style={S.profileList}>
+            {reg.profiles.map((p) => (
+              <div key={p.id} style={S.profileItem}>
+                <button style={S.profileOpenBtn} onClick={() => props.onOpen(p)}>
+                  <span>👤 {p.name}</span>
+                  {reg.lastId === p.id ? <span style={S.profileLastTag}>dernier ouvert</span> : null}
+                </button>
+                <button style={S.delX} onClick={() => remove(p)} aria-label={"Supprimer le profil " + p.name}>×</button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p style={S.lockHint}>Aucun profil sur cet appareil — crée le tien ci-dessous.</p>
+        )}
+        <div style={{ marginTop: 14 }}>
+          <div style={S.noteLabel}>Nouveau profil</div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              onKeyDown={(e) => { if (e.key === "Enter") create(); }}
+              placeholder="Prénom"
+              style={Object.assign({}, S.titleInput, { flex: "1 1 140px", width: "auto" })}
+              aria-label="Nom du nouveau profil"
+            />
+            <button style={S.smallBtnPrimary} onClick={create} disabled={!name.trim()}>Créer</button>
+          </div>
+          <p style={Object.assign({}, S.backupHint, { marginTop: 10, marginBottom: 0 })}>
+            Chaque profil a ses propres séances, mesures, programme et synchronisation cloud. Les données restent
+            dans ce navigateur (active la carte « ☁️ Synchronisation » dans ton carnet pour les retrouver ailleurs).
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 function App() {
   const [unlocked, setUnlocked] = useState(() => deviceGrant().ok);
+  const [profile, setProfile] = useState(null);
+  const openProfile = (p) => {
+    activateProfileKeys(p);
+    /* Programme du profil : celui embarqué dans ses données s'il est
+       valide, sinon le programme du site (program.js). Appliqué AVANT
+       le montage du carnet. */
+    let prog = DEFAULT_PROGRAM;
+    try {
+      const raw = localStorage.getItem(ACTIVE_DATA_KEY);
+      const d = raw ? JSON.parse(raw) : null;
+      if (d && d.program) {
+        const v = validateProgram(d.program);
+        if (v.ok) prog = v.prog;
+      }
+    } catch (e) {}
+    applyProgram(prog);
+    const reg = loadProfilesReg();
+    if (reg) {
+      reg.lastId = p.id;
+      saveProfilesReg(reg);
+    }
+    setProfile(p);
+  };
   return (
     <Boundary>
-      {unlocked ? (
-        <Calendar onLock={() => setUnlocked(false)} />
-      ) : (
+      {!unlocked ? (
         <LockScreen onUnlock={() => setUnlocked(true)} />
+      ) : !profile ? (
+        <ProfileScreen onOpen={openProfile} />
+      ) : (
+        <Calendar
+          key={profile.id}
+          profile={profile}
+          onSwitchProfile={() => setProfile(null)}
+          onLock={() => { setProfile(null); setUnlocked(false); }}
+        />
       )}
     </Boundary>
   );
@@ -1663,6 +2109,18 @@ const S = {
   reviewCard: { background: "#F4F0FA", border: "1px solid #D8CBEC", borderRadius: 10, marginTop: 8 },
   securityCard: { background: "#FBF0EE", border: "1px solid #E8CCC5", borderRadius: 10, marginTop: 8 },
   syncCard: { background: "#EEF3F8", border: "1px solid #C6D6E4", borderRadius: 10, marginTop: 8 },
+  coachCard: { background: "#F0F7EF", border: "1px solid #C7DEC9", borderRadius: 10, marginTop: 8 },
+  remarksCard: { background: "#F4F0FA", border: "1px solid #D8CBEC", borderRadius: 10, marginTop: 10, padding: "10px 14px" },
+  remarksList: { margin: "4px 0 0", padding: "0 0 0 18px", fontSize: 13.5 },
+  previewBox: { background: "#FBFBF9", border: "1px solid #E4E6E1", borderRadius: 8, padding: 10, marginTop: 8, fontSize: 13, lineHeight: 1.5 },
+  profileRow: { display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 8 },
+  profileName: { fontSize: 13, fontWeight: 700, color: "#3A3E46", background: "#fff", border: "1px solid #DDDFDA", borderRadius: 20, padding: "3px 12px" },
+  profileSwitch: { border: "none", background: "none", color: "#3E5F8A", fontSize: 12.5, fontWeight: 600, textDecoration: "underline", padding: 0 },
+  profileScreenCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 12, padding: "26px 20px", maxWidth: 420, margin: "60px auto 0" },
+  profileList: { display: "flex", flexDirection: "column", gap: 8, marginTop: 6 },
+  profileItem: { display: "flex", alignItems: "center", gap: 6 },
+  profileOpenBtn: { flex: 1, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, border: "1px solid #C9CCD1", background: "#FBFBF9", borderRadius: 8, padding: "10px 12px", fontSize: 15, fontWeight: 600, textAlign: "left" },
+  profileLastTag: { fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", background: "#3E5F8A1A", color: "#3E5F8A", borderRadius: 4, padding: "1px 6px", letterSpacing: "0.05em" },
   syncStatus: { fontSize: 12.5, color: "#3A3E46", fontWeight: 600, marginTop: 8 },
   lockCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 12, padding: "26px 20px", maxWidth: 420, margin: "60px auto 0", textAlign: "center" },
   lockHint: { fontSize: 13.5, color: "#5C6470", margin: "0 0 14px" },

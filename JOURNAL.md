@@ -4,6 +4,16 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-01 — Multi-profils, programmes dynamiques et boucle Coach IA
+
+- **Multi-profils** : écran « Qui s'entraîne ? » après le déverrouillage. Chaque profil = clés localStorage dédiées (données `protocole-tractions-v1:<id>`, synchro `protocole-tractions-sync-v1:<id>`), registre dans `carnet-profiles-v1`. **Migration automatique** : les données pré-multi-profil deviennent le profil « Mehdi » (marqué `legacy`) qui **conserve les clés historiques sans suffixe** → données de prod et synchro `dimeii/training-data` intactes, zéro action requise.
+- **Programme dynamique par profil** : les globales dérivées de `program.js` sont recalculées par `applyProgram()` ; un profil peut adopter un programme embarqué dans ses données (`data.program`), qui suit sa synchro cloud (fichier `carnet-data-<id>.json` pour les nouveaux profils) et ses sauvegardes `.json`.
+- **Boucle Coach IA** (carte « 🤖 Coach IA ») : export d'un **pack coach** (consignes + format JSON attendu + bilan + programme actuel) à coller dans n'importe quelle IA → l'IA rend un JSON → import avec validation (messages d'erreur précis, tolère les fences ```json), aperçu, adoption → les `remarks` de l'IA s'affichent dans une carte « 💬 Remarques du coach ». Bouton « Revenir au programme du site » (données conservées).
+- Le mot de passe du site reste **global** (un seul verrouillage pour tous les profils).
+- Validé par un nouveau smoke test Node (Babel + jsdom) : **52/52 OK** (création/suppression/isolation de profils, migration legacy avec synchro inchangée, import IA valide/invalide, retour au programme du site, non-régression des données existantes).
+
+---
+
 ## 2026-07-28 (soir) — Synchro cloud active + recalibrage S3 après le lundi S2
 
 - **Synchro cloud activée** : dépôt privé `dimeii/training-data`, token fine-grained (permission Contents rw). Pièges rencontrés : dépôt non coché dans le token (404), puis permission Contents absente (403). Les données sont maintenant persistantes hors localStorage.

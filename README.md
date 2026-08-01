@@ -1,12 +1,15 @@
 # Carnet — Tractions & Explosivité
 
-Carnet d'entraînement personnel sur 12 semaines (protocole tractions lestées, explosivité et muscle-up, avec séance jambes/renfo et course hebdomadaires). Application web autonome : **deux fichiers** (`index.html` = l'appli, `program.js` = le contenu du programme), aucune dépendance à installer, aucun serveur.
+Carnet d'entraînement **multi-profils** (à l'origine : protocole personnel 12 semaines tractions lestées, explosivité et muscle-up, avec séance jambes/renfo et course hebdomadaires). Application web autonome : **deux fichiers** (`index.html` = l'appli, `program.js` = le programme par défaut du site), aucune dépendance à installer, aucun serveur.
 
-Départ du protocole : lundi 20 juillet 2026.
+Départ du protocole d'origine : lundi 20 juillet 2026.
 
 ## Fonctionnalités
 
-- **Programme complet 12 semaines** — 3 phases (base & technique, force maximale, explosivité & muscle-up), 5 séances/semaine, avec échauffement obligatoire et notes de charge. Tout le contenu (exos, phases, objectifs, dates) vit dans **`program.js`**, un fichier dédié facile à modifier sans toucher à l'appli.
+- **Multi-profils** — écran « Qui s'entraîne ? » à l'entrée (après le déverrouillage) : chaque profil a **ses séances, ses mesures, son programme et sa synchronisation cloud**, isolés dans le navigateur. Création par prénom, suppression avec confirmation, bouton « Changer de profil » dans l'en-tête. Les données antérieures au multi-profil sont migrées automatiquement dans un profil (clés de stockage historiques conservées : rien ne bouge, synchro comprise).
+- **Programme dynamique par profil** — par défaut un profil suit le programme du site (`program.js`) ; il peut adopter un **programme embarqué dans ses données** (voir Coach IA), qui le suit alors partout via sa synchro cloud et ses sauvegardes `.json`. Bouton « Revenir au programme du site » sans perte de données.
+- **Coach IA** — carte « 🤖 Coach IA » : exporte un **pack coach** (bilan complet + programme actuel + consignes de format), à coller dans **n'importe quelle IA** (ChatGPT, Claude, Gemini…). L'IA rend un JSON ; colle-le dans la carte → vérification + aperçu → « Adopter ce programme » : il devient le programme du profil, et les **remarques du coach IA** s'affichent en haut du carnet. Les JSON invalides sont refusés avec un message précis (semaine/séance en cause).
+- **Programme complet 12 semaines (défaut du site)** — 3 phases (base & technique, force maximale, explosivité & muscle-up), 5 séances/semaine, avec échauffement obligatoire et notes de charge. Tout le contenu (exos, phases, objectifs, dates) vit dans **`program.js`**, un fichier dédié facile à modifier sans toucher à l'appli.
 - **Suivi de séance** — case « Fait », bilan structuré par séance (RPE ressenti, douleur épaule oui/non, commentaire libre), ajustement de chaque exercice directement dans la fiche (les comptes-rendus multi-lignes s'affichent ligne par ligne), et **ajout d'exercices** à n'importe quelle séance (tag « ajouté », modifiables et supprimables).
 - **Semaine flexible** — chaque séance a un **sélecteur de jour** : si tu pars courir un jour prévu pour autre chose, décale la séance (tag « décalée », le calendrier et l'ordre suivent, l'historique reste attaché). Tu peux aussi **ajouter une séance** à une semaine (jour, type, titre, exos) — tag « perso », supprimable.
 - **Flèches de progression** — écris `↗` (charge/intensité en hausse, affiché en vert) ou `↘` (allégé, affiché en bleu) dans une ligne d'exercice (`program.js` ou ajustement en séance) et l'appli les met en couleur. Légende sous la barre des semaines.
@@ -21,9 +24,9 @@ Départ du protocole : lundi 20 juillet 2026.
 - **Export / import** — téléchargement d'une sauvegarde `.json` (ou copier-coller) pour transférer les données vers un autre appareil.
 - **Export bilan pour relecture** — génère un fichier **Markdown** lisible (progression des métriques, séances faites, ressentis, douleurs, remarques, exercices ajustés/ajoutés), à faire relire par un coach ou une IA pour adapter la suite du programme.
 - **Accès protégé par mot de passe** — écran de verrouillage à l'ouverture ; un appareil authentifié reste autorisé **30 jours** (configurable dans `auth.js`). La carte « 🔒 Sécurité » permet de verrouiller l'appareil immédiatement, et de changer le mot de passe (génère un nouvel `auth.js` à pousser — ce qui **révoque tous les appareils**, idem en incrémentant `epoch`).
-- **Synchronisation cloud (optionnelle)** — carte « ☁️ Synchronisation » : les données sont sauvegardées automatiquement dans un fichier `carnet-data.json` d'un dépôt GitHub **privé** à toi, et synchronisées entre appareils (le plus récent gagne, arbitré par `updatedAt`). Persistance réelle : survivent à un nettoyage du navigateur, historique versionné par git côté dépôt de données.
+- **Synchronisation cloud (optionnelle, par profil)** — carte « ☁️ Synchronisation » : les données du profil (programme embarqué compris) sont sauvegardées automatiquement dans un fichier d'un dépôt GitHub **privé** (`carnet-data.json` pour le profil historique, `carnet-data-<id>.json` pour les autres — chaque ami peut utiliser son propre dépôt), et synchronisées entre appareils (le plus récent gagne, arbitré par `updatedAt`). Persistance réelle : survivent à un nettoyage du navigateur, historique versionné par git côté dépôt de données.
 
-## Modifier le programme
+## Modifier le programme du site
 
 Ouvre `program.js` : c'est un objet JSON commenté (`startDate`, `phases`, `goals`, `metrics`, `warmup`, `notes`, `weeks`). Chaque séance est un objet `{ day, type, title, ex }` — `day` 0=lundi … 6=dimanche, `ex` = une ligne par exercice. Modifie, sauvegarde, recharge la page. Si le carnet affiche une erreur au chargement, il manque probablement une virgule ou un guillemet.
 
@@ -69,7 +72,7 @@ Le verrouillage est configuré dans **`auth.js`** : `hash` (SHA-256 de `salt:mot
 
 ## Où sont mes données ?
 
-Par défaut, les données vivent dans le `localStorage` du navigateur, **liées à l'adresse du site et à l'appareil** ; vider les données de navigation efface le carnet, et rien ne se synchronise entre appareils (l'export/restauration `.json` reste possible manuellement).
+Par défaut, les données vivent dans le `localStorage` du navigateur, **liées à l'adresse du site, à l'appareil et au profil** ; vider les données de navigation efface le carnet, et rien ne se synchronise entre appareils (l'export/restauration `.json` reste possible manuellement). Supprimer un profil sur l'écran d'entrée n'efface ses données **que sur cet appareil** (son fichier cloud éventuel n'est pas touché).
 
 **Pour une persistance réelle, active la synchronisation cloud** (carte « ☁️ Synchronisation ») :
 
@@ -77,15 +80,15 @@ Par défaut, les données vivent dans le `localStorage` du navigateur, **liées 
 2. Crée un token *fine-grained* : github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → « Generate new token » ; dans « Repository access », sélectionne **uniquement** ce dépôt ; dans « Permissions » → Repository permissions, mets **Contents : Read and write**. Choisis une expiration (à renouveler ensuite).
 3. Dans le carnet, ouvre « ☁️ Synchronisation », colle `tonpseudo/training-data` et le token, « Activer ».
 
-Ensuite chaque modification est poussée automatiquement (~2 s après la saisie) dans `carnet-data.json`, et à chaque ouverture le carnet compare local et cloud : **le plus récent gagne**. Répète l'étape 3 sur chaque appareil (le token n'est stocké que dans le navigateur de chaque appareil). L'appli vérifie que le dépôt est bien privé et t'avertit s'il ne l'est pas. En cas d'écriture simultanée depuis deux appareils, c'est la sauvegarde la plus récente qui l'emporte (pas de fusion fine).
+Ensuite chaque modification est poussée automatiquement (~2 s après la saisie) dans le fichier du profil (`carnet-data.json` pour le profil historique, `carnet-data-<id>.json` sinon), et à chaque ouverture le carnet compare local et cloud : **le plus récent gagne**. Répète l'étape 3 sur chaque appareil (le token n'est stocké que dans le navigateur de chaque appareil). L'appli vérifie que le dépôt est bien privé et t'avertit s'il ne l'est pas. En cas d'écriture simultanée depuis deux appareils, c'est la sauvegarde la plus récente qui l'emporte (pas de fusion fine).
 
 ## Technique
 
 - React 18 (UMD) + Babel Standalone, chargés depuis cdnjs — aucune étape de build.
 - Le runtime JSX est forcé en mode *classic* (`React.createElement`) pour rester compatible avec une exécution hors module ES.
 - Graphiques en SVG natif (aucune librairie de charts).
-- Contenu du programme dans `program.js` (objet JSON assigné à `window.PROGRAM`), chargé par une simple balise `<script>` — le format `.js` plutôt que `.json` permet l'ouverture en double-clic (`file://`), où `fetch()` d'un `.json` serait bloqué.
-- Clé de stockage : `protocole-tractions-v1` (sections `completed`, `edits`, `added`, `feedback`, `moves` — décalages de jour, `custom` — séances ajoutées, `measures`).
+- Programme par défaut dans `program.js` (objet JSON assigné à `window.PROGRAM`), chargé par une simple balise `<script>` — le format `.js` plutôt que `.json` permet l'ouverture en double-clic (`file://`), où `fetch()` d'un `.json` serait bloqué. Un profil peut le remplacer par un programme embarqué dans ses données (`data.program`, validé à l'import).
+- Clés de stockage : registre des profils `carnet-profiles-v1` ; par profil, données `protocole-tractions-v1[:<id>]` (sections `completed`, `edits`, `added`, `feedback`, `moves` — décalages de jour, `custom` — séances ajoutées, `measures`, `program`) et synchro `protocole-tractions-sync-v1[:<id>]`. Le profil migré (pré-multi-profil) garde les clés sans suffixe.
 
 ## Structure
 
