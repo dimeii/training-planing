@@ -4,6 +4,14 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-01 (suite) — Synchro « automatique » : l'appli crée le dépôt
+
+- Carte « ☁️ Synchronisation », nouveau parcours **Option 1 — automatique** (pensé pour les amis) : coller un token GitHub **classic** (scope `repo`) suffit — l'appli détecte le compte (`GET /user`), **crée le dépôt privé** (`POST /user/repos`, `training-data` par défaut, nom modifiable) ou le réutilise s'il existe (422), détecte la branche par défaut, vérifie que le dépôt est privé, et active la synchro sur le fichier du profil. Le parcours manuel fine-grained reste en Option 2.
+- Erreur claire si le token ne peut pas créer de dépôt (fine-grained sans Administration → « utilise un token classic avec la case repo cochée »).
+- Smoke test enrichi : **67/67 OK** (scénario C avec API GitHub mockée : création 201, réutilisation 422, un fichier par profil dans le même dépôt, configs isolées).
+
+---
+
 ## 2026-08-01 — Multi-profils, programmes dynamiques et boucle Coach IA
 
 - **Multi-profils** : écran « Qui s'entraîne ? » après le déverrouillage. Chaque profil = clés localStorage dédiées (données `protocole-tractions-v1:<id>`, synchro `protocole-tractions-sync-v1:<id>`), registre dans `carnet-profiles-v1`. **Migration automatique** : les données pré-multi-profil deviennent le profil « Mehdi » (marqué `legacy`) qui **conserve les clés historiques sans suffixe** → données de prod et synchro `dimeii/training-data` intactes, zéro action requise.

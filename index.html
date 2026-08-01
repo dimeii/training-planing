@@ -729,7 +729,34 @@ async function ghCheckRepo(cfg) {
   if (res.status === 401) throw new Error("token invalide ou expiré");
   if (!res.ok) throw new Error("GitHub a répondu " + res.status);
   const j = await res.json();
-  return { isPrivate: !!j.private };
+  return { isPrivate: !!j.private, defaultBranch: j.default_branch || "main" };
+}
+/* Qui est le propriétaire de ce token ? (parcours « création auto ») */
+async function ghWhoAmI(token) {
+  const res = await fetch("https://api.github.com/user", {
+    headers: { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" },
+    cache: "no-store",
+  });
+  if (res.status === 401) throw new Error("token invalide ou expiré");
+  if (!res.ok) throw new Error("GitHub a répondu " + res.status);
+  const j = await res.json();
+  return j.login;
+}
+/* Crée le dépôt privé de données ; s'il existe déjà (422), on le
+   réutilise. Nécessite un token « classic » avec le scope repo. */
+async function ghCreateRepo(token, name) {
+  const res = await fetch("https://api.github.com/user/repos", {
+    method: "POST",
+    headers: { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" },
+    body: JSON.stringify({ name, private: true, auto_init: true, description: "Données du carnet d'entraînement (dépôt privé)" }),
+  });
+  if (res.status === 201) return { created: true };
+  if (res.status === 422) return { created: false }; // existe déjà : on le réutilise
+  if (res.status === 403 || res.status === 404) {
+    throw new Error("ce token ne peut pas créer de dépôt — utilise un token « classic » avec la case repo cochée");
+  }
+  if (!res.ok) throw new Error("création impossible (GitHub " + res.status + ")");
+  return { created: true };
 }
 async function ghGetFile(cfg) {
   const url = "https://api.github.com/repos/" + cfg.repo + "/contents/" + cfg.path + "?ref=" + (cfg.branch || "main");
@@ -944,6 +971,8 @@ function Calendar(props) {
   const [showSync, setShowSync] = useState(false);
   const [syncRepoInput, setSyncRepoInput] = useState("");
   const [syncTokenInput, setSyncTokenInput] = useState("");
+  const [autoTokenInput, setAutoTokenInput] = useState("");
+  const [autoNameInput, setAutoNameInput] = useState("training-data");
   const syncCfgRef = React.useRef(syncCfg);
   const syncShaRef = React.useRef(null);
   const syncTimerRef = React.useRef(null);
@@ -1059,28 +1088,52 @@ function Calendar(props) {
     clearTimeout(syncTimerRef.current);
     syncTimerRef.current = setTimeout(pushToCloud, 1800);
   };
+  /* Un fichier par profil dans le dépôt de données (le profil historique
+     garde carnet-data.json — synchro existante inchangée). */
+  const syncFilePath = () =>
+    props.profile && !props.profile.legacy ? "carnet-data-" + props.profile.id + ".json" : "carnet-data.json";
+  const finishActivation = async (cfg, okMsg) => {
+    const info = await ghCheckRepo(cfg);
+    cfg.branch = info.defaultBranch || "main";
+    saveSyncCfg(cfg);
+    syncCfgRef.current = cfg;
+    setSyncCfg(cfg);
+    setSyncTokenInput("");
+    setSyncRepoInput("");
+    setAutoTokenInput("");
+    await syncNow();
+    if (!info.isPrivate) {
+      setSyncStatus("⚠️ Synchro active, MAIS le dépôt " + cfg.repo + " est PUBLIC : tes données y seront visibles de tous. Passe-le en privé sur GitHub (Settings → Danger Zone).");
+    } else if (okMsg) {
+      setSyncStatus(okMsg + " · " + fmtTime());
+    }
+  };
   const activateSync = async () => {
     const repo = syncRepoInput.trim().replace(/^https:\/\/github\.com\//, "").replace(/\/$/, "");
     const token = syncTokenInput.trim();
     if (!repo || !token) return;
-    /* Un fichier par profil dans le dépôt de données (le profil historique
-       garde carnet-data.json — synchro existante inchangée). */
-    const cfg = {
-      repo, token, branch: "main",
-      path: props.profile && !props.profile.legacy ? "carnet-data-" + props.profile.id + ".json" : "carnet-data.json",
-    };
+    const cfg = { repo, token, branch: "main", path: syncFilePath() };
     setSyncStatus("☁️ Vérification du dépôt…");
     try {
-      const info = await ghCheckRepo(cfg);
-      saveSyncCfg(cfg);
-      syncCfgRef.current = cfg;
-      setSyncCfg(cfg);
-      setSyncTokenInput("");
-      setSyncRepoInput("");
-      await syncNow();
-      if (!info.isPrivate) {
-        setSyncStatus("⚠️ Synchro active, MAIS ce dépôt est PUBLIC : tes données y seront visibles de tous. Passe-le en privé sur GitHub (Settings → Danger Zone).");
-      }
+      await finishActivation(cfg, null);
+    } catch (e) {
+      setSyncStatus("⚠️ " + (e && e.message ? e.message : e));
+    }
+  };
+  /* Parcours « automatique » : un token classique (scope repo) suffit,
+     l'appli crée le dépôt privé — ou le retrouve s'il existe déjà. */
+  const autoActivateSync = async () => {
+    const token = autoTokenInput.trim();
+    const name = (autoNameInput.trim() || "training-data").replace(/[^A-Za-z0-9._-]/g, "-");
+    if (!token) return;
+    setSyncStatus("☁️ Création du dépôt…");
+    try {
+      const login = await ghWhoAmI(token);
+      const r = await ghCreateRepo(token, name);
+      const cfg = { repo: login + "/" + name, token, branch: "main", path: syncFilePath() };
+      await finishActivation(cfg, r.created
+        ? "☁️ Dépôt privé " + cfg.repo + " créé — synchronisation active"
+        : "☁️ Dépôt " + cfg.repo + " retrouvé — synchronisation active");
     } catch (e) {
       setSyncStatus("⚠️ " + (e && e.message ? e.message : e));
     }
@@ -1567,10 +1620,41 @@ function Calendar(props) {
                 <div>
                   <p style={S.backupHint}>
                     Rends tes données persistantes : sauvegarde automatique dans un dépôt GitHub <strong>privé</strong> à
-                    toi, et synchronisation entre tes appareils. 1) Crée un dépôt <strong>privé</strong> sur github.com/new
-                    (ex : <code>dimeii/training-data</code>). 2) Crée un token « fine-grained » (github.com → Settings →
-                    Developer settings) limité à ce seul dépôt, permission <strong>Contents : Read and write</strong>.
-                    3) Colle les deux ci-dessous — le token reste uniquement dans ce navigateur.
+                    toi, et synchronisation entre tes appareils. Le token reste uniquement dans ce navigateur.
+                  </p>
+                  <div style={S.noteLabel}>Option 1 — automatique (recommandée)</div>
+                  <p style={S.backupHint}>
+                    Il te faut juste un compte GitHub et un token <strong>« classic »</strong> avec la case
+                    <strong> repo</strong> cochée (github.com → Settings → Developer settings → Personal access
+                    tokens → <em>Tokens (classic)</em> → Generate new token). Colle-le : l'appli crée le dépôt
+                    privé pour toi (ou le retrouve s'il existe déjà).
+                  </p>
+                  <input
+                    type="password"
+                    value={autoTokenInput}
+                    onChange={(e) => setAutoTokenInput(e.target.value)}
+                    placeholder="token GitHub (classic, scope repo)"
+                    style={S.titleInput}
+                    aria-label="Token GitHub pour création automatique"
+                  />
+                  <input
+                    value={autoNameInput}
+                    onChange={(e) => setAutoNameInput(e.target.value)}
+                    placeholder="nom du dépôt à créer (training-data)"
+                    style={Object.assign({}, S.titleInput, { marginTop: 6 })}
+                    aria-label="Nom du dépôt à créer"
+                  />
+                  <button
+                    style={Object.assign({}, S.smallBtnPrimary, { marginTop: 8 })}
+                    onClick={autoActivateSync}
+                    disabled={!autoTokenInput.trim()}
+                  >
+                    Créer le dépôt et activer
+                  </button>
+                  <div style={Object.assign({}, S.noteLabel, { marginTop: 14 })}>Option 2 — j'ai déjà un dépôt</div>
+                  <p style={S.backupHint}>
+                    Dépôt <strong>privé</strong> existant + token « fine-grained » limité à ce seul dépôt,
+                    permission <strong>Contents : Read and write</strong>.
                   </p>
                   <input
                     value={syncRepoInput}

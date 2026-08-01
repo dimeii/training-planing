@@ -74,11 +74,13 @@ Le verrouillage est configuré dans **`auth.js`** : `hash` (SHA-256 de `salt:mot
 
 Par défaut, les données vivent dans le `localStorage` du navigateur, **liées à l'adresse du site, à l'appareil et au profil** ; vider les données de navigation efface le carnet, et rien ne se synchronise entre appareils (l'export/restauration `.json` reste possible manuellement). Supprimer un profil sur l'écran d'entrée n'efface ses données **que sur cet appareil** (son fichier cloud éventuel n'est pas touché).
 
-**Pour une persistance réelle, active la synchronisation cloud** (carte « ☁️ Synchronisation ») :
+**Pour une persistance réelle, active la synchronisation cloud** (carte « ☁️ Synchronisation ») — deux parcours :
 
-1. Crée un dépôt **privé** dédié aux données, ex. `training-data` (https://github.com/new — surtout pas le dépôt public du carnet, sinon tes données seraient visibles).
-2. Crée un token *fine-grained* : github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → « Generate new token » ; dans « Repository access », sélectionne **uniquement** ce dépôt ; dans « Permissions » → Repository permissions, mets **Contents : Read and write**. Choisis une expiration (à renouveler ensuite).
-3. Dans le carnet, ouvre « ☁️ Synchronisation », colle `tonpseudo/training-data` et le token, « Activer ».
+- **Option 1 — automatique (recommandée, idéale pour un ami)** : il suffit d'un compte GitHub et d'un token **« classic »** avec la case **repo** cochée (github.com → Settings → Developer settings → Personal access tokens → *Tokens (classic)* → « Generate new token »). Colle le token dans la carte : **l'appli crée elle-même le dépôt privé** (`training-data` par défaut, nom modifiable) — ou le retrouve s'il existe déjà — et active la synchro.
+- **Option 2 — dépôt existant** :
+  1. Crée un dépôt **privé** dédié aux données, ex. `training-data` (https://github.com/new — surtout pas le dépôt public du carnet, sinon tes données seraient visibles).
+  2. Crée un token *fine-grained* : github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → « Generate new token » ; dans « Repository access », sélectionne **uniquement** ce dépôt ; dans « Permissions » → Repository permissions, mets **Contents : Read and write**. Choisis une expiration (à renouveler ensuite).
+  3. Dans le carnet, ouvre « ☁️ Synchronisation », colle `tonpseudo/training-data` et le token, « Activer ».
 
 Ensuite chaque modification est poussée automatiquement (~2 s après la saisie) dans le fichier du profil (`carnet-data.json` pour le profil historique, `carnet-data-<id>.json` sinon), et à chaque ouverture le carnet compare local et cloud : **le plus récent gagne**. Répète l'étape 3 sur chaque appareil (le token n'est stocké que dans le navigateur de chaque appareil). L'appli vérifie que le dépôt est bien privé et t'avertit s'il ne l'est pas. En cas d'écriture simultanée depuis deux appareils, c'est la sauvegarde la plus récente qui l'emporte (pas de fusion fine).
 
