@@ -137,10 +137,10 @@ window.PROGRAM = {
         "Écarté poulie 2x10 @26 kg (adopté en S2)",
         "Superset curl unilat. + extension triceps 2-3 séries @14 kg (adopté en S2)"
       ]},
-      { "day": 1, "type": "jambes", "title": "Jambes & renfo — charge", "ex": [
-        "Leg press 4x6 @210-220 kg ↗ — repos 2:30",
-        "Soulevé de terre roumain 3x8 @90 kg ↗ (sangles si la grippe lâche)",
-        "Fentes bulgares 3x8/jambe",
+      { "day": 1, "type": "jambes", "title": "Jambes & renfo — reprise", "ex": [
+        "Leg press 4x8 @200-210 kg (S2 : séance jambes sautée — on refait le plan prévu en S2 avant de charger, pas de saut de charge après 2 semaines sans jambes)",
+        "Soulevé de terre roumain 3x10 @85 kg (sangles si la grippe lâche)",
+        "Fentes marchées 3x10/jambe @25 kg",
         "Leg extension unilatérale (AVL) 3x5/jambe",
         "Mollets debout 3x15",
         "Face pulls 3x15",
@@ -151,12 +151,16 @@ window.PROGRAM = {
         "Tractions PDC pyramide 13-11-9-7-5 + série max cible 10-11 ↗ — repos 90s-2 min, 2 min pleines après le 11 et le 9 (S2 : 54 reps, max 9 avec de la réserve — pyramide inchangée tant que les séries de 11 et 9 finissent à 2-3 reps de l'échec, on allonge la série max d'abord)",
         "Rowing horizontal 4x10 @60 kg, passe à 65 si les 4 séries sont propres (S2 : échec à ~70 en 1re série, forme dégradée en fin — priorité à la propreté, pas à la charge)",
         "Dips lestés 4x8 @27,5-30 kg ↗ (~60% du 1RM estimé — S2 : 4x8 @25 valides avec 1-2 reps de réserve)",
-        "Circuit abdos x2 (+2,5 kg sur les poulies si S2 facile ↗)"
+        "Circuit abdos x3 : crunch poulie 8-10 @36 kg · obliques 8-10 @36-38 kg · gainage 3x30-40s (format adopté en S2)",
+        "Curl biceps unilat. 4 séries 5-9 @14-16 kg (adopté en S2)"
       ]},
-      { "day": 4, "type": "explo", "title": "Explosivité", "ex": [
-        "Tractions explosives 4x4",
-        "False grip hang 3x20s",
-        "Russian dips 3x8"
+      { "day": 4, "type": "explo", "title": "Explosivité & muscle-up", "ex": [
+        "Tractions explosives 4x4 ↗ (S2 : 4x3 facile — et premier muscle-up passé bras après bras !)",
+        "Transitions muscle-up 3x2-3 en début de séance, frais (objectif : un MU de moins en moins décalé)",
+        "False grip hang 3x20s — non négociable (S2 : sauté — c'est la prise du muscle-up strict)",
+        "Russian dips 3x8 — non négociable (S2 : sauté — c'est la sortie du muscle-up)",
+        "Développé couché 4x5 @75-80 kg (S2 : 5@80 facile — on cadre le push que tu ajoutes déjà ; pas de max assisté en semaine de charge)",
+        "Renfo épaule : élévations frontales 3x10 @6 kg unilat. · tirage arrière 3x10 @8 kg · coiffe des rotateurs 2x10 @6 kg (adopté en S2)"
       ]},
       { "day": 5, "type": "course", "title": "Course — sortie facile", "ex": [
         "7-9 km allure facile"
@@ -184,7 +188,8 @@ window.PROGRAM = {
       ]},
       { "day": 4, "type": "test", "title": "Test fin de phase 1", "ex": [
         "Test max reps tractions PDC (départ 17 — repère : 9 reps en série max APRÈS la pyramide complète en S2, donc frais tu vaux nettement plus — noter le résultat dans « Ma progression »)",
-        "Test 1RM lesté tractions : montée progressive 20 → 25 → 30 kg puis +2,5 kg selon sensations (départ estimé 35)"
+        "Test 1RM lesté tractions : montée progressive 20 → 25 → 30 kg puis +2,5 kg selon sensations (départ estimé 35)",
+        "Poids de corps du matin + les 2 résultats du test → à saisir dans « 📈 Ma progression » (toujours AUCUNE mesure enregistrée depuis le 20 juillet)"
       ]},
       { "day": 5, "type": "course", "title": "Course — sortie facile", "ex": [
         "6-8 km allure facile"

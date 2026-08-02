@@ -4,6 +4,23 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-02 — Bilan S2 complet : adaptation S3/S4
+
+- **Faits marquants du bilan S2** :
+  - **Premier muscle-up passé** (bras après bras) pendant la séance explosivité, jugée « Facile » — en avance sur le plan (le MU strict est l'objectif de la phase 3).
+  - **Séance jambes S2 sautée** (décalée mar → jeu, jamais faite ; 2 courses de ~10 km cette semaine-là).
+  - Séance explosivité transformée en séance push : false grip et russian dips **sautés**, gros ajouts développé couché (5@80 kg facile, tentative ~100 kg assistée), renfo épaule/coiffe, triceps, curl.
+  - Mercredi volume : pyramide 13-11-9-7-5 complétée + max 9 ; circuit abdos monté de lui-même en x3 @36-38 kg ; rowing : échec à ~70-79 kg en 1re série, retour à 60.
+  - Toujours **aucune mesure** dans « 📈 Ma progression ».
+- **Adaptations dans `program.js`** :
+  - Mardi S3 « Jambes & renfo — reprise » : on refait le plan S2 (leg press 4x8 @200-210, SDT 3x10 @85, fentes marchées) au lieu de la progression 4x6 @210-220 — pas de saut de charge après 2 semaines sans jambes.
+  - Mercredi S3 : circuit abdos officialisé (x3, crunch 8-10 @36, obliques @36-38, gainage 3x30-40s) + curl biceps unilat. adopté (@14-16 kg).
+  - Vendredi S3 « Explosivité & muscle-up » : transitions MU 3x2-3 en début de séance ; false grip 3x20s et russian dips 3x8 marqués **non négociables** ; développé couché cadré 4x5 @75-80 kg (pas de max assisté en semaine de charge) ; renfo épaule/coiffe intégré.
+  - Vendredi S4 (test) : ligne ajoutée — poids de corps du matin + résultats du test à saisir dans « Ma progression ».
+- Côté appli, rien à changer — dépannage « nouveau PC » fourni en conversation (recréer le profil legacy via la console, puis réactiver la synchro) ; une vraie fonctionnalité « Récupérer un profil depuis le cloud » reste à faire.
+
+---
+
 ## 2026-08-01 (suite) — Synchro « automatique » : l'appli crée le dépôt
 
 - Carte « ☁️ Synchronisation », nouveau parcours **Option 1 — automatique** (pensé pour les amis) : coller un token GitHub **classic** (scope `repo`) suffit — l'appli détecte le compte (`GET /user`), **crée le dépôt privé** (`POST /user/repos`, `training-data` par défaut, nom modifiable) ou le réutilise s'il existe (422), détecte la branche par défaut, vérifie que le dépôt est privé, et active la synchro sur le fichier du profil. Le parcours manuel fine-grained reste en Option 2.

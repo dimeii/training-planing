@@ -36,6 +36,7 @@ Convention : mets `↗` sur une ligne dont la charge/intensité monte vs la sema
 
 ## Journal des adaptations
 
+- **2026-08-02 (après bilan S2)** — Jambes S2 sautée (2 courses cette semaine-là) → le mardi S3 **reprend le plan jambes de S2** (leg press 4x8 @200-210, SDT 3x10 @85) au lieu de charger. Circuit abdos entériné au format réel (x3, 36-38 kg) et curl biceps adopté au mercredi. Explosivité restructurée après un **premier muscle-up passé** (bras après bras) : transitions MU ajoutées en début de séance, false grip et russian dips marqués **non négociables** (sautés en S2), le développé couché est cadré (4x5 @75-80 kg — 5@80 facile en S2) à la place des montées au max assistées. Rappel : le test S4 doit finir dans « Ma progression » (aucune mesure saisie à ce jour).
 - **2026-07-24 (après bilan S1)** — Semaines 2-4 recalibrées sur les résultats réels : force consolidée à 23-24 kg (échecs à 25-26 kg en S1) avant de remonter à 25 kg en S3 ; charges jambes chiffrées (leg press 200-210, SDT 85-90 avec sangles, gainage latéral 45s, leg extension et étirements ischios intégrés) ; volume tractions converti en **pyramide** (5x13 irréaliste) ; dips chiffrés sur la calibration S1 (1RM estimé ≈ 47 kg) ; le lundi de la S4 devient un **vrai deload** pré-test (au lieu d'un 4x4 @27-28 kg) et le protocole de test 1RM est cadré. Le lundi S5 sera recalé sur le test S4 (~85 % du 1RM mesuré).
 
 ## Utilisation en local
