@@ -4,6 +4,28 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-10 — Bilan S3 : correction des % de la phase 2, S4 (test) recadrée
+
+- **Faits marquants du bilan S3** :
+  - Force : **4x4 @24 kg validés** (S2 : 22,5 « au max des reps »). La consigne RPE 8-9 sur le tirage a réglé le problème des machines incomparables.
+  - Volume : pyramide 13-11-9-7-5 finie + **11 reps en série max** (S2 : 9), sans congestion — il attribue ça à un échauffement plus long, à conserver. Rowing plafonné à 60 kg (limite machine).
+  - Dips : 4x8 @30 kg avec réserve **+ 40 reps à vide** en série max → le 1RM estimé à 47 kg est nettement sous-évalué.
+  - Muscle-up : **3 MU dans la séance** (séries 2, 3 et 4, bras après bras) + 4-5 séries de transitions. Il est en avance d'un bloc entier sur le plan (le MU est l'objectif de la phase 3).
+  - Séance jambes enfin faite, et plus lourd que prévu : SDT monté à **100 kg** (grippe qui lâche), fentes @32 kg au lieu de 25.
+  - **Russian dips impossibles** : pas de barres parallèles à disposition.
+  - Toujours **aucune mesure** dans « 📈 Ma progression » — 4e cycle consécutif.
+- **Erreur de programmation corrigée** : les % de la phase 2 étaient calculés sur le **lest seul** et non sur la charge totale (corps + lest). Le « 5x3 @30 kg » de S5 valait ~96 % du 1RM total — infaisable. Toute la phase 2 (S5-S8) et la phase 3 sont repassées en % de la charge totale, avec une note « Pourcentages » et sa formule dans le carnet.
+- **Adaptations dans `program.js`** :
+  - **S4 (en cours)** : lundi recalé à 3x3 @22 kg + transitions MU d'entretien ; vendredi **protocole de test entièrement détaillé** (ordre imposé, paliers chiffrés 20/28/34/38 puis +2,5, cibles issues des repères S3 : 40-43 kg au 1RM lesté, 18-22 en max reps) ; **test 1RM dips ajouté** puisque c'est lui qui règle les dips de la phase 2 ; ligne explicite sur la saisie des mesures.
+  - **Fin de séance jambes** : face pulls, gainage et étirements déplacés **en tête de séance** dans toutes les semaines restantes (4 semaines de suite qu'ils sautent) ; mollets = seule ligne facultative. Leg extension classique officialisée à la place de l'AVL. SDT avec sangles.
+  - **Muscle-up avancé en phase 2** : le vendredi devient « Muscle-up & explosivité » dès la S5 (transitions frais en début de séance, singles de MU, objectif « les deux bras ensemble »). La phase 3 passe de « obtenir le MU » à « MU strict, puis clusters, puis reps enchaînées ».
+  - **Russian dips → straight bar dips** partout (faisables sans barres parallèles, et plus spécifiques à la sortie du muscle-up).
+  - Bloc push (DC haltères, curl) officialisé au lundi de la phase 2 ; pyramide montée à 14-12-10-8-6 en S5/S6 puis 15-13-11-9-7 en S7 ; dips recalés en kg absolus.
+  - Notes ajoutées : « Pourcentages », « Mesures », « Fin de séance ».
+- **Point de vigilance** : si le test de vendredi confirme 43 kg au 1RM lesté, l'objectif des 12 semaines est atteint à la S4 → cible à relever pour la phase 2.
+
+---
+
 ## 2026-08-02 — Bilan S2 complet : adaptation S3/S4
 
 - **Faits marquants du bilan S2** :
