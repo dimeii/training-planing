@@ -4,6 +4,18 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-10 (suite) — Tests découpés, face pulls déplacés, travail muscle-up ciblé
+
+Trois questions posées en cours de S4, trois modifications dans `program.js`.
+
+- **Muscle-up « bras après bras »** : le MU passe, mais un seul, et le gainage lâche autour des jambes. Diagnostic : les trois symptômes n'en font qu'un. Le gainage cède à la bascule → le corps n'est plus un bloc → l'élan du tirage se dissipe → plus assez de hauteur pour passer les deux épaules ensemble → passage dissocié, très coûteux, donc pas de 2e rep. **Le facteur limitant n'est pas la force de tirage** (4x4 @24 kg, largement au-dessus du seuil d'un MU strict). Ajouts au programme : **muscle-up négatif** (descente lente à travers la transition — le seul exercice où tricher bras après bras est impossible), **tractions explosives jambes strictement immobiles** (objet serré entre les genoux), **hollow hold** en ouverture de la séance jambes. Plus une règle : tentatives de MU uniquement à froid, en singles, 3-6 max.
+- **Tests séparés sur deux jours** : le 1RM lesté passe au **mercredi** (frais, seul — c'est lui qui règle toutes les charges du bloc suivant, et il est à l'abri d'un vendredi décalé), le **max reps + dips + muscle-up** restent au vendredi, dans cet ordre. Motif : 15 min de repos après des singles lourds coûtent 2 à 4 reps sur la série max — l'objectif des 25 reps pouvait être atteint sans jamais apparaître sur le graphique. Appliqué à **S4, S8 et S12** pour que les trois tests soient comparables. Les séances « deload technique » du mercredi ont été remplacées, donc **aucune séance ajoutée**.
+- **Face pulls déplacés du mardi au lundi** : il les trouvait fatigants pour le mercredi (volume). Un face pull correct ne fatigue pas — s'il fatigue, il est trop lourd ; mais le vrai suspect du mardi est plutôt le SDT @100 kg + leg press 5x5, 24 h avant la pyramide de tractions. Le déplacement règle les deux cas : en **échauffement du lundi**, avant les tractions lestées, ils préparent l'épaule au lieu de la fatiguer, ils restent en début de séance (donc toujours protégés de l'oubli, raison de leur placement initial) et le mardi n'empiète plus sur le mercredi. + 1 série le vendredi pour le volume hebdo. Le mardi garde le gainage, qui passe en hollow hold.
+- Notes ajoutées au carnet : « Face pulls », « Tests », « Muscle-up ». Note « Fin de séance » mise à jour.
+- `program.js` validé (parse Node OK, 12 semaines, S4/S8/S12 avec deux séances `test`).
+
+---
+
 ## 2026-08-10 — Bilan S3 : correction des % de la phase 2, S4 (test) recadrée
 
 - **Faits marquants du bilan S3** :
