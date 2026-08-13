@@ -14,6 +14,7 @@ Bilan exporté **en cours de S4** (le test du vendredi et la sortie du dimanche 
 - **Bug de calcul corrigé** : le deload S8 affichait « ~75 % → 15-17,5 kg » — 15-17,5 kg correspondait en réalité à ~80 %, le libellé et le chiffre se contredisaient. Ligne reprise en 80 % → 13,5 kg.
 - **Muscle-up en avance** : 3 puis 2 négatifs enchaînés en semaine de **deload**, alors que le programme en demandait 3x1. S5 passe donc à **4x2** (descente 3-4 s) au lieu de 4x1.
 - **Mesures** : le poids de corps est enfin saisi (82,8 le 10, 83 le 13) — la note « Mesures » est mise à jour en conséquence. Manquent le 1RM du 12 août et le max reps du vendredi, jamais mesuré depuis le début.
+- **Ordre du test du vendredi revu** (à sa demande) : plus de tentatives de MU en ouverture, transitions reportées en fin de séance. Motif retenu — 3-5 singles de MU coûtent 2-3 reps sur le **max reps** qui suivait, or c'est la métrique jamais mesurée du carnet ; et le repère MU du bloc existe déjà (3 MU en séance en S3, 3+2 négatifs le lundi S4). Nouvel ordre : max reps → dips → transitions. Réserve posée : **transitions seulement, aucun MU complet à la fatigue** — c'est là qu'on ancre le passage bras après bras (note « Muscle-up »). Test MU à froid maintenu en S8.
 - `program.js` validé (parse Node OK, 12 semaines).
 
 ---
