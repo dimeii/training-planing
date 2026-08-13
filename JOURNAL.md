@@ -4,6 +4,20 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-13 — Test 1RM S4 : 37,5 kg mesurés, toute la phase 2 recalée
+
+Bilan exporté **en cours de S4** (le test du vendredi et la sortie du dimanche restent à faire).
+
+- **Le chiffre du cycle** : test 1RM lesté du mercredi 12 août → **37,5 kg** (83 kg de corps, soit **120,5 kg de charge totale**). Déroulé : 35 kg « large », **40 kg raté de 3-4 cm**, puis 38,5 kg raté par fatigue. Cohérent au kilo près avec les 4x4 @24 kg de la S3 (Epley → 38,3). Le départ du carnet (35 kg) était donc légèrement sous-estimé, pas énormément.
+- **Défaut de protocole à ne pas répéter** : montée 15 → 25 → 30 → 35 → **40**, soit un saut de +5 kg juste sous le max, suivi d'une 2e tentative déjà fatiguée. Près du max : **+2,5 kg par palier, arrêt au 2e échec**. Consigne écrite dans le test du vendredi S4 et dans le test S8.
+- **Phase 2 recalculée** sur le total mesuré, en remplacement des hypothèses « si le test donne 40 kg » : S5 5x3 **@25 kg** (90 %) · S6 5x3 **@27,5** (92 %) + 2x2 **@31,5** (95 %) · S7 3x1 **@34 → 37,5 → 40** (97 % → 100 % → la revanche des 40 kg, frais) + back-off 2x3 **@23** (88 %) · S8 deload 3x3 **@13,5** (80 %). Note « **Barème phase 2** » ajoutée au carnet avec la table complète % → lest.
+- **Bug de calcul corrigé** : le deload S8 affichait « ~75 % → 15-17,5 kg » — 15-17,5 kg correspondait en réalité à ~80 %, le libellé et le chiffre se contredisaient. Ligne reprise en 80 % → 13,5 kg.
+- **Muscle-up en avance** : 3 puis 2 négatifs enchaînés en semaine de **deload**, alors que le programme en demandait 3x1. S5 passe donc à **4x2** (descente 3-4 s) au lieu de 4x1.
+- **Mesures** : le poids de corps est enfin saisi (82,8 le 10, 83 le 13) — la note « Mesures » est mise à jour en conséquence. Manquent le 1RM du 12 août et le max reps du vendredi, jamais mesuré depuis le début.
+- `program.js` validé (parse Node OK, 12 semaines).
+
+---
+
 ## 2026-08-10 (suite) — Tests découpés, face pulls déplacés, travail muscle-up ciblé
 
 Trois questions posées en cours de S4, trois modifications dans `program.js`.
