@@ -4,6 +4,21 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-17 — S4 complète : 20 reps, 1RM dips 57,5 kg, phase 2 recalée sur les dips
+
+Bilan de **fin de S4** (le vendredi de test et le week-end, qui manquaient à l'export du 13). La S5 démarre aujourd'hui.
+
+- **Max reps enfin mesuré : 20** (départ du carnet : 17, objectif : 25). C'était la métrique jamais mesurée depuis le 20 juillet ; le découpage des tests sur deux jours a donc bien fait son travail. À relativiser à la hausse : test passé « journée très fatigante + séance tardive » — la vraie valeur est plutôt 21-22. Il reste ~5 reps à trouver en 8 semaines, c'est jouable.
+- **1RM dips : 55 kg validés, 60 kg ratés de peu → ≈ 57,5 kg de lest** (140,5 kg de charge totale). L'estimation de la S1 (47 kg, extrapolée d'un 4@45) était **très** basse : toute la phase 2 travaillait les dips à 10 kg sous la cible. Recalage : S5 **4x8 @35** (84 %) · S6 **4x6 @40** (87,5 %) · S7 **4x5 @45** (90 %) · phase 3 à 78 % → 27,5 kg. Barème dips ajouté à la note « Barème phase 2 ».
+- **Explosivité du vendredi : pas faite** — les transitions MU avaient été déplacées en fin de séance le 13/08 pour protéger le max reps. Ça a protégé le max reps et supprimé le travail MU. Confirmation de la règle maison : **ce qui est en fin de séance saute**. En S8 le muscle-up repasse en ouverture, mais **plafonné à 3 singles** (compromis : ~1 rep de coût sur le max reps, contre 2-3 pour 5-6 essais). En S5 les transitions restent en tout début de séance.
+- **Course** : 3e semaine de suite où la sortie « facile » du dimanche part en intensité — cette fois 5x600 m à 3:30-3:45 alors que la consigne disait « VRAIMENT facile », ressenti « Dur », **la veille du jour force**. Nouvelle note « Course » : l'intensité est autorisée mais le **samedi**, jamais le dimanche ; le dimanche c'est facile réel (5:45-6:15/km) ou rien. La ligne course de S5 propose explicitement l'un **ou** l'autre.
+- **Lundi S5** : garde 5x3 @25 kg, avec porte de sortie écrite (4 séries au lieu de 5 si la série 2 est dure) — première séance lourde 24 h après le fractionné.
+- **Cohérence des négatifs de MU corrigée** : S6 et S7 référençaient encore « S5 : 4x1 » alors que S5 était passé à 4x2 le 13/08. Progression remise à plat : S5 4x2 @3-4s → S6 4x2 @4-5s → S7 3x3 @5s.
+- **Toujours aucune mesure saisie** dans « 📈 Ma progression » (5e cycle) — mais désormais les trois chiffres existent (37,5 kg · 20 reps · 57,5 kg dips). Note « Mesures » réécrite autour de ça.
+- `program.js` validé (parse Node OK, 12 semaines, structure des séances intacte).
+
+---
+
 ## 2026-08-13 — Test 1RM S4 : 37,5 kg mesurés, toute la phase 2 recalée
 
 Bilan exporté **en cours de S4** (le test du vendredi et la sortie du dimanche restent à faire).
