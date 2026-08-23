@@ -37,7 +37,7 @@ window.PROGRAM = {
     { "label": "Max reps", "value": "17 → 25+" },
     { "label": "1RM lesté", "value": "35 → 42-45 kg" },
     { "label": "Poids", "value": "83,8 → 80 kg" },
-    { "label": "Objectif", "value": "Muscle-up strict" }
+    { "label": "Objectif", "value": "MU strict enchaîné" }
   ],
 
   "metrics": [
@@ -55,17 +55,18 @@ window.PROGRAM = {
   ],
 
   "notes": [
+    { "label": "Épaule gauche", "text": "Signalée trois fois en S5 : mercredi 19 dès l'échauffement, vendredi 21 (séance écourtée), samedi 22 où elle est apparue sur un upper chest flight pendant la séance ajoutée avec des amis. Règle à appliquer sans réfléchir. VERT — rien à l'échauffement : séance normale. ORANGE — ça tire à l'échauffement ou sur un mouvement : tu supprimes CE mouvement (dips, straight bar dips, écarté / pec deck / upper chest flight, développé) et tu gardes le tirage, qui ne l'irrite pas ; le renfo coiffe se fait quand même. ROUGE — ça réveille la nuit, ça tire au repos, ou tu perds de l'amplitude : kiné avant de continuer le bloc, il reste 7 semaines, une épaule ne se rattrape pas. Et le renfo épaule passe EN PREMIER dans toutes les séances du haut : en S5 il était « tiré en fin de séance » le lundi et « pas eu le temps » le vendredi." },
     { "label": "Pourcentages", "text": "Sur les tractions et les dips, un % se calcule sur la charge TOTALE (poids de corps + lest), jamais sur le lest seul. 1RM total = poids de corps + lest max. Lest à mettre = (% × 1RM total) − poids de corps. Exemple avec les chiffres réels du test S4 : 83 kg de corps + 37,5 kg de lest = 120,5 kg de total ; 90 % = 108,5 kg → 25,5 kg de lest à la ceinture. C'est ce qui a été corrigé après la S3 : les charges de la phase 2 calculées sur le lest seul valaient 95-98 % du total, infaisables en 5x3." },
-    { "label": "Barème phase 2 (test S4)", "text": "TRACTIONS — référence mesurée le 12 août : 1RM lesté 37,5 kg (40 kg raté de 3-4 cm en 1re tentative, 38,5 kg raté ensuite par fatigue) · poids de corps 83 kg → 1RM TOTAL 120,5 kg. Lest correspondant : 80 % → 13,5 kg · 85 % → 19,5 kg · 88 % → 23 kg · 90 % → 25 kg · 92 % → 27,5 kg · 95 % → 31,5 kg · 97 % → 34 kg · 100 % → 37,5 kg. DIPS — mesuré le 14 août : 55 kg validés, 60 kg ratés de peu → 1RM lesté ≈ 57,5 kg → 1RM TOTAL 140,5 kg. Lest correspondant : 78 % → 27,5 kg · 84 % → 35 kg · 87 % → 40 kg · 90 % → 43,5 kg · 95 % → 50 kg. Tout le bloc S5-S8 est réglé là-dessus. Si le poids de corps bouge de plus de 2 kg, ces chiffres se recalculent (le lest baisse quand le corps monte, et inversement)." },
-    { "label": "Mesures", "text": "Les trois chiffres du test S4 existent maintenant, mais AUCUN n'est saisi dans « 📈 Ma progression » : 1RM lesté 37,5 kg (12 août) · max reps 20 (14 août) · 1RM dips ≈ 57,5 kg (14 août). Deux minutes de saisie, et les deux graphiques vides du carnet ont enfin leur premier point — sans ça la comparaison S4 → S8 → S12 est impossible et le cycle se pilote de mémoire. Le poids de corps, lui, est bien suivi (82,8 le 10 août, 83 le 13) : continue, même jour, même heure, à jeun." },
-    { "label": "Fin de séance", "text": "Gainage et étirements sautent dès qu'ils sont en fin de séance jambes : ils sont placés EN PREMIER. La seule ligne facultative de la séance jambes, ce sont les mollets." },
+    { "label": "Barème phase 2 (test S4)", "text": "TRACTIONS — référence mesurée le 12 août : 1RM lesté 37,5 kg (40 kg raté de 3-4 cm en 1re tentative, 38,5 kg raté ensuite par fatigue) · poids de corps 83 kg → 1RM TOTAL 120,5 kg. Lest correspondant : 80 % → 13,5 kg · 85 % → 19,5 kg · 88 % → 23 kg · 90 % → 25 kg · 92 % → 27,5 kg · 95 % → 31,5 kg · 97 % → 34 kg · 100 % → 37,5 kg. DIPS — mesuré le 14 août : 55 kg validés, 60 kg ratés de peu → 1RM lesté ≈ 57,5 kg → 1RM TOTAL 140,5 kg. Lest correspondant : 78 % → 27,5 kg · 84 % → 35 kg · 87 % → 40 kg · 90 % → 43,5 kg · 95 % → 50 kg. Tout le bloc S5-S8 est réglé là-dessus. Si le poids de corps bouge de plus de 2 kg, ces chiffres se recalculent (le lest baisse quand le corps monte, et inversement). VÉRIFIÉ EN S5, et le barème se lit AUSSI en nombre de reps : les tractions à 90 % sont sorties en 5x3 sans qu'il se sente « à sa limite » (sa résistance en reps est au-dessus des tables, d'où le passage à 92-95 %), mais les dips à 84 % ont cassé en 4x8 — échec à la 8e rep de la 3e série, à la 6e de la 4e. Un 4x8 propre, c'est 78-80 %, pas 84 % : au-delà, on descend le nombre de reps au lieu de monter le lest." },
+    { "label": "Mesures", "text": "Le poids de corps est bien suivi (82,8 le 10 août, 83 le 13, 82,8 le 23) : continue, même jour, même heure, à jeun. Les trois chiffres du test S4 existent depuis six semaines et AUCUN n'est saisi dans « 📈 Ma progression » : 1RM lesté 37,5 kg (12 août) · max reps 20 (14 août) · 1RM dips ≈ 57,5 kg (14 août). Le carnet affiche encore « aucune mesure enregistrée » sur deux graphiques sur trois alors que les valeurs sont écrites dans tes remarques de séance. Deux minutes de saisie, et la comparaison S4 → S8 → S12 devient possible au lieu de se piloter de mémoire." },
+    { "label": "Ce qui est en dernier ne se fait pas", "text": "Six semaines, aucune exception. Gainage et étirements de la séance jambes : sautés tant qu'ils étaient en fin de séance, faits dès qu'ils sont passés en premier. Transitions MU déplacées en fin de test S4 : sautées. Renfo épaule, false grip et straight bar dips du vendredi : « pas eu le temps » trois vendredis sur quatre. Circuit abdos du mercredi : « pas le temps de faire » en S3 comme en S5. À partir de la S6, les séances du haut sont numérotées 1→7 par ordre d'importance, renfo épaule en 1 : quand une séance doit être écourtée, ce sont les DERNIÈRES lignes qui sautent, et c'est prévu. La seule ligne vraiment facultative de la séance jambes, ce sont les mollets." },
     { "label": "Face pulls", "text": "Déplacés du mardi au lundi (S4) : ils partent en ÉCHAUFFEMENT du jour force, avant les tractions lestées, + 1 série le vendredi. Deux raisons : avant du tirage lourd ils préparent l'épaule au lieu de la fatiguer, et le mardi n'empiète plus sur le volume du mercredi. Charge LÉGÈRE, coudes hauts, aucun haussement d'épaules, la 15e rep doit rester facile — c'est de la prévention, pas un tirage. Si un face pull fatigue, il est trop lourd." },
     { "label": "Tests", "text": "Les tests ne se font plus le même jour. Le 1RM lesté part le MERCREDI (c'est lui qui règle toutes les charges du bloc suivant, il passe donc le plus frais), le max reps PDC + dips + muscle-up le VENDREDI. Un max reps fait 15 min après des singles lourds coûte 2 à 4 reps : l'objectif des 25 reps deviendrait invisible sur le graphique. Même découpage en S4, S8 et S12 pour que les trois tests soient comparables. VÉRIFIÉ EN S4 : le découpage a marché (20 reps mesurées, 55 kg aux dips), mais les transitions MU reportées en fin de séance ont été sautées — comme tout ce qui est placé en fin de séance depuis le début du carnet (voir la note « Fin de séance »). En S8 le muscle-up repasse donc en OUVERTURE, limité à 3 singles à froid pour ne coûter qu'une rep au max reps qui suit." },
-    { "label": "Muscle-up", "text": "Diagnostic S3 : le MU passe bras après bras parce que le gainage lâche au moment de la bascule. Les jambes partent, le corps n'est plus un bloc, l'élan du tirage se dissipe et il ne reste plus assez de hauteur pour passer les deux épaules ensemble — d'où l'impossibilité d'en enchaîner un deuxième. Le facteur limitant n'est PAS la force de tirage (4x4 @24 kg, largement au-dessus du seuil). Trois leviers : négatifs de MU (impossible de tricher bras après bras), tractions explosives jambes strictement immobiles, gainage hollow. Et une règle : tentatives de MU uniquement à froid, en singles, 3-6 max — fatigué, tu ancres le mauvais pattern." },
-    { "label": "Course", "text": "Trois semaines de suite, la sortie « facile » du dimanche est partie en intensité (S3 : 6 km « assez moyenne forte » · S4 : 5x600 m à 3:30-3:45 alors que la consigne disait VRAIMENT facile, ressenti « Dur »). On arrête de faire semblant : tu as le droit d'aimer courir vite, mais pas la veille du jour force. Règle de la phase 2 — l'intensité (fractionné, tapis rapide, côtes) se fait le SAMEDI, jamais le dimanche ; le dimanche est soit du vrai facile (allure où tu peux parler, ~5:45-6:15/km), soit rien. Si les jambes sont cuites du samedi, la sortie du dimanche saute — c'est le lundi qui compte." },
-    { "label": "Charge totale", "text": "4 séances + 1 course/semaine, c'est dense. Si fatigue ou douleur épaule, allège en priorité le mercredi (volume), puis la séance jambes — jamais la force ni l'explosivité." },
-    { "label": "GTG optionnel", "text": "(jeu/dim uniquement désormais, si zéro douleur ni courbatures) : 3-5 séries de 5 reps à ~50% du max, loin de l'échec." },
-    { "label": "Nutrition", "text": "déficit léger ~2 300-2 400 kcal · 160-170 g de protéines/jour. Chaque kilo perdu vers 80 kg = plus de reps et un muscle-up plus accessible." }
+    { "label": "Muscle-up", "text": "Diagnostic S3 : le MU passe bras après bras parce que le gainage lâche au moment de la bascule. Les jambes partent, le corps n'est plus un bloc, l'élan du tirage se dissipe et il ne reste plus assez de hauteur pour passer les deux épaules ensemble — d'où l'impossibilité d'en enchaîner un deuxième. Le facteur limitant n'est PAS la force de tirage (4x4 @24 kg, largement au-dessus du seuil). Trois leviers : négatifs de MU (impossible de tricher bras après bras), tractions explosives jambes strictement immobiles, gainage hollow. Et une règle : tentatives de MU uniquement à froid, en singles, 3-6 max — fatigué, tu ancres le mauvais pattern. RÉSULTAT EN S5 : le diagnostic était le bon. Négatifs + explosives jambes bloquées + hollow → 2 MU LES DEUX BRAS ENSEMBLE le 21 août, la 3e tentative « cassée » et arrêt immédiat. C'était la bonne décision, elle devient la règle : on s'arrête à la première rep cassée, jamais « une dernière pour finir ». L'objectif du carnet n'est plus d'obtenir le muscle-up mais de l'enchaîner." },
+    { "label": "Course", "text": "Trois semaines de suite, la sortie « facile » du dimanche est partie en intensité (S3 : 6 km « assez moyenne forte » · S4 : 5x600 m à 3:30-3:45 alors que la consigne disait VRAIMENT facile, ressenti « Dur »). On arrête de faire semblant : tu as le droit d'aimer courir vite, mais pas la veille du jour force. Règle de la phase 2 — l'intensité (fractionné, tapis rapide, côtes) se fait le SAMEDI, jamais le dimanche ; le dimanche est soit du vrai facile (allure où tu peux parler, ~5:45-6:15/km), soit rien. Si les jambes sont cuites du samedi, la sortie du dimanche saute — c'est le lundi qui compte. AJOUT S5 : le badminton et le tennis comptent comme des séances, et comme du travail bras au-dessus de la tête — 1h30 + 1h le week-end où l'épaule a lâché. UN seul créneau week-end à partir de la S6 : course OU sport, pas les deux." },
+    { "label": "Charge totale", "text": "Semaine 5 réelle : 4 séances de salle + une séance upper body avec des amis + 1h30 de badminton + 1h de tennis. C'est la semaine où l'épaule a lâché, ce n'est pas un hasard. Le format tient à 4 séances + 1 créneau week-end. Si fatigue ou douleur, allège en priorité le mercredi (volume), puis la séance jambes — jamais la force ni le muscle-up." },
+    { "label": "GTG optionnel", "text": "Suspendu tant que l'épaule tire. Sinon (jeu/dim uniquement, si zéro douleur ni courbatures) : 3-5 séries de 5 reps à ~50% du max, loin de l'échec." },
+    { "label": "Nutrition", "text": "Le poids ne bouge plus : 82,8 kg le 10 août, 83 le 13, 82,8 le 23 — soit -1 kg en cinq semaines pour un objectif à 80. Déficit léger ~2 300-2 400 kcal · 160-170 g de protéines/jour. À ce rythme les 80 kg ne tomberont pas d'ici la S12 : c'est un arbitrage défendable (tu progresses en force et en muscle-up, et un déficit franc coûterait les deux), mais autant le choisir plutôt que le subir. Chaque kilo en moins = des reps et un muscle-up plus faciles." }
   ],
 
   "weeks": [
@@ -255,82 +256,88 @@ window.PROGRAM = {
 
     /* ------ Semaine 6 — Phase 2 (adaptée après bilan S3) ------ */
     [
-      { "day": 0, "type": "force", "title": "Force max — montée", "ex": [
-        "Face pulls 3x15 LÉGERS — en échauffement, avant les tractions",
-        "Tractions lestées 5x3 @27,5 kg ↗ (92% du total) — repos 3 min",
-        "Puis 2x2 @31,5 kg ↗ (95% du total — 30 kg + un petit disque, ou 32,5 si tu n'as pas mieux)",
-        "Tirage vertical lourd 4x5 à RPE 8-9",
-        "Renfo épaule 3x12 + coiffe 2x10",
-        "Développé couché haltères 4x8 @32-34 kg ↗"
+      { "day": 0, "type": "force", "title": "Force max — montée, épaule d'abord", "ex": [
+        "1) Face pulls 3x15 LÉGERS + coiffe des rotateurs 2x10 @6 kg + renfo épaule 3x12 (rotations externes et internes) — EN ÉCHAUFFEMENT, avant les tractions. Bloc entier remonté en tête (S5 : « exercice épaule tiré fin de séance » le lundi, puis douleur épaule gauche mercredi, vendredi ET samedi)",
+        "2) Tractions lestées 5x3 @27,5 kg ↗ (92% du total) — repos 3 min (S5 : 5x3 @25 kg = 90 %, « je me suis pas senti à ma limite, j'ai jamais douté de ma capacité » — la montée à 92 % est confirmée par le ressenti)",
+        "3) Puis 2x2 @31,5 kg ↗ (95% du total — 30 kg + un petit disque, ou 32,5 si tu n'as pas mieux). La 2e rep doit être dure, jamais d'échec",
+        "4) Tirage vertical lourd 4x5 à RPE 8-9 — le tirage lourd n'irrite pas l'épaule, il ne bouge pas",
+        "5) Développé couché haltères 4x8 @32 kg — charge MAINTENUE, pas de montée cette semaine (S5 : 3x8 + 1x6 @32 kg, et l'épaule a lâché dans la foulée)",
+        "PAS d'écarté / pec deck / upper chest flight tant que l'épaule tire — c'est le mouvement exact sur lequel la douleur est apparue le samedi 22",
+        "Curl biceps 3x8-10 @16 kg (S5 : 3x8 @16 + 1x8 @14)"
       ]},
-      { "day": 1, "type": "jambes", "title": "Jambes lourdes & renfo", "ex": [
+      { "day": 1, "type": "jambes", "title": "Jambes & renfo", "ex": [
         "Gainage latéral 3x45s/côté + hollow hold 3x30s — EN PREMIER (face pulls passés au lundi)",
-        "Leg press 5x5 @240-250 kg ↗ — repos 2 min chrono",
+        "Squat barre 4x8 @60-70 kg ↗ (S5 : 3x8 @50 + 1x8 @60, exécution propre — le squat est revenu de toi-même, il reste au programme)",
+        "Leg press 4x8 @200-210 kg (S5 : la séance a été celle d'un ami, 4x8 @100-140 — on repart du niveau S3 avant de viser 240-250, un 5x5 lourd après deux semaines légères ne se rattrape pas)",
         "Soulevé de terre roumain 4x6 @100-105 kg ↗ avec sangles",
-        "Fentes bulgares 3x8/jambe @2x16 kg (progression des fentes marchées de la phase 1)",
-        "Leg extension 3x10-12",
-        "Mollets 3x15 si le temps le permet"
+        "Hip thrust 3x8 @80 kg (adopté en S5)",
+        "Leg extension 3x10-12 · mollets 4x10 @30 kg si le temps le permet",
+        "SÉANCE COURTE OU À PLUSIEURS : squat + SDT + gainage, et c'est déjà une vraie séance jambes — 3 lignes faites valent mieux que 6 lignes prévues"
       ]},
       { "day": 2, "type": "volume", "title": "Volume — pyramide", "ex": [
-        "Tractions PDC pyramide 14-12-10-8-6 + série max cible 13-14 ↗ — même échauffement long qu'en S3/S5",
-        "Rowing horizontal 4x10 @60 kg avec pause 1s en contraction",
-        "Dips lestés 4x6 @40 kg ↗ (87,5% du total, recalé sur le 1RM dips mesuré en S4 : ≈ 57,5 kg de lest)",
-        "Circuit abdos x3"
+        "1) Tractions PDC pyramide 14-12-10-8-6 + série max cible 13-14 ↗ — même échauffement long qu'en S3/S5, c'est lui qui supprime la congestion",
+        "2) Circuit abdos x3 : crunch poulie 8-10 @36 kg · obliques 8-10 @36-38 kg · gainage 3x40s — REMONTÉ avant le rowing et les dips (S3 et S5 : « pas le temps de faire » chaque fois qu'il est en dernier)",
+        "3) Rowing horizontal 4x10 @55 kg avec pause 1s en contraction, tu remontes à 60 seulement si la 4e série reste propre (S5 : parti à 60, redescendu à 51 dès la 2e série)",
+        "4) Dips lestés 4x6 @35-37,5 kg ↘ par rapport aux 40 prévus (S5 : 4x8 @35 kg = 84 % → échec à la 8e rep de la 3e série puis à la 6e de la 4e, dans une séance déjà marquée par l'épaule. On garde 6 reps et on ne monte le lest que si les 4 séries sortent avec une rep de réserve)",
+        "Si l'épaule tire à l'échauffement : dips supprimés cette semaine, pompes lestées 3x12 à la place"
       ]},
-      { "day": 4, "type": "explo", "title": "Muscle-up & explosivité", "ex": [
-        "Transitions muscle-up 4x3 en début de séance, frais",
-        "Muscle-up : 4-6 tentatives, 1 par série — objectif du bloc : le premier MU avec les deux bras ensemble",
-        "Muscle-up négatif 4x2, descente 4-5s ↗ (S5 : 4x2 en 3-4s — on ralentit la descente avant d'ajouter des reps)",
-        "Tractions explosives 4x4 jambes immobiles (objet serré entre les genoux) · tirage explosif +5 kg 3x3",
-        "False grip hang 3x25s",
-        "Straight bar dips 3x8-10 ↗",
-        "Renfo épaule complet (frontales · tirage arrière · coiffe) + face pulls 1x15"
+      { "day": 4, "type": "explo", "title": "Muscle-up & explosivité — ordre imposé", "ex": [
+        "1) Renfo épaule complet EN PREMIER : coiffe 2x10 @6 kg · élévations frontales 2x10 @6 kg unilat. · tirage arrière 2x10 @8 kg · face pulls 1x15 (S3 et S5 : « pas eu le temps » — placé en dernier il ne se fait jamais, et c'est l'assurance épaule de tout le bloc)",
+        "2) False grip hang 3x25s — juste après, tant que la prise est fraîche",
+        "3) Transitions muscle-up 4x3, frais",
+        "4) Muscle-up : 3 tentatives MAXIMUM, 1 par série, arrêt à la première rep « cassée » (S5 : 2 MU les deux bras ensemble, 3e cassée, tu t'es arrêté — c'était juste, ça devient la règle). L'objectif n'est plus le premier MU mais le deuxième d'affilée",
+        "5) Muscle-up négatif 4x2, descente 4-5s ↗ (S5 : 4x2 en 3-4s — on ralentit la descente avant d'ajouter des reps)",
+        "6) Tractions explosives 4x4 jambes immobiles (objet serré entre les genoux) · tirage explosif +5 kg 3x3 (S5 : les 2 dernières séries n'arrivaient plus au pec — c'est le signal d'arrêt de la série, pas une série à finir)",
+        "7) Straight bar dips 3x8-10 AU POIDS DE CORPS, sans descendre sous 90° — première ligne supprimée si l'épaule parle"
       ]},
-      { "day": 5, "type": "course", "title": "Course — fractionné", "ex": [
-        "Échauffement + 5x800 m allure 10 km, récup 400 m"
+      { "day": 5, "type": "course", "title": "Course ou sport — un seul", "ex": [
+        "UN seul créneau ce week-end, le SAMEDI : soit fractionné (échauffement + 5x800 m allure 10 km, récup 400 m), soit un sport (badminton, tennis) — pas les deux (S5 : 1h30 de badminton + 1h de tennis dans la semaine où l'épaule a lâché)",
+        "Dimanche : vrai facile ou rien, jamais d'intensité la veille du jour force (voir la note « Course »)"
       ]}
     ],
 
     /* ------ Semaine 7 — Phase 2 (adaptée après bilan S3) ------ */
     [
       { "day": 0, "type": "force", "title": "Force max — proche du max", "ex": [
-        "Face pulls 3x15 LÉGERS — en échauffement, avant les tractions",
-        "Tractions lestées 3x1 @34 puis 37,5 puis 40 kg ↗ (97% → 100% → au-delà) — repos 4 min. Les 40 kg ratés de 3-4 cm au test S4 se repassent ici, frais et sans avoir enchaîné 5 tentatives avant.",
-        "Back-off 2x3 @23 kg (88% du total)",
-        "Renfo épaule 3x12 + coiffe 2x10",
-        "Développé couché haltères 4x8 @34 kg ↗"
+        "1) Face pulls 3x15 LÉGERS + coiffe 2x10 @6 kg + renfo épaule 3x12 — EN ÉCHAUFFEMENT, avant les tractions",
+        "2) Tractions lestées 3x1 @34 puis 37,5 puis 40 kg ↗ (97% → 100% → au-delà) — repos 4 min. Les 40 kg ratés de 3-4 cm au test S4 se repassent ici, frais et sans avoir enchaîné 5 tentatives avant.",
+        "CONDITION : la tentative à 40 kg ne se fait que si la S6 s'est passée SANS douleur d'épaule. Sinon tu restes à 5x3 @27,5 kg et les 40 attendent le test du mercredi de la S8",
+        "3) Back-off 2x3 @23 kg (88% du total)",
+        "4) Développé couché haltères 4x8 @34 kg ↗ si l'épaule est muette · charge maintenue à 32 sinon. Toujours pas d'écarté / pec deck"
       ]},
-      { "day": 1, "type": "jambes", "title": "Jambes lourdes & renfo", "ex": [
+      { "day": 1, "type": "jambes", "title": "Jambes & renfo", "ex": [
         "Gainage latéral 3x45s/côté + hollow hold 3x30s — EN PREMIER (face pulls passés au lundi)",
-        "Leg press 5x5 @250-260 kg ↗ — repos 2 min chrono",
+        "Squat barre 4x8 @70-75 kg ↗",
+        "Leg press 4x8 @210-220 kg ↗ — repos 2 min chrono",
         "Soulevé de terre roumain 4x6 @105-110 kg ↗ avec sangles",
-        "Fentes bulgares 3x8/jambe",
-        "Leg extension 3x10-12",
-        "Mollets 3x15 si le temps le permet"
+        "Hip thrust 3x8 @85-90 kg ↗",
+        "Leg extension 3x10-12 · mollets si le temps le permet",
+        "SÉANCE COURTE : squat + SDT + gainage"
       ]},
       { "day": 2, "type": "volume", "title": "Volume — pyramide", "ex": [
-        "Tractions PDC pyramide 15-13-11-9-7 ↗ + série max cible 14-15 ↗",
-        "Rowing horizontal 4x10 @60 kg avec pause 1s",
-        "Dips lestés 4x5 @45 kg ↗ (90% du total — dernier palier avant le retest de S8)",
-        "Circuit abdos x3"
+        "1) Tractions PDC pyramide 15-13-11-9-7 ↗ + série max cible 14-15 ↗",
+        "2) Circuit abdos x3 (avant le rowing et les dips)",
+        "3) Rowing horizontal 4x10 @60 kg avec pause 1s",
+        "4) Dips lestés 4x5 @40-42,5 kg ↗ (dernier palier avant le retest de S8 — recalé à la baisse depuis le 4x8 @35 kg cassé en S5). Supprimés si l'épaule tire à l'échauffement"
       ]},
-      { "day": 4, "type": "explo", "title": "Muscle-up & explosivité", "ex": [
-        "Transitions muscle-up 4x3 · puis MU complet 5-6 tentatives",
-        "Muscle-up négatif 3x3 ↗ descente 5s pleines (S6 : 4x2 en 4-5s)",
-        "Tractions explosives 4x4 jambes immobiles",
-        "False grip hang 3x30s ↗",
-        "Straight bar dips 3x10 ou lestés 3x6 @10 kg ↗",
-        "Renfo épaule complet + face pulls 1x15"
+      { "day": 4, "type": "explo", "title": "Muscle-up & explosivité — ordre imposé", "ex": [
+        "1) Renfo épaule complet + face pulls 1x15 — EN PREMIER",
+        "2) False grip hang 3x30s ↗",
+        "3) Transitions muscle-up 4x3, frais",
+        "4) Muscle-up : 4 tentatives maximum, 1 par série, arrêt à la première rep cassée — on cherche la 2e rep d'affilée",
+        "5) Muscle-up négatif 3x3 ↗ descente 5s pleines (S6 : 4x2 en 4-5s)",
+        "6) Tractions explosives 4x4 jambes immobiles",
+        "7) Straight bar dips 3x10 au poids de corps"
       ]},
-      { "day": 5, "type": "course", "title": "Course — sortie facile", "ex": [
-        "8 km allure facile"
+      { "day": 5, "type": "course", "title": "Course ou sport — un seul", "ex": [
+        "Un seul créneau : 8 km allure facile, ou un sport — jamais les deux le même week-end"
       ]}
     ],
 
     /* ------ Semaine 8 — Phase 2 (deload + test) ------ */
     [
       { "day": 0, "type": "deload", "title": "Deload force", "ex": [
-        "Face pulls 2x15 légers — en échauffement",
+        "Face pulls 2x15 légers + coiffe 2x10 @6 kg — en échauffement",
         "Tractions lestées 3x3 @13,5 kg ↘ (80% du total — le « 15-17,5 kg » écrit ici avant le test était calculé faux, voir la note « Barème phase 2 ») — volume -40%, loin de l'échec",
         "Renfo épaule léger 2x12"
       ]},
@@ -348,9 +355,9 @@ window.PROGRAM = {
       ]},
       { "day": 4, "type": "test", "title": "Test 2/2 — max reps, dips & muscle-up", "ex": [
         "ORDRE : échauffement complet → muscle-up (3 singles MAX) → max reps → dips. Le MU repasse en ouverture parce qu'en S4, mis en fin de séance, il a purement et simplement sauté — mais il est plafonné à 3 essais pour ne coûter qu'une rep au max reps.",
-        "1) Muscle-up strict, frais, 3 singles : les deux bras ensemble ou non ? (S3 → S4 : décalé, c'est LE marqueur du bloc). Si c'est strict, la phase 3 vise les MU en série et plus le premier MU.",
+        "1) Muscle-up, frais, 3 singles : combien de reps d'affilée ? (S5 : 2 MU les deux bras ensemble, en singles — la question n'est plus « est-ce que ça passe » mais « est-ce que ça s'enchaîne »). Arrêt à la première rep cassée.",
         "2) Test max reps tractions PDC — cible 23-25 (S4 : 20 reps, et dans un contexte de journée très fatigante + séance tardive, donc la vraie valeur de départ est probablement 21-22). Une seule série, strict, jambes immobiles.",
-        "3) Test 1RM dips lestés — cible > 57,5 kg (S4 : 55 validés, 60 ratés de peu). Montée 3 @25 · 2 @40 · 1 @50 · puis +2,5 kg, arrêt au 2e échec.",
+        "3) Test 1RM dips lestés — cible > 57,5 kg (S4 : 55 validés, 60 ratés de peu). Montée 3 @25 · 2 @40 · 1 @50 · puis +2,5 kg, arrêt au 2e échec. À SAUTER si l'épaule a parlé dans les 15 jours : un max de dips sur une épaule irritée coûte plus qu'il ne mesure.",
         "PLANIFIE CE VENDREDI : le test de S4 est tombé un jour épuisant, en soirée. Un max reps se mesure reposé, sinon le graphique mesure ta fatigue et pas ta progression.",
         "Les 3 résultats → « 📈 Ma progression », avec celui de mercredi"
       ]},
@@ -362,9 +369,8 @@ window.PROGRAM = {
     /* ------ Semaine 9 — Phase 3 ------ */
     [
       { "day": 0, "type": "force", "title": "Maintenance force", "ex": [
-        "Face pulls 3x15 LÉGERS — en échauffement, avant les tractions",
+        "Face pulls 3x15 LÉGERS + coiffe 2x10 + renfo épaule 3x12 — en échauffement, avant les tractions",
         "Tractions lestées 4x4 ↘ à ~88% de la charge totale, à recalculer avec le 1RM du test S8 (voir la note « Pourcentages ») — repos 3 min, on entretient, on ne cherche plus",
-        "Renfo épaule 3x12 + coiffe 2x10",
         "Développé couché haltères 4x8 (charge maintenue)"
       ]},
       { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
@@ -380,7 +386,7 @@ window.PROGRAM = {
         "Circuit abdos x3 · gainage"
       ]},
       { "day": 4, "type": "explo", "title": "Muscle-up strict — priorité", "ex": [
-        "Muscle-up : 6-8 singles, 1 par série, repos 90s (S3 : déjà 3 MU en séance bras après bras — la phase 3 vise le strict puis la série)",
+        "Muscle-up : 6-8 singles, 1 par série, repos 90s, arrêt à la première rep cassée (S5 : 2 MU les deux bras ensemble — la phase 3 ne cherche plus le MU, elle cherche l'enchaînement)",
         "Transitions muscle-up 4x3 sans assistance",
         "Tractions explosives 5x3 jambes immobiles — repos 2-3 min",
         "False grip hang 3x30s · Straight bar dips 3x10 (remplace les russian dips : pas de barres parallèles)",
@@ -395,9 +401,8 @@ window.PROGRAM = {
     /* ------ Semaine 10 — Phase 3 ------ */
     [
       { "day": 0, "type": "force", "title": "Maintenance force", "ex": [
-        "Face pulls 3x15 LÉGERS — en échauffement, avant les tractions",
+        "Face pulls 3x15 LÉGERS + coiffe 2x10 + renfo épaule 3x12 — en échauffement, avant les tractions",
         "Tractions lestées 4x4 à ~88% de la charge totale (voir note « Pourcentages »)",
-        "Renfo épaule 3x12 + coiffe 2x10",
         "Développé couché haltères 4x8 (charge maintenue)"
       ]},
       { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
@@ -427,9 +432,8 @@ window.PROGRAM = {
     /* ------ Semaine 11 — Phase 3 ------ */
     [
       { "day": 0, "type": "force", "title": "Maintenance force", "ex": [
-        "Face pulls 3x15 LÉGERS — en échauffement, avant les tractions",
+        "Face pulls 3x15 LÉGERS + coiffe 2x10 + renfo épaule 3x12 — en échauffement, avant les tractions",
         "Tractions lestées 4x4 à ~88% de la charge totale (voir note « Pourcentages »)",
-        "Renfo épaule 3x12 + coiffe 2x10",
         "Développé couché haltères 4x8 (charge maintenue)"
       ]},
       { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
@@ -473,7 +477,7 @@ window.PROGRAM = {
       ]},
       { "day": 4, "type": "test", "title": "TEST FINAL 2/2 — max reps, dips & muscle-up", "ex": [
         "ORDRE : échauffement complet → muscle-up → max reps → dips",
-        "Muscle-up strict : le maximum de reps enchaînées (objectif du cycle : le MU strict, atteint dès la S3 en version décalée)",
+        "Muscle-up strict : le maximum de reps enchaînées (objectif du cycle : le MU strict — décalé dès la S3, les deux bras ensemble en S5)",
         "Test max reps tractions PDC (objectif du cycle : 25, départ 17 — mesuré frais, sans 1RM avant)",
         "Test 1RM dips lestés",
         "Les 3 résultats → « 📈 Ma progression », avec celui de mercredi"

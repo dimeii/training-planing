@@ -4,6 +4,26 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-23 — Bilan S5 : l'épaule passe devant, dips recalés à la baisse, MU les deux bras ensemble
+
+Bilan de fin de S5. La S6 démarre demain.
+
+- **Le muscle-up est passé LES DEUX BRAS ENSEMBLE** : 2 réussis le 21 août, la 3e tentative « cassée » et arrêt immédiat. Le diagnostic de la S4 était donc le bon (le facteur limitant était le gainage à la bascule, pas la force de tirage) et les trois leviers — négatifs, explosives jambes bloquées, hollow — ont payé en deux semaines. L'objectif du carnet passe de « obtenir le MU » à « l'enchaîner » ; sa décision d'arrêter à la rep cassée devient une règle écrite (note « Muscle-up », vignette d'objectif « MU strict enchaîné »).
+- **Douleur épaule gauche signalée trois fois** : mercredi 19 dès l'échauffement, vendredi 21 (séance écourtée), samedi 22 où elle apparaît sur un *upper chest flight* pendant une séance ajoutée avec des amis. C'est le signal dominant de la semaine — et il tombe sur une semaine à 4 séances de salle + 1 séance upper body + 1h30 de badminton + 1h de tennis.
+  - Nouvelle note **« Épaule gauche »** placée en tête du carnet : règle vert / orange / rouge, avec le seuil explicite (douleur nocturne, au repos, ou perte d'amplitude → kiné avant de continuer le bloc). Principe retenu : on coupe le **push** (dips, straight bar dips, écarté / pec deck / upper chest flight, développé en progression) et on **garde le tirage lourd**, qui n'irrite pas l'épaule.
+  - Renfo épaule + coiffe remontés **en échauffement** du lundi (S6→S12) et en **ligne 1** du vendredi. En S5 il était « tiré en fin de séance » le lundi et « pas eu le temps » le vendredi.
+- **Erreur de barème sur les dips, corrigée** : la S5 prescrivait 4x8 @35 kg (84 % du total) → échec à la 8e rep de la 3e série, à la 6e de la 4e. Un 4x8 propre, c'est 78-80 %, pas 84 %. Conséquence sur le bloc : **S6 4x6 @35-37,5** (au lieu de 4x6 @40) et **S7 4x5 @40-42,5** (au lieu de 4x5 @45). La note « Barème phase 2 » gagne la lecture reps↔%.
+- **À l'inverse, les tractions confirment la montée** : 5x3 @25 kg (90 %) sortis avec « je me suis pas senti à ma limite ». Sa résistance en reps est au-dessus des tables → S6 reste à 5x3 @27,5 (92 %) + 2x2 @31,5 (95 %) comme prévu, et la tentative des 40 kg en S7 est maintenue — mais **conditionnée à une S6 sans douleur d'épaule**, sinon report au test du mercredi de la S8.
+- **Séance jambes réécrite sur ce qui se fait réellement** : en S5 elle a été remplacée par celle d'un ami (squat barre 3x8 @50, presse 4x8 @100-140, hip thrust, leg extension). Le 5x5 @240-250 prévu était hors sol. Squat barre et hip thrust sont officialisés, la presse revient à 200-210 (niveau S3) avant de remonter, et une **version courte assumée** est écrite noir sur blanc : squat + SDT + gainage.
+- **Ordre des séances, suite** : la règle maison se confirme une fois de plus (circuit abdos « pas le temps de faire » en S3 comme en S5 ; false grip, straight bar dips et renfo épaule « pas eu le temps » trois vendredis sur quatre). Les séances du haut sont désormais **numérotées 1→7 par ordre d'importance**, abdos remontés avant rowing et dips le mercredi. La note « Fin de séance » devient **« Ce qui est en dernier ne se fait pas »**.
+- **Rowing** : parti à 60 kg, redescendu à 51 dès la 2e série → S6 repart de 55, remontée à 60 seulement si les 4 séries sortent propres.
+- **Week-end** : la note « Course » gagne l'ajout raquette — badminton et tennis comptent comme des séances **et** comme du travail bras au-dessus de la tête. Un seul créneau week-end à partir de la S6, le samedi : course **ou** sport.
+- **Mesures** : le poids de corps est bien suivi (82,8 le 10, 83 le 13, 82,8 le 23) mais il **stagne** — -1 kg en cinq semaines pour un objectif à 80. Note « Nutrition » réécrite autour de l'arbitrage (force et MU progressent, un déficit franc coûterait les deux) plutôt qu'autour du chiffre. Et **6e cycle sans saisie des résultats du test S4** : 37,5 kg · 20 reps · 57,5 kg dips existent dans les remarques de séance mais pas dans « 📈 Ma progression », où deux graphiques sur trois affichent encore « aucune mesure ».
+- `program.js` validé (parse Node OK, 12 semaines, découpage des tests sur deux jours intact).
+- **Incident de synchro à noter** : cette adaptation a d'abord été écrite sur une copie locale en retard de 4 commits (base `c50870e` du 10 août), ce qui aurait écrasé les trois cycles S4. Détectée au push (non-fast-forward), rejouée sur `origin/main`, la version périmée est conservée sur la branche `wip/bilan-s5-v1`. **Réflexe à prendre : `git fetch` avant toute adaptation.**
+
+---
+
 ## 2026-08-17 — S4 complète : 20 reps, 1RM dips 57,5 kg, phase 2 recalée sur les dips
 
 Bilan de **fin de S4** (le vendredi de test et le week-end, qui manquaient à l'export du 13). La S5 démarre aujourd'hui.
