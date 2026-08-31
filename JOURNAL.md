@@ -4,6 +4,23 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-08-31 — Bilan S6 : 40 kg passés, tout le barème tractions remonte de 2,5 kg
+
+Bilan de fin de S6 (export du 31 août). La S7 démarre aujourd'hui.
+
+- **Le chiffre du cycle : 40 kg de lest passés en single le 24 août** — en fin de séance, après 5x3 @27,5 et 2x2 @31,5. Ce sont exactement les 40 kg ratés de 3-4 cm au test du 12 août : douze jours plus tard ils passent, et fatigué. Nouveau barème sur 40 kg + 82,7 kg de corps = **122,7 kg de total**, soit **+2,5 kg sur chaque palier** (80 % → 15,5 · 88 % → 25 · 92 % → 30 · 95 % → 34 · 97 % → 36,5). Le test du mercredi de S8 vise **42,5-45 kg** ; l'objectif du cycle (43 kg) tombera probablement avec 4 semaines d'avance.
+- **L'épaule : le déplacement du bloc prévention a marché.** S5 = trois séances douloureuses avec le renfo relégué en fin de séance ; S6 = bloc complet en échauffement du lundi → **aucune douleur de la semaine**, un simple titillement aux dips « vite parti ». La note « Épaule gauche » passe de diagnostic à résolution ; le code couleur reste en cas de retour.
+- **Deux séances raccourcies, même cause.** En S6 le vendredi, les **négatifs de MU — ligne prioritaire du bloc, placés en 5e position — ont sauté** (« pas le temps ») alors que les lignes 6 et 7 ont été faites : numéroter ne suffit pas, il faut raccourcir. Le vendredi passe à 6 lignes (négatifs en 3, transitions supprimées puisqu'il passe des MU complets, renfo épaule réduit à sa version courte). La séance jambes passe à 5 lignes après un abandon en cours de séance (« trop fatigué et saoulé »), avec squat ramené à 65-70 (fait : 60-65), leg press à 200-220 et un rappel **sangles** au SDT — la prise a limité la série trois fois, jamais les jambes.
+- **Série max déplacée en ouverture du mercredi** : en S6 il l'a fait de lui-même avant les séries → **21 reps**, contre 13 en fin de pyramide. C'est la bonne place et c'est la répétition générale du test S8. Pyramide raccourcie à 12-10-8-6 derrière, volume total inchangé (~70 reps).
+- **Dips** : 4x6 @35-37,5 tenus, puis 5 reps @40 sur la dernière série, coupée par une **perte d'équilibre**, pas par la force. S7 fixée à **4x5 @40 kg** (87 % du total) avec la consigne d'équilibre écrite dans la ligne.
+- **Muscle-up** : 1er MU propre avec une simple flexion de jambes sur 4-5 séries, 2e « de plus en plus cassé ». L'objectif du bloc devient **2 reps propres d'affilée**, toujours plafonné à 3-4 tentatives à froid. La S9 est pré-cadrée : si le test S8 valide 2 reps propres, la ligne MU devient des séries de 2 au lieu de singles.
+- **Nouvelle note « Sports ajoutés »** : l'escalade est une séance de tirage complète — celle du samedi de S6 a laissé des courbatures jusqu'au lundi de S7, jour force, ce qui est écrit en tête de la séance du jour. Règle : escalade le samedi = lundi allégé, ou escalade en milieu de semaine. Même logique pour la course : 7 km à 4:34 **le lundi** en S6.
+- **Course** : la règle « intensité le samedi, jamais le dimanche » a tenu deux semaines de suite après trois semaines de dérive. Conservée telle quelle.
+- **Mesures** : vrai progrès — le 1RM lesté est saisi (40 kg le 24/08) et le poids de corps suivi (82,7 kg, -1,1). **Le max reps reste le seul graphique vide** alors que deux valeurs existent (20 le 14/08, 21 le 26/08) : c'est celui qui porte l'objectif du cycle.
+- `program.js` validé (parse Node OK, 12 semaines, 13 notes, structure des séances intacte).
+
+---
+
 ## 2026-08-23 — Bilan S5 : l'épaule passe devant, dips recalés à la baisse, MU les deux bras ensemble
 
 Bilan de fin de S5. La S6 démarre demain.
