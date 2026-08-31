@@ -313,7 +313,7 @@ window.PROGRAM = {
         "Séance ramenée à 5 lignes : en S6 tu t'es arrêté au soulevé de terre, « trop fatigué et saoulé pour continuer ». Une séance jambes de 45 min se fait en entier ; celle de 7 lignes se fait à moitié depuis la S1.",
         "1) Hollow hold 3x30s + gainage latéral 3x45s/côté — EN PREMIER",
         "2) Squat barre 4x8 @65-70 kg ↗ (S6 : 4x8 @60-65 kg, exécution propre — les 70-75 écrits ici sautaient une marche)",
-        "3) Leg press 4x8 @200-220 kg — repos 2 min chrono (S6 : 200-210 « ok »)",
+        "3) Fentes marchées 3x12/jambe @2x16 kg ↗ — REMPLACENT le leg press, qui doublonnait avec le squat (même mouvement bilatéral, même dominante quadriceps). Les fentes apportent ce qui manquait : de l'unilatéral, de la stabilité de hanche et du transfert direct sur la course. S3 : 3x10-12 @32 kg en 2 kettlebells de 16 — c'est la seule ligne jambes que tu aies fait progresser toi-même. Variante plus dure si tu veux : fentes bulgares 3x8/jambe.",
         "4) Soulevé de terre roumain 4x6 @95-100 kg ↗ AVEC SANGLES — sangles dans le sac la veille (S6 : redescendu à 90 kg, sangles oubliées ; c'est la 3e fois que la prise limite la série, jamais les jambes)",
         "5) Leg extension 3x10-12 · mollets 3x15 seulement s'il reste du temps"
       ]},
@@ -350,7 +350,7 @@ window.PROGRAM = {
       ]},
       { "day": 1, "type": "deload", "title": "Jambes — deload & mobilité", "ex": [
         "Hollow hold 3x20s + mobilité hanches/chevilles 10 min — EN PREMIER",
-        "Leg press léger 3x10 ↘ (~60% des charges habituelles)",
+        "Squat barre léger 3x10 ↘ (~60% des charges habituelles)",
         "Fentes au poids de corps 2x10/jambe",
         "Étirements ischios 10 min"
       ]},
@@ -385,7 +385,8 @@ window.PROGRAM = {
       { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
         "Gainage 3x40s + hollow hold 3x30s — EN PREMIER (face pulls passés au lundi)",
         "Squat jumps 3x5 (explosivité, transfert muscle-up et course)",
-        "Leg press 3x6 (charge maintenue, pas de record)",
+        "Squat barre 3x6 (charge maintenue, pas de record)",
+        "Fentes marchées 3x10/jambe @2x16 kg (le leg press est sorti du programme en S7 : il doublonnait avec le squat)",
         "Soulevé de terre roumain 3x8 avec sangles",
         "Mollets debout 3x15 si le temps le permet"
       ]},
@@ -417,7 +418,8 @@ window.PROGRAM = {
       { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
         "Gainage 3x40s + hollow hold 3x30s — EN PREMIER (face pulls passés au lundi)",
         "Squat jumps 3x5 (explosivité, transfert muscle-up et course)",
-        "Leg press 3x6 (charge maintenue, pas de record)",
+        "Squat barre 3x6 (charge maintenue, pas de record)",
+        "Fentes marchées 3x10/jambe @2x16 kg (le leg press est sorti du programme en S7 : il doublonnait avec le squat)",
         "Soulevé de terre roumain 3x8 avec sangles",
         "Mollets debout 3x15 si le temps le permet"
       ]},
@@ -448,7 +450,8 @@ window.PROGRAM = {
       { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
         "Gainage 3x40s + hollow hold 3x30s — EN PREMIER (face pulls passés au lundi)",
         "Squat jumps 3x5 (explosivité, transfert muscle-up et course)",
-        "Leg press 3x6 (charge maintenue, pas de record)",
+        "Squat barre 3x6 (charge maintenue, pas de record)",
+        "Fentes marchées 3x10/jambe @2x16 kg (le leg press est sorti du programme en S7 : il doublonnait avec le squat)",
         "Soulevé de terre roumain 3x8 avec sangles",
         "Mollets debout 3x15 si le temps le permet"
       ]},
@@ -476,7 +479,7 @@ window.PROGRAM = {
         "Tractions lestées léger, loin de l'échec ↘"
       ]},
       { "day": 1, "type": "deload", "title": "Jambes — très léger (semaine de test)", "ex": [
-        "Leg press léger 2x8 ↘",
+        "Squat barre léger 2x8 ↘",
         "Mobilité complète 15 min"
       ]},
       { "day": 2, "type": "test", "title": "TEST FINAL 1/2 — 1RM lesté", "ex": [
