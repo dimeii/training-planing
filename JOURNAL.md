@@ -4,6 +4,19 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-07 (fin) — Forme réelle du muscle-up : le critère du test était faux
+
+Précision donnée par Mehdi en fin de journée : ses muscle-ups ne sont **pas stricts** — il y a un **léger appel des deux genoux** et une **rotation des poignets** par-dessus la barre au moment de la transition. Tel qu'il était écrit, le test du 18 septembre (« arrêt à la première rep cassée : jambes qui montent, passage bras après bras, kip ») lui aurait donné **zéro**, alors qu'il enchaîne 3 reps.
+
+- **Les deux éléments ne sont pas de même nature, et le carnet ne les traite plus pareil.** La rotation des poignets n'est pas une triche : sans false grip le poignet est sous la barre et doit tourner pour passer au-dessus — c'est la technique, pas un défaut. Le léger appel de genoux, lui, est bien une assistance (kip minimal) : forme parfaitement légitime et la plus répandue, mais pas le strict.
+- **Le test mesure désormais la CONSTANCE de sa forme, pas un label.** Une série max à froid, arrêt à la première rep où **l'appel augmente** (genoux plus hauts, hanches qui balancent), où les bras passent l'un après l'autre, ou où la transition cale. Les 2 séries de rappel deviennent utiles : la première avec un objet serré entre les genoux, comme repère de progression vers le strict, à coût nul en temps.
+- **Le constat qui oriente la phase 3** : sa force n'est pas le frein. 40 kg de lest = **48 % du poids de corps** ajouté en traction, 57,5 kg aux dips = **69 %** — les deux au-dessus du seuil habituellement admis pour un MU strict (~40-50 %). Ce qui manque, c'est la hauteur de tirage et la transition. Le chemin vers le strict est donc écrit dans cet ordre : **false grip d'abord**, puis la hauteur (barre au bas du sternum), puis les négatifs lents, puis la réduction de l'appel.
+- **Conséquence immédiate sur le programme** : le false grip hang remonte en **2e position** du vendredi de la S10 — c'est précisément la ligne qui a sauté trois vendredis sur quatre (note « Ce qui est en dernier ne se fait pas »), et c'est celle qui débloque l'objectif.
+- Vignette d'objectif : « MU strict enchaîné » → **« MU enchaînés · vers le strict »**. Note « Muscle-up » réécrite, titres et critères d'arrêt harmonisés en S8, S9, S10 et au test final de la S13.
+- `program.js` validé (parse Node OK, 13 semaines, 17 notes, 4 objectifs).
+
+---
+
 ## 2026-09-07 (suite) — Le deload passe à une semaine pleine, les tests glissent en S9
 
 Demande de Mehdi le lundi soir, après la séance de deload force : « le temps de deload n'est pas assez long d'après mes recherches ». Il a raison, et pour une raison plus précise que la durée : **la S8 telle qu'elle était écrite faisait deux choses incompatibles** — décharger et pointer un maximum — avec deux jours d'allègement seulement devant un test de 1RM.
