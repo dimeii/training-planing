@@ -4,6 +4,21 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-07 (suite) — Le deload passe à une semaine pleine, les tests glissent en S9
+
+Demande de Mehdi le lundi soir, après la séance de deload force : « le temps de deload n'est pas assez long d'après mes recherches ». Il a raison, et pour une raison plus précise que la durée : **la S8 telle qu'elle était écrite faisait deux choses incompatibles** — décharger et pointer un maximum — avec deux jours d'allègement seulement devant un test de 1RM.
+
+- **État réel de la décharge avant modification** : dernière séance lourde le lundi 31/08 (5x3 @30, 2x2 @34 en échec), dernier gros volume le mercredi 02/09 (max 20 reps + pyramide + dips 4x5 @40), week-end du 5-6 en jambes légères, lundi 07/09 en deload à 80 %. Soit 7 jours sans volume et 9 sans tirage lourd au moment du test prévu — la fourchette basse d'un taper valable, mais une semaine de test qui n'a de deload que le nom.
+- **Ce qui a été fait** : la **S8 devient une semaine de décharge complète sans aucun test** (mercredi à volume moitié, vendredi technique), une **nouvelle S9 porte les deux tests** (1RM mercredi **16 septembre**, muscle-up + max reps + dips vendredi **18**), et le programme passe à **13 semaines** — test final déplacé du 7-9 au **14-16 octobre**. Phases recalées : phase 2 = S5-S9, phase 3 = S10-S13.
+- **Le point technique, écrit en note « Deload & taper »** : un taper coupe le VOLUME de 40-60 %, il ne coupe pas l'INTENSITÉ. Dix jours sans rien toucher de lourd et on arrive plat au test. D'où deux rappels d'intensité inscrits au plan — **2x1 @30 kg (92 %) le vendredi 11** et **3x2 @25 kg (88 %) le lundi 14**, jamais à l'échec, deux singles à chaque fois. La note fixe aussi les repères réutilisables : décharge toutes les 4-6 semaines de charge, une semaine pleine, 10-14 jours entre le dernier gros volume et un test.
+- **La même logique appliquée en amont du test final** : le volume du mercredi de la S12 est déjà réduit (« début du taper », 8 jours avant) et le lundi de la S13 passe de « tractions lestées léger » à 2x1 @92 %.
+- **Le mercredi de la S8 sert de galop d'essai** à la pyramide montante-descendante décidée pour la phase 3 : 5-7-9-7-5, 33 reps, la moitié du volume habituel. La note « Volume » change de titre (à partir de la S10) et le prochain max reps est celui du 18 septembre, puis plus rien jusqu'au test final.
+- **Prise protégée sur dix jours** : pas de soulevé de terre, pas de false grip, pas de dead hang lourd, et **pas d'escalade sur les deux week-ends** avant le 16 — c'est elle qui a coûté le lundi force deux semaines de suite. Elle rouvre après le vendredi 18.
+- La séance du lundi 07/09, déjà faite, est **laissée telle qu'elle a été réalisée** (le carnet doit refléter ce qui a été fait, pas ce qu'on aurait écrit après coup).
+- `program.js` validé (parse Node OK, 13 semaines, 17 notes, structure des séances conforme à `validateProgram`, dates vérifiées : S9 = 14-20 sept, S13 = 12-18 oct).
+
+---
+
 ## 2026-09-07 — Bilan S7 : 3 muscle-ups d'affilée, et une semaine de test à protéger
 
 Bilan de fin de S7 (export du 7 septembre). La S8 — deload + double test — démarre aujourd'hui.
