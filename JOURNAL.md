@@ -4,6 +4,24 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-07 — Bilan S7 : 3 muscle-ups d'affilée, et une semaine de test à protéger
+
+Bilan de fin de S7 (export du 7 septembre). La S8 — deload + double test — démarre aujourd'hui.
+
+- **Le chiffre de la semaine : 3 muscle-ups enchaînés**, puis 2-2-2-2 sur les séries suivantes. En sept semaines la ligne est passée de « bras après bras » (S3) à « les deux bras ensemble » (S5) à un enchaînement de trois. L'objectif du carnet — deux propres d'affilée — est atteint sur le papier, avec une réserve honnête : c'était une séance « d'amusement avec les amis ». **Le test du vendredi change donc de nature** : plus de comptage de tentatives, mais UNE série max à froid, arrêt à la première rep cassée. C'est ce chiffre qui décide si la phase 3 travaille des séries de MU ou revient à des singles propres.
+- **L'échec du lundi est un échec de prise, pas de force.** 5x3 @30 kg (92 %) passés sans commentaire, puis 2x2 @34 kg (95 %) en échec — « avant-bras trop fatigué à cause de l'escalade ». C'est la **deuxième fois de suite** que l'escalade du samedi coûte le lundi force. La note « Sports ajoutés » passe de conseil à règle, et une **nouvelle note « Prise & avant-bras »** rassemble le motif : SDT coupé par la prise en S2, S6 et S7 (réglé aux gants le 1er septembre, 100 kg), tractions lourdes en S7. La prise a limité une série lourde quatre fois ; les dorsaux, jamais.
+- **La S8 est donc écrite autour d'une seule idée : amener les avant-bras intacts au mercredi.** Lundi deload sans dead hang lourd, sans false grip ; mardi jambes sans soulevé de terre ; magnésie au test ; et une **montée de test économe en reps** (5 à vide · 3 @15 · 1 @25 · 1 @32 · 1 @37 · 1 @40 · +2,5) au lieu des 10 reps d'échauffement de la version S4. Bonne nouvelle de départ : le week-end du 5-6 septembre n'a eu qu'une séance jambes légère.
+- **Test 1RM mercredi, cible 42,5-45 kg**, avec une consigne d'honnêteté ajoutée : si 40 kg sortent limite, on note 40 et on s'arrête — c'est ce chiffre qui écrit tout le barème de la phase 3, un record arraché fausserait douze semaines.
+- **Le format court est validé.** La séance jambes ramenée à 5 lignes a été faite **en entier**, avec du dépassement partout (squat 80 kg au lieu de 65-70, fentes 2x20 au lieu de 2x16, SDT 100 kg) — après un abandon en cours de séance en S6 sur le format à 7 lignes. Raccourcir n'a rien coûté. Le vendredi reste douteux : les négatifs de MU, le false grip et les straight bar dips reviennent sans le moindre retour.
+- **Décision de Mehdi actée pour la phase 3** : « j'arrête les max toutes les semaines » et « faire une pyramide montante descendante ». Les faits lui donnent raison — 21 reps le 26/08, 20 le 02/09 : un max hebdomadaire ne mesure plus rien à ce niveau, il coûte juste une séance de volume. Nouvelle note **« Volume (nouveau format à partir de la S9) »** : plus de max hebdo (le prochain est celui de la S12), pyramide montante-descendante type 6-8-10-12-10-8-6 à volume constant (~70 reps). Cadrage définitif des séries à la réécriture de la phase 3, après le test de mercredi.
+- **Développé incliné officialisé** (nouvelle note « Push ajouté ») : il a remplacé le couché à plat de lui-même, deux fois dans la semaine, motif « haut des pecs en retard ». Adopté avec deux garde-fous — c'est la première ligne coupée si l'épaule revient (position plus exposée que le plat), et la version du mercredi reste légère. Toujours pas d'écarté / pec deck.
+- **Épaule : deuxième semaine complète sans une seule mention de douleur**, dips à 40 kg et incliné compris. Le déplacement du bloc prévention en échauffement (S6) tient.
+- **Rowing** : 54-61-68-68 en prise serrée, la machine qui « plafonnait à 60 » ne plafonne plus. **Dips** 4x5 @40 kg propres.
+- **Mesures** : le graphique max reps est **toujours vide** après huit semaines, alors qu'il y a maintenant trois valeurs dans les remarques (20 le 14/08, 21 le 26/08, 20 le 02/09). Elles racontent quelque chose d'utile — le max stagne pendant que le lesté prend 5 kg, comportement normal d'un bloc de force max — mais tant qu'elles ne sont pas saisies, la comparaison S4 → S8 → S12 n'existe pas. Poids 82,8 kg (-1 depuis le départ), objectif 80 hors d'atteinte d'ici la S12.
+- `program.js` validé (parse Node OK, 12 semaines, 16 notes, structure des séances intacte).
+
+---
+
 ## 2026-08-31 — Bilan S6 : 40 kg passés, tout le barème tractions remonte de 2,5 kg
 
 Bilan de fin de S6 (export du 31 août). La S7 démarre aujourd'hui.
