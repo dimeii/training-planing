@@ -4,6 +4,21 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-14 — Bilan S8 : la décharge a marché, le rappel d'intensité du vendredi a sauté
+
+Bilan de fin de S8 (export du 14 septembre), la semaine de décharge complète décidée le 7. La S9 — les deux tests, mercredi 16 et vendredi 18 — démarre aujourd'hui.
+
+- **La décharge a fait exactement ce qu'on lui demandait** : les trois séances réalisées (lundi force, mardi jambes, mercredi volume) sont notées **« Facile »**, sans une seule mention de douleur d'épaule — quatrième semaine consécutive depuis que le bloc prévention est passé en échauffement. Le galop d'essai de la pyramide montante-descendante (5-7-9-7-5, 33 reps) est passé « sans difficultés », ce qui valide le confort du format sans rien prouver de plus : c'était la moitié du volume, en semaine allégée.
+- **Le trou de la semaine : le vendredi 11 n'a pas été fait** (« pas fait, repos »). C'était le premier des deux rappels d'intensité du taper — 2x1 @30 kg. Conséquence chiffrée : hors les 3x3 @15,5 kg du lundi, **rien au-dessus de 88 % depuis le 31 août**, soit 16 jours au moment du test de mercredi. C'est précisément le scénario contre lequel la note « Deload & taper » avait été écrite (le volume se coupe, l'intensité se garde).
+- **Correction appliquée au lundi 14** : la séance garde ses 3x2 @25 kg (88 %) et reçoit **un single @30 kg (92 %)**, quatre minutes de repos avant, jamais à l'échec, pas de deuxième tentative s'il monte lentement. Sept reps en tout dans la séance — le volume reste au plancher, le système nerveux revoit du lourd 48 h avant le test. La consigne du mercredi a été réécrite en conséquence, avec un repère honnête : après seize jours sans très lourd, une première montée « lente mais solide » est normale et ne justifie pas de redescendre la charge.
+- **Le constat qui change d'échelle : ce n'est plus la fin de séance qui saute, c'est LE VENDREDI.** Trois vendredis sur quatre écourtés en phase 2, puis celui du 11 annulé en entier. Le lundi, le mardi et le mercredi, eux, se font — neuf semaines de suite, sans exception. Or le vendredi porte le muscle-up et le false grip, c'est-à-dire l'objectif du cycle. La note « Ce qui est en dernier ne se fait pas » enregistre le motif et pose l'alternative à trancher à la réécriture de la phase 3 : soit le bloc muscle-up remonte en **ouverture du mercredi** (le seul jour à 100 % de réalisation), soit le vendredi devient une séance de trois lignes qui tient en 30 minutes. Dans l'immédiat, le vendredi 18 est marqué comme non négociable, avec un **repli sur le samedi 19** — jamais un recollage sur le mercredi, qui coûterait 2 à 4 reps au max reps.
+- **Consigne de prise partiellement contournée** : deadlift 4x10 @60 kg ajouté le mardi (« très facile ») alors que la semaine interdisait le SDT, et séance renfo en groupe avec AMRAP le jeudi. Sans conséquence à huit jours du test, mais le rappel est réécrit dans la séance du mardi de la S9, où il reste à 24 h du 1RM.
+- **Mesures, neuvième cycle** : l'export affiche toujours « Aucune mesure enregistrée » pour le max reps, et le poids de corps n'a plus bougé depuis le 31 août (82,8 kg). Les trois chiffres du 16 et du 18 sont la dernière occasion propre de remplir la courbe avant le test final.
+- **Phase 3 laissée telle quelle volontairement** : son cadrage (séries de la pyramide, charges à 88 %, format du muscle-up, emplacement du vendredi) dépend des trois chiffres de cette semaine. Réécriture complète prévue au bilan de la S9.
+- `program.js` validé (parse Node OK, 13 semaines, 17 notes, structure des séances conforme).
+
+---
+
 ## 2026-09-07 (fin) — Forme réelle du muscle-up : le critère du test était faux
 
 Précision donnée par Mehdi en fin de journée : ses muscle-ups ne sont **pas stricts** — il y a un **léger appel des deux genoux** et une **rotation des poignets** par-dessus la barre au moment de la transition. Tel qu'il était écrit, le test du 18 septembre (« arrêt à la première rep cassée : jambes qui montent, passage bras après bras, kip ») lui aurait donné **zéro**, alors qu'il enchaîne 3 reps.
