@@ -4,6 +4,22 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-14 (soir) — Test 1RM : 45 kg, l'objectif du cycle tombe avec quatre semaines d'avance
+
+Test avancé du mercredi au lundi le matin même, fait le soir. Déroulé complet : 3 @15 · 1 @25 · 1 @32 · 1 @42,5 (palier sauté par erreur de comptage, la rep passe quand même) · 1 @45 avec un petit appel en haut · 1 @45 propre · 1 @45 propre · 1 @47,5 raté de quelques centimètres · 1 @47,5 en échec.
+
+- **45 kg de lest, et ce n'est pas un maximum arraché** : trois singles à 45 dans la même séance, dont deux sans la moindre réserve signalée. Le 1RM réel est probablement entre 46 et 47 — les 47,5 sont partis à quelques centimètres — mais le carnet programme sur **45**, la valeur validée. C'est la règle d'honnêteté posée au test de la S4, et elle a déjà payé une fois : les 40 kg ratés de 3-4 cm le 12 août sont passés douze jours plus tard.
+- **Progression du cycle : 35 → 37,5 (12 août) → 40 (24 août) → 45 (14 septembre)**, soit +10 kg en huit semaines, dont +5 sur les trois dernières — un bloc de force max suivi d'une décharge complète. La décharge n'a rien coûté, elle a rapporté, et ce n'est pas anecdotique vu qu'elle avait été rallongée à contrecœur de la S8.
+- **L'erreur de comptage a bien servi** : viser 37,5 et charger 42,5 a supprimé un palier intermédiaire, donc deux ou trois reps de prise économisées avant les tentatives hautes — exactement ce que la note « Prise & avant-bras » cherchait à obtenir avec la montée « économe en reps ». À reprendre volontairement au test final : 5 à vide · 3 @15 · 1 @28 · 1 @38 · 1 @44 · puis les tentatives.
+- **Barème entièrement recalculé.** La note « Barème phase 2 » devient **« Barème phase 3 (mesuré le 14 septembre) »** : poids de corps 82,8 kg + 45 kg = **127,8 kg de total**. Lest correspondant : 80 % → 19,5 · 85 % → 26 · 88 % → 30 · 90 % → 32 · 92 % → 35 · 95 % → 38,5 · 100 % → 45. Soit **+5 kg sur chaque palier**. Le repère qui parle : le 5x3 @30 kg de la S7, qui était son 92 %, devient son **88 %** — la même séance est passée du travail lourd au travail d'entretien.
+- **Objectif du cycle dépassé** : la cible du graphique 1RM passe de 43 à **47,5 kg** pour le test final du 14 octobre, et la vignette d'objectif affiche « 35 → 45 kg ✅ · cible 47,5 ».
+- **Un point de forme à surveiller** : « un petit kick au bout » sur le premier 45. Les deux singles suivants sont notés propres, donc le chiffre tient — mais c'est le même appel léger que sur ses muscle-ups (note « Muscle-up »), et il apparaît ici sous charge maximale. À regarder au test final : si l'appel devient systématique au-dessus de 90 %, c'est la hauteur de tirage qui plafonne, pas la force.
+- **Poids de corps à repeser** : le barème est calculé sur les 82,8 kg du 31 août, faute de mesure plus récente. Deux kilos d'écart déplacent tous les paliers.
+- Reste de la semaine confirmé : max reps + volume allégé le mercredi 16 au soir, muscle-up + 1RM dips le vendredi 18.
+- `program.js` validé (parse Node OK, 13 semaines, 17 notes, barème vérifié au calcul).
+
+---
+
 ## 2026-09-14 — Bilan S8 : la décharge a marché, le rappel d'intensité du vendredi a sauté
 
 Bilan de fin de S8 (export du 14 septembre), la semaine de décharge complète décidée le 7. La S9 — les deux tests, mercredi 16 et vendredi 18 — démarre aujourd'hui.
