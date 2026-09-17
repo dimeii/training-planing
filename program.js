@@ -57,25 +57,25 @@ window.PROGRAM = {
   ],
 
   "notes": [
-    { "label": "Structure de semaine (à partir du 21 septembre)", "text": "LUN — salle, haut du corps : tractions lestées + push, 45 min. MAR — circuit hyrox / jambes, 45 min. MER — muscle-up + EMOM tractions + finisher, 50-60 min. JEU — course qualité (seuil ou intervalles), 45-55 min. VEN — REPOS COMPLET. SAM — sortie longue. DIM — footing facile 5-8 km, ou rien. POURQUOI CE DÉCOUPAGE : les trois séances de salle sont posées sur LUNDI, MARDI et MERCREDI, les trois seuls jours réalisés à 100 % depuis dix semaines. Le vendredi, réalisé une fois sur deux, devient un repos assumé plutôt qu'une séance fantôme. Les deux jours durs pour les jambes (jeudi qualité, samedi long) sont séparés par 48 h, et le mercredi ne touche pas aux jambes pour cette raison — son circuit est volontairement haut du corps. TROIS SÉANCES DE SALLE AU LIEU DE QUATRE, C'EST L'ARBITRAGE : on ne peut pas monter à trois courses par semaine sans rendre un créneau. Ce qui est rendu, c'est la séance d'explosivité du vendredi, dont le contenu essentiel (muscle-up, false grip) est déjà remonté au mercredi. SI UNE SEMAINE DÉRAILLE, l'ordre de priorité est : sortie longue > séance de seuil > tractions lestées du lundi > muscle-up du mercredi > circuit du mardi > footing du dimanche." },
+    { "label": "Structure de semaine (revue le 17 septembre)", "text": "CONTRAINTE NOUVELLE : cours le MERCREDI de 19h30 à 22h30 à partir du 23 septembre, et visio d'1h le JEUDI soir. Le mercredi soir n'existe plus, or c'est là que se trouvait la séance clé. LA SEMAINE DEVIENT : LUN — muscle-up + false grip + tractions lourdes + push, 60 min · MAR — circuit hyrox / jambes, 45 min · MER — REPOS (cours) · JEU — course qualité calée autour de la visio, 40 à 55 min · VEN — EMOM tractions + circuit street, 40 min · SAM — sortie longue · DIM — footing facile, ou repêchage du vendredi. LA LOGIQUE : tout ce qui décide du cycle (muscle-up, false grip, tractions lourdes) remonte au LUNDI, le jour le plus fiable du carnet — dix semaines sans une seule exception. Le vendredi ne porte plus que du volume, donc ce qu'on peut perdre. L'ordre du lundi est aussi le bon ordre physiologique : explosif et technique à froid, force max ensuite, push en dernier. POURQUOI LE VENDREDI REDEVIENT UNE SÉANCE, alors qu'il tombait une semaine sur deux : il n'est plus la 4e séance de salle au bout d'une série lundi-mardi-mercredi, il arrive APRÈS UN JOUR DE REPOS, il dure 40 minutes, et il a un repêchage explicite le dimanche. Trois raisons qui n'existaient pas en phase 2. SI UNE SEMAINE DÉRAILLE, l'ordre de priorité est : sortie longue > lundi (muscle-up + lourd) > séance de seuil du jeudi > circuit du mardi > EMOM du vendredi > footing du dimanche. VARIANTE À PROPOSER SI TU PEUX T'ENTRAÎNER AVANT LE COURS (18h-19h15 le mercredi) : la séance EMOM + circuit street revient au mercredi et le vendredi redevient un repos complet. Dis-le et j'inverse — c'est le meilleur des deux mondes." },
     { "label": "Allures de course (référence : 10 km en 47:00)", "text": "Toutes les allures du plan sortent de ce seul chiffre : 10 km en 47:00 = 4:42/km. FACILE / ENDURANCE FONDAMENTALE : 5:45-6:00/km — c'est l'allure où tu peux tenir une conversation en phrases complètes, et c'est 80 % de ton volume. SORTIE LONGUE : 5:40-5:55/km. ALLURE SEMI CIBLE (sub 1h50) : 5:12/km — filet de sécurité sub 2h à 5:41/km, pari sub 1h45 à 4:58/km. SEUIL / TEMPO : 4:50-4:55/km, l'allure que tu tiendrais ~1h en course, trois mots pas trois phrases. INTERVALLES 1000 m : 4:30-4:35/km. INTERVALLES 800 m : 4:20-4:25/km. Et une correction : les 5x600 m courus à 3:30-3:45/km le 16 août étaient à allure 1500 m, largement trop vite pour un plan semi — ça ne développe pas l'endurance, ça fatigue. SI TON 10 KM EST EN RÉALITÉ PLUS RAPIDE (le 5 km en 21:30 sur tapis et les 7 km à 4:34 suggèrent plutôt 45'), toutes ces allures descendent de 10 s/km et la cible passe à 1h45. Un 10 km chronométré sur les six premières semaines permettrait de trancher — mais pas en compétition la semaine d'une sortie longue." },
     { "label": "Hyrox — stations et substitutions", "text": "LE FORMAT : 8 fois (1 km de course + une station), dans cet ordre — 1000 m ski erg · 50 m sled push · 50 m sled pull · 80 m burpee broad jump · 1000 m rameur · 200 m farmers carry 2x24 kg · 100 m fentes sandbag 20 kg · 100 wall balls 6 kg. LA QUALITÉ QUI DÉCIDE DU CHRONO, ce n'est aucune des stations prises isolément : c'est la CAPACITÉ À COURIR AVEC LE CARDIO DÉJÀ EN L'AIR. C'est pour ça que le plan contient une simulation « course compromise » (mardi de la S15 : 4 tours de 800 m + une station de 2 min enchaînés) plutôt que des stations travaillées séparément. SUBSTITUTIONS quand le matériel n'est pas libre : ski erg → rameur, corde à sauter 3 min, ou tirage poulie haute debout · sled push → fentes marchées lestées, presse à cuisses en séries longues, ou pousser une plaque sur le sol · sled pull → tirage poulie basse lourd en continu, ou rowing · burpee broad jump → burpees + saut en longueur, faisable partout · rameur → vélo, assault bike, ou tapis · farmers carry → 2 kettlebells 20-24 kg · fentes sandbag → fentes barre sur le dos ou 2 kettlebells · wall balls → medecine ball contre un mur, ou thrusters haltère. CE QUE TU AS DÉJÀ : ton squat à 80 kg, tes fentes à 2x20 kg et ton soulevé de terre à 100 kg couvrent largement la partie force des stations. Ce qui te manque n'est pas la force, c'est la filière — et c'est la course qui la construit. JUSQU'AU 22 NOVEMBRE, l'hyrox est le FORMAT du travail de force, pas un objectif concurrent : un circuit par semaine, jamais à fond la veille d'une séance de course. Le vrai bloc hyrox commence le 23 novembre, avec le bilan du semi." },
     { "label": "Épaule gauche", "text": "Signalée trois fois en S5 (mercredi 19 dès l'échauffement, vendredi 21 séance écourtée, samedi 22 sur un upper chest flight). RÉSOLU EN S6 : bloc épaule complet remonté en échauffement du lundi → aucune douleur de la semaine, un simple titillement aux dips le mercredi, « c'est vite parti ». CONFIRMÉ EN S7 : deuxième semaine complète sans la moindre mention de douleur, y compris sur les dips lestés à 40 kg et sur du développé incliné ajouté deux fois. La cause était la place du renfo, pas la charge. Ça ne bouge plus : le renfo épaule est EN PREMIER dans les séances du haut, point. Le code couleur reste valable si ça revient. VERT — rien à l'échauffement : séance normale. ORANGE — ça tire à l'échauffement ou sur un mouvement : tu supprimes CE mouvement (dips, straight bar dips, écarté / pec deck / upper chest flight, développé) et tu gardes le tirage, qui ne l'irrite pas ; le renfo coiffe se fait quand même. ROUGE — ça réveille la nuit, ça tire au repos, ou tu perds de l'amplitude : kiné avant de continuer le bloc, il reste 6 semaines, une épaule ne se rattrape pas." },
-    { "label": "Deload & taper", "text": "LE PRINCIPE, valable pour les deux échéances de ce carnet : un taper coupe le VOLUME de 40 à 60 %, il ne coupe PAS l'intensité. Dix jours sans rien toucher de lourd (ou de rapide) et on arrive plat — le système nerveux se désamorce et la performance baisse au lieu de monter. CE QUI A ÉTÉ VÉRIFIÉ EN SEPTEMBRE : la décharge de la S8 a très bien marché côté volume (les trois séances notées « Facile ») et le 1RM a pris +5 kg derrière — mais le rappel d'intensité du vendredi 11 n'a PAS été fait, ce qui a laissé 14 jours sans rien au-dessus de 88 % devant le test. Leçon appliquée deux fois : un rappel d'intensité posé un VENDREDI a une chance sur deux de sauter, donc il se place en DÉBUT de semaine (lundi 12 octobre pour le test de tractions, lundi 16 novembre pour le semi). TAPER TRACTIONS (S12-S13) : volume du mercredi à la moitié, dernier contact lourd le lundi 5 octobre, rappel à 92 % le lundi 12, test le mercredi 14. TAPER SEMI (S17-S18) : le volume de course baisse de 40 % en S17 et de 65 % en S18, mais les allures restent — 4x1000 à allure 10 km le 12 novembre, 8 km à allure course le 14, des rappels de 1 min à 5:12 le 17 et le 21. Zéro séance de salle dure en semaine 18, et plus aucune courbature possible à partir du 9 novembre. Repères généraux : une décharge toutes les 4 à 6 semaines de charge, une semaine pleine, et 10 à 14 jours entre le dernier gros volume et un test (dernière grosse sortie longue le 7 novembre, soit 15 jours avant le semi)." },
+    { "label": "Deload & taper", "text": "LE PRINCIPE, valable pour les deux échéances de ce carnet : un taper coupe le VOLUME de 40 à 60 %, il ne coupe PAS l'intensité. Dix jours sans rien toucher de lourd (ou de rapide) et on arrive plat — le système nerveux se désamorce et la performance baisse au lieu de monter. CE QUI A ÉTÉ VÉRIFIÉ EN SEPTEMBRE : la décharge de la S8 a très bien marché côté volume (les trois séances notées « Facile ») et le 1RM a pris +5 kg derrière — mais le rappel d'intensité du vendredi 11 n'a PAS été fait, ce qui a laissé 14 jours sans rien au-dessus de 88 % devant le test. Leçon appliquée deux fois : un rappel d'intensité posé un VENDREDI a une chance sur deux de sauter, donc il se place en DÉBUT de semaine (lundi 12 octobre pour le test de tractions, lundi 16 novembre pour le semi). TAPER TRACTIONS (S12-S13) : volume du vendredi à la moitié, dernier contact lourd le lundi 5 octobre, rappel à 92 % le lundi 12, premier test le jeudi 15. TAPER SEMI (S17-S18) : le volume de course baisse de 40 % en S17 et de 65 % en S18, mais les allures restent — 4x1000 à allure 10 km le 12 novembre, 8 km à allure course le 14, des rappels de 1 min à 5:12 le 17 et le 21. Zéro séance de salle dure en semaine 18, et plus aucune courbature possible à partir du 9 novembre. Repères généraux : une décharge toutes les 4 à 6 semaines de charge, une semaine pleine, et 10 à 14 jours entre le dernier gros volume et un test (dernière grosse sortie longue le 7 novembre, soit 15 jours avant le semi)." },
     { "label": "Pourcentages", "text": "Sur les tractions et les dips, un % se calcule sur la charge TOTALE (poids de corps + lest), jamais sur le lest seul. 1RM total = poids de corps + lest max. Lest à mettre = (% × 1RM total) − poids de corps. Exemple avec les chiffres à jour : 82,5 kg de corps + 45 kg de lest = 127,5 kg de total ; 92 % = 117,3 kg → 35 kg de lest à la ceinture. Même calcul aux dips : 82,5 + 65 = 147,5 kg ; 78 % = 115 kg → 32,5 kg de lest. C'est ce qui a été corrigé après la S3 : les charges de la phase 2 calculées sur le lest seul valaient 95-98 % du total, infaisables en 5x3." },
-    { "label": "Barème phase 3 (mesuré les 14 et 16 septembre)", "text": "TRACTIONS — 45 kg de lest, lundi 14 septembre, à froid et en ouverture de séance. Déroulé : 3 @15 · 1 @25 · 1 @32 · 1 @42,5 (palier sauté par erreur de comptage, la rep passe quand même) · 1 @45 avec un petit appel en haut · puis 1 @45 et encore 1 @45 PROPRES · 1 @47,5 raté de quelques centimètres · 1 @47,5 en échec. Trois singles à 45 kg dans la même séance, ce n'est pas un maximum arraché : c'est une charge tenue. Le 1RM réel est probablement entre 46 et 47, mais on programme sur 45, la valeur validée. PROGRESSION : 35 kg au départ (20 juillet, estimation), 37,5 le 12 août, 40 le 24 août, 45 le 14 septembre — +10 kg en huit semaines, dont +5 sur un bloc de force max suivi d'une décharge complète. L'objectif du cycle (43 kg) est dépassé avec quatre semaines d'avance, la cible du graphique est passée à 47,5 kg pour le test final du 14 octobre. POIDS DE CORPS ENFIN REPESÉ : 82,5 kg le 15 septembre (c'est lui qui rend le calcul juste) → 1RM TOTAL 127,5 kg. Lest correspondant : 80 % → 19,5 kg · 85 % → 26 kg · 88 % → 30 kg · 90 % → 32 kg · 92 % → 35 kg · 95 % → 38,5 kg · 100 % → 45 kg. Repère concret : le 5x3 @30 kg de la S7, qui était ton 92 %, est devenu ton 88 % — la même séance est désormais du travail de maintenance, et c'est exactement ce qu'elle est en S10. DIPS — RETESTÉS LE 16 SEPTEMBRE, en même temps que le max reps : 57,5 puis 60 puis 65 kg validés, échec à 70. Le barème d'août (57,5 kg) est périmé de 7,5 kg. Nouveau 1RM lesté 65 kg → 1RM TOTAL 147,5 kg. Lest correspondant : 78 % → 32,5 kg · 80 % → 35,5 kg · 84 % → 41,5 kg · 87 % → 46 kg · 90 % → 50 kg · 95 % → 57,5 kg. Toutes les lignes de dips de la phase 3 sont recalées là-dessus : l'ancien « 4x8 à 78 % » valait 27,5 kg, il vaut maintenant 32,5. Si le poids de corps bouge de plus de 2 kg, tout se recalcule (le lest baisse quand le corps monte, et inversement)." },
+    { "label": "Barème phase 3 (mesuré les 14 et 16 septembre)", "text": "TRACTIONS — 45 kg de lest, lundi 14 septembre, à froid et en ouverture de séance. Déroulé : 3 @15 · 1 @25 · 1 @32 · 1 @42,5 (palier sauté par erreur de comptage, la rep passe quand même) · 1 @45 avec un petit appel en haut · puis 1 @45 et encore 1 @45 PROPRES · 1 @47,5 raté de quelques centimètres · 1 @47,5 en échec. Trois singles à 45 kg dans la même séance, ce n'est pas un maximum arraché : c'est une charge tenue. Le 1RM réel est probablement entre 46 et 47, mais on programme sur 45, la valeur validée. PROGRESSION : 35 kg au départ (20 juillet, estimation), 37,5 le 12 août, 40 le 24 août, 45 le 14 septembre — +10 kg en huit semaines, dont +5 sur un bloc de force max suivi d'une décharge complète. L'objectif du cycle (43 kg) est dépassé avec quatre semaines d'avance, la cible du graphique est passée à 50 kg à ta demande pour le test final du JEUDI 15 OCTOBRE (47,5 reste le chiffre attendu, 50 le pari). POIDS DE CORPS ENFIN REPESÉ : 82,5 kg le 15 septembre (c'est lui qui rend le calcul juste) → 1RM TOTAL 127,5 kg. Lest correspondant : 80 % → 19,5 kg · 85 % → 26 kg · 88 % → 30 kg · 90 % → 32 kg · 92 % → 35 kg · 95 % → 38,5 kg · 100 % → 45 kg. Repère concret : le 5x3 @30 kg de la S7, qui était ton 92 %, est devenu ton 88 % — la même séance est désormais du travail de maintenance, et c'est exactement ce qu'elle est en S10. DIPS — RETESTÉS LE 16 SEPTEMBRE, en même temps que le max reps : 57,5 puis 60 puis 65 kg validés, échec à 70. Le barème d'août (57,5 kg) est périmé de 7,5 kg. Nouveau 1RM lesté 65 kg → 1RM TOTAL 147,5 kg. Lest correspondant : 78 % → 32,5 kg · 80 % → 35,5 kg · 84 % → 41,5 kg · 87 % → 46 kg · 90 % → 50 kg · 95 % → 57,5 kg. Toutes les lignes de dips de la phase 3 sont recalées là-dessus : l'ancien « 4x8 à 78 % » valait 27,5 kg, il vaut maintenant 32,5. Si le poids de corps bouge de plus de 2 kg, tout se recalcule (le lest baisse quand le corps monte, et inversement)." },
     { "label": "Mesures", "text": "Le carnet a enfin des chiffres dedans : 1RM lesté 40 kg (24/08) puis 45 kg (15/09), poids de corps 82,5 kg (15/09), et le premier point du graphique max reps. RESTENT À SAISIR, tous les deux datés du 16 septembre : le MAX REPS À 23 (record) et le 1RM DIPS À 65 KG. CINQ GRAPHIQUES DEPUIS LE 17 SEPTEMBRE : max reps (17 → 25) · 1RM lesté tractions (35 → 50, cible relevée à ta demande) · 1RM lesté dips (47 → 70) · SORTIE LONGUE (12 → 19 km, nouveau — c'est le graphique qui porte le semi, une valeur par samedi) · poids de corps (83,8 → 80). La sortie longue est celui qu'il faut vraiment tenir à jour : c'est la seule métrique qui prédit le chrono du 22 novembre, bien mieux que le fractionné. Une ligne par semaine, dix secondes." },
-    { "label": "Ce qui est en dernier ne se fait pas", "text": "Sept semaines d'observation, aucune exception : gainage et étirements de la séance jambes, transitions MU reportées en fin de test, renfo épaule et false grip du vendredi, circuit abdos du mercredi — tout ce qui est placé en dernier saute, tout ce qui remonte en tête se fait. Puis le constat a changé d'échelle : ce n'est pas seulement la fin de séance qui saute, c'est LE VENDREDI — écourté ou annulé une semaine sur deux depuis la S5, celui du 11 septembre annulé en entier, alors que lundi, mardi et mercredi se font depuis dix semaines sans une seule exception. DEUX DÉCISIONS EN DÉCOULENT, prises les 17 septembre. (1) LE BLOC MUSCLE-UP + FALSE GRIP EST EN OUVERTURE DU MERCREDI, le seul jour à 100 % de réalisation : l'objectif du cycle ne se joue plus le jour le plus fragile du carnet. (2) LE VENDREDI EST SUPPRIMÉ — plus une séance courte, plus une séance facultative : un REPOS. C'était la conclusion logique. On arrête de réparer le vendredi, on arrête de compter dessus, et le jour libéré sert à absorber les trois courses de la semaine. Pour le reste la règle tient : séances du haut à 4-5 lignes maximum, numérotées par ordre d'importance, et quand une séance doit être écourtée ce sont les dernières lignes qui sautent — c'est prévu. Vérifié en S7 : la séance jambes ramenée à 5 lignes a été faite EN ENTIER, avec du dépassement partout, après un abandon en cours de séance en S6 sur le format à 7 lignes." },
+    { "label": "Ce qui est en dernier ne se fait pas", "text": "Sept semaines d'observation, aucune exception : gainage et étirements de la séance jambes, transitions MU reportées en fin de test, renfo épaule et false grip du vendredi, circuit abdos du mercredi — tout ce qui est placé en dernier saute, tout ce qui remonte en tête se fait. Puis le constat a changé d'échelle : ce n'est pas seulement la fin de séance qui saute, c'est LE VENDREDI — écourté ou annulé une semaine sur deux depuis la S5, celui du 11 septembre annulé en entier, alors que lundi, mardi et mercredi se faisaient sans exception. LA RÈGLE QUI EN SORT, et elle a résisté à deux réorganisations en une journée : CE QUI DÉCIDE DU CYCLE SE MET SUR LE JOUR LE PLUS FIABLE, point. Le 17 septembre au matin, ce jour était le mercredi et le bloc muscle-up y est monté ; le soir, le mercredi est tombé (cours de 19h30 à 22h30) et le bloc est remonté au LUNDI, avec le false grip et les tractions lourdes. Le vendredi, lui, ne porte plus que du volume — l'EMOM — avec un repêchage écrit le dimanche : s'il saute, tu perds des reps, pas l'objectif. Pour le reste : séances du haut à 4-5 lignes maximum, numérotées par ordre d'importance, et quand une séance doit être écourtée ce sont les dernières lignes qui sautent, c'est prévu. Vérifié en S7 : la séance jambes ramenée à 5 lignes a été faite EN ENTIER, avec du dépassement partout, après un abandon en cours de séance en S6 sur le format à 7 lignes." },
     { "label": "Face pulls", "text": "Déplacés du mardi au lundi (S4) : ils partent en ÉCHAUFFEMENT du jour force, avant les tractions lestées, + 1 série le vendredi. VALIDÉ EN S6 : bloc en tête de séance = zéro douleur d'épaule de la semaine, contre trois séances douloureuses en S5 avec le même bloc relégué en fin de séance. Charge LÉGÈRE, coudes hauts, aucun haussement d'épaules, la 15e rep doit rester facile — c'est de la prévention, pas un tirage. Si un face pull fatigue, il est trop lourd." },
-    { "label": "Tests", "text": "Les tests ne se font plus le même jour — un max reps fait 15 min après des singles lourds coûte 2 à 4 reps. CE QUI S'EST PASSÉ EN S9, et qui sert de modèle : le 1RM lesté pris SEUL le lundi 14 (45 kg), puis le max reps ET le 1RM dips ENSEMBLE le mercredi 16 (23 reps et 65 kg, deux records). Tractions et dips ne partagent pas la musculature, ils ne se gênent pas ; ce qui ne se regroupe pas, c'est tirage max + tirage max. TEST FINAL DU CYCLE TRACTIONS, SEMAINE 13 : mercredi 14 octobre le 1RM lesté seul (cible 47,5, pari 50) · vendredi 16 le max reps en ouverture PUIS les dips (cibles 25 et >65) · samedi 17 le muscle-up seul en 20 minutes. Trois créneaux, jamais deux tests de tirage dans la même séance, et le muscle-up jamais derrière une série à l'échec. LE QUATRIÈME TEST DU CARNET EST LE SEMI LUI-MÊME, le dimanche 22 novembre — et la répétition générale est le samedi 14 novembre (14 km dont 8 à allure course), qui vaut validation ou non de la cible sub 1h50. Consigne de planification héritée de la S4 : un test posé un jour épuisant mesure la fatigue, pas la forme." },
-    { "label": "Muscle-up", "text": "Diagnostic S3 : le MU passait bras après bras parce que le gainage lâchait à la bascule — le facteur limitant n'a jamais été la force de tirage. Le diagnostic était le bon : négatifs + tractions explosives jambes bloquées + hollow → 2 MU LES DEUX BRAS ENSEMBLE le 21 août, un premier MU propre en S6, puis 3 D'AFFILÉE le 4 septembre. En sept semaines la ligne est passée de « bras après bras » à un enchaînement de trois. TA FORME EXACTE : ce n'est pas un MU strict — il y a un LÉGER APPEL DES DEUX GENOUX et une rotation des poignets par-dessus la barre. Deux choses très différentes. (1) La ROTATION DES POIGNETS n'est pas de la triche, c'est la technique : sans false grip, le poignet est sous la barre et il DOIT tourner. Le false grip est l'autre chemin — poignet déjà au-dessus au départ, plus rien à tourner ; c'est ce qui rend le strict possible. (2) Le LÉGER APPEL DE GENOUX est bien une assistance, un kip minimal : muscle-up parfaitement légitime, le plus répandu, mais pas le strict. TA FORCE N'EST PAS LE FREIN, et le test du 14-16 septembre l'a confirmé au-delà du doute : 45 kg de lest en traction = 55 % de ton poids de corps ajouté, et 65 kg aux dips = 79 %. Les deux sont très au-dessus du seuil habituellement admis pour un MU strict (~40-50 % en traction). Ce qui manque n'est ni le dos ni les triceps : c'est la HAUTEUR DE TIRAGE et la transition. C'EST LE SEUL CHIFFRE DU CYCLE QUI MANQUE ENCORE — le test du vendredi 18 septembre, une série max à froid, seul, 25 minutes. On n'y mesure pas des reps « strictes » mais TA forme tant qu'elle reste CONSTANTE : arrêt à la première rep où l'appel AUGMENTE (genoux plus hauts, hanches qui balancent), où les bras passent l'un après l'autre, ou où la transition cale. Ce chiffre décide du format du bloc de la phase 3 : 3 reps ou plus → séries de 2 le mercredi ; 1 seule → retour aux singles. LE CHEMIN VERS LE STRICT, dans cet ordre : le false grip d'abord (c'est LA ligne qui sautait systématiquement le vendredi — elle est remontée en 2e position du mercredi pour cette raison), puis la hauteur de tirage (tractions explosives sternum à la barre), puis les négatifs lents, puis réduire l'appel en serrant un objet entre les genoux." },
+    { "label": "Tests", "text": "Les tests ne se font plus le même jour — un max reps fait 15 min après des singles lourds coûte 2 à 4 reps. CE QUI S'EST PASSÉ EN S9, et qui sert de modèle : le 1RM lesté pris SEUL le lundi 14 (45 kg), puis le max reps ET le 1RM dips ENSEMBLE le mercredi 16 (23 reps et 65 kg, deux records). Tractions et dips ne partagent pas la musculature, ils ne se gênent pas ; ce qui ne se regroupe pas, c'est tirage max + tirage max, et le muscle-up ne se mesure jamais derrière une série à l'échec. TEST FINAL DU CYCLE TRACTIONS, SEMAINE 13, recalé sur le cours du mercredi soir : JEUDI 15 OCTOBRE le 1RM lesté seul (cible 47,5, pari 50) · SAMEDI 17 le muscle-up seul en 20 minutes · DIMANCHE 18 le max reps en ouverture PUIS les dips (cibles 25 et >65). Rappel d'intensité le lundi 12, sortie longue allégée le vendredi 16 — la course ne gêne pas ces tests, ce sont les jambes et non la prise. LE QUATRIÈME TEST DU CARNET EST LE SEMI LUI-MÊME, le dimanche 22 novembre, et la répétition générale est le samedi 14 novembre (14 km dont 8 à allure course), qui vaut validation ou non de la cible sub 1h50. Consigne héritée de la S4 : un test posé un jour épuisant mesure la fatigue, pas la forme — et un 1RM à 22h après trois heures de cours ne mesure rien du tout." },
+    { "label": "Muscle-up", "text": "Diagnostic S3 : le MU passait bras après bras parce que le gainage lâchait à la bascule — le facteur limitant n'a jamais été la force de tirage. Le diagnostic était le bon : négatifs + tractions explosives jambes bloquées + hollow → 2 MU LES DEUX BRAS ENSEMBLE le 21 août, un premier MU propre en S6, puis 3 D'AFFILÉE le 4 septembre. En sept semaines la ligne est passée de « bras après bras » à un enchaînement de trois. TA FORME EXACTE : ce n'est pas un MU strict — il y a un LÉGER APPEL DES DEUX GENOUX et une rotation des poignets par-dessus la barre. Deux choses très différentes. (1) La ROTATION DES POIGNETS n'est pas de la triche, c'est la technique : sans false grip, le poignet est sous la barre et il DOIT tourner. Le false grip est l'autre chemin — poignet déjà au-dessus au départ, plus rien à tourner ; c'est ce qui rend le strict possible. (2) Le LÉGER APPEL DE GENOUX est bien une assistance, un kip minimal : muscle-up légitime, le plus répandu, mais pas le strict. TA FORCE N'EST PAS LE FREIN, les tests de septembre l'ont confirmé : 45 kg de lest en traction = 55 % de ton poids de corps ajouté, 65 kg aux dips = 79 %, les deux très au-dessus du seuil habituellement admis pour un MU strict (~40-50 % en traction). Ce qui manque n'est ni le dos ni les triceps : c'est la HAUTEUR DE TIRAGE et la transition. SA PLACE DANS LA SEMAINE, depuis le 17 septembre : EN OUVERTURE DU LUNDI, à froid, avant les tractions lourdes — c'est le jour le plus fiable du carnet et c'est le bon ordre physiologique (explosif puis force max). Le false grip le suit immédiatement. LE CHEMIN VERS LE STRICT, dans cet ordre : le false grip d'abord (c'est LA ligne qui sautait systématiquement quand elle était le vendredi), puis la hauteur de tirage (tractions sternum à la barre), puis les négatifs lents, puis réduire l'appel en serrant un objet entre les genoux. CRITÈRE DE MESURE, inchangé depuis le 7 septembre : on ne compte pas des reps « strictes » mais TA forme tant qu'elle reste CONSTANTE — arrêt à la première rep où l'appel augmente, où les bras passent l'un après l'autre, ou où la transition cale." },
     { "label": "Prise & avant-bras", "text": "Le facteur limitant récurrent du carnet, et il n'a jamais été les dorsaux ni les jambes. Soulevé de terre : série coupée par la prise en S2, en S6 (sangles oubliées) et à moitié en S7 — réglé le 1er septembre avec des gants, 100 kg passés. Tractions lourdes : les 2x2 @34 kg du lundi de la S7 en échec sur les avant-bras, au lendemain d'une séance d'escalade. LA CONSIGNE A PAYÉ EN S9 : dix jours sans dead hang lourd, sans false grip et sans soulevé de terre devant la semaine de test, et les trois chiffres sont tombés — 45 kg, 23 reps, 65 kg aux dips, aucune mention d'avant-bras dans les trois bilans. Les trois règles restent écrites dans le programme : (1) la semaine de test protège la prise — rien qui la crame dans les dix jours qui précèdent ; (2) la montée du 1RM est ÉCONOME EN REPS, parce que chaque rep de palier bas se paye au palier haut ; (3) magnésie ou craie au test, systématiquement. En phase 3 la prise redevient libre (SDT @100 kg avec gants dès la S10), puis elle se reverrouille à partir du lundi de la S12 : plus de soulevé de terre, plus de dead hang lourd jusqu'au test final. Et en positif : l'escalade et le false grip DÉVELOPPENT cette prise — le problème n'est pas de les faire, c'est de les faire la veille d'un jour lourd." },
-    { "label": "EMOM tractions — le format du mercredi", "text": "REMPLACE LA PYRAMIDE À PARTIR DE LA S10, à la demande de Mehdi (17 septembre) : « EMOM 70 % max sur 10-15 min puis circuits ». L'idée est bonne, LE CHIFFRE NE L'EST PAS — et c'est l'erreur la plus courante sur ce format. Sur un EMOM, le repos est ce qui reste de la minute : à 70 % de 23 reps, soit 16 tractions par minute, tu es en échec à la deuxième minute. LA RÉFÉRENCE EST 30-40 % DU MAX, soit 7 à 8 reps par minute pour toi. Ça donne 70-80 reps sur 10 minutes — c'est-à-dire EXACTEMENT le volume de l'ancienne pyramide (60-74 reps), en 10 minutes au lieu de 35, avec la densité en plus. C'est un meilleur outil pour les 25 reps, et c'est le langage hyrox. LE FORMAT RETENU garde la spécificité d'une grosse série : 7-8 reps au top de chaque minute sur les 9 premières, puis LA MINUTE 10 EN SÉRIE LIBRE. Le max sort à la fin, à la fatigue, sans en faire un test — et il n'y a plus aucune série max hebdomadaire jusqu'au 16 octobre (les faits ont tranché : 21 le 26/08, 20 le 02/09, puis 23 le 16/09 après DEUX SEMAINES SANS AUCUN MAX). PROGRESSION DU BLOC : on allonge la durée avant d'augmenter les reps. S10 → 7 reps x 10 min · S11 → 8 x 10 · S12 → 6 x 8 (taper du test) · S14 → 8 x 10 · S15 → 7 x 12 · S16 → 8 x 12 (pic, ~95 reps) · S17-S18 → décharge. SI UNE MINUTE NE PASSE PAS : tu descends d'une rep et tu termines la série. Noter à quelle minute ça a lâché vaut mieux que de s'arracher — c'est cette minute-là qui mesure ta progression d'une semaine sur l'autre." },
+    { "label": "EMOM tractions — le format du vendredi", "text": "REMPLACE LA PYRAMIDE À PARTIR DE LA S10, à ta demande (17 septembre) : « EMOM 70 % max sur 10-15 min puis circuits ». L'idée est bonne, LE CHIFFRE NE L'EST PAS — et c'est l'erreur la plus courante sur ce format. Sur un EMOM, le repos est ce qui reste de la minute : à 70 % de 23 reps, soit 16 tractions par minute, tu es en échec à la deuxième minute. LA RÉFÉRENCE EST 30-40 % DU MAX, soit 7 à 8 reps par minute pour toi. Ça donne 70-80 reps sur 10 minutes — EXACTEMENT le volume de l'ancienne pyramide (60-74 reps), en 10 minutes au lieu de 35, avec la densité en plus. C'est un meilleur outil pour les 25 reps, et c'est le langage hyrox. LE FORMAT RETENU garde la spécificité d'une grosse série : 7-8 reps au top de chaque minute sur les 9 premières, puis LA MINUTE 10 EN SÉRIE LIBRE. Le max sort à la fin, à la fatigue, sans en faire un test — et il n'y a plus aucune série max hebdomadaire jusqu'au 18 octobre (les faits ont tranché : 21 le 26/08, 20 le 02/09, puis 23 le 16/09 après DEUX SEMAINES SANS AUCUN MAX). PROGRESSION DU BLOC, par la durée avant les reps : S10 → 7 x 10 min · S11 → 8 x 10 · S12 → 6 x 8 (taper du test) · S14 → 8 x 10 · S15 → 7 x 12 · S16 → 8 x 12 (pic, ~95 reps) · S17 → 6 x 8. SI UNE MINUTE NE PASSE PAS : tu descends d'une rep et tu termines. Noter à quelle minute ça a lâché vaut mieux que de s'arracher — c'est cette minute-là qui mesure ta progression d'une semaine sur l'autre. PLACE : le vendredi depuis le 17 septembre (le mercredi soir est pris par un cours), avec repêchage le dimanche à la place du footing." },
     { "label": "Push ajouté", "text": "Il ajoute du push de lui-même depuis la S2, et le carnet a pour habitude d'officialiser ce qui se fait déjà plutôt que de le subir. Nouveauté de la S7 : le développé couché à plat a été remplacé de sa propre initiative par du DÉVELOPPÉ INCLINÉ (4x8-10 @40-50-60-60 le lundi, puis encore 10 @40-60-60 le mercredi), motif « développer le haut des pecs en retard ». C'est cohérent, et l'épaule n'a rien dit de la semaine. Deux réserves à tenir : l'incliné met l'épaule dans une position plus exposée que le plat — c'est la première ligne à couper si la douleur revient (note « Épaule gauche », niveau ORANGE) ; et deux séances de push par semaine s'ajoutent à quatre séances de haut du corps, donc l'incliné du mercredi reste léger. Toujours pas d'écarté / pec deck / upper chest flight : c'est le mouvement sur lequel l'épaule a lâché en S5." },
-    { "label": "Course — plan semi (22 novembre)", "text": "OBJECTIF POSÉ LE 17 SEPTEMBRE : semi-marathon le DIMANCHE 22 NOVEMBRE, cible sub 1h50, référence 10 km en 47:00. CE QUE DIT LE CALCUL : un 10 km à 47:00 (4:42/km) prédit un semi autour de 1h43-1h45 pour quelqu'un qui a le volume derrière. Ta vitesse n'est donc pas le problème — sub 1h50 (5:12/km) est largement dans tes cordes, sub 2h (5:41/km) est le filet de sécurité. LE PROBLÈME, C'EST LE VOLUME : tu cours une fois par semaine, 7 à 12 km. Un semi demande trois sorties et une sortie longue qui monte jusqu'à 19 km. Le plan fait exactement ça, en 9 semaines : 23 km hebdo en S10, pic à 37 km en S16, puis affûtage. La sortie longue passe de 12 km (26/09) à 19 km (07/11), avec une semaine d'absorption en S15 et la répétition générale le 14 novembre (14 km dont 8 à allure course). LA RÈGLE QUI DÉCIDE DE TOUT, et c'est ton point faible documenté : 80 % du volume en FACILE. Trois fois en phase 1 la sortie « facile » du dimanche est partie en fractionné (5x600 m à 3:30/km le 16 août, la veille d'un jour force). Sur 30 km hebdo, il y en a 24 à 5:45-6:00/km et 6 en qualité, jamais l'inverse. La qualité est le JEUDI, un point c'est tout : le samedi c'est long et facile, le dimanche c'est facile ou rien. TROIS SIGNAUX D'ALERTE qui imposent de couper une sortie : douleur de tibia ou de genou qui persiste au-delà de l'échauffement, sommeil dégradé deux nuits de suite, ou une sortie facile qui devient pénible à 6:00/km. Le volume se construit en restant entier, pas en cochant des cases." },
+    { "label": "Course — plan semi (22 novembre)", "text": "OBJECTIF POSÉ LE 17 SEPTEMBRE : semi-marathon le DIMANCHE 22 NOVEMBRE, cible sub 1h50, référence 10 km en 47:00. CE QUE DIT LE CALCUL : un 10 km à 47:00 (4:42/km) prédit un semi autour de 1h43-1h45 pour quelqu'un qui a le volume derrière. Ta vitesse n'est donc pas le problème — sub 1h50 (5:12/km) est largement dans tes cordes, sub 2h (5:41/km) est le filet de sécurité. LE PROBLÈME, C'EST LE VOLUME : tu cours une fois par semaine, 7 à 12 km. Un semi demande trois sorties et une sortie longue qui monte jusqu'à 19 km. Le plan fait exactement ça en 9 semaines : 23 km hebdo en S10, pic à 37 km en S16, puis affûtage. La sortie longue passe de 12 km (26/09) à 19 km (07/11), avec une semaine d'absorption en S15 et la répétition générale le 14 novembre (14 km dont 8 à allure course). LES TROIS CRÉNEAUX : JEUDI la qualité (calée autour de la visio d'1h — une version courte de 40 min est écrite dans chaque séance, elle garde 80 % du bénéfice, donc aucune excuse de la sauter), SAMEDI la sortie longue, DIMANCHE le footing facile. LA RÈGLE QUI DÉCIDE DE TOUT, et c'est ton point faible documenté : 80 % du volume en FACILE. Trois fois en phase 1 la sortie « facile » du dimanche est partie en fractionné (5x600 m à 3:30/km le 16 août, la veille d'un jour force). Sur 30 km hebdo, il y en a 24 à 5:45-6:00/km et 6 en qualité, jamais l'inverse. TROIS SIGNAUX D'ALERTE qui imposent de couper une sortie : douleur de tibia ou de genou qui persiste au-delà de l'échauffement, sommeil dégradé deux nuits de suite, ou une sortie facile qui devient pénible à 6:00/km. Le volume se construit en restant entier." },
     { "label": "Sports ajoutés", "text": "Badminton, tennis, escalade, séances avec des amis : il y en a toutes les semaines et c'est très bien, mais la règle change avec le semi — ils ne s'AJOUTENT plus au plan, ils REMPLACENT le circuit du mardi (note « Charge totale »). L'ESCALADE est une séance de tirage complète (avant-bras, dorsaux, coudes) : placée le samedi elle laisse des courbatures jusqu'au lundi — c'est arrivé deux fois de suite, et la deuxième est chiffrée : les 2x2 @34 kg du lundi 31 août en échec, « avant-bras trop fatigué à cause de l'escalade ». FENÊTRES : elle est ouverte du 19 septembre au 10 octobre, fermée du 11 au 17 octobre (test final), rouverte ensuite — mais désormais elle entre en concurrence avec la sortie longue du samedi. Le bon créneau pendant la prépa semi, c'est le MARDI à la place du circuit. Elle se referme le week-end des 14-15 novembre. LE BADMINTON ET LE TENNIS comptent comme du travail bras au-dessus de la tête (1h30 + 1h la semaine où l'épaule a lâché), et comme de l'impact sur les jambes : pendant la prépa, un seul de ces sports par semaine, jamais la veille de la sortie longue." },
-    { "label": "Charge totale", "text": "NOUVEAU FORMAT DEPUIS LE 21 SEPTEMBRE : 3 séances de salle + 3 courses = 6 jours, vendredi en repos complet. Avant : 4 salle + 1 créneau week-end. Le compte de jours monte, la charge de salle baisse — c'est volontaire, et c'est le seul moyen de faire tenir un semi dans la même semaine. LE PRÉCÉDENT QUI SERT D'AVERTISSEMENT : la semaine 5 réelle faisait 4 séances de salle + une séance upper body avec des amis + 1h30 de badminton + 1h de tennis. C'est la semaine où l'épaule a lâché, ce n'est pas un hasard. À partir de maintenant, les sports ajoutés (badminton, tennis, escalade, séance d'un ami) ne s'AJOUTENT plus : ils REMPLACENT une séance du plan, et pendant la prépa semi ils remplacent en priorité le circuit du mardi, jamais une course. SI FATIGUE OU DOULEUR, l'ordre dans lequel on coupe : (1) le footing du dimanche, (2) le circuit du mardi, (3) le développé incliné du lundi. Ce qu'on ne coupe jamais : la sortie longue, la séance de seuil, et les tractions lestées du lundi." },
-    { "label": "GTG optionnel", "text": "IL RESTE UTILE MAIS IL CHANGE DE PLACE. Il sert à accumuler du volume de tractions SANS fatigue — 3 à 5 séries de 8-10 reps (soit ~40 % de tes 23), toujours 4-5 reps en réserve, jamais une série dure. Avec trois courses par semaine, le seul créneau qui reste est le VENDREDI, le jour de repos : quelques séries étalées dans la journée si tu as une barre à la maison, et rien qui ressemble à une séance. Conditions inchangées : zéro douleur d'épaule, zéro courbature, et il saute dès que la semaine est chargée — c'est du bonus, pas une ligne du plan. Il redeviendra un outil central dans le bloc d'après le semi, quand l'objectif sera les 30 reps." },
+    { "label": "Charge totale", "text": "FORMAT DEPUIS LE 21 SEPTEMBRE : 3 séances de salle (lun, mar, ven) + 3 courses (jeu, sam, dim) = 6 jours, MERCREDI EN REPOS puisque le cours occupe la soirée. Avant : 4 salle + 1 créneau week-end. Le compte de jours monte, la charge de salle baisse — c'est volontaire, et c'est le seul moyen de faire tenir un semi dans la même semaine. LE PRÉCÉDENT QUI SERT D'AVERTISSEMENT : la semaine 5 réelle faisait 4 séances de salle + une séance upper body avec des amis + 1h30 de badminton + 1h de tennis. C'est la semaine où l'épaule a lâché, ce n'est pas un hasard. À partir de maintenant, les sports ajoutés (badminton, tennis, escalade, séance d'un ami) ne s'AJOUTENT plus : ils REMPLACENT une séance du plan, et pendant la prépa semi ils remplacent en priorité le circuit du mardi, jamais une course. SI FATIGUE OU DOULEUR, l'ordre dans lequel on coupe : (1) le footing du dimanche, (2) l'EMOM du vendredi — qui a de toute façon son repêchage le dimanche, (3) le circuit du mardi, (4) le push du lundi. Ce qu'on ne coupe jamais : la sortie longue, la séance de seuil du jeudi, et le bloc muscle-up + tractions lourdes du lundi. ET UN POINT DE VIGILANCE NOUVEAU : trois heures de cours le mercredi soir jusqu'à 22h30, c'est une soirée courte et un sommeil raccourci. Si le jeudi arrive systématiquement fatigué, c'est la séance de qualité qu'on déplace au vendredi, pas qu'on supprime." },
+    { "label": "GTG optionnel", "text": "Il sert à accumuler du volume de tractions SANS fatigue — 3 à 5 séries de 8-10 reps (soit ~40 % de tes 23), toujours 4-5 reps en réserve, jamais une série dure. SON CRÉNEAU EST MAINTENANT LE MERCREDI, le jour de repos : quelques séries étalées dans la journée si tu as une barre à la maison, avant le cours du soir, et rien qui ressemble à une séance. Conditions inchangées : zéro douleur d'épaule, zéro courbature, et il saute dès que la semaine est chargée — c'est du bonus, pas une ligne du plan. Il redeviendra un outil central dans le bloc d'après le semi, quand l'objectif sera les 30 reps." },
     { "label": "Nutrition & ravitaillement", "text": "LE POIDS : 83,8 kg au départ, 82,5 le 15 septembre — -1,3 kg en huit semaines pour un objectif à 80. Déficit léger ~2 300-2 400 kcal · 160-170 g de protéines/jour. L'arbitrage change avec le semi : un déficit franc pendant une montée de volume de course, c'est la recette des blessures et des sorties longues ratées. DONC : jusqu'au 22 novembre, on ne cherche plus les 80 kg, on mange assez pour courir — et le poids descendra de lui-même avec 30 km hebdo. Repère utile quand même : chaque kilo en moins vaut environ une demi-rep sur une série max de tractions, et ~3 s/km sur un semi. CE QU'IL FAUT AJOUTER MAINTENANT, et qui est nouveau dans ce carnet : les GLUCIDES AUTOUR DES SORTIES LONGUES. Au-delà de 14 km, un gel vers le 8e km et un autre vers le 14e — à tester à l'entraînement, jamais découvert le jour J. Eau dès 14 km. La veille du semi : repas riche en glucides, rien de nouveau, rien de gras. Le matin : petit-déjeuner testé au moins deux fois sur une sortie longue, 2h30 avant le départ." }
   ],
 
@@ -432,51 +432,54 @@ window.PROGRAM = {
 
     /* ------ Semaine 10 — Phase 3 : bascule course + fin du cycle tractions ------ */
     [
-      { "day": 0, "type": "force", "title": "Force haut du corps — vers les 50 kg", "ex": [
-        "NOUVELLE STRUCTURE DE SEMAINE À PARTIR D'AUJOURD'HUI (semi le 22 novembre) : LUN salle haut · MAR circuit hyrox / jambes · MER muscle-up + EMOM tractions · JEU course qualité · VEN REPOS · SAM sortie longue · DIM footing facile. Trois séances de salle au lieu de quatre, trois courses au lieu d'une. Le vendredi devient un vrai repos — c'est la séance qui sautait une semaine sur deux, on arrête de faire semblant. Voir la note « Structure de semaine ».",
-        "1) Face pulls 3x15 LÉGERS + coiffe 2x10 @6 kg + rotations 3x12 — en échauffement, avant les tractions",
-        "2) Tractions lestées 4x4 @30 kg (88 % du barème : 45 kg de lest + 82,5 de corps = 127,5 de total). Repos 3 min. C'est le bloc qui va chercher les 50 kg du 14 octobre : la charge monte de semaine en semaine, jamais le nombre de reps.",
-        "3) Développé incliné 4x8-10 @50-60 kg",
-        "4) Curl biceps 3x8-10 @16 kg",
-        "45-50 minutes, pas plus. Le reste de la semaine a besoin de tes jambes."
+      { "day": 0, "type": "force", "title": "Muscle-up + force — la séance clé de la semaine", "ex": [
+        "STRUCTURE REVUE LE 17 SEPTEMBRE (cours le mercredi 19h30-22h30 à partir du 23, visio d'1h le jeudi soir) : LUN muscle-up + force · MAR circuit hyrox / jambes · MER REPOS (cours) · JEU course qualité autour de la visio · VEN EMOM tractions + circuit street · SAM sortie longue · DIM footing facile. Le mercredi soir n'existe plus, donc TOUT CE QUI DÉCIDE DU CYCLE REMONTE AU LUNDI — muscle-up, false grip, tractions lourdes. C'est le jour le plus fiable du carnet : dix semaines sans une seule exception.",
+        "1) Face pulls 3x15 LÉGERS + coiffe 2x10 @6 kg + rotations 3x12 — en échauffement, avant tout le reste",
+        "2) MUSCLE-UP à froid, 10-12 minutes chrono. Format selon le test du 18 septembre : 3 reps ou plus en forme constante → 4 séries de 2 ; 2 reps → 4 séries de 2 ; 1 seule → 5 singles espacés de 90s. ARRÊT à la première rep où l'appel de genoux augmente ou où les bras passent l'un après l'autre. Il passe AVANT les tractions lourdes et c'est l'ordre correct : explosif et technique d'abord, force max ensuite.",
+        "3) False grip hang 3x30s — la ligne qui débloque le muscle-up strict, elle ne quitte plus le lundi",
+        "4) Tractions lestées 4x4 @30 kg (88 % du barème : 45 de lest + 82,5 de corps = 127,5 de total). Repos 3 min. C'est le bloc qui va chercher les 50 kg du 15 octobre.",
+        "5) Développé incliné 4x8-10 @50-60 kg",
+        "60-65 minutes. Si tu dois couper, c'est la ligne 5, jamais les lignes 2 et 4."
       ]},
       { "day": 1, "type": "jambes", "title": "Circuit hyrox / jambes", "ex": [
-        "PREMIER CIRCUIT. La séance jambes devient la séance hyrox : mêmes mouvements qu'avant (squat, fentes), plus un circuit en fin. Elle garde son rôle de prévention pour la course — des jambes fortes, c'est moins de blessures quand le volume monte.",
+        "La séance jambes devient la séance hyrox : mêmes mouvements qu'avant (squat, fentes) plus un circuit en fin. Elle garde son rôle de prévention pour la course — des jambes fortes, c'est moins de blessures quand le volume monte.",
         "1) Hollow hold 3x30s + gainage latéral 3x40s — EN PREMIER",
         "2) Squat barre 4x6 @70-80 kg",
         "3) Fentes marchées 3x10/jambe @2x20 kg",
-        "4) CIRCUIT 3 tours, 90s de repos entre les tours : 20 wall balls (ou goblet squat + press @20 kg) · 40 m farmers carry @2x20 kg · 12 burpees · 250 m rameur (ou 300 m tapis) — voir la note « Hyrox » pour les substitutions selon ce qui est libre à la salle",
-        "Le circuit est de la force-endurance, pas un metcon à fond : tu cours jeudi. Si tu finis à quatre pattes, c'est que c'était trop."
+        "4) CIRCUIT 3 tours, 90s entre les tours : 20 wall balls (ou goblet squat + press @20 kg) · 40 m farmers carry @2x20 kg · 12 burpees · 250 m rameur (ou 300 m tapis) — substitutions dans la note « Hyrox »",
+        "Force-endurance, pas un metcon à fond : tu cours jeudi. Si tu finis à quatre pattes, c'était trop."
       ]},
-      { "day": 2, "type": "volume", "title": "Muscle-up + EMOM tractions", "ex": [
-        "1) MUSCLE-UP à froid, juste après l'échauffement. Format selon le chiffre du test du 18 septembre : 3 reps ou plus en forme constante → 5 séries de 2 ; 2 reps → 4 séries de 2 ; 1 seule → 6 singles espacés de 90s. ARRÊT à la première rep où l'appel de genoux augmente ou où les bras passent l'un après l'autre.",
-        "2) False grip hang 3x30s — c'est la ligne qui débloque le muscle-up strict, et elle est ici parce qu'ici elle se fait",
-        "3) EMOM TRACTIONS 10 minutes : 7 reps au début de chaque minute sur les 9 premières, puis la minute 10 en SÉRIE LIBRE. Soit ~70 reps, exactement le volume de ton ancienne pyramide, en 10 minutes au lieu de 35. Le repos, c'est ce qui reste de la minute. Si tu ne finis pas une minute, tu passes à 6 reps et tu termines — noter où ça a lâché est plus utile que de s'arracher. Voir la note « EMOM tractions » : 7-8 reps, c'est 30-40 % de ton max, et c'est LA référence — pas 70 %.",
-        "4) CIRCUIT STREET 3 tours : 10 dips lestés @32,5 kg (78 % du nouveau barème dips) · 15 pompes · 20 kettlebell swings @24 kg · 30s gainage",
-        "PAS DE JAMBES dans ce circuit : tu as couru mardi et tu cours jeudi. Le mercredi est une séance de haut du corps, point."
+      { "day": 3, "type": "course", "title": "Course — qualité (seuil), autour de la visio", "ex": [
+        "CRÉNEAU CONTRAINT : visio d'1h le jeudi soir. Cette séance tient en 55 min complète, et en 40 min en version courte — tu la cales avant ou après le cours, jamais tu ne la sautes : c'est la seule séance dure de course de la semaine.",
+        "VERSION COMPLÈTE (~9 km) : 20 min d'échauffement à 5:45-6:00/km · 2 x 10 min à 4:55/km (allure seuil : trois mots, pas trois phrases) · récup 3 min en trottinant · 10 min de retour au calme",
+        "VERSION COURTE (~7 km, 40 min) : 12 min d'échauffement · 2 x 8 min à 4:55 · récup 2 min · 8 min de retour au calme. Elle garde 80 % du bénéfice.",
+        "Référence de calcul : 10 km en 47:00 = 4:42/km (note « Allures »)."
       ]},
-      { "day": 3, "type": "course", "title": "Course — séance qualité (seuil)", "ex": [
-        "PREMIÈRE SÉANCE DE QUALITÉ DU PLAN SEMI. Référence de calcul : 10 km en 47:00 = 4:42/km. Si ton 10 km est en réalité plutôt à 45', toutes les allures ci-dessous descendent de 10 s/km (note « Allures »).",
-        "20 min d'échauffement à 5:45-6:00/km, puis 2 x 10 min à 4:55/km (allure seuil, celle où tu peux dire trois mots pas trois phrases), récup 3 min en trottinant, puis 10 min de retour au calme",
-        "Total ~9 km. C'est la SEULE séance dure de la semaine en course : les deux autres sorties sont faciles, vraiment faciles."
+      { "day": 4, "type": "volume", "title": "EMOM tractions + circuit street", "ex": [
+        "CE QUI A ÉTÉ DÉPLACÉ ICI depuis le mercredi, et pourquoi c'est tenable cette fois : le vendredi tombait une semaine sur deux quand il était la 4e séance de salle au bout d'une série lundi-mardi-mercredi. Là, il arrive APRÈS UN JOUR DE REPOS, il dure 40 minutes, et il ne porte plus rien de décisif — le muscle-up et les tractions lourdes sont au lundi. S'il saute, tu perds du volume, pas l'objectif. ET IL Y A UN REPÊCHAGE : tu le fais le DIMANCHE à la place du footing.",
+        "1) EMOM TRACTIONS 10 minutes : 7 reps au début de chaque minute sur les 9 premières, puis la MINUTE 10 EN SÉRIE LIBRE. Soit ~70 reps, exactement le volume de l'ancienne pyramide, en 10 minutes au lieu de 35. Le repos, c'est ce qui reste de la minute. Voir la note « EMOM tractions » : 7-8 reps c'est 30-40 % de ton max, et c'est LA référence — pas 70 %.",
+        "2) CIRCUIT STREET 3 tours : 10 dips lestés @32,5 kg (78 % du nouveau barème dips) · 15 pompes · 20 kettlebell swings @24 kg · 30s gainage",
+        "PAS DE JAMBES dans ce circuit : tu as couru jeudi et la sortie longue est demain."
       ]},
       { "day": 5, "type": "course", "title": "Sortie longue — 12 km", "ex": [
-        "12 km à 5:45-6:00/km. Allure de conversation, sans exception. → CHIFFRE À SAISIR dans « 📈 Ma progression » (nouveau graphique « Sortie longue », de 12 à 19 km d'ici le 7 novembre).",
+        "12 km à 5:45-6:00/km. Allure de conversation, sans exception. → CHIFFRE À SAISIR dans « 📈 Ma progression » (graphique « Sortie longue », de 12 à 19 km d'ici le 7 novembre).",
         "C'est la séance qui décide de ton semi. Pas le fractionné : la sortie longue. Sub 1h50 se gagne sur la capacité à tenir 1h50, pas sur la vitesse — que tu as déjà."
       ]},
-      { "day": 6, "type": "course", "title": "Footing facile — 5 km (ou repos)", "ex": [
-        "5 km à 6:00/km, ou rien du tout si les jambes sont lourdes. Cette sortie sert à la récupération, pas à l'entraînement.",
-        "RÈGLE ABSOLUE DU BLOC, et c'est le point faible documenté de ton carnet : le dimanche est FACILE. Trois fois en phase 1 la sortie facile est partie en fractionné (5x600 m à 3:30 le 16 août). Sur 25 km hebdo il y en a 20 en facile — c'est ça qui fabrique l'endurance, pas les 5 autres."
+      { "day": 6, "type": "course", "title": "Footing facile — 5 km (ou repêchage du vendredi)", "ex": [
+        "5 km à 6:00/km, ou rien si les jambes sont lourdes. Cette sortie sert à la récupération, pas à l'entraînement.",
+        "OU : si la séance de vendredi a sauté, c'est ici qu'elle se rattrape (EMOM + circuit street), et le footing passe à la trappe.",
+        "RÈGLE ABSOLUE DU BLOC, et c'est ton point faible documenté : le dimanche est FACILE. Trois fois en phase 1 la sortie facile est partie en fractionné (5x600 m à 3:30/km le 16 août). Sur 25 km hebdo il y en a 20 en facile — c'est ça qui fabrique l'endurance."
       ]}
     ],
 
     /* ------ Semaine 11 — Phase 3 ------ */
     [
-      { "day": 0, "type": "force", "title": "Force — montée", "ex": [
+      { "day": 0, "type": "force", "title": "Muscle-up + force ↗", "ex": [
         "1) Face pulls 3x15 LÉGERS + coiffe 2x10 + rotations 3x12 — en échauffement",
-        "2) Tractions lestées 5x3 @32 kg ↗ (90 % du barème) — repos 3 min",
-        "3) Développé incliné 4x8-10 @55-65 kg ↗",
-        "4) Curl biceps 3x8-10 @16 kg"
+        "2) MUSCLE-UP à froid, 12 min : CLUSTERS — 4 blocs de 3 reps espacées de 15s, 3 min entre les blocs ↗ (ou 4 blocs de 3 singles si le test du 18 n'a donné qu'une rep)",
+        "3) False grip hang 3x35s ↗",
+        "4) Tractions lestées 5x3 @32 kg ↗ (90 % du barème) — repos 3 min",
+        "5) Développé incliné 4x8-10 @55-65 kg ↗"
       ]},
       { "day": 1, "type": "jambes", "title": "Circuit hyrox / jambes", "ex": [
         "1) Hollow hold 3x30s + gainage latéral 3x40s",
@@ -484,125 +487,124 @@ window.PROGRAM = {
         "3) Fentes marchées 3x10/jambe @2x20 kg",
         "4) CIRCUIT 4 tours ↗ : 20 wall balls · 40 m farmers carry @2x24 kg · 12 burpees · 250 m rameur"
       ]},
-      { "day": 2, "type": "volume", "title": "Muscle-up + EMOM tractions ↗", "ex": [
-        "1) MUSCLE-UP à froid : CLUSTERS — 4 blocs de 3 reps espacées de 15s, 3 min entre les blocs ↗ (ou 4 blocs de 3 singles si le test du 18 n'a donné qu'une rep)",
-        "2) False grip hang 3x35s ↗",
-        "3) EMOM TRACTIONS 10 min : 8 reps/min sur les 9 premières ↗, minute 10 en série libre (~80 reps)",
-        "4) CIRCUIT STREET 3 tours : 10 dips lestés @35,5 kg ↗ · 15 pompes · 20 kettlebell swings @24 kg · 30s gainage"
-      ]},
       { "day": 3, "type": "course", "title": "Course — intervalles 1000 m", "ex": [
-        "20 min d'échauffement, puis 5 x 1000 m à 4:30-4:35/km (allure 10 km), récup 2 min en trottinant, puis 10 min de retour au calme",
-        "Total ~10 km. Les 1000 m se courent RÉGULIERS : si le 5e est plus lent que le 1er de plus de 5 s, tu es parti trop vite."
+        "20 min d'échauffement, puis 5 x 1000 m à 4:30-4:35/km (allure 10 km), récup 2 min en trottinant, puis 10 min de retour au calme (~10 km)",
+        "VERSION COURTE si la visio serre : 12 min d'échauffement · 4 x 1000 m · 8 min de retour au calme (~8,5 km, 42 min).",
+        "Les 1000 m se courent RÉGULIERS : si le 5e est plus lent que le 1er de plus de 5 s, tu es parti trop vite."
+      ]},
+      { "day": 4, "type": "volume", "title": "EMOM tractions ↗ + circuit street", "ex": [
+        "1) EMOM TRACTIONS 10 min : 8 reps/min sur les 9 premières ↗, minute 10 en série libre (~80 reps)",
+        "2) CIRCUIT STREET 3 tours : 10 dips lestés @35,5 kg ↗ · 15 pompes · 20 kettlebell swings @24 kg · 30s gainage",
+        "Repêchage dimanche si ça saute."
       ]},
       { "day": 5, "type": "course", "title": "Sortie longue — 14 km ↗", "ex": [
         "14 km à 5:45-6:00/km ↗. → à saisir dans « 📈 Ma progression ».",
         "Prends de l'eau à partir de cette distance, et teste un gel vers le 10e km : ce qui passe à l'entraînement passera le 22 novembre."
       ]},
       { "day": 6, "type": "course", "title": "Footing facile — 6 km", "ex": [
-        "6 km à 6:00/km, ou repos. Facile veut dire facile."
+        "6 km à 6:00/km, ou repos, ou repêchage du vendredi. Facile veut dire facile."
       ]}
     ],
 
     /* ------ Semaine 12 — Phase 3 (dernière semaine lourde avant le test) ------ */
     [
-      { "day": 0, "type": "force", "title": "Force — dernier contact lourd", "ex": [
-        "DERNIÈRE SÉANCE LOURDE AVANT LE TEST DU 14 OCTOBRE. Après elle, le volume salle descend et l'intensité reste : c'est tout le principe du taper (note « Deload & taper »).",
+      { "day": 0, "type": "force", "title": "Muscle-up + dernier contact lourd", "ex": [
+        "DERNIÈRE SÉANCE LOURDE AVANT LE TEST DU 15 OCTOBRE. Après elle, le volume salle descend et l'intensité reste : c'est tout le principe du taper (note « Deload & taper »).",
         "1) Face pulls 3x15 LÉGERS + coiffe 2x10 — en échauffement",
-        "2) Tractions lestées 4x3 @35 kg ↗ (92 % du barème) — repos 3-4 min, la 3e rep doit être dure, jamais d'échec",
-        "3) Développé incliné 3x8 @55-60 kg ↘",
-        "Rien d'autre."
+        "2) MUSCLE-UP à froid : 3 séries seulement ↘, technique, jamais près de la rep cassée",
+        "3) Tractions lestées 4x3 @35 kg ↗ (92 % du barème) — repos 3-4 min, la 3e rep doit être dure, jamais d'échec",
+        "4) Développé incliné 3x8 @55-60 kg ↘",
+        "Pas de false grip cette semaine ni la suivante : la prise est ton facteur limitant n°1 et elle sert trois fois au test (note « Prise & avant-bras »)."
       ]},
       { "day": 1, "type": "jambes", "title": "Circuit hyrox — allégé", "ex": [
         "1) Hollow hold 3x30s + mobilité 10 min",
         "2) Squat barre 3x6 @60-70 kg ↘",
         "3) CIRCUIT 3 tours ↘, sans chercher le temps : 15 wall balls · 40 m farmers carry · 250 m rameur",
-        "PAS DE SOULEVÉ DE TERRE, plus de fentes lourdes : le 1RM est mercredi prochain et la prise est ton facteur limitant n°1 (note « Prise & avant-bras »)."
+        "PAS DE SOULEVÉ DE TERRE, plus de fentes lourdes."
       ]},
-      { "day": 2, "type": "volume", "title": "Muscle-up + EMOM ↘ (taper)", "ex": [
-        "1) MUSCLE-UP : 3 séries seulement ↘, technique, jamais près de la rep cassée",
-        "2) EMOM TRACTIONS 8 min : 6 reps/min ↘ (~48 reps, la moitié du pic). Pas de série libre cette semaine.",
-        "3) Dips lestés 3x6 @35,5 kg ↘",
-        "Pas de circuit cette semaine. Le volume descend, la charge reste — c'est ce qui a fait +5 kg au 1RM entre le 24 août et le 14 septembre."
+      { "day": 3, "type": "course", "title": "Course — seuil 3x10 min", "ex": [
+        "20 min d'échauffement, puis 3 x 10 min à 4:50/km ↗, récup 2:30, puis 10 min de retour au calme (~11 km)",
+        "La course ne s'allège pas cette semaine : c'est le test de tractions qui est en taper, pas le semi."
       ]},
-      { "day": 3, "type": "course", "title": "Course — seuil", "ex": [
-        "20 min d'échauffement, puis 3 x 10 min à 4:50/km ↗, récup 2:30, puis 10 min de retour au calme",
-        "Total ~11 km. La course ne s'allège pas cette semaine : c'est le test de tractions qui est en taper, pas le semi."
+      { "day": 4, "type": "volume", "title": "EMOM ↘ (taper)", "ex": [
+        "1) EMOM TRACTIONS 8 min : 6 reps/min ↘ (~48 reps, la moitié du pic). Pas de série libre cette semaine.",
+        "2) Dips lestés 3x6 @35,5 kg ↘",
+        "Pas de circuit. Le volume descend, la charge reste — c'est ce qui a fait +5 kg au 1RM entre le 24 août et le 14 septembre."
       ]},
       { "day": 5, "type": "course", "title": "Sortie longue — 15 km dont 4 à allure semi", "ex": [
         "15 km ↗ : 10 km à 5:45/km, puis 4 km à 5:12/km (allure semi cible), puis 1 km de retour au calme",
         "PREMIER CONTACT AVEC L'ALLURE DE COURSE. À 5:12 tu dois te dire « je pourrais tenir ça longtemps » — si c'est dur après 4 km, la cible réaliste est sub 2h (5:41/km) et on ajustera. → à saisir dans « 📈 Ma progression »."
       ]},
       { "day": 6, "type": "course", "title": "Repos ou 5 km très facile", "ex": [
-        "Repos complet, ou 5 km à 6:00/km. Semaine de test qui commence mercredi."
+        "Repos complet, ou 5 km à 6:00/km. La semaine de test commence jeudi."
       ]}
     ],
 
     /* ------ Semaine 13 — Phase 3 (TEST FINAL du cycle tractions) ------ */
     [
       { "day": 0, "type": "deload", "title": "Rappel d'intensité — lundi, exprès", "ex": [
-        "CE RAPPEL EST PLACÉ LE LUNDI ET C'EST UNE LEÇON PAYÉE : celui du vendredi 11 septembre n'a pas été fait, ce qui a laissé 14 jours sans rien au-dessus de 88 % devant le test.",
+        "CE RAPPEL EST PLACÉ EN DÉBUT DE SEMAINE ET C'EST UNE LEÇON PAYÉE : celui du vendredi 11 septembre n'a pas été fait, ce qui a laissé 14 jours sans rien au-dessus de 88 % devant le test.",
         "1) Face pulls 2x15 légers + coiffe 2x10 — en échauffement",
         "2) Tractions lestées 2x1 @35 kg (92 %) puis 1x2 @30 kg ↘ — repos 4 min, VITESSE à la montée, jamais à l'échec",
-        "Rien d'autre. Pas de false grip, pas de dead hang lourd, pas de soulevé de terre de toute la semaine."
+        "25 minutes, rien d'autre. Pas de muscle-up, pas de false grip, pas de dead hang lourd, pas de soulevé de terre de toute la semaine."
       ]},
-      { "day": 1, "type": "deload", "title": "Mobilité — pas de circuit", "ex": [
+      { "day": 1, "type": "deload", "title": "Mobilité + footing très facile", "ex": [
         "Mobilité complète 15 min + hollow hold 2x20s + étirements 10 min",
-        "Pas de circuit hyrox cette semaine : les jambes servent dimanche, la prise sert mercredi, vendredi et samedi."
+        "Puis 6 km à 6:00/km si tu veux bouger — rien de plus. Pas de circuit hyrox cette semaine."
       ]},
-      { "day": 2, "type": "test", "title": "TEST FINAL 1/3 — 1RM lesté tractions", "ex": [
+      { "day": 3, "type": "test", "title": "TEST FINAL 1/3 — 1RM lesté tractions", "ex": [
+        "LE TEST EST AU JEUDI (le mercredi soir est pris par ton cours). Tu as trois jours pleins depuis le rappel du lundi, et deux jours avant le suivant : l'espacement est bon. Cale-le autour de la visio, et plutôt AVANT si tu peux — un 1RM à 22h ne mesure pas grand-chose.",
         "Échauffement complet, puis la montée, et RIEN D'AUTRE. MAGNÉSIE dans le sac.",
         "Montée ÉCONOME EN PRISE : 5 à vide · 3 @15 · 1 @25 · 1 @35 · 1 @42,5 · 1 @45 · 1 @47,5 · puis 50 — repos 3-4 min, arrêt au 2e échec.",
-        "CIBLE : 47,5 kg, et tu as demandé 50. Le 14 septembre tu as sorti trois singles à 45 dont deux propres et raté 47,5 de quelques centimètres : 47,5 est le chiffre attendu, 50 est le pari. Les deux comptent, et un 1RM honnête vaut mieux qu'un chiffre arraché.",
+        "CIBLE : 47,5 kg, et tu as demandé 50. Le 14 septembre : trois singles à 45 dont deux propres, 47,5 raté de quelques centimètres. 47,5 est le chiffre attendu, 50 est le pari — et un 1RM honnête vaut mieux qu'un chiffre arraché.",
         "Surveille l'APPEL DE GENOUX au-dessus de 90 % : s'il devient systématique, c'est la hauteur de tirage qui plafonne, pas la force.",
         "Résultat + poids de corps du matin → « 📈 Ma progression » le soir même."
       ]},
-      { "day": 3, "type": "course", "title": "Repos ou footing 5 km", "ex": [
-        "Repos, ou 5 km à 6:00/km. Pas de qualité cette semaine."
+      { "day": 4, "type": "course", "title": "Sortie longue allégée — 12 km ↘", "ex": [
+        "12 km à 5:50-6:00/km ↘, tout en facile. Semaine de test : le volume de course recule d'un cran, il repart la semaine prochaine.",
+        "La course ne gêne pas les tests du week-end — ce sont les jambes, pas la prise ni les dorsaux."
       ]},
-      { "day": 4, "type": "test", "title": "TEST FINAL 2/3 — max reps & dips", "ex": [
-        "ORDRE IMPOSÉ : échauffement long → MAX REPS en ouverture → 15 min de repos → 1RM dips. C'est le couple qui a donné deux records le 16 septembre.",
-        "1) TEST MAX REPS tractions PDC — UNE série. CIBLE 25, et tu as demandé 25-30 : 25 est l'objectif du cycle (17 au départ, 20 le 14/08, 21 le 26/08, 23 le 16/09), 30 est l'objectif du bloc d'après le semi — c'est l'EMOM qui le construira, pas quatre semaines de plus.",
-        "2) TEST 1RM DIPS lestés — cible > 65 kg. Montée 3 @30 · 2 @45 · 1 @57,5 · 1 @65 · puis +2,5 kg, arrêt au 2e échec.",
-        "Les deux chiffres → « 📈 Ma progression » le soir même."
-      ]},
-      { "day": 5, "type": "test", "title": "TEST FINAL 3/3 — muscle-up (20 min)", "ex": [
+      { "day": 5, "type": "test", "title": "TEST FINAL 2/3 — muscle-up (20 min)", "ex": [
         "VINGT MINUTES, UNE SEULE LIGNE. Échauffement complet, puis UNE série max de muscle-ups à froid.",
+        "Le muscle-up passe AVANT le max reps (demain) et jamais après : mesuré derrière une série à l'échec, il mesurerait ta fatigue.",
         "Critère d'arrêt inchangé : on ne compte pas des reps « strictes » mais TA forme tant qu'elle reste CONSTANTE — arrêt à la première rep où l'appel de genoux augmente, où les bras passent l'un après l'autre, ou où la transition cale.",
-        "LE CHEMIN PARCOURU : bras après bras le 7 août, les deux bras ensemble le 21 août, 3 d'affilée le 4 septembre. En trois mois.",
-        "C'est la fin du cycle tractions. À partir de lundi, le semi prend la main et la salle passe en entretien — le muscle-up, lui, reste au mercredi."
+        "LE CHEMIN PARCOURU : bras après bras le 7 août, les deux bras ensemble le 21 août, 3 d'affilée le 4 septembre. En trois mois."
       ]},
-      { "day": 6, "type": "course", "title": "Sortie longue — 16 km", "ex": [
-        "16 km à 5:45/km ↗. → à saisir dans « 📈 Ma progression ».",
-        "Elle passe au dimanche cette semaine parce que le samedi porte le test de muscle-up."
+      { "day": 6, "type": "test", "title": "TEST FINAL 3/3 — max reps & dips", "ex": [
+        "ORDRE IMPOSÉ : échauffement long → MAX REPS en ouverture → 15 min de repos → 1RM dips. C'est le couple qui a donné deux records le 16 septembre : musculatures différentes, ils ne se gênent pas.",
+        "1) TEST MAX REPS tractions PDC — UNE série. CIBLE 25, et tu as demandé 25-30 : 25 est l'objectif du cycle (17 au départ, 20 le 14/08, 21 le 26/08, 23 le 16/09), 30 est l'objectif du bloc d'après le semi — c'est l'EMOM qui le construira.",
+        "2) TEST 1RM DIPS lestés — cible > 65 kg. Montée 3 @30 · 2 @45 · 1 @57,5 · 1 @65 · puis +2,5 kg, arrêt au 2e échec.",
+        "Les deux chiffres → « 📈 Ma progression » le soir même. C'est la fin du cycle tractions : à partir de lundi, le semi prend la main et la salle passe en entretien."
       ]}
     ],
 
     /* ------ Semaine 14 — Phase 4 : SEMI & HYROX (le semi prend la main) ------ */
     [
-      { "day": 0, "type": "force", "title": "Force — entretien (40 min)", "ex": [
-        "PHASE 4 : LE SEMI EST DANS 5 SEMAINES (dimanche 22 novembre). À partir d'aujourd'hui la salle ENTRETIENT, elle ne cherche plus. Concrètement : les charges ne montent plus, le volume baisse, et tout ce qui arrive fatigué le jeudi ou le samedi se coupe. C'est un arbitrage, pas un renoncement — le 1RM et les dips sont déjà au-dessus des objectifs du cycle, ils se maintiennent avec deux séances par semaine.",
+      { "day": 0, "type": "force", "title": "Muscle-up + force — entretien (45 min)", "ex": [
+        "PHASE 4 : LE SEMI EST DANS 5 SEMAINES (dimanche 22 novembre). À partir d'aujourd'hui la salle ENTRETIENT, elle ne cherche plus : les charges ne montent plus, le volume baisse, et tout ce qui arrive fatigué le jeudi ou le samedi se coupe. C'est un arbitrage, pas un renoncement — le 1RM et les dips sont déjà au-dessus des objectifs du cycle.",
         "1) Face pulls 3x15 LÉGERS + coiffe 2x10 — en échauffement",
-        "2) Tractions lestées 4x3 @30 kg (88 %) — la charge d'entretien, elle ne bougera plus jusqu'au 22 novembre",
-        "3) Développé incliné 3x8 @55 kg",
-        "40 minutes. Si tu es fatigué de la sortie longue, tu sautes la ligne 3, jamais la ligne 2."
+        "2) MUSCLE-UP à froid : 4-5 séries au format validé par le test du 17 octobre",
+        "3) False grip hang 3x30s",
+        "4) Tractions lestées 4x3 @30 kg (88 %) — la charge d'entretien, elle ne bougera plus jusqu'au 22 novembre",
+        "45 minutes. Plus de développé incliné le lundi pendant la prépa : il repasse au vendredi s'il y a le temps."
       ]},
       { "day": 1, "type": "jambes", "title": "Circuit hyrox complet", "ex": [
         "C'EST TA SÉANCE HYROX DE LA SEMAINE, et elle a un rôle double : renfo spécifique pour la course (jambes solides = moins de blessures quand le volume monte) et travail du format qui t'intéresse.",
         "1) Gainage 3x40s + hollow 3x30s",
         "2) Squat barre 3x6 @70 kg (entretien, pas de record)",
         "3) CIRCUIT 4 tours, 2 min entre les tours : 20 wall balls · 50 m sled push (ou fentes lestées 20 m @2x20 kg) · 40 m farmers carry @2x24 kg · 10 burpee broad jumps · 250 m rameur",
-        "Substitutions selon ce qui est libre à la salle : voir la note « Hyrox »."
-      ]},
-      { "day": 2, "type": "volume", "title": "Muscle-up + EMOM (45 min)", "ex": [
-        "1) MUSCLE-UP à froid : 4-5 séries au format validé par le test du 17 octobre",
-        "2) False grip hang 3x30s",
-        "3) EMOM TRACTIONS 10 min : 8 reps/min sur les 9 premières, minute 10 en série libre",
-        "4) Dips lestés 3x8 @32,5 kg",
-        "45 minutes. Plus de circuit le mercredi pendant la prépa semi : deux circuits par semaine, c'est un de trop quand tu cours trois fois."
+        "Substitutions selon ce qui est libre à la salle : note « Hyrox »."
       ]},
       { "day": 3, "type": "course", "title": "Course — seuil 2x15 min", "ex": [
         "20 min d'échauffement, puis 2 x 15 min à 4:55/km ↗, récup 3 min, puis 10 min de retour au calme (~11 km)",
-        "Le seuil est LA séance qui fait progresser sur semi. Si tu ne dois garder qu'une séance de qualité dans la semaine, c'est celle-là."
+        "VERSION COURTE si la visio serre : 12 min d'échauffement · 2 x 12 min · récup 3 min · 8 min de retour au calme (45 min).",
+        "Le seuil est LA séance qui fait progresser sur semi. Si tu ne dois garder qu'une séance de qualité, c'est celle-là."
+      ]},
+      { "day": 4, "type": "volume", "title": "EMOM tractions + push (40 min)", "ex": [
+        "1) EMOM TRACTIONS 10 min : 8 reps/min sur les 9 premières, minute 10 en série libre",
+        "2) Dips lestés 3x8 @32,5 kg",
+        "3) Développé incliné 3x8 @55 kg si le temps le permet",
+        "Plus de circuit hyrox le vendredi pendant la prépa semi : deux circuits par semaine, c'est un de trop quand tu cours trois fois. Repêchage dimanche si ça saute."
       ]},
       { "day": 5, "type": "course", "title": "Sortie longue — 17 km dont 6 à allure semi", "ex": [
         "17 km ↗ : 10 km à 5:45/km, puis 6 km à 5:12/km (allure semi), puis 1 km de retour au calme",
@@ -615,55 +617,55 @@ window.PROGRAM = {
 
     /* ------ Semaine 15 — Phase 4 (semaine d'absorption) ------ */
     [
-      { "day": 0, "type": "force", "title": "Force — entretien (40 min)", "ex": [
+      { "day": 0, "type": "force", "title": "Muscle-up + force — entretien (45 min)", "ex": [
         "1) Face pulls 3x15 + coiffe 2x10 — en échauffement",
-        "2) Tractions lestées 4x3 @30 kg (entretien)",
-        "3) Développé incliné 3x8 @55 kg"
+        "2) MUSCLE-UP à froid : 4-5 séries",
+        "3) False grip hang 3x30s",
+        "4) Tractions lestées 4x3 @30 kg (entretien)"
       ]},
       { "day": 1, "type": "jambes", "title": "SIMULATION HYROX — course compromise", "ex": [
         "SÉANCE PLAISIR ET SÉANCE UTILE : c'est le format hyrox en vrai, et « courir avec le cardio déjà en l'air » est la qualité n°1 de cette discipline — celle qui ne se travaille dans aucune de tes autres séances.",
         "4 tours de : 800 m course (allure 5:00-5:10) + une station à fond pendant 2 min, enchaînés sans pause. Stations dans l'ordre : wall balls · farmers carry · sled push (ou fentes lestées) · rameur.",
         "Repos 2 min entre les tours. ~45 min en tout. C'est la seule séance dure des jambes de la semaine : la sortie longue est allégée exprès."
       ]},
-      { "day": 2, "type": "volume", "title": "Muscle-up + EMOM (45 min)", "ex": [
-        "1) MUSCLE-UP à froid : 4-5 séries",
-        "2) False grip hang 3x30s",
-        "3) EMOM TRACTIONS 12 min ↗ : 7 reps/min sur les 11 premières, minute 12 en série libre (~85 reps — on allonge la durée avant d'augmenter les reps)",
-        "4) Dips lestés 3x8 @32,5 kg"
-      ]},
       { "day": 3, "type": "course", "title": "Course — 6x800 m", "ex": [
         "20 min d'échauffement, puis 6 x 800 m à 4:20-4:25/km, récup 90s, puis 10 min de retour au calme (~10 km)",
         "Allure 5 km, pas allure 1500 : si le 6e est nettement plus lent que le 1er, tu es parti trop vite (ça t'est arrivé le 16 août avec des 600 m à 3:30)."
+      ]},
+      { "day": 4, "type": "volume", "title": "EMOM tractions ↗ (40 min)", "ex": [
+        "1) EMOM TRACTIONS 12 min ↗ : 7 reps/min sur les 11 premières, minute 12 en série libre (~85 reps — on allonge la durée avant d'augmenter les reps)",
+        "2) Dips lestés 3x8 @32,5 kg"
       ]},
       { "day": 5, "type": "course", "title": "Sortie longue — 13 km ↘", "ex": [
         "13 km à 5:45-6:00/km ↘, tout en facile. SEMAINE D'ABSORPTION : on recule d'un cran pour encaisser les trois semaines précédentes. Le pic arrive la semaine prochaine.",
         "→ à saisir dans « 📈 Ma progression »."
       ]},
       { "day": 6, "type": "course", "title": "Footing facile — 8 km", "ex": [
-        "8 km à 6:00/km. Volume facile : c'est la brique la moins glamour et la plus rentable du plan."
+        "8 km à 6:00/km. Volume facile : la brique la moins glamour et la plus rentable du plan."
       ]}
     ],
 
     /* ------ Semaine 16 — Phase 4 (PIC DE VOLUME) ------ */
     [
-      { "day": 0, "type": "force", "title": "Force — entretien (40 min)", "ex": [
+      { "day": 0, "type": "force", "title": "Muscle-up + force — entretien (45 min)", "ex": [
         "1) Face pulls 3x15 + coiffe 2x10",
-        "2) Tractions lestées 4x3 @30 kg",
-        "3) Développé incliné 3x8 @55 kg"
+        "2) MUSCLE-UP à froid : 4-5 séries",
+        "3) False grip hang 3x30s",
+        "4) Tractions lestées 4x3 @30 kg"
       ]},
       { "day": 1, "type": "jambes", "title": "Circuit hyrox — allégé (pic de course)", "ex": [
         "1) Gainage 3x40s + hollow 3x30s",
         "2) CIRCUIT 3 tours ↘ : 20 wall balls · 40 m farmers carry · 250 m rameur",
         "PAS DE SQUAT LOURD, PAS DE SLED cette semaine : la sortie longue de samedi est le pic du cycle, c'est elle qui compte."
       ]},
-      { "day": 2, "type": "volume", "title": "Muscle-up + EMOM (45 min)", "ex": [
-        "1) MUSCLE-UP à froid : 4-5 séries",
-        "2) EMOM TRACTIONS 12 min : 8 reps/min sur les 11 premières ↗, minute 12 en série libre (~95 reps — pic de volume tractions du bloc)",
-        "3) Dips lestés 3x8 @32,5 kg"
-      ]},
       { "day": 3, "type": "course", "title": "Course — 20 min continu au seuil", "ex": [
         "20 min d'échauffement, puis 20 min CONTINUES à 4:50-4:55/km ↗, puis 10 min de retour au calme (~11 km)",
         "Vingt minutes d'affilée au seuil, c'est la séance de référence du semi. Si tu la tiens sans dériver, sub 1h50 est acquis."
+      ]},
+      { "day": 4, "type": "volume", "title": "EMOM tractions — pic (40 min)", "ex": [
+        "1) EMOM TRACTIONS 12 min : 8 reps/min sur les 11 premières ↗, minute 12 en série libre (~95 reps — pic de volume tractions du bloc)",
+        "2) Dips lestés 3x8 @32,5 kg",
+        "Séance à faire AVANT la sortie longue de demain, pas après : c'est du haut du corps, ça ne gêne pas les 19 km."
       ]},
       { "day": 5, "type": "course", "title": "Sortie longue — 19 km ↗ (PIC)", "ex": [
         "19 km à 5:40-5:55/km ↗. C'est le pic du plan, posé à 15 jours de la course — la dernière longue sortie qui apporte quelque chose le 22 novembre.",
@@ -677,23 +679,24 @@ window.PROGRAM = {
 
     /* ------ Semaine 17 — Phase 4 (affûtage) ------ */
     [
-      { "day": 0, "type": "force", "title": "Force — entretien allégé (30 min)", "ex": [
+      { "day": 0, "type": "force", "title": "Muscle-up + force — allégé (30 min)", "ex": [
         "1) Face pulls 2x15 + coiffe 2x10",
-        "2) Tractions lestées 3x3 @30 kg ↘",
-        "Rien d'autre. L'affûtage commence : le volume descend partout, la vitesse reste."
+        "2) MUSCLE-UP à froid : 3 séries, technique",
+        "3) Tractions lestées 3x3 @30 kg ↘",
+        "L'affûtage commence : le volume descend partout, la vitesse reste."
       ]},
       { "day": 1, "type": "jambes", "title": "Gainage + mobilité (25 min)", "ex": [
         "Gainage 3x40s + hollow 3x30s + mobilité hanches/chevilles 15 min",
         "PAS DE CIRCUIT, PAS DE SQUAT : plus rien qui laisse des courbatures à 11 jours de la course. L'hyrox reprend le 23 novembre."
       ]},
-      { "day": 2, "type": "volume", "title": "Muscle-up + EMOM ↘ (35 min)", "ex": [
-        "1) MUSCLE-UP à froid : 3 séries, technique",
-        "2) EMOM TRACTIONS 8 min : 6 reps/min ↘",
-        "3) Dips lestés 2x8 @32,5 kg ↘"
-      ]},
       { "day": 3, "type": "course", "title": "Course — 4x1000 m allure 10 km", "ex": [
         "20 min d'échauffement, puis 4 x 1000 m à 4:35/km, récup 2 min, puis 10 min de retour au calme (~9 km)",
         "Volume réduit, allure conservée. C'est exactement ce qui fait qu'on arrive frais ET rapide."
+      ]},
+      { "day": 4, "type": "volume", "title": "EMOM ↘ (30 min)", "ex": [
+        "1) EMOM TRACTIONS 8 min : 6 reps/min ↘",
+        "2) Dips lestés 2x8 @32,5 kg ↘",
+        "Dernière séance de volume avant la course. Rien de dur."
       ]},
       { "day": 5, "type": "course", "title": "Sortie longue — 14 km dont 8 à allure semi", "ex": [
         "14 km ↘ : 4 km à 5:45/km, puis 8 km à 5:12/km (allure semi), puis 2 km de retour au calme",
@@ -716,7 +719,7 @@ window.PROGRAM = {
         "Ces rappels servent à réveiller les jambes, pas à s'entraîner. Aucune fatigue ne doit rester."
       ]},
       { "day": 3, "type": "course", "title": "Footing — 5 km + lignes droites", "ex": [
-        "5 km très facile + 4 accélérations de 20 s en fin de sortie",
+        "5 km très facile + 4 accélérations de 20 s en fin de sortie (cale-le autour de la visio)",
         "Dernière sortie avec un peu de rythme. Ensuite, du repos et des glucides."
       ]},
       { "day": 5, "type": "course", "title": "Déverrouillage — 20 min", "ex": [
@@ -728,7 +731,7 @@ window.PROGRAM = {
         "PLAN DE COURSE SUB 1h50 (5:12/km) : les 3 premiers kilomètres à 5:20-5:25, volontairement trop lents — c'est là que se perdent tous les semis. Puis 5:10-5:12 jusqu'au 15e. À partir du 16e, tu accélères si tu en as, tu tiens si tu n'en as pas.",
         "Si tout passe facilement au 10e km, tu peux descendre à 5:00/km : 1h46 est dans tes cordes avec un 10 km à 47:00. Si c'est dur dès le 8e, tu bascules sur 5:30/km — sub 2h reste une belle course.",
         "Ravitaillement : gel au 8e et au 15e km, eau à chaque poste. Ne saute pas le premier gel parce que « ça va bien » : il agit 20 minutes plus tard.",
-        "Repères de progression de ce cycle, à relire sur la ligne de départ : 17 tractions le 20 juillet, 23 le 16 septembre · 35 kg de lest au départ, 45 le 14 septembre · une sortie par semaine en septembre, trois par semaine et 19 km en novembre.",
+        "Repères de ce cycle, à relire sur la ligne de départ : 17 tractions le 20 juillet, 23 le 16 septembre · 35 kg de lest au départ, 45 le 14 septembre · une sortie par semaine en septembre, trois par semaine et 19 km en novembre.",
         "Temps final → « 📈 Ma progression » (et le bilan complet s'exporte depuis « 📤 Bilan pour relecture » : c'est lui qui servira à écrire le bloc suivant — hyrox, et les 30 tractions)."
       ]}
     ]

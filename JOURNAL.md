@@ -4,6 +4,32 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-17 (soir) — Le mercredi soir tombe : tout ce qui décide du cycle remonte au lundi
+
+Contrainte annoncée le soir même : **cours le mercredi de 19h30 à 22h30 à partir du 23 septembre**, et **visio d'1h le jeudi soir**. Le mercredi soir n'existe plus — or c'est là que le bloc muscle-up venait d'être placé le matin même. Deuxième réorganisation de la journée, et c'est la règle du carnet qui tranche : **ce qui décide du cycle se met sur le jour le plus fiable**.
+
+### La semaine, deuxième version
+
+LUN muscle-up + false grip + tractions lourdes + push (60 min) · MAR circuit hyrox/jambes · **MER repos (cours)** · JEU course qualité autour de la visio · VEN EMOM tractions + circuit street (40 min) · SAM sortie longue · DIM footing facile ou repêchage du vendredi.
+
+- **Le bloc muscle-up remonte au lundi**, avec le false grip, devant les tractions lourdes. C'est aussi le bon ordre physiologique : explosif et technique à froid, force max ensuite, push en dernier. Le lundi passe à 60-65 min, c'est son format historique.
+- **Le vendredi redevient une séance, mais seulement du volume.** Trois raisons qui n'existaient pas en phase 2 : il n'est plus la 4e séance de salle au bout d'une série lundi-mardi-mercredi, il arrive après un jour de repos, et il a un **repêchage écrit le dimanche**. S'il saute, on perd des reps, pas l'objectif.
+- **Le jeudi est contraint par la visio** : chaque séance de qualité a désormais une **version courte de 40 min** écrite à côté de la version complète (elle garde ~80 % du bénéfice). C'est la seule séance dure de course de la semaine, elle ne se saute pas.
+- **Variante laissée ouverte** : s'il peut s'entraîner 18h-19h15 avant le cours, l'EMOM revient au mercredi et le vendredi redevient un repos complet.
+
+### Test final décalé
+
+Le 1RM tombait le mercredi 14 octobre, soit en plein cours. Nouveau découpage : **jeudi 15 le 1RM lesté** (cible 47,5, pari 50), **samedi 17 le muscle-up seul**, **dimanche 18 le max reps puis les dips**. Le muscle-up passe avant le max reps et jamais après — mesuré derrière une série à l'échec, il mesurerait la fatigue. Rappel d'intensité maintenu au lundi 12, sortie longue allégée le vendredi 16 (la course ne gêne pas ces tests : ce sont les jambes, pas la prise).
+
+### Le reste
+
+- Neuf semaines réécrites (S10-S18), tous les mercredis libérés, la S18 était déjà compatible.
+- Notes mises à jour : « Structure de semaine », « EMOM tractions » (passé au vendredi), « Muscle-up » (passé au lundi), « Tests », « Deload & taper », « Course — plan semi », « Charge totale », « Ce qui est en dernier ne se fait pas », « GTG optionnel » (créneau déplacé au mercredi, jour de repos).
+- **Point de vigilance ajouté** : trois heures de cours jusqu'à 22h30, c'est un sommeil raccourci. Si le jeudi arrive systématiquement fatigué, la séance de qualité se déplace au vendredi — elle ne se supprime pas.
+- `program.js` validé (parse Node OK, 18 semaines, 20 notes, 5 métriques, aucun mercredi occupé).
+
+---
+
 ## 2026-09-17 (suite) — Semi le 22 novembre : le carnet passe à 18 semaines et bascule sur un plan hybride
 
 Mehdi veut préparer un **semi-marathon le dimanche 22 novembre** (cible sub 1h50, référence 10 km en 47:00), progresser en course et travailler le format hyrox/crossfit. Sa proposition : « le jour de volume traction : EMOM 70 % max sur 10-15 min puis circuits hyrox/crossfit/street ». Et il maintient ses objectifs salle pour le test du 14-16 octobre : **50 kg au 1RM lesté, 25-30 en max reps, muscle-up**.
