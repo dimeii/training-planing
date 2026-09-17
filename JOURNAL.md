@@ -4,6 +4,34 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-17 (suite) — Semi le 22 novembre : le carnet passe à 18 semaines et bascule sur un plan hybride
+
+Mehdi veut préparer un **semi-marathon le dimanche 22 novembre** (cible sub 1h50, référence 10 km en 47:00), progresser en course et travailler le format hyrox/crossfit. Sa proposition : « le jour de volume traction : EMOM 70 % max sur 10-15 min puis circuits hyrox/crossfit/street ». Et il maintient ses objectifs salle pour le test du 14-16 octobre : **50 kg au 1RM lesté, 25-30 en max reps, muscle-up**.
+
+### L'EMOM : bonne idée, mauvais chiffre
+
+70 % de 23 reps = 16 tractions par minute → échec à la 2e minute. **La référence sur un EMOM de tractions, c'est 30-40 % du max**, soit 7-8 reps/min. Ça donne 70-80 reps sur 10 minutes, c'est-à-dire exactement le volume de l'ancienne pyramide (60-74) en 10 minutes au lieu de 35. Format retenu, qui garde la spécificité d'une grosse série : **7-8 reps sur les 9 premières minutes, minute 10 en série libre**. Progression par la durée avant les reps (7x10 → 8x10 → 7x12 → 8x12, pic ~95 reps en S16). Nouvelle note « EMOM tractions ».
+
+### La vraie contrainte n'était pas le mercredi
+
+Un semi demande trois sorties par semaine ; il en fait une. Le carnet passe donc de « 4 salle + 1 créneau week-end » à **3 salle + 3 courses**, et le vendredi — écourté ou annulé une semaine sur deux depuis la S5 — devient un **repos assumé** plutôt qu'une séance fantôme. Structure : LUN salle haut · MAR circuit hyrox/jambes · MER muscle-up + EMOM + finisher · JEU course qualité · VEN repos · SAM sortie longue · DIM footing facile. Les trois séances de salle tombent sur les trois seuls jours réalisés à 100 % depuis dix semaines.
+
+### Carnet étendu à 18 semaines, phase 4 ajoutée
+
+- **S10-S13 (21 sept - 18 oct)** : le cycle tractions va au bout — charges qui montent vers les 50 kg (88 → 90 → 92 %), test final maintenu les 14, 16 et 17 octobre. La course monte en parallèle mais reste en base (23 → 31 km/semaine, une seule séance dure).
+- **S14-S18 (19 oct - 22 nov)** : phase 4 « Semi-marathon & hyrox ». La salle passe en entretien (charge figée à 88 %, 40 min par séance), la course prend la main. Sortie longue 12 → 19 km (pic le 7 novembre, 15 jours avant), semaine d'absorption en S15, simulation hyrox « course compromise » le 27 octobre, répétition générale le 14 novembre (14 km dont 8 à allure course), affûtage sur deux semaines. **Le semi est écrit comme une séance de test** avec son plan de course.
+- **Arbitrage assumé et écrit** : le 1RM et les dips sont déjà au-dessus des objectifs du cycle, ils se maintiennent à deux séances par semaine. Ce qui est rendu, c'est la séance d'explosivité du vendredi — dont le contenu essentiel (muscle-up, false grip) avait déjà été remonté au mercredi le matin même.
+- **Objectif 30 reps reporté** au bloc d'après le semi : c'est l'EMOM qui le construira, pas quatre semaines de plus. Le graphique garde 25 comme cible du 16 octobre.
+
+### Le reste
+
+- **Cinquième métrique : « Sortie longue » (12 → 19 km)** — c'est elle qui prédit le chrono du 22 novembre, bien mieux que le fractionné. Cible du 1RM lesté relevée de 47,5 à **50 kg** à sa demande (47,5 reste le chiffre attendu, 50 le pari).
+- **Quatre notes nouvelles ou refondues** : « Structure de semaine », « Allures de course » (toutes dérivées du 10 km en 47:00 ; au passage, les 5x600 m à 3:30/km du 16 août étaient à allure 1500 m), « Hyrox — stations et substitutions » (les 8 stations + un repli pour chacune selon ce qui est libre à la salle), « Course — plan semi ».
+- **Le point de vigilance n°1 est écrit partout** : 80 % du volume en facile. Trois fois en phase 1 la sortie « facile » du dimanche est partie en fractionné. C'est ce qui coûtera le semi, pas le manque de vitesse — un 10 km à 47:00 prédit 1h43-1h45.
+- `program.js` validé (parse Node OK, 18 semaines, 99 séances, 20 notes, 5 métriques). Dates vérifiées : S13 test le mer 14/10, pic de sortie longue le sam 07/11, semi le dim 22/11.
+
+---
+
 ## 2026-09-17 — Deux records de plus, et la phase 3 réécrite autour de ce qui reste à jouer
 
 Bilan du mercredi 16 : Mehdi a pris le **max reps ET le 1RM dips dans la même séance**, alors que le programme réservait les dips au vendredi. C'était le bon appel — tractions et dips ne partagent pas la musculature, et les deux chiffres sont des records.
