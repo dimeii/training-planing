@@ -4,6 +4,28 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-18 — Les cours et les révisions entrent dans le carnet
+
+Demande de Mehdi : pouvoir saisir ses cours et ses révisions dans le carnet, et **afficher sur la même ligne** la séance de sport et la séance de révisions quand elles tombent le même jour, en restant responsive.
+
+### Un bug trouvé au passage, et il était sérieux
+
+Les identifiants de séance étaient dérivés du JOUR : `"s" + semaine + "-d" + jour`. Tant qu'il n'y avait qu'un créneau par jour, ça tenait. Dès qu'un jour porte sport **et** révisions, les deux séances partagent le même id — donc la même case « Fait », le même bilan et les mêmes ajustements d'exercices. Corrigé : les séances suivantes d'un même jour reçoivent un suffixe (`-2`, `-3`), **la première garde son id d'origine**, donc aucune donnée déjà enregistrée ne bouge.
+
+### Ce qui a été fait
+
+- **Deux nouveaux types de séance** : `cours` (indigo) et `revisions` (bronze). Comme tout le reste du carnet ils sont pilotés par `program.js`, donc ils apparaissent automatiquement dans le sélecteur de « Nouvelle séance » — Mehdi peut ajouter un bloc de révisions en deux clics, n'importe quel jour.
+- **Regroupement par jour** : les séances d'un même jour sont rendues dans un conteneur `flex-wrap`. La carte sport prend une base de 330 px, la carte révisions 210 px, avec `min-width: 0` — côte à côte dès ~560 px de large, empilées en dessous. Un jour à une seule séance garde exactement le rendu d'avant.
+- **Bilan simplifié pour les séances hors sport** : pas de RPE, pas de douleur d'épaule, juste une note (« ce que tu as bossé ») et le bouton « Fait ». Le rappel « pense à remplir ton bilan » ne s'affiche pas non plus.
+- **Le programme est pré-rempli** sur les semaines 10 à 18 : le cours du mercredi (19h30-22h30, jour de repos) et les révisions du lundi, mardi et vendredi soir. Le carnet montre donc la charge réelle de la semaine, cours compris — c'est aussi ce qui remontera dans l'export coach.
+- Le pack coach documente les deux nouveaux types pour qu'une IA relisant le carnet ne les confonde pas avec du sport.
+
+### Validation
+
+Smoke test Node recréé (Babel + jsdom, il avait disparu depuis août) : **53/53 OK**. Il couvre la compilation du JSX, le tri des séances par jour sur les 18 semaines, le regroupement (même conteneur, `flex-wrap`, `min-width: 0`, sport à gauche), le bilan simplifié, la non-contamination des identifiants (cocher le sport ne coche pas les révisions du même jour, et l'inverse), et la présence des nouveaux types dans le formulaire de séance perso.
+
+---
+
 ## 2026-09-17 (nuit) — Le plan est recalé sur les créneaux réels, pas sur les jours de la semaine
 
 Trois précisions arrivées coup sur coup : **télétravail lundi et vendredi, présentiel mardi-jeudi avec 1 h de trajet et un retour vers 18h30, cours sur site le mercredi 19h30-22h30, visio 1 h le jeudi soir, révisions lundi/mardi/vendredi soir et une partie du week-end** (avec du sport possible après les révisions), et **un 5 km en groupe le dimanche**. Le plan du soir, qui supposait des soirées libres, ne tenait plus.

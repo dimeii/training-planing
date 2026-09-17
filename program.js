@@ -442,12 +442,25 @@ window.PROGRAM = {
         "5) Développé incliné 4x8-10 @50-60 kg",
         "60 minutes. Si tu dois couper, c'est la ligne 5, jamais les lignes 2 et 4."
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions. Coche-le comme une séance et note en deux mots ce que tu as bossé : le carnet sert aussi à voir la CHARGE TOTALE de la semaine, et trois heures de cours plus quatre soirées de révisions en font partie (note « Charge totale »).",
+        "Ordre conseillé les jours de télétravail : séance à 17h30, révisions derrière. La salle ferme, pas tes cours."
+      ]},
       { "day": 1, "type": "course", "title": "Course — qualité (seuil), depuis chez toi", "ex": [
         "CRÉNEAU SERRÉ ASSUMÉ : bureau, retour 18h30, révisions le soir. Une course ne demande aucune logistique — chaussures et dehors à 18h45, rentré à 19h35, tu révises à 20h15. C'est pour ça que la séance dure de la semaine est une COURSE et pas une séance de salle.",
         "VERSION COMPLÈTE (~9 km, 50 min) : 20 min d'échauffement à 5:45-6:00/km · 2 x 10 min à 4:55/km (allure seuil : trois mots, pas trois phrases) · récup 3 min en trottinant · 10 min de retour au calme",
         "VERSION COURTE (~7 km, 38 min) : 12 min d'échauffement · 2 x 8 min à 4:55 · récup 2 min · 8 min de retour au calme. Elle garde 80 % du bénéfice — c'est elle qu'on fait un soir chargé, pas rien.",
         "MARDI ET JEUDI SONT INTERCHANGEABLES : si le mardi soir est mort, tu inverses avec le footing du jeudi. Le défaut reste le mardi, parce qu'il laisse cinq jours avant la sortie longue du dimanche.",
         "Référence de calcul : 10 km en 47:00 = 4:42/km (note « Allures »)."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions. Coche-le comme une séance et note en deux mots ce que tu as bossé : le carnet sert aussi à voir la CHARGE TOTALE de la semaine, et trois heures de cours plus quatre soirées de révisions en font partie (note « Charge totale »).",
+        "Ordre conseillé les jours de télétravail : séance à 17h30, révisions derrière. La salle ferme, pas tes cours."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site. AUCUN ENTRAÎNEMENT ce jour-là : c'est le jour de repos de la semaine, et ce n'est pas un hasard — il tombe au milieu, entre le lundi lourd et le vendredi volume.",
+        "Seule chose possible dans la journée si tu as une barre chez toi : quelques séries de GTG (3-5 x 8-10 tractions, loin de l'échec, étalées). Facultatif, et ça ne doit jamais ressembler à une séance.",
+        "La nuit sera courte : c'est la variable qui compte le plus pour la récupération. Si le jeudi arrive systématiquement fatigué, on supprime le footing du jeudi."
       ]},
       { "day": 3, "type": "course", "title": "Footing facile — 5 km (ou repos)", "ex": [
         "LA JOURNÉE LA PLUS CONTRAINTE REÇOIT LA SÉANCE LA PLUS LÉGÈRE : bureau, 1 h de trajet, visio d'1 h le soir. 30 minutes, 5 km à 6:00/km, avant ou après la visio.",
@@ -459,6 +472,10 @@ window.PROGRAM = {
         "2) Dips lestés 3x8 @32,5 kg (78 % du nouveau barème dips : 65 kg mesurés le 16/09)",
         "3) CIRCUIT HYROX 3 tours, 90s entre les tours : 20 wall balls (ou goblet squat + press @20 kg) · 40 m farmers carry @2x20 kg · 12 burpees · 250 m rameur — substitutions dans la note « Hyrox »",
         "LE CIRCUIT RESTE DE LA FORCE-ENDURANCE, jamais un metcon à fond : la sortie longue est dimanche matin, à ~40 h d'ici. Si tu finis à quatre pattes, c'était trop."
+      ]},
+      { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions. Coche-le comme une séance et note en deux mots ce que tu as bossé : le carnet sert aussi à voir la CHARGE TOTALE de la semaine, et trois heures de cours plus quatre soirées de révisions en font partie (note « Charge totale »).",
+        "Ordre conseillé les jours de télétravail : séance à 17h30, révisions derrière. La salle ferme, pas tes cours."
       ]},
       { "day": 5, "type": "course", "title": "Libre — révisions, sport ou repos", "ex": [
         "AUCUNE SÉANCE PRÉVUE, et c'est volontaire : tu révises une partie du week-end, autant que ce soit le samedi — la sortie longue est le dimanche matin.",
@@ -482,10 +499,19 @@ window.PROGRAM = {
         "4) Tractions lestées 5x3 @32 kg ↗ (90 % du barème) — repos 3 min",
         "5) Développé incliné 4x8-10 @55-65 kg ↗"
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
       { "day": 1, "type": "course", "title": "Course — intervalles 1000 m", "ex": [
         "VERSION COMPLÈTE (~10 km) : 20 min d'échauffement, 5 x 1000 m à 4:30-4:35/km (allure 10 km), récup 2 min en trottinant, 10 min de retour au calme",
         "VERSION COURTE (~8,5 km, 42 min) : 12 min d'échauffement · 4 x 1000 m · 8 min de retour au calme",
         "Les 1000 m se courent RÉGULIERS : si le dernier est plus lent que le premier de plus de 5 s, tu es parti trop vite."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Footing facile — 6 km (ou repos)", "ex": [
         "6 km à 6:00/km, autour de la visio. Ou repos."
@@ -494,6 +520,9 @@ window.PROGRAM = {
         "1) EMOM TRACTIONS 10 min : 8 reps/min sur les 9 premières ↗, minute 10 en série libre (~80 reps)",
         "2) Dips lestés 3x8 @35,5 kg ↗",
         "3) CIRCUIT HYROX 4 tours ↗ : 20 wall balls · 40 m farmers carry @2x24 kg · 12 burpees · 250 m rameur"
+      ]},
+      { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "course", "title": "Libre — révisions, sport ou repos", "ex": [
         "Rien de prévu. Sport libre si l'envie est là."
@@ -515,9 +544,18 @@ window.PROGRAM = {
         "4) Développé incliné 3x8 @55-60 kg ↘",
         "Pas de false grip cette semaine ni la suivante : la prise est ton facteur limitant n°1 et elle sert trois fois au test (note « Prise & avant-bras »)."
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
       { "day": 1, "type": "course", "title": "Course — seuil 3x10 min", "ex": [
         "20 min d'échauffement, puis 3 x 10 min à 4:50/km ↗, récup 2:30, puis 10 min de retour au calme (~11 km). Version courte : 2 x 10 min.",
         "La course ne s'allège pas cette semaine : c'est le test de tractions qui est en taper, pas le semi."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Footing facile — 6 km (ou repos)", "ex": [
         "6 km à 6:00/km, ou repos."
@@ -526,6 +564,9 @@ window.PROGRAM = {
         "1) EMOM TRACTIONS 8 min : 6 reps/min ↘ (~48 reps, la moitié du pic). Pas de série libre cette semaine.",
         "2) Dips lestés 3x6 @35,5 kg ↘",
         "PAS DE CIRCUIT HYROX cette semaine : rien qui laisse des courbatures devant la semaine de test. Le volume descend, la charge reste — c'est ce qui a fait +5 kg au 1RM entre le 24 août et le 14 septembre."
+      ]},
+      { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "course", "title": "Libre — révisions ou repos", "ex": [
         "Pas d'escalade ce week-end : le test commence vendredi prochain et elle coûte la prise (note « Sports ajoutés »)."
@@ -545,8 +586,17 @@ window.PROGRAM = {
         "2) Tractions lestées 2x1 @35 kg (92 %) puis 1x2 @30 kg ↘ — repos 4 min, VITESSE à la montée, jamais à l'échec",
         "25 minutes, rien d'autre. Pas de muscle-up, pas de false grip, pas de dead hang lourd de toute la semaine."
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
       { "day": 1, "type": "course", "title": "Footing facile — 6 km", "ex": [
         "6 km à 6:00/km, tranquille. Pas de qualité cette semaine : le 1RM est vendredi."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Repos", "ex": [
         "Repos complet. Tu testes demain."
@@ -558,6 +608,9 @@ window.PROGRAM = {
         "CIBLE : 47,5 kg, et tu as demandé 50. Le 14 septembre : trois singles à 45 dont deux propres, 47,5 raté de quelques centimètres. 47,5 est le chiffre attendu, 50 est le pari — et un 1RM honnête vaut mieux qu'un chiffre arraché.",
         "Surveille l'APPEL DE GENOUX au-dessus de 90 % : s'il devient systématique, c'est la hauteur de tirage qui plafonne, pas la force.",
         "Résultat + poids de corps du matin → « 📈 Ma progression » le soir même."
+      ]},
+      { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "test", "title": "TEST FINAL 2/3 — muscle-up (20 min)", "ex": [
         "VINGT MINUTES, UNE SEULE LIGNE. Échauffement complet, puis UNE série max de muscle-ups à froid.",
@@ -581,10 +634,19 @@ window.PROGRAM = {
         "2) TEST 1RM DIPS lestés — cible > 65 kg. Montée 3 @30 · 2 @45 · 1 @57,5 · 1 @65 · puis +2,5 kg, arrêt au 2e échec.",
         "Les deux chiffres → « 📈 Ma progression » le soir même. À partir de demain, LE SEMI PREND LA MAIN : il est dans 5 semaines, la salle passe en entretien, les charges ne montent plus."
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
       { "day": 1, "type": "course", "title": "Course — seuil 2x15 min", "ex": [
         "20 min d'échauffement, puis 2 x 15 min à 4:55/km ↗, récup 3 min, puis 10 min de retour au calme (~11 km)",
         "VERSION COURTE : 12 min d'échauffement · 2 x 12 min · récup 3 min · 8 min de retour au calme (45 min).",
         "Le seuil est LA séance qui fait progresser sur semi. Si tu ne dois garder qu'une séance de qualité, c'est celle-là."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Footing facile — 6 km (ou repos)", "ex": [
         "6 km à 6:00/km, autour de la visio."
@@ -594,6 +656,9 @@ window.PROGRAM = {
         "1) EMOM TRACTIONS 10 min : 8 reps/min sur les 9 premières, minute 10 en série libre",
         "2) Dips lestés 3x8 @32,5 kg",
         "3) CIRCUIT HYROX 4 tours : 20 wall balls · 50 m sled push (ou fentes lestées 20 m @2x20 kg) · 40 m farmers carry @2x24 kg · 10 burpee broad jumps · 250 m rameur"
+      ]},
+      { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "course", "title": "Libre — révisions, sport ou repos", "ex": [
         "L'escalade est possible ce week-end : les tests sont derrière toi et le lundi qui suit n'est plus une séance maximale."
@@ -614,9 +679,18 @@ window.PROGRAM = {
         "4) Tractions lestées 4x3 @30 kg (88 %) — charge d'entretien, elle ne bougera plus jusqu'au semi",
         "45 minutes, puis révisions. Le développé incliné passe au vendredi s'il y a le temps."
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
       { "day": 1, "type": "course", "title": "Course — 6x800 m", "ex": [
         "20 min d'échauffement, puis 6 x 800 m à 4:20-4:25/km, récup 90s, puis 10 min de retour au calme (~10 km). Version courte : 5 x 800 m.",
         "Allure 5 km, pas allure 1500 : si le dernier est nettement plus lent que le premier, tu es parti trop vite (ça t'est arrivé le 16 août avec des 600 m à 3:30)."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Footing facile — 6 km (ou repos)", "ex": [
         "6 km à 6:00/km."
@@ -625,6 +699,9 @@ window.PROGRAM = {
         "SÉANCE PLAISIR ET SÉANCE UTILE : c'est le format hyrox en vrai, et « courir avec le cardio déjà en l'air » est la qualité n°1 de cette discipline — celle qui ne se travaille dans aucune de tes autres séances. Elle tombe dans une semaine d'absorption, avec une sortie longue allégée derrière : c'est la seule fenêtre du bloc où elle ne coûte rien.",
         "4 tours de : 800 m course (allure 5:00-5:10) + une station à fond pendant 2 min, enchaînés sans pause. Stations dans l'ordre : wall balls · farmers carry · sled push (ou fentes lestées) · rameur. Repos 2 min entre les tours. ~45 min.",
         "Pas d'EMOM cette semaine : la simulation le remplace."
+      ]},
+      { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "course", "title": "Libre — révisions, sport ou repos", "ex": [
         "Rien de prévu."
@@ -644,9 +721,18 @@ window.PROGRAM = {
         "3) False grip hang 3x30s",
         "4) Tractions lestées 4x3 @30 kg"
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
       { "day": 1, "type": "course", "title": "Course — 20 min continu au seuil", "ex": [
         "20 min d'échauffement, puis 20 min CONTINUES à 4:50-4:55/km ↗, puis 10 min de retour au calme (~11 km)",
         "Vingt minutes d'affilée au seuil, c'est la séance de référence du semi. Si tu la tiens sans dériver, sub 1h50 est acquis."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Footing facile — 6 km (ou repos)", "ex": [
         "6 km à 6:00/km."
@@ -656,6 +742,9 @@ window.PROGRAM = {
         "2) Dips lestés 3x8 @32,5 kg",
         "3) CIRCUIT 2 tours seulement ↘ : 20 wall balls · 40 m farmers carry · 250 m rameur",
         "CIRCUIT VOLONTAIREMENT COUPÉ : la sortie longue de dimanche est le pic du plan, c'est elle qui compte. Pas de sled, pas de burpees cette semaine."
+      ]},
+      { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "course", "title": "Libre — repos de préférence", "ex": [
         "Repos, ou révisions. Pas de sport la veille du pic."
@@ -676,9 +765,18 @@ window.PROGRAM = {
         "3) Tractions lestées 3x3 @30 kg ↘",
         "L'affûtage commence : le volume descend partout, la vitesse reste."
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
       { "day": 1, "type": "course", "title": "Course — 4x1000 m allure 10 km", "ex": [
         "20 min d'échauffement, puis 4 x 1000 m à 4:35/km, récup 2 min, puis 10 min de retour au calme (~9 km)",
         "Volume réduit, allure conservée. C'est exactement ce qui fait qu'on arrive frais ET rapide."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Footing facile — 5 km", "ex": [
         "5 km à 6:00/km, décontracté."
@@ -687,6 +785,9 @@ window.PROGRAM = {
         "1) EMOM TRACTIONS 8 min : 6 reps/min ↘",
         "2) Dips lestés 2x8 @32,5 kg ↘",
         "PAS DE CIRCUIT : plus rien qui laisse des courbatures à 9 jours de la course. L'hyrox reprend le 23 novembre."
+      ]},
+      { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "course", "title": "RÉPÉTITION GÉNÉRALE — 14 km dont 8 à allure semi", "ex": [
         "ELLE PASSE AU SAMEDI : c'est la simulation du jour J, et il te faut le dimanche pour récupérer avant la dernière semaine.",
@@ -706,9 +807,18 @@ window.PROGRAM = {
         "2) Tractions lestées 2x3 @20 kg ↘ — juste pour ne pas perdre le contact, aucune série dure",
         "Rien d'autre de la semaine côté salle : pas de circuit, pas d'EMOM, pas de muscle-up. Tout reprend le lundi 23."
       ]},
+      { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
       { "day": 1, "type": "course", "title": "Course — 6 km avec rappels d'allure", "ex": [
         "6 km facile avec 4 x 1 min à 5:12/km (allure course) au milieu, récup 2 min",
         "Ces rappels servent à réveiller les jambes, pas à s'entraîner. Aucune fatigue ne doit rester."
+      ]},
+      { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
+        "Bloc de révisions — note ce que tu as bossé."
+      ]},
+      { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
+        "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Footing — 5 km + lignes droites", "ex": [
         "5 km très facile + 4 accélérations de 20 s en fin de sortie (cale-le autour de la visio)",

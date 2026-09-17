@@ -17,8 +17,8 @@
 <!-- ?v= : horodatage de cache. À BUMPER à chaque modification de program.js / auth.js,
      sinon le navigateur peut servir une version périmée du programme (constaté le 17/09/2026 :
      l'appli affichait encore l'ancien objectif 1RM et l'ancien titre du mercredi). -->
-<script src="./program.js?v=20260917d"></script>
-<script src="./auth.js?v=20260917d"></script>
+<script src="./program.js?v=20260917e"></script>
+<script src="./auth.js?v=20260917e"></script>
 <script>
   /* Force le runtime JSX "classic" (React.createElement) : le runtime
      "automatic", devenu défaut sur les versions récentes de Babel, génère
@@ -55,7 +55,13 @@ const TYPE_META = {
   deload: { label: "Deload",       color: "#5C6470" },
   test:   { label: "Test",         color: "#7A4FA3" },
   course: { label: "Course",       color: "#3C7A4E" },
+  cours:  { label: "Cours",        color: "#3D3A6B" },
+  revisions: { label: "Révisions", color: "#8A6D3B" },
 };
+/* Séances « hors sport » : cours et révisions. Elles se cochent et se
+   commentent comme les autres, mais sans RPE ni douleur d'épaule, et
+   elles se placent sur la même ligne que la séance de sport du jour. */
+function isStudy(t) { return t === "cours" || t === "revisions"; }
 /* ---- Programme actif (dynamique) ----------------------------------
    program.js fournit le programme par défaut du site. Chaque profil
    peut le remplacer par un programme embarqué dans SES données
@@ -122,14 +128,32 @@ function weekFlags(i) {
    trié par jour effectif. */
 function weekSessions(data, i) {
   const moves = data.moves || {};
+  const seen = {};
   const base = WEEKS[i].map((s) => {
-    const id = "s" + i + "-d" + s.day;
+    /* Historiquement un seul créneau par jour, d'où l'id dérivé du jour.
+       Depuis qu'un jour peut porter sport + révisions, on suffixe les
+       suivants — le premier garde son id d'origine, donc les données
+       déjà enregistrées ne bougent pas. */
+    const rank = (seen[s.day] = (seen[s.day] || 0) + 1);
+    const id = "s" + i + "-d" + s.day + (rank > 1 ? "-" + rank : "");
     return { id, origDay: s.day, day: moves[id] !== undefined ? moves[id] : s.day, type: s.type, title: s.title, ex: s.ex, custom: false };
   });
   const cust = ((data.custom || {})[i] || []).map((c) => (
     { id: "s" + i + "-" + c.id, cid: c.id, origDay: c.day, day: c.day, type: c.type, title: c.title, ex: c.ex || [], custom: true }
   ));
   return base.concat(cust).sort((a, b) => a.day - b.day);
+}
+/* Regroupe les séances par jour pour les afficher sur une même ligne
+   (typiquement sport + révisions). L'ordre d'origine est conservé :
+   le sport est écrit avant les révisions dans le programme. */
+function groupByDay(list) {
+  const out = [];
+  let cur = null;
+  list.forEach((s) => {
+    if (!cur || cur.day !== s.day) { cur = { day: s.day, list: [] }; out.push(cur); }
+    cur.list.push(s);
+  });
+  return out;
 }
 /* Utilitaires dates & nombres pour le suivi */
 function todayStr() {
@@ -393,7 +417,7 @@ function buildCoachPack(data) {
   L.push("```");
   L.push("");
   L.push("Règles :");
-  L.push("- `weeks` : un tableau PAR SEMAINE ; chaque séance a `day` (0=lundi … 6=dimanche), `type` parmi `force` | `jambes` | `volume` | `explo` | `deload` | `test` | `course`, `title`, et `ex` (une ligne de texte par exercice).");
+  L.push("- `weeks` : un tableau PAR SEMAINE ; chaque séance a `day` (0=lundi … 6=dimanche), `type` parmi `force` | `jambes` | `volume` | `explo` | `deload` | `test` | `course` | `cours` | `revisions` (les deux derniers ne sont pas du sport : cours et révisions, affichés sur la même ligne que la séance de sport du jour), `title`, et `ex` (une ligne de texte par exercice).");
   L.push("- Mets le caractère ↗ dans une ligne d'exercice dont la charge/intensité monte par rapport à la semaine précédente, ↘ dans une ligne allégée (deload) — le carnet les colore.");
   L.push("- `startDate` : un lundi (début de la semaine 1).");
   L.push("- `remarks` : tes conseils au sportif (récupération, nutrition, points de vigilance…) — ils s'affichent dans son carnet.");
@@ -1759,8 +1783,12 @@ function Calendar(props) {
         ) : null}
       </div>
       <div style={S.sessions}>
-        {sessions.map((s) => {
+        {groupByDay(sessions).map((grp) => (
+          <div key={"day" + grp.day} style={grp.list.length > 1 ? S.dayGroup : null}>
+        {grp.list.map((s) => {
           const id = s.id;
+          const study = isStudy(s.type);
+          const paired = grp.list.length > 1;
           const meta = TYPE_META[s.type] || TYPE_META.course;
           const date = sessionDate(week, s.day);
           const moved = !s.custom && s.day !== s.origDay;
@@ -1769,7 +1797,8 @@ function Calendar(props) {
           const hasFeedback = !!(fb.rpe || fb.pain !== null || fb.comment);
           const openFeedback = noteOpen[id] || done || hasFeedback;
           return (
-            <article key={id} style={Object.assign({}, S.card, { borderLeft: "5px solid " + meta.color, opacity: done ? 0.72 : 1 })}>
+            <article key={id} style={Object.assign({}, S.card, { borderLeft: "5px solid " + meta.color, opacity: done ? 0.72 : 1 },
+              paired ? { flex: "1 1 " + (study ? 210 : 330) + "px", minWidth: 0 } : null)}>
               <div style={S.cardHead}>
                 <div>
                   <div style={S.cardDate}>
@@ -1892,18 +1921,18 @@ function Calendar(props) {
                 </div>
               ) : (
                 <button style={Object.assign({}, S.addNoteBtn, { marginTop: 8 })} onClick={() => { setAddingFor(id); setAddText(""); }}>
-                  + Ajouter un exercice
+                  {study ? "+ Ajouter une ligne" : "+ Ajouter un exercice"}
                 </button>
               )}
               <div style={{ marginTop: 10 }}>
                 {openFeedback ? (
-                  <FeedbackField id={id} feedback={fb} onChange={setFeedback} />
+                  <FeedbackField id={id} feedback={fb} onChange={setFeedback} study={study} />
                 ) : (
                   <button style={S.addNoteBtn} onClick={() => setNoteOpen(Object.assign({}, noteOpen, { [id]: true }))}>
-                    + Ajouter un bilan
+                    {study ? "+ Ajouter une note" : "+ Ajouter un bilan"}
                   </button>
                 )}
-                {done && !hasFeedback ? (
+                {done && !hasFeedback && !study ? (
                   <div style={S.feedbackReminder}>Séance faite — pense à remplir ton bilan ci-dessus 👆</div>
                 ) : null}
               </div>
@@ -1915,6 +1944,8 @@ function Calendar(props) {
             </article>
           );
         })}
+          </div>
+        ))}
       </div>
       <div style={{ marginTop: 14 }}>
         {addingSession ? (
@@ -1984,7 +2015,9 @@ function FeedbackField(props) {
   };
   return (
     <div style={S.feedbackBox}>
-      <div style={S.noteLabel}>Bilan de séance — à remplir après exécution</div>
+      <div style={S.noteLabel}>{props.study ? "Note — ce que tu as bossé" : "Bilan de séance — à remplir après exécution"}</div>
+      {props.study ? null : (
+      <React.Fragment>
       <div style={S.rpeRow}>
         {RPE_OPTIONS.map((o) => (
           <button
@@ -2007,9 +2040,11 @@ function FeedbackField(props) {
           style={Object.assign({}, S.painBtn, fb.pain === false ? S.painBtnActiveNo : null)}
         >Non</button>
       </div>
+      </React.Fragment>
+      )}
       <textarea
         value={comment}
-        placeholder="Charges réelles, sensations, à ajuster la prochaine fois…"
+        placeholder={props.study ? "Chapitres, durée, ce qu'il reste à faire…" : "Charges réelles, sensations, à ajuster la prochaine fois…"}
         rows={2}
         style={S.noteArea}
         onChange={(e) => { setComment(e.target.value); setDirty(true); }}
@@ -2230,6 +2265,9 @@ const S = {
   warmupToggle: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", padding: "10px 14px", fontWeight: 600, fontSize: 14, textAlign: "left" },
   warmupList: { margin: 0, padding: "0 14px 12px 30px", fontSize: 14 },
   sessions: { display: "flex", flexDirection: "column", gap: 14 },
+  /* Une ligne par jour : les cartes se mettent côte à côte quand il y a
+     la place, et repassent l'une sous l'autre sous ~560 px (téléphone). */
+  dayGroup: { display: "flex", flexWrap: "wrap", gap: 14, alignItems: "flex-start" },
   card: { background: "#fff", borderRadius: 10, padding: "14px 14px 12px", border: "1px solid #DDDFDA" },
   cardHead: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, marginBottom: 8 },
   cardDate: { fontSize: 13, color: "#5C6470", fontWeight: 600, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" },
