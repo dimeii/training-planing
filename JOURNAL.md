@@ -4,6 +4,41 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-17 — Deux records de plus, et la phase 3 réécrite autour de ce qui reste à jouer
+
+Bilan du mercredi 16 : Mehdi a pris le **max reps ET le 1RM dips dans la même séance**, alors que le programme réservait les dips au vendredi. C'était le bon appel — tractions et dips ne partagent pas la musculature, et les deux chiffres sont des records.
+
+- **Max reps : 23** (20 le 14/08, 21 le 26/08, 20 le 02/09). +2 d'un coup après un mois de stagnation, et ça arrive **après deux semaines sans aucune série max** — la décision qu'il avait prise seul le 2 septembre (« j'arrête les max toutes les semaines ») est validée par les faits. Objectif du cycle : 25. Il en reste deux.
+- **1RM dips : 65 kg de lest** (57,5 · 60 · 65 validés, échec à 70). Le barème d'août était périmé de 7,5 kg : **1RM total 147,5 kg**, donc 78 % → 32,5 kg (au lieu de 27,5), 84 % → 41,5, 87 % → 46, 90 % → 50. Toutes les lignes de dips de la phase 3 sont recalées.
+- **Poids de corps enfin repesé : 82,5 kg** (15/09) → 1RM total tractions **127,5 kg**. Les paliers ne bougent pas (19,5 · 26 · 30 · 32 · 35 · 38,5 · 45), le calcul est juste maintenant.
+- **Il a commencé à saisir ses mesures** : premier point du graphique max reps après neuf cycles de rappel, 1RM et poids de corps à jour. Restent à saisir les 23 reps et les 65 kg du 16/09.
+- **Quatrième métrique ajoutée** : « 1RM lesté dips » (départ 47, cible 70). Le code des métriques est entièrement piloté par `program.js` (`normMeasures` conserve les clés inconnues), l'ajout est sans risque pour l'historique.
+
+### La décision structurante : le muscle-up quitte le vendredi
+
+Le constat traînait depuis la S8, il est tranché. Le vendredi a été écourté ou annulé **une semaine sur deux depuis la S5** ; le lundi, le mardi et le mercredi se font **depuis dix semaines sans une seule exception**. Or le vendredi portait le muscle-up et le false grip, c'est-à-dire l'objectif du cycle.
+
+- **Le bloc muscle-up + false grip remonte en ouverture du mercredi**, devant la pyramide. Le mercredi devient la séance clé de la phase 3.
+- **Le vendredi descend à 3 lignes / 30 min** (explosif, straight bar dips, abdos) : s'il saute, le cycle ne perd plus rien. On arrête de le réparer, on arrête de compter dessus.
+
+### Phase 3 (S10-S13) entièrement réécrite
+
+Elle n'était qu'une esquisse. Deux objectifs restent ouverts — **les 25 tractions** et **l'enchaînement de muscle-ups** — tout le reste entretient.
+
+- **Volume calé sur les 23 reps** : S10 → 8-10-12-12-10-8 (60 reps) · S11 → 8-10-12-14-12-10-8 (74, pic du cycle, posé 14 jours avant le test) · S12 → 6-8-10-8-6 (38, début du taper). Séries de travail à 45-60 % du max, 3-4 reps en réserve.
+- **Force en maintenance** : 4x4 @30 kg (88 %) en S10, 5x3 @32 (90 %) en S11, 4x3 @35 (92 %) en S12 — dernier contact lourd. Le rappel d'intensité de la S13 est placé **le lundi**, jamais le vendredi (leçon du 11/09 : celui-là n'a pas été fait et a laissé 14 jours sans rien au-dessus de 88 % devant le test).
+- **Test final éclaté sur trois créneaux** : mercredi 14/10 le 1RM lesté seul · vendredi 16 le max reps en ouverture puis les dips (le couple qui a donné deux records le 16/09) · samedi 17 le muscle-up seul en 20 min. Jamais deux tests de tirage dans la même séance, et le muscle-up jamais derrière une série à l'échec.
+- **GTG réactivé avec un rôle précis** : 3-5 séries de 8-10 reps le jeudi/dimanche, c'est l'outil pour aller chercher les deux reps manquantes sans coûter au lundi ni au mercredi.
+- **Vendredi 18 recadré** : il ne reste que le muscle-up (les dips sont faits), 25 minutes, et c'est le dernier chiffre manquant du cycle — c'est lui qui décide du format du bloc MU de la phase 3.
+
+### Un bug d'exploitation : l'appli servait une version périmée
+
+L'export du 17/09 affichait encore **« Objectif : 43 kg »** et l'ancien titre du mercredi (« Récup »), alors que les commits du 14/09 étaient poussés depuis trois jours. `index.html` chargeait `./program.js` sans aucun paramètre de cache. Ajout d'un horodatage `?v=20260917` sur `program.js` et `auth.js`, avec un commentaire qui rappelle de le bumper à chaque modification. À vérifier côté Mehdi : si le carnet affiche un bouton « Revenir au programme du site » dans la carte 🤖 Coach IA, c'est qu'un programme embarqué masque celui du dépôt — et dans ce cas aucune adaptation poussée ici ne lui parvient.
+
+- `program.js` validé (parse Node OK, 13 semaines, 17 notes, 4 métriques).
+
+---
+
 ## 2026-09-14 (soir) — Test 1RM : 45 kg, l'objectif du cycle tombe avec quatre semaines d'avance
 
 Test avancé du mercredi au lundi le matin même, fait le soir. Déroulé complet : 3 @15 · 1 @25 · 1 @32 · 1 @42,5 (palier sauté par erreur de comptage, la rep passe quand même) · 1 @45 avec un petit appel en haut · 1 @45 propre · 1 @45 propre · 1 @47,5 raté de quelques centimètres · 1 @47,5 en échec.

@@ -34,18 +34,18 @@ window.PROGRAM = {
   ],
 
   "goals": [
-    { "label": "Max reps", "value": "17 → 25+" },
+    { "label": "Max reps", "value": "17 → 23 · cible 25" },
     { "label": "1RM lesté", "value": "35 → 45 kg ✅ · cible 47,5" },
-    { "label": "Poids", "value": "83,8 → 80 kg" },
+    { "label": "1RM dips", "value": "47 → 65 kg ✅ · cible 70" },
     { "label": "Objectif", "value": "MU enchaînés · vers le strict" }
   ],
 
   "metrics": [
     { "key": "reps",    "label": "Max reps tractions",  "unit": "reps", "color": "#3E5F8A", "start": 17,   "target": 25, "dir": "up" },
     { "key": "pull1rm", "label": "1RM lesté tractions", "unit": "kg",   "color": "#B3402E", "start": 35,   "target": 47.5, "dir": "up" },
+    { "key": "dip1rm",  "label": "1RM lesté dips",      "unit": "kg",   "color": "#C77F00", "start": 47,   "target": 70, "dir": "up" },
     { "key": "bw",      "label": "Poids de corps",      "unit": "kg",   "color": "#2E7D7B", "start": 83.8, "target": 80, "dir": "down" }
   ],
-
   "warmup": [
     "Rotations externes épaule à l'élastique 2x15",
     "Tractions scapulaires 2x10",
@@ -57,21 +57,21 @@ window.PROGRAM = {
   "notes": [
     { "label": "Épaule gauche", "text": "Signalée trois fois en S5 (mercredi 19 dès l'échauffement, vendredi 21 séance écourtée, samedi 22 sur un upper chest flight). RÉSOLU EN S6 : bloc épaule complet remonté en échauffement du lundi → aucune douleur de la semaine, un simple titillement aux dips le mercredi, « c'est vite parti ». CONFIRMÉ EN S7 : deuxième semaine complète sans la moindre mention de douleur, y compris sur les dips lestés à 40 kg et sur du développé incliné ajouté deux fois. La cause était la place du renfo, pas la charge. Ça ne bouge plus : le renfo épaule est EN PREMIER dans les séances du haut, point. Le code couleur reste valable si ça revient. VERT — rien à l'échauffement : séance normale. ORANGE — ça tire à l'échauffement ou sur un mouvement : tu supprimes CE mouvement (dips, straight bar dips, écarté / pec deck / upper chest flight, développé) et tu gardes le tirage, qui ne l'irrite pas ; le renfo coiffe se fait quand même. ROUGE — ça réveille la nuit, ça tire au repos, ou tu perds de l'amplitude : kiné avant de continuer le bloc, il reste 6 semaines, une épaule ne se rattrape pas." },
     { "label": "Deload & taper", "text": "DÉCISION DU 7 SEPTEMBRE, à ta demande : la semaine de décharge était trop courte. Dans sa version d'origine, la S8 faisait deux choses incompatibles — décharger et pointer un maximum — avec deux jours d'allègement seulement devant un test de 1RM. Ce qui a été fait : la S8 devient une semaine de décharge COMPLÈTE sans aucun test (mercredi à volume moitié, vendredi technique), les deux tests partent au mercredi 16 et au vendredi 18, et le programme passe à 13 semaines — le test final glisse du 7-9 au 14-16 octobre. La même logique est appliquée en amont de ce test final : le volume du mercredi de la S12 est déjà réduit et le lundi de la S13 garde deux singles lourds. Le principe à retenir, parce qu'il resservira à chaque test : un taper coupe le VOLUME de 40 à 60 %, il ne coupe PAS l'intensité. Dix jours sans rien toucher de lourd et tu arrives plat — le système nerveux se désamorce et le 1RM baisse au lieu de monter. D'où les deux rappels d'intensité écrits dans le plan : 2x1 @30 kg le vendredi 11, 3x2 @25 kg le lundi 14, jamais à l'échec, deux singles à chaque fois. Volume au plancher, charge encore présente. CE QUI S'EST RÉELLEMENT PASSÉ : la décharge a très bien marché côté volume — les trois séances de la S8 sont notées « Facile », c'est le signe qu'on cherchait — mais le rappel du vendredi 11 n'a pas été fait (« pas fait, repos »). Il ne restait donc qu'un seul contact lourd avant le test, d'où le single @30 kg ajouté au lundi 14. À retenir pour le taper d'octobre : un rappel d'intensité posé un VENDREDI a une chance sur deux de sauter (c'est le jour le plus fragile de la semaine, voir la note « Ce qui est en dernier ne se fait pas ») — les deux rappels de la S13 se placeront donc en début de semaine. Repères pour la suite : une décharge se place toutes les 4 à 6 semaines de charge (celle-ci arrive après S5-S6-S7, donc au bon moment), elle dure une semaine pleine, et avant un test on compte 10 à 14 jours entre la dernière grosse séance de volume (mercredi 2 septembre ici) et le test lui-même." },
-    { "label": "Pourcentages", "text": "Sur les tractions et les dips, un % se calcule sur la charge TOTALE (poids de corps + lest), jamais sur le lest seul. 1RM total = poids de corps + lest max. Lest à mettre = (% × 1RM total) − poids de corps. Exemple avec les chiffres actuels : 82,8 kg de corps + 45 kg de lest = 127,8 kg de total ; 92 % = 117,6 kg → 35 kg de lest à la ceinture. C'est ce qui a été corrigé après la S3 : les charges de la phase 2 calculées sur le lest seul valaient 95-98 % du total, infaisables en 5x3." },
-    { "label": "Barème phase 3 (mesuré le 14 septembre)", "text": "TRACTIONS — LE CHIFFRE EST TOMBÉ : 45 kg de lest, lundi 14 septembre, à froid et en ouverture de séance. Déroulé : 3 @15 · 1 @25 · 1 @32 · 1 @42,5 (palier sauté par erreur de comptage, la rep passe quand même) · 1 @45 avec un petit appel en haut · puis 1 @45 et encore 1 @45 PROPRES · 1 @47,5 raté de quelques centimètres · 1 @47,5 en échec. Trois singles à 45 kg dans la même séance, ce n'est pas un maximum arraché : c'est une charge tenue. Le 1RM réel est probablement entre 46 et 47, mais on programme sur 45, la valeur validée — c'est la règle d'honnêteté du carnet, et elle a déjà payé. RAPPEL DE PROGRESSION : 35 kg au départ du carnet (20 juillet, estimation), 37,5 mesurés le 12 août, 40 le 24 août, 45 le 14 septembre. +10 kg en huit semaines, dont +5 en trois semaines de bloc de force max suivi d'une décharge complète — la décharge n'a rien coûté, elle a rapporté. L'objectif du cycle (43 kg) est dépassé avec QUATRE SEMAINES D'AVANCE, la cible du graphique passe donc à 47,5 kg pour le test final du 14 octobre. BARÈME QUI EN DÉCOULE — poids de corps 82,8 kg (dernière mesure, 31 août : à repeser, c'est lui qui rend le calcul juste) → 1RM TOTAL 127,8 kg. Lest correspondant : 80 % → 19,5 kg · 85 % → 26 kg · 88 % → 30 kg · 90 % → 32 kg · 92 % → 35 kg · 95 % → 38,5 kg · 100 % → 45 kg. Soit +5 kg sur chaque palier par rapport au barème de la phase 2. Repère concret : le 5x3 @30 kg de la S7, qui était ton 92 %, devient ton 88 % — la même séance est désormais du travail de maintenance. DIPS — barème inchangé tant que le retest du vendredi 18 n'a pas eu lieu. Mesuré le 14 août : 55 kg validés, 60 kg ratés de peu → 1RM lesté ≈ 57,5 kg → 1RM TOTAL 140 kg. Lest correspondant : 78 % → 27,5 kg · 84 % → 35 kg · 87 % → 40 kg · 90 % → 43,5 kg · 95 % → 50 kg. Si le poids de corps bouge de plus de 2 kg, tout se recalcule (le lest baisse quand le corps monte, et inversement)." },
-    { "label": "Mesures", "text": "1RM lesté saisi (40 kg le 24 août), poids de corps suivi (82,8 kg le 31 août, -1 depuis le départ). Le MAX REPS — le graphique qui porte l'objectif du cycle, 17 → 25 — est TOUJOURS VIDE après huit semaines, alors qu'il y a maintenant TROIS valeurs écrites dans tes remarques de séance : 20 reps le 14 août (test S4), 21 reps le 26 août (ouverture du mercredi S6), 20 reps le 2 septembre (ouverture du mercredi S7). Ces trois points racontent quelque chose d'utile — le max reps stagne pendant que le lesté monte de 5 kg, ce qui est le comportement normal d'un bloc de force max — mais tant qu'ils ne sont pas saisis, la comparaison S4 → S9 → S13 n'existe pas. NEUVIÈME CYCLE : l'export du 14 septembre affiche toujours « Aucune mesure enregistrée » sur ce graphique, et le poids de corps n'a plus bougé depuis le 31 août. Cinq minutes cette semaine, avec les trois chiffres du test — 1RM le lundi 14, max reps le mercredi 16, dips le vendredi 18 — sans elles, le bilan de fin de cycle se résumera à « 17 au départ, X à la fin » alors que le carnet contient de quoi tracer toute la courbe. Le 1RM dips (57,5 kg le 14 août) n'a pas de graphique mais reste noté ici." },
-    { "label": "Ce qui est en dernier ne se fait pas", "text": "Sept semaines, aucune exception. Gainage et étirements de la séance jambes : sautés tant qu'ils étaient en fin de séance, faits dès qu'ils sont passés en premier. Transitions MU déplacées en fin de test S4 : sautées. Renfo épaule, false grip et straight bar dips du vendredi : « pas eu le temps » trois vendredis sur quatre. Circuit abdos du mercredi : « pas le temps » en S3 comme en S5, fait dès qu'il est remonté en S6. Et le cas le plus net : en S6 le vendredi, les négatifs de muscle-up — LIGNE PRIORITAIRE du bloc, placés en 5e position — ont sauté alors que les lignes 6 et 7 ont été faites. Conséquence appliquée à la S7 : les séances du haut sont numérotées par ordre d'importance ET raccourcies (5-6 lignes au lieu de 7-8). Quand une séance doit être écourtée, ce sont les dernières lignes qui sautent, et c'est prévu. La seule ligne vraiment facultative de la séance jambes, ce sont les mollets. VÉRIFICATION EN S7 : la séance jambes ramenée à 5 lignes a été FAITE EN ENTIER, avec du dépassement partout (squat monté à 80 kg, fentes à 2x20 au lieu de 2x16, SDT à 100 kg) — après un abandon en cours de séance en S6 sur le format à 7 lignes. Le format court n'a rien coûté, il a rapporté. Côté vendredi en revanche, les lignes 3, 4 et 6 (négatifs de MU, false grip, straight bar dips) sont revenues sans le moindre retour : le doute reste entier sur les négatifs, qui restent la ligne prioritaire du bloc. NOUVEAU CONSTAT EN S8, ET IL CHANGE D'ÉCHELLE : ce n'est plus seulement la fin de séance qui saute, c'est LE VENDREDI. Celui du 11 septembre a été annulé en entier (« pas fait, repos »), après trois vendredis sur quatre écourtés en phase 2. Le lundi, le mardi et le mercredi, eux, se font — neuf semaines de suite, sans exception. Conséquence : le vendredi est le pire emplacement du carnet pour une ligne prioritaire, et c'est exactement là que sont le muscle-up et le false grip, c'est-à-dire l'objectif du cycle. À trancher à la réécriture de la phase 3, après le test du 18 : soit le bloc muscle-up remonte en OUVERTURE du mercredi (le seul jour à 100 % de réalisation), soit le vendredi devient une séance de 3 lignes qui tient en 30 minutes. Le statu quo, lui, est chiffré : il coûte une séance sur deux." },
+    { "label": "Pourcentages", "text": "Sur les tractions et les dips, un % se calcule sur la charge TOTALE (poids de corps + lest), jamais sur le lest seul. 1RM total = poids de corps + lest max. Lest à mettre = (% × 1RM total) − poids de corps. Exemple avec les chiffres à jour : 82,5 kg de corps + 45 kg de lest = 127,5 kg de total ; 92 % = 117,3 kg → 35 kg de lest à la ceinture. Même calcul aux dips : 82,5 + 65 = 147,5 kg ; 78 % = 115 kg → 32,5 kg de lest. C'est ce qui a été corrigé après la S3 : les charges de la phase 2 calculées sur le lest seul valaient 95-98 % du total, infaisables en 5x3." },
+    { "label": "Barème phase 3 (mesuré les 14 et 16 septembre)", "text": "TRACTIONS — 45 kg de lest, lundi 14 septembre, à froid et en ouverture de séance. Déroulé : 3 @15 · 1 @25 · 1 @32 · 1 @42,5 (palier sauté par erreur de comptage, la rep passe quand même) · 1 @45 avec un petit appel en haut · puis 1 @45 et encore 1 @45 PROPRES · 1 @47,5 raté de quelques centimètres · 1 @47,5 en échec. Trois singles à 45 kg dans la même séance, ce n'est pas un maximum arraché : c'est une charge tenue. Le 1RM réel est probablement entre 46 et 47, mais on programme sur 45, la valeur validée. PROGRESSION : 35 kg au départ (20 juillet, estimation), 37,5 le 12 août, 40 le 24 août, 45 le 14 septembre — +10 kg en huit semaines, dont +5 sur un bloc de force max suivi d'une décharge complète. L'objectif du cycle (43 kg) est dépassé avec quatre semaines d'avance, la cible du graphique est passée à 47,5 kg pour le test final du 14 octobre. POIDS DE CORPS ENFIN REPESÉ : 82,5 kg le 15 septembre (c'est lui qui rend le calcul juste) → 1RM TOTAL 127,5 kg. Lest correspondant : 80 % → 19,5 kg · 85 % → 26 kg · 88 % → 30 kg · 90 % → 32 kg · 92 % → 35 kg · 95 % → 38,5 kg · 100 % → 45 kg. Repère concret : le 5x3 @30 kg de la S7, qui était ton 92 %, est devenu ton 88 % — la même séance est désormais du travail de maintenance, et c'est exactement ce qu'elle est en S10. DIPS — RETESTÉS LE 16 SEPTEMBRE, en même temps que le max reps : 57,5 puis 60 puis 65 kg validés, échec à 70. Le barème d'août (57,5 kg) est périmé de 7,5 kg. Nouveau 1RM lesté 65 kg → 1RM TOTAL 147,5 kg. Lest correspondant : 78 % → 32,5 kg · 80 % → 35,5 kg · 84 % → 41,5 kg · 87 % → 46 kg · 90 % → 50 kg · 95 % → 57,5 kg. Toutes les lignes de dips de la phase 3 sont recalées là-dessus : l'ancien « 4x8 à 78 % » valait 27,5 kg, il vaut maintenant 32,5. Si le poids de corps bouge de plus de 2 kg, tout se recalcule (le lest baisse quand le corps monte, et inversement)." },
+    { "label": "Mesures", "text": "ENFIN. Après neuf cycles de rappel, le carnet a des chiffres dedans : 1RM lesté 40 kg (24/08) puis 45 kg (15/09), poids de corps repesé à 82,5 kg (15/09, -1,3 depuis le départ), et surtout LE PREMIER POINT DU GRAPHIQUE MAX REPS (21 reps). C'est ce graphique qui porte l'objectif du cycle (17 → 25), il était vide depuis le 20 juillet. IL RESTE DEUX CHIFFRES À SAISIR, tous les deux datés du 16 septembre : le MAX REPS À 23 — c'est un record, et c'est le point le plus important de tout le carnet puisqu'il te place à deux reps de l'objectif — et le 1RM DIPS À 65 KG, qui a maintenant son propre graphique (quatrième métrique ajoutée le 17 septembre, départ 47 kg, cible 70). Cinq minutes, et la courbe complète du cycle existe : 17 → 20 (14/08) → 21 (26/08) → 23 (16/09) → le test du 16 octobre." },
+    { "label": "Ce qui est en dernier ne se fait pas", "text": "Sept semaines d'observation, aucune exception : gainage et étirements de la séance jambes, transitions MU reportées en fin de test, renfo épaule et false grip du vendredi, circuit abdos du mercredi — tout ce qui est placé en dernier saute, et tout ce qui remonte en tête se fait. Le cas le plus net : en S6 les négatifs de muscle-up, LIGNE PRIORITAIRE du bloc, placés en 5e position, ont sauté alors que les lignes 6 et 7 ont été faites. Puis le constat a changé d'échelle en S8 : ce n'est plus seulement la fin de séance qui saute, c'est LE VENDREDI — écourté ou annulé une semaine sur deux depuis la S5, celui du 11 septembre annulé en entier, alors que le lundi, le mardi et le mercredi se font depuis dix semaines sans une seule exception. LA DÉCISION EST PRISE, à la réécriture de la phase 3 le 17 septembre, et elle est double. (1) LE BLOC MUSCLE-UP + FALSE GRIP REMONTE EN OUVERTURE DU MERCREDI — le seul jour à 100 % de réalisation. L'objectif du cycle ne se joue plus le jour le plus fragile du carnet. (2) LE VENDREDI DESCEND À TROIS LIGNES ET 30 MINUTES (explosif, straight bar dips, abdos) : ce qui y reste est utile mais plus décisif, et s'il saute, le cycle ne perd rien. On arrête de réparer le vendredi, on arrête de compter dessus. Pour le reste, la règle tient : séances du haut à 5 lignes maximum, numérotées par ordre d'importance, et quand une séance doit être écourtée ce sont les dernières lignes qui sautent — c'est prévu. Vérifié en S7 : la séance jambes ramenée à 5 lignes a été faite EN ENTIER, avec du dépassement partout, après un abandon en cours de séance en S6 sur le format à 7 lignes. Le format court n'a rien coûté, il a rapporté." },
     { "label": "Face pulls", "text": "Déplacés du mardi au lundi (S4) : ils partent en ÉCHAUFFEMENT du jour force, avant les tractions lestées, + 1 série le vendredi. VALIDÉ EN S6 : bloc en tête de séance = zéro douleur d'épaule de la semaine, contre trois séances douloureuses en S5 avec le même bloc relégué en fin de séance. Charge LÉGÈRE, coudes hauts, aucun haussement d'épaules, la 15e rep doit rester facile — c'est de la prévention, pas un tirage. Si un face pull fatigue, il est trop lourd." },
-    { "label": "Tests", "text": "Les tests ne se font plus le même jour. Le 1RM lesté part le MERCREDI (c'est lui qui règle toutes les charges du bloc suivant, il passe donc le plus frais), le max reps PDC + dips + muscle-up le VENDREDI. Un max reps fait 15 min après des singles lourds coûte 2 à 4 reps. Même découpage en S4, S9 et S13 pour que les trois tests soient comparables. DÉCALÉS D'UNE SEMAINE le 7 septembre : ils devaient tomber en S8, ils partent au 16 et au 18 septembre pour laisser une vraie semaine de décharge devant (note « Deload & taper »). VÉRIFIÉ EN S4 : le découpage a marché (20 reps, 55 kg aux dips), mais les transitions MU reportées en fin de séance ont été sautées. En S9 le muscle-up repasse donc en OUVERTURE — et son format a changé après la S7 (3 MU d'affilée) : ce n'est plus 3 singles mais UNE série max à froid, arrêt à la première rep cassée, puis 2 séries de rappel. Une série de 3 coûte à peine plus qu'un single au max reps qui suit, et c'est elle qui décide du contenu de la phase 3. Et une consigne de planification : le test S4 est tombé un jour épuisant, en soirée. Celui de la S9 se pose un jour où tu es reposé, sinon le graphique mesure ta fatigue. AVANCÉ AU LUNDI 14 le jour même, à sa demande : la décharge était complète (trois séances « Facile », cinq jours sans tirage) et le déplacement fait passer l'écart entre les deux tests de 2 à 4 jours, ce qui protège le max reps du vendredi. PUIS LE MAX REPS AVANCÉ AU MERCREDI 16 au soir, également à sa demande : il ouvre une séance de volume allégée, 48 h après le 1RM, ce qui est sa bonne place (démontré en S6 : 21 reps en ouverture contre 13 en fin de pyramide). La semaine de test a donc trois jours au lieu de deux — lundi 1RM, mercredi max reps, vendredi muscle-up + dips — et le vendredi tombe à 45 minutes, ce qui est la meilleure protection possible pour la séance qui saute le plus souvent. Le principe qui reste, lui, ne bouge pas : chaque chiffre se mesure frais, et jamais deux tests dans la même séance." },
-    { "label": "Muscle-up", "text": "Diagnostic S3 : le MU passait bras après bras parce que le gainage lâchait à la bascule — le facteur limitant n'a jamais été la force de tirage. Le diagnostic était le bon : négatifs + tractions explosives jambes bloquées + hollow → 2 MU LES DEUX BRAS ENSEMBLE le 21 août (S5), puis en S6 un premier MU propre avec une simple flexion de jambes sur 4-5 séries et un deuxième « de plus en plus cassé ». PUIS LA S7 : 3 MU d'affilée en ouverture, puis 2-2-2-2 sur les séries suivantes. En sept semaines la ligne est passée de « bras après bras » à un enchaînement de trois. L'objectif « deux propres d'affilée » est donc atteint sur le papier — avec une réserve honnête : c'était une séance « d'amusement avec les amis », et rien ne dit que les 3 reps étaient strictes. TA FORME EXACTE, précisée le 7 septembre : ce n'est pas un MU strict — il y a un LÉGER APPEL DES DEUX GENOUX, et une rotation des poignets par-dessus la barre au moment de la transition. Deux choses très différentes, et le carnet ne les traitera plus pareil. (1) La ROTATION DES POIGNETS n'est pas de la triche, c'est la technique : sans false grip, le poignet est sous la barre et il DOIT tourner pour passer au-dessus. Le false grip est simplement l'autre chemin — le poignet est déjà au-dessus au départ, donc plus rien à tourner ; c'est ce qui rend le strict possible. (2) Le LÉGER APPEL DE GENOUX, lui, est bien une assistance : c'est un kip minimal. Ça reste un muscle-up parfaitement légitime, c'est même la forme la plus répandue, mais ce n'est pas le strict. LE POINT QUI COMPTE : ta force n'est pas le frein. 40 kg de lest = 48 % de ton poids de corps ajouté en traction, et 57,5 kg aux dips = 69 % — les deux sont AU-DESSUS du seuil habituellement admis pour un MU strict (~40-50 % en traction). Ce qui manque n'est donc ni le dos ni les triceps : c'est la hauteur de tirage et la transition. D'où le test du vendredi 18, qui ne mesure plus « des reps strictes » mais TA forme, à condition qu'elle reste CONSTANTE : une série max à froid, arrêt à la première rep où l'appel AUGMENTE (genoux plus hauts, hanches qui balancent), où les bras passent l'un après l'autre, ou où la transition cale. Ce chiffre-là décide de la phase 3 : 3 reps en forme constante et le bloc final travaille des séries de MU, 1 seule et on revient aux singles. LE CHEMIN VERS LE STRICT, si tu le veux comme objectif de la phase 3 : le false grip d'abord (c'est LA ligne qui saute systématiquement le vendredi — trois vendredis sur quatre — et c'est exactement celle qui débloque le strict), puis la hauteur de tirage (une traction qui monte la barre au bas du sternum = le seuil du strict), puis les négatifs lents, puis réduire l'appel en serrant un objet entre les genoux. Dans cet ordre." },
-    { "label": "Prise & avant-bras", "text": "Le facteur limitant récurrent du carnet, et il n'a jamais été les dorsaux ni les jambes. Soulevé de terre : série coupée par la prise en S2, en S6 (sangles oubliées) et à moitié en S7 — réglé le 1er septembre avec des gants, 100 kg passés. Tractions lourdes : les 2x2 @34 kg du lundi de la S7 en échec sur les avant-bras, au lendemain d'une séance d'escalade. Trois conséquences écrites dans le programme : (1) la semaine de test protège la prise — pas de dead hang lourd, pas de false grip, pas de SDT avant le vendredi ; (2) la montée du test 1RM est ÉCONOME EN REPS, parce que chaque rep de palier bas se paye au palier haut ; (3) magnésie ou craie au test, systématiquement. Et en positif : l'escalade et le false grip DÉVELOPPENT cette prise — le problème n'est pas de les faire, c'est de les faire la veille d'un jour lourd." },
-    { "label": "Volume (nouveau format à partir de la S10)", "text": "Décision prise par Mehdi le 2 septembre, et elle est fondée : « j'arrête les max toutes les semaines, je pense changer la manière de faire du volume et faire une pyramide montante descendante ». Les faits lui donnent raison — 21 reps le 26 août, 20 le 2 septembre : une série max hebdomadaire à ce niveau ne mesure plus rien, elle coûte juste une séance de volume et de la fatigue nerveuse. À partir de la S10, donc : PLUS DE SÉRIE MAX HEBDOMADAIRE — le prochain max est celui du MERCREDI 16 SEPTEMBRE (avancé du 18), et ensuite plus rien jusqu'au test final de la S13. Le format a été essayé à volume réduit le mercredi de la S8 (5-7-9-7-5, 33 reps) : « Ok, pas de difficultés ». À la moitié du volume habituel et en semaine de décharge, ça ne prouve que le confort du format — ce qui suffit pour l'adopter, le vrai cadrage des séries se fait avec le chiffre du 18 septembre. Le mercredi devient une PYRAMIDE MONTANTE-DESCENDANTE (type 6-8-10-12-10-8-6, à caler sur le volume total actuel d'environ 70 reps), qui a l'avantage de placer les séries les plus dures au milieu de la séance plutôt qu'au début à froid ou à la fin sur la fatigue. Le reste du mercredi ne bouge pas : circuit abdos en 2e position (c'est sa place depuis la S6, il est fait), rowing prise serrée — 54-61-68-68 en S7, la machine ne plafonne plus — et dips lestés. Cadrage définitif des séries à la réécriture de la phase 3, après le test." },
+    { "label": "Tests", "text": "Les tests ne se font plus le même jour — un max reps fait 15 min après des singles lourds coûte 2 à 4 reps. CE QUI S'EST PASSÉ EN S9, et qui sert de modèle pour octobre : le 1RM lesté a été pris SEUL le lundi 14 (45 kg), puis le max reps ET le 1RM dips ENSEMBLE le mercredi 16 — 23 reps et 65 kg, deux records dans la même séance. Ce regroupement-là n'était pas prévu, tu l'as fait de toi-même, et il est juste : tractions et dips ne partagent pas la musculature, ils ne se gênent pas. Ce qui ne se regroupe pas, c'est tirage max + tirage max. CONSÉQUENCE POUR LE TEST FINAL (semaine 13) : mercredi 14 octobre le 1RM lesté seul, vendredi 16 le max reps en ouverture PUIS les dips, samedi 17 le muscle-up seul en 20 minutes. Trois créneaux, jamais deux tests de tirage dans la même séance, et le muscle-up ne se mesure jamais derrière une série à l'échec. Autre leçon déjà payée : le test de la S4 est tombé un jour épuisant, en soirée, et le graphique a mesuré la fatigue — ceux d'octobre se posent un jour reposé." },
+    { "label": "Muscle-up", "text": "Diagnostic S3 : le MU passait bras après bras parce que le gainage lâchait à la bascule — le facteur limitant n'a jamais été la force de tirage. Le diagnostic était le bon : négatifs + tractions explosives jambes bloquées + hollow → 2 MU LES DEUX BRAS ENSEMBLE le 21 août, un premier MU propre en S6, puis 3 D'AFFILÉE le 4 septembre. En sept semaines la ligne est passée de « bras après bras » à un enchaînement de trois. TA FORME EXACTE : ce n'est pas un MU strict — il y a un LÉGER APPEL DES DEUX GENOUX et une rotation des poignets par-dessus la barre. Deux choses très différentes. (1) La ROTATION DES POIGNETS n'est pas de la triche, c'est la technique : sans false grip, le poignet est sous la barre et il DOIT tourner. Le false grip est l'autre chemin — poignet déjà au-dessus au départ, plus rien à tourner ; c'est ce qui rend le strict possible. (2) Le LÉGER APPEL DE GENOUX est bien une assistance, un kip minimal : muscle-up parfaitement légitime, le plus répandu, mais pas le strict. TA FORCE N'EST PAS LE FREIN, et le test du 14-16 septembre l'a confirmé au-delà du doute : 45 kg de lest en traction = 55 % de ton poids de corps ajouté, et 65 kg aux dips = 79 %. Les deux sont très au-dessus du seuil habituellement admis pour un MU strict (~40-50 % en traction). Ce qui manque n'est ni le dos ni les triceps : c'est la HAUTEUR DE TIRAGE et la transition. C'EST LE SEUL CHIFFRE DU CYCLE QUI MANQUE ENCORE — le test du vendredi 18 septembre, une série max à froid, seul, 25 minutes. On n'y mesure pas des reps « strictes » mais TA forme tant qu'elle reste CONSTANTE : arrêt à la première rep où l'appel AUGMENTE (genoux plus hauts, hanches qui balancent), où les bras passent l'un après l'autre, ou où la transition cale. Ce chiffre décide du format du bloc de la phase 3 : 3 reps ou plus → séries de 2 le mercredi ; 1 seule → retour aux singles. LE CHEMIN VERS LE STRICT, dans cet ordre : le false grip d'abord (c'est LA ligne qui sautait systématiquement le vendredi — elle est remontée en 2e position du mercredi pour cette raison), puis la hauteur de tirage (tractions explosives sternum à la barre), puis les négatifs lents, puis réduire l'appel en serrant un objet entre les genoux." },
+    { "label": "Prise & avant-bras", "text": "Le facteur limitant récurrent du carnet, et il n'a jamais été les dorsaux ni les jambes. Soulevé de terre : série coupée par la prise en S2, en S6 (sangles oubliées) et à moitié en S7 — réglé le 1er septembre avec des gants, 100 kg passés. Tractions lourdes : les 2x2 @34 kg du lundi de la S7 en échec sur les avant-bras, au lendemain d'une séance d'escalade. LA CONSIGNE A PAYÉ EN S9 : dix jours sans dead hang lourd, sans false grip et sans soulevé de terre devant la semaine de test, et les trois chiffres sont tombés — 45 kg, 23 reps, 65 kg aux dips, aucune mention d'avant-bras dans les trois bilans. Les trois règles restent écrites dans le programme : (1) la semaine de test protège la prise — rien qui la crame dans les dix jours qui précèdent ; (2) la montée du 1RM est ÉCONOME EN REPS, parce que chaque rep de palier bas se paye au palier haut ; (3) magnésie ou craie au test, systématiquement. En phase 3 la prise redevient libre (SDT @100 kg avec gants dès la S10), puis elle se reverrouille à partir du lundi de la S12 : plus de soulevé de terre, plus de dead hang lourd jusqu'au test final. Et en positif : l'escalade et le false grip DÉVELOPPENT cette prise — le problème n'est pas de les faire, c'est de les faire la veille d'un jour lourd." },
+    { "label": "Volume — le format est calé (à partir de la S10)", "text": "Décision prise par Mehdi le 2 septembre : « j'arrête les max toutes les semaines, je pense changer la manière de faire du volume et faire une pyramide montante-descendante ». Les faits lui donnaient raison — 21 reps le 26 août, 20 le 2 septembre : une série max hebdomadaire à ce niveau ne mesurait plus rien, elle coûtait une séance de volume et de la fatigue nerveuse. Et la suite lui a donné raison deux fois : après deux semaines SANS aucun max, la série du 16 septembre est sortie à 23 reps — record du carnet, +2 d'un coup après un mois de stagnation. Donc : PLUS AUCUNE SÉRIE MAX jusqu'au test final du 16 octobre. LE FORMAT EST MAINTENANT CALÉ SUR UN VRAI CHIFFRE (23 de max, soit des séries de travail entre 45 et 60 % du maximum) : S10 → 8-10-12-12-10-8 = 60 reps · S11 → 8-10-12-14-12-10-8 = 74 reps, c'est le pic de volume du cycle et c'est la séance qui va chercher les 25 · S12 → 6-8-10-8-6 = 38 reps, le taper commence. Repos 2 min, 2:30 après la plus grosse série, et chaque série doit finir avec 3-4 reps en réserve — si la forme se dégrade au sommet, la série se coupe, elle n'est pas là pour être finie. L'intérêt du format : les séries les plus dures tombent au milieu de la séance, ni à froid au début ni sur la fatigue à la fin. Le reste du mercredi ne bouge pas — rowing prise serrée (54-61-68-68 en S7, la machine ne plafonne plus) et dips lestés, recalés sur le nouveau barème — sauf que le bloc muscle-up passe désormais AVANT tout ça." },
     { "label": "Push ajouté", "text": "Il ajoute du push de lui-même depuis la S2, et le carnet a pour habitude d'officialiser ce qui se fait déjà plutôt que de le subir. Nouveauté de la S7 : le développé couché à plat a été remplacé de sa propre initiative par du DÉVELOPPÉ INCLINÉ (4x8-10 @40-50-60-60 le lundi, puis encore 10 @40-60-60 le mercredi), motif « développer le haut des pecs en retard ». C'est cohérent, et l'épaule n'a rien dit de la semaine. Deux réserves à tenir : l'incliné met l'épaule dans une position plus exposée que le plat — c'est la première ligne à couper si la douleur revient (note « Épaule gauche », niveau ORANGE) ; et deux séances de push par semaine s'ajoutent à quatre séances de haut du corps, donc l'incliné du mercredi reste léger. Toujours pas d'écarté / pec deck / upper chest flight : c'est le mouvement sur lequel l'épaule a lâché en S5." },
     { "label": "Course", "text": "Trois semaines de dérive (S2 à S4) où la sortie « facile » du dimanche partait en fractionné — puis DEUX SEMAINES PROPRES en S5 et S6. La règle tient, on la garde : l'intensité (fractionné, tapis rapide, côtes) se fait le SAMEDI, jamais le dimanche ; le dimanche est du vrai facile (allure où tu peux parler, ~5:45-6:15/km) ou rien. UN seul créneau week-end : course OU sport, pas les deux. Nouveau point de vigilance venu de la S6 : 7 km à 4:34 de moyenne le LUNDI, jour force. Une course rapide le jour du travail lourd coûte sur les deux ; si tu cours le lundi, c'est après la séance et en facile." },
-    { "label": "Sports ajoutés", "text": "Badminton, tennis, escalade, séances avec des amis : il y en a toutes les semaines et c'est très bien, mais deux d'entre eux ne sont pas neutres pour ce carnet. L'ESCALADE est une séance de tirage complète (avant-bras, dorsaux, coudes) : elle se note dans le carnet comme telle, et placée le samedi elle laisse des courbatures jusqu'au lundi — c'est exactement ce qui s'est passé entre la S6 et la S7 (« grosses courbatures dimanche et aussi lundi matin »). RÉCIDIVE EN S7 : même enchaînement, et cette fois le coût est chiffré — les 2x2 @34 kg du lundi 31 août sont tombés en échec, « avant-bras trop fatigué à cause de l'escalade ». Deux fois de suite, la même cause, le même jour. La règle n'est plus un conseil : escalade le samedi = lundi allégé d'une série et pas de single lourd, ou escalade déplacée en milieu de semaine. Le week-end du 5-6 septembre n'a eu qu'une séance jambes légère, et avec le décalage des tests les avant-bras ont maintenant DIX jours de récupération devant le 1RM du 16 septembre. Conséquence directe : pas d'escalade les week-ends des 6-7 et 13-14 septembre, elle rouvre après le vendredi 18. Le badminton et le tennis comptent comme du travail bras au-dessus de la tête (1h30 + 1h le week-end où l'épaule a lâché). Et les séances « je suis celle d'un ami » comptent aussi : en S5 la séance jambes est devenue la sienne, charges divisées par deux — choix légitime, mais la progression jambes s'arrête cette semaine-là." },
+    { "label": "Sports ajoutés", "text": "Badminton, tennis, escalade, séances avec des amis : il y en a toutes les semaines et c'est très bien, mais deux d'entre eux ne sont pas neutres pour ce carnet. L'ESCALADE est une séance de tirage complète (avant-bras, dorsaux, coudes) : placée le samedi elle laisse des courbatures jusqu'au lundi — c'est ce qui s'est passé entre la S6 et la S7, puis de nouveau entre la S7 et la S8, et cette fois le coût est chiffré : les 2x2 @34 kg du lundi 31 août sont tombés en échec, « avant-bras trop fatigué à cause de l'escalade ». Deux fois de suite, la même cause, le même jour. La règle : escalade le samedi = lundi allégé d'une série et pas de single lourd, ou escalade déplacée en milieu de semaine. FENÊTRE OUVERTE : elle a été interdite les week-ends des 6-7 et 13-14 septembre pour protéger les tests, et elle REDEVIENT POSSIBLE dès le muscle-up mesuré (vendredi 18) — le lundi de la S10 est une séance de maintenance à 88 %, c'est la bonne fenêtre du cycle. Elle se referme le week-end des 10-11 octobre, quatre jours avant le test final. Le badminton et le tennis comptent comme du travail bras au-dessus de la tête (1h30 + 1h le week-end où l'épaule a lâché). Et les séances « je suis celle d'un ami » comptent aussi : en S5 la séance jambes est devenue la sienne, charges divisées par deux — choix légitime, mais la progression jambes s'arrête cette semaine-là." },
     { "label": "Charge totale", "text": "Semaine 5 réelle : 4 séances de salle + une séance upper body avec des amis + 1h30 de badminton + 1h de tennis. C'est la semaine où l'épaule a lâché, ce n'est pas un hasard. Semaine 6 : format respecté, aucune douleur. Le format tient à 4 séances + 1 créneau week-end. Si fatigue ou douleur, allège en priorité le mercredi (volume), puis la séance jambes — jamais la force ni le muscle-up." },
-    { "label": "GTG optionnel", "text": "Réautorisé depuis la S6 (plus de douleur d'épaule) : jeu/dim uniquement, si zéro douleur ni courbatures — 3-5 séries de 5 reps à ~50% du max, loin de l'échec. Suspendu de nouveau si l'épaule tire." },
-    { "label": "Nutrition", "text": "Le poids bouge lentement : 82,8 kg le 10 août, 83 le 13, 82,8 le 23, 82,7 le 25 — soit -1,1 kg en six semaines pour un objectif à 80. Déficit léger ~2 300-2 400 kcal · 160-170 g de protéines/jour. À ce rythme les 80 kg ne tomberont pas d'ici la fin du cycle : c'est un arbitrage défendable (tu progresses en force et en muscle-up, et un déficit franc coûterait les deux), mais autant le choisir plutôt que le subir. Chaque kilo en moins = des reps et un muscle-up plus faciles." }
+    { "label": "GTG optionnel", "text": "IL DEVIENT UTILE, ET CE N'EST PLUS DU CONFORT : il reste deux reps à gagner sur le max (23 → 25) en quatre semaines, et le grease the groove est exactement l'outil pour ça — du volume de tractions accumulé SANS fatigue, loin de l'échec, donc sans coût sur le lundi ni sur le mercredi. Format : jeudi et/ou dimanche, 3 à 5 séries de 8-10 reps (soit ~40-45 % de tes 23), espacées dans la journée si tu as une barre à la maison, toujours avec 4-5 reps en réserve. Aucune série dure, jamais de max. Conditions inchangées : zéro douleur d'épaule, zéro courbature — suspendu sinon." },
+    { "label": "Nutrition", "text": "Le poids bouge lentement mais il bouge : 83,8 kg au départ, 82,8 le 10 août, 82,8 le 31, 82,5 le 15 septembre — soit -1,3 kg en huit semaines pour un objectif à 80. Déficit léger ~2 300-2 400 kcal · 160-170 g de protéines/jour. À ce rythme les 80 kg ne tomberont pas d'ici le 16 octobre : c'est un arbitrage défendable — tu as pris 10 kg de 1RM et 7,5 kg aux dips sur la période, un déficit franc aurait coûté les deux — mais autant le choisir plutôt que le subir. Repère utile maintenant que l'objectif restant est un nombre de tractions : chaque kilo de corps en moins vaut à peu près une demi-rep sur une série max, et rend la transition du muscle-up plus facile. Les 25 reps peuvent aussi se gagner par là." }
   ],
 
   "weeks": [
@@ -396,11 +396,11 @@ window.PROGRAM = {
         "Résultat + poids de corps → « 📈 Ma progression » le soir même : c'est ce chiffre qui règle toutes les charges de la phase 3",
         "Si le résultat dépasse 43 kg, l'objectif du cycle est atteint avec quatre semaines d'avance → on relève la cible pour la phase 3"
       ]},
-      { "day": 1, "type": "deload", "title": "Jambes — mobilité seulement (lendemain du 1RM)", "ex": [
+      { "day": 1, "type": "deload", "title": "Jambes — mobilité seulement (entre deux tests)", "ex": [
         "1) Mobilité hanches/chevilles 10 min + hollow hold 3x20s",
         "2) Squat barre léger 2x8 ↘ (40-50 kg, technique)",
         "3) Étirements 10 min",
-        "TOUJOURS PAS DE SOULEVÉ DE TERRE, même si le 1RM est derrière toi : il reste le test du vendredi, et la prise y sert trois fois (muscle-up, max reps, dips). Rappel utile — le mardi de la S8 a vu un deadlift 4x10 @60 kg ajouté (« très facile ») alors que la semaine l'interdisait déjà."
+        "PAS DE SOULEVÉ DE TERRE : le 1RM et les dips sont derrière toi, mais il reste le muscle-up de vendredi et la prise y sert encore. Rappel utile — le mardi de la S8 a vu un deadlift 4x10 @60 kg ajouté (« très facile ») alors que la semaine l'interdisait déjà."
       ]},
       { "day": 2, "type": "test", "title": "Test max reps + volume (avancé du vendredi)", "ex": [
         "LE MAX REPS EST AVANCÉ À CE SOIR, à ta demande, et il compte comme test officiel. Contexte favorable : 48 h après le 1RM, deux semaines sans séance de volume, et la série part en OUVERTURE — c'est sa bonne place, démontrée en S6 (21 reps avant les séries contre 13 en fin de pyramide). Le vendredi garde le muscle-up et les dips.",
@@ -411,143 +411,158 @@ window.PROGRAM = {
         "5) Rowing horizontal 4x10 @60 kg, prise serrée, pause 1s en contraction (S7 : 54-61-68-68)",
         "PAS DE DIPS CE SOIR, ni lestés ni à vide : leur 1RM se teste vendredi, et des triceps de la veille ne mesurent rien. Pas de false grip ni de dead hang lourd non plus — la prise sert encore deux fois vendredi."
       ]},
-      { "day": 4, "type": "test", "title": "Test 2/2 — muscle-up & dips", "ex": [
-        "SÉANCE ALLÉGÉE : le max reps est parti au mercredi soir. Il reste les deux lignes qui décident du contenu de la phase 3 — le muscle-up et le 1RM dips — dans une séance qui tient en 45 minutes. Plus aucune excuse de temps.",
-        "CETTE SÉANCE-LÀ NE SE SAUTE PAS. C'est le point faible mesuré du carnet : le vendredi est la séance qui saute (trois vendredis sur quatre écourtés en phase 2, et celui du 11 septembre annulé en entier). Or elle porte le muscle-up, c'est-à-dire l'objectif même du cycle : c'est ce chiffre-là qui décide si la phase 3 travaille des séries de MU ou revient à des singles. Elle ne fait plus que 45 minutes, et si le vendredi tombe malgré tout à l'eau, tu la fais le SAMEDI 19 — jamais recollée à un autre test, un muscle-up à la fatigue ne mesure rien.",
-        "ORDRE : échauffement complet → muscle-up → dips. Le muscle-up passe EN PREMIER et à froid : c'est lui qu'on mesure, pas ta résistance à la fatigue.",
-        "1) MUSCLE-UP — UNE série max à froid. Le critère a été recalé le 7 septembre : on ne mesure pas des reps « strictes » (tu passes avec un léger appel de genoux + rotation des poignets, et c'est une forme légitime — note « Muscle-up »), on mesure TA forme tant qu'elle reste CONSTANTE. ARRÊT à la première rep où l'appel augmente — genoux plus hauts, hanches qui balancent — où les bras passent l'un après l'autre, ou où la transition cale. → LE CHIFFRE, c'est le nombre de MU enchaînés AVANT cette rep-là. Puis 2 séries de rappel, pas plus : la première avec un objet serré entre les genoux (repère de progression vers le strict, ça coûte 0 min de plus), la seconde libre.",
-        "2) TEST 1RM DIPS lestés — cible > 57,5 kg (S4 : 55 validés, 60 ratés de peu ; S7 : 4x5 @40 kg propres). Montée 3 @25 · 2 @40 · 1 @50 · puis +2,5 kg, arrêt au 2e échec. Surveille l'équilibre en fin de remontée : c'est lui qui a coupé ta série en S6, pas la force. À SAUTER si l'épaule parle — mais elle est muette depuis trois semaines.",
-        "Les trois chiffres du cycle (1RM lundi, max reps mercredi, dips vendredi) → « 📈 Ma progression ». Profites-en pour saisir aussi les max reps déjà écrits dans tes remarques (20 le 14/08, 21 le 26/08, 20 le 02/09) : le graphique qui porte l'objectif du cycle est encore vide après neuf semaines."
+      { "day": 4, "type": "test", "title": "Test 3/3 — muscle-up seul (25 min)", "ex": [
+        "SÉANCE RÉDUITE À UNE LIGNE : tu as pris le 1RM dips en même temps que le max reps mercredi soir — 57,5, 60 et 65 kg validés, échec à 70. C'était le bon appel (musculatures différentes, deux records dans la même séance), et ça vide le vendredi. Il ne reste QUE le muscle-up.",
+        "CETTE SÉANCE-LÀ NE SE SAUTE PAS, et elle tient en 25 minutes. C'est le seul chiffre du cycle qui manque encore, et c'est lui qui décide du format du bloc muscle-up de la phase 3, qui démarre lundi. Si le vendredi tombe à l'eau, tu la fais SAMEDI — jamais recollée à autre chose.",
+        "1) MUSCLE-UP — UNE série max à froid, juste après l'échauffement. On ne mesure pas des reps « strictes » (tu passes avec un léger appel de genoux + rotation des poignets, c'est une forme légitime — note « Muscle-up »), on mesure TA forme tant qu'elle reste CONSTANTE. ARRÊT à la première rep où l'appel augmente — genoux plus hauts, hanches qui balancent —, où les bras passent l'un après l'autre, ou où la transition cale. → LE CHIFFRE, c'est le nombre de MU enchaînés AVANT cette rep-là.",
+        "2) Puis 2 séries de rappel, pas plus : la première avec un objet serré entre les genoux (repère de progression vers le strict), la seconde libre.",
+        "Rien d'autre. Pas de dips, pas de volume, pas de push : ils sont déjà faits cette semaine.",
+        "LES TROIS CHIFFRES DU CYCLE sont à saisir dans « 📈 Ma progression » : 1RM 45 kg (lundi 14) ✅ déjà fait · MAX REPS 23 (mercredi 16) · 1RM DIPS 65 kg (mercredi 16 — un quatrième graphique vient d'être ajouté pour lui)."
       ]},
       { "day": 5, "type": "course", "title": "Course ou sport — les tests sont passés", "ex": [
-        "6-8 km allure facile, ou un sport — un seul créneau",
-        "L'escalade redevient possible : les tests sont derrière toi et le lundi de la S10 est une séance de maintenance, pas une séance lourde. C'est la bonne fenêtre du cycle pour ça."
+        "8-10 km allure facile, ou un sport — un seul créneau",
+        "L'escalade redevient possible dès que le muscle-up est mesuré : le lundi de la S10 est une séance de maintenance à 88 %, pas une séance lourde. C'est la bonne fenêtre du cycle."
       ]}
     ],
 
-    /* ------ Semaine 10 — Phase 3 ------ */
+    /* ------ Semaine 10 — Phase 3 (réécrite après les tests de la S9) ------ */
     [
-      { "day": 0, "type": "force", "title": "Maintenance force", "ex": [
-        "Face pulls 3x15 LÉGERS + coiffe 2x10 + renfo épaule 3x12 — en échauffement, avant les tractions",
-        "Tractions lestées 4x4 @30 kg ↗ (88 % du NOUVEAU barème, mesuré le 14 septembre : 45 kg de lest, 127,8 kg de total — voir la note « Barème phase 3 »). C'est exactement le 5x3 @30 de la S7, qui valait alors 92 % : la même charge est devenue du travail d'entretien. Repos 3 min, on entretient, on ne cherche plus.",
-        "Développé couché haltères 4x8 (charge maintenue)"
+      { "day": 0, "type": "force", "title": "Maintenance force — entretenir, plus chercher", "ex": [
+        "PHASE 3 RÉÉCRITE APRÈS LES TESTS. Les trois chiffres sont tombés en quatre jours : 45 kg de lest au 1RM tractions (lundi 14), 23 tractions en max reps ET 65 kg de lest au 1RM dips (mercredi 16). Deux objectifs du cycle sont déjà dépassés — le 1RM visait 43 kg, les dips étaient à 57,5 en août. Il reste exactement deux choses à jouer en quatre semaines : LES 25 TRACTIONS (tu es à 23) et L'ENCHAÎNEMENT DE MUSCLE-UPS. Tout le bloc est construit autour de ces deux lignes, le reste entretient.",
+        "1) Face pulls 3x15 LÉGERS + coiffe 2x10 @6 kg + rotations externes/internes 3x12 — en échauffement, avant les tractions. Quatre semaines sans la moindre douleur d'épaule : ça ne bouge pas.",
+        "2) Tractions lestées 4x4 @30 kg (88 % du barème mesuré le 14/09 : 45 kg de lest + 82,5 kg de corps = 127,5 kg de total). C'est exactement le 5x3 @30 kg de la S7, qui valait alors 92 % : la même charge est devenue du travail d'entretien. Repos 3 min, aucune série à l'échec.",
+        "3) Développé incliné 4x8-10 @50-60 kg (tu l'as adopté seul en S7 et l'épaule n'a rien dit — note « Push ajouté » ; c'est la première ligne à couper si elle reparle)",
+        "4) Curl biceps 3x8-10 @16 kg",
+        "Tu sors de deux semaines de test : si le lundi sort lourd, tu enlèves une série, pas de la charge."
       ]},
-      { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
-        "Gainage 3x40s + hollow hold 3x30s — EN PREMIER (face pulls passés au lundi)",
-        "Squat jumps 3x5 (explosivité, transfert muscle-up et course)",
-        "Squat barre 3x6 (charge maintenue, pas de record)",
-        "Fentes marchées 3x10/jambe @2x16 kg (le leg press est sorti du programme en S7 : il doublonnait avec le squat)",
-        "Soulevé de terre roumain 3x8 avec sangles",
-        "Mollets debout 3x15 si le temps le permet"
+      { "day": 1, "type": "jambes", "title": "Jambes — 5 lignes, format court validé", "ex": [
+        "1) Hollow hold 3x30s + gainage latéral 3x40s — EN PREMIER (c'est le gainage du muscle-up, et en fin de séance il saute)",
+        "2) Squat jumps 3x5 — explosivité, transfert muscle-up et course",
+        "3) Squat barre 4x6 @70-80 kg (S7 : 4x8 @65-70 avec une ou deux séries à 80)",
+        "4) Fentes marchées 3x10/jambe @2x20 kg",
+        "5) Soulevé de terre roumain 3x8 @100 kg AVEC GANTS — la prise est de nouveau libre, tous les tests sont passés (S7 : 100 kg propres avec gants)",
+        "Mollets 3x15 : seule ligne facultative."
       ]},
-      { "day": 2, "type": "volume", "title": "Maintenance volume", "ex": [
-        "Tractions PDC 4x10 · Rowing horizontal 4x10 @60 kg",
-        "Dips lestés 4x8 à ~78% de la charge totale (1RM dips mesuré en S4 : 57,5 kg de lest → 27,5 kg ici ; à recaler avec le retest de la S9)",
-        "Circuit abdos x3 · gainage"
+      { "day": 2, "type": "volume", "title": "Muscle-up + volume — le mercredi devient la séance clé", "ex": [
+        "LE BLOC MUSCLE-UP EST DÉPLACÉ ICI, EN OUVERTURE, et c'est la décision structurante de la phase 3. Le constat est chiffré : le vendredi a été écourté ou annulé une semaine sur deux depuis la S5 (celui du 11/09 annulé en entier), alors que le lundi, le mardi et le mercredi se font depuis dix semaines sans une seule exception. Le muscle-up est l'objectif du cycle : il n'a plus rien à faire le jour le plus fragile du carnet.",
+        "1) MUSCLE-UP à froid, juste après l'échauffement. Format selon le chiffre du test de vendredi 18 : 3 reps ou plus en forme constante → 5 séries de 2 ; 2 reps → 4 séries de 2 ; 1 seule → 6 singles espacés de 90s. Dans tous les cas, ARRÊT à la première rep où l'appel de genoux augmente ou où les bras passent l'un après l'autre : une rep cassée ne s'entraîne pas.",
+        "2) False grip hang 3x30s — LA ligne qui débloque le strict (poignet déjà au-dessus de la barre, plus rien à tourner à la transition) et celle qui a sauté trois vendredis sur quatre. Elle est ici parce qu'ici elle se fait.",
+        "3) Pyramide montante-descendante 8-10-12-12-10-8 = 60 reps — repos 2 min. C'est le format que tu as demandé le 2 septembre, enfin calé sur un vrai chiffre : avec 23 de max, les séries de 12 sont à 52 % de ton maximum, tu dois finir chacune avec 3-4 reps en réserve. Si la forme se dégrade au sommet, tu coupes la série — elle n'est pas là pour être finie.",
+        "4) Rowing horizontal 4x10 @60-68 kg, prise serrée, 1s de pause en contraction (S7 : 54-61-68-68, la machine ne plafonne plus)",
+        "5) Dips lestés 4x8 @32,5 kg ↗ (78 % du NOUVEAU barème : 65 kg de lest mesurés le 16/09 + 82,5 de corps = 147,5 kg de total. L'ancien 78 % valait 27,5 kg — le retest a déplacé toute la colonne.)"
       ]},
-      { "day": 4, "type": "explo", "title": "Muscle-up — priorité", "ex": [
-        "Muscle-up : 6-8 singles, 1 par série, repos 90s, arrêt dès que l'appel de genoux augmente (la phase 3 ne cherche plus le MU, elle cherche l'enchaînement en forme constante). Si le test de la S9 valide 2 reps, cette ligne devient 4-5 séries de 2 et non des singles.",
-        "False grip hang 3x30s — REMONTÉ EN 2e POSITION : c'est la ligne qui débloque le strict (poignet déjà au-dessus de la barre, plus de rotation à faire) et c'est celle qui a sauté trois vendredis sur quatre. Si tu ne dois garder que deux lignes aujourd'hui, ce sont les deux premières.",
-        "Tractions explosives 5x3 jambes immobiles, un objet serré entre les genoux — repos 2-3 min",
-        "Transitions muscle-up 4x3 sans assistance · Straight bar dips 3x10",
-        "Tirage explosif +5 kg 3x3",
-        "Dips explosifs lestés +15-20 kg 3x5, vitesse au verrouillage"
+      { "day": 4, "type": "explo", "title": "Complément — 30 min, 3 lignes", "ex": [
+        "SÉANCE DE 30 MINUTES, TROIS LIGNES, ET C'EST VOLONTAIRE. Le muscle-up et le false grip sont partis au mercredi : ce qui reste ici est utile mais plus décisif. Si le vendredi saute — une semaine sur deux depuis deux mois —, le cycle ne perd plus son objectif. C'est le deuxième volet de la décision prise à la réécriture de la phase 3 : on arrête de réparer le vendredi, on arrête de compter dessus.",
+        "1) Tractions explosives 5x3, jambes strictement immobiles, un objet serré entre les genoux — sternum à la barre. C'est la HAUTEUR DE TIRAGE, le vrai frein du muscle-up strict (ta force ne l'est pas : 45 kg de lest = 55 % de ton poids de corps ajouté).",
+        "2) Straight bar dips 3x10 — la sortie du muscle-up · puis dips explosifs lestés +20 kg 3x5, vitesse au verrouillage",
+        "3) Circuit abdos x3 : crunch poulie 8-10 @36-42 kg · obliques 8-10 @36-40 kg"
       ]},
-      { "day": 5, "type": "course", "title": "Course — sortie longue", "ex": [
-        "12 km allure facile"
+      { "day": 5, "type": "course", "title": "Course ou sport — un seul créneau", "ex": [
+        "8-10 km allure facile, ou un sport",
+        "L'ESCALADE REDEVIENT POSSIBLE : tous les tests sont passés et le lundi de la S11 n'est pas une séance maximale. Elle reste une séance de tirage complète (note « Sports ajoutés ») — si tu grimpes le samedi, le lundi suivant perd une série de tractions, ça a coûté deux lundis de suite en S6 et S7."
       ]}
     ],
 
-    /* ------ Semaine 11 — Phase 3 ------ */
+    /* ------ Semaine 11 — Phase 3 (pic de volume du cycle) ------ */
     [
-      { "day": 0, "type": "force", "title": "Maintenance force", "ex": [
-        "Face pulls 3x15 LÉGERS + coiffe 2x10 + renfo épaule 3x12 — en échauffement, avant les tractions",
-        "Tractions lestées 4x4 à ~88% de la charge totale (voir note « Pourcentages »)",
-        "Développé couché haltères 4x8 (charge maintenue)"
+      { "day": 0, "type": "force", "title": "Force — montée d'intensité", "ex": [
+        "1) Face pulls 3x15 LÉGERS + coiffe 2x10 @6 kg + rotations 3x12 — en échauffement",
+        "2) Tractions lestées 5x3 @32 kg ↗ (90 % du barème) — repos 3 min, déborder à 3:30 n'est pas un défaut",
+        "3) Développé incliné 4x8-10 @55-65 kg ↗",
+        "4) Curl biceps 3x8-10 @16 kg"
       ]},
-      { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
-        "Gainage 3x40s + hollow hold 3x30s — EN PREMIER (face pulls passés au lundi)",
-        "Squat jumps 3x5 (explosivité, transfert muscle-up et course)",
-        "Squat barre 3x6 (charge maintenue, pas de record)",
-        "Fentes marchées 3x10/jambe @2x16 kg (le leg press est sorti du programme en S7 : il doublonnait avec le squat)",
-        "Soulevé de terre roumain 3x8 avec sangles",
-        "Mollets debout 3x15 si le temps le permet"
+      { "day": 1, "type": "jambes", "title": "Jambes — 5 lignes", "ex": [
+        "1) Hollow hold 3x30s + gainage latéral 3x40s — EN PREMIER",
+        "2) Squat jumps 3x5",
+        "3) Squat barre 4x6 @75-80 kg ↗",
+        "4) Fentes marchées 3x10/jambe @2x20 kg",
+        "5) Soulevé de terre roumain 3x8 @100-105 kg ↗ avec gants",
+        "Mollets 3x15 facultatif."
       ]},
-      { "day": 2, "type": "volume", "title": "Maintenance volume", "ex": [
-        "Tractions PDC 4x10 · Rowing horizontal 4x10",
-        "Dips lestés 4x8 à ~78% de la charge totale",
-        "Circuit abdos x3"
+      { "day": 2, "type": "volume", "title": "Muscle-up + PIC DE VOLUME", "ex": [
+        "C'EST LA SÉANCE QUI VA CHERCHER LES 25 TRACTIONS. Pic de volume du cycle, posé exactement 14 jours avant le test final du 14 octobre (note « Deload & taper » : 10 à 14 jours entre le dernier gros volume et un test). Après elle, tout redescend.",
+        "1) MUSCLE-UP à froid : CLUSTERS — 4 blocs de 3 reps espacées de 15s, 3 min entre les blocs ↗. Si le test du 18 n'a donné qu'une rep, ce sont 4 blocs de 3 SINGLES espacés de 15s : le cluster est la façon d'accumuler des reps propres sans jamais s'approcher de la rep cassée.",
+        "2) False grip hang 3x35s ↗",
+        "3) Pyramide montante-descendante 8-10-12-14-12-10-8 = 74 reps ↗ — repos 2 min, 2:30 après la série de 14. La série de 14 est à 61 % de ton max : elle doit être dure sans être à l'échec.",
+        "4) Rowing horizontal 4x10 @68 kg, prise serrée",
+        "5) Dips lestés 4x6 @41,5 kg ↗ (84 % du nouveau barème dips)"
       ]},
-      { "day": 4, "type": "explo", "title": "Muscle-up — clusters", "ex": [
-        "Clusters muscle-up : 4 blocs de 3 singles espacés de 15s, 3 min entre les blocs ↗ (première recherche d'enchaînement)",
-        "Tractions explosives 5x3 jambes immobiles",
-        "Tirage explosif +7,5 kg 3x3 ↗",
-        "False grip hang 3x30s · Straight bar dips 3x10",
-        "Dips explosifs lestés 3x5"
+      { "day": 4, "type": "explo", "title": "Complément — 30 min, 3 lignes", "ex": [
+        "1) Tractions explosives 5x3 jambes immobiles · tirage explosif +7,5 kg 3x3 ↗",
+        "2) Straight bar dips 3x10 · dips explosifs lestés +20 kg 3x5",
+        "3) Circuit abdos x3"
       ]},
-      { "day": 5, "type": "course", "title": "Course — fractionné", "ex": [
-        "Échauffement + 4x1000 m allure semi, récup 2 min"
+      { "day": 5, "type": "course", "title": "Course — fractionné (le samedi, jamais le dimanche)", "ex": [
+        "Échauffement + 4x1000 m allure semi, récup 2 min",
+        "L'intensité se fait le SAMEDI (note « Course ») : le dimanche est facile réel ou rien. Un seul créneau : course OU sport."
       ]}
     ],
 
-    /* ------ Semaine 12 — Phase 3 ------ */
+    /* ------ Semaine 12 — Phase 3 (dernière semaine de charge) ------ */
     [
-      { "day": 0, "type": "force", "title": "Maintenance force", "ex": [
-        "Face pulls 3x15 LÉGERS + coiffe 2x10 + renfo épaule 3x12 — en échauffement, avant les tractions",
-        "Tractions lestées 4x4 à ~88% de la charge totale (voir note « Pourcentages »)",
-        "Développé couché haltères 4x8 (charge maintenue)"
+      { "day": 0, "type": "force", "title": "Force — dernier contact lourd", "ex": [
+        "DERNIÈRE SÉANCE LOURDE DU CYCLE. Le test final est dans 10 jours : à partir de maintenant le volume descend et l'intensité reste, c'est tout le principe du taper.",
+        "1) Face pulls 3x15 LÉGERS + coiffe 2x10 — en échauffement",
+        "2) Tractions lestées 4x3 @35 kg ↗ (92 % du barème) — repos 3-4 min, la 3e rep doit être dure, jamais d'échec",
+        "3) Développé incliné 3x8 @55-60 kg ↘ (volume réduit)",
+        "Rien d'autre : pas de curl, pas de finisher. La semaine prochaine se prépare ici."
       ]},
-      { "day": 1, "type": "jambes", "title": "Jambes — maintenance & détente", "ex": [
-        "Gainage 3x40s + hollow hold 3x30s — EN PREMIER (face pulls passés au lundi)",
-        "Squat jumps 3x5 (explosivité, transfert muscle-up et course)",
-        "Squat barre 3x6 (charge maintenue, pas de record)",
-        "Fentes marchées 3x10/jambe @2x16 kg (le leg press est sorti du programme en S7 : il doublonnait avec le squat)",
-        "Soulevé de terre roumain 3x8 avec sangles",
-        "Mollets debout 3x15 si le temps le permet"
+      { "day": 1, "type": "jambes", "title": "Jambes — allégé", "ex": [
+        "1) Hollow hold 3x30s + mobilité hanches/chevilles 10 min",
+        "2) Squat barre 3x6 @60-70 kg ↘",
+        "3) Fentes marchées 2x10/jambe @2x16 kg ↘",
+        "PAS DE SOULEVÉ DE TERRE à partir de cette semaine : c'est la ligne qui crame la prise, et la prise sert trois fois au test final (note « Prise & avant-bras »)."
       ]},
-      { "day": 2, "type": "volume", "title": "Volume — début du taper", "ex": [
-        "DERNIÈRE GROSSE SÉANCE DE VOLUME AVANT LE TEST FINAL, et elle est déjà allégée : le test du 14 octobre est dans 8 jours (note « Deload & taper » — on compte 10 à 14 jours entre le dernier gros volume et un test).",
-        "Pyramide montante-descendante ↘ à ~60% du volume habituel · Rowing horizontal 3x10",
-        "Dips lestés 3x8 à ~78% de la charge totale ↘",
-        "Circuit abdos x3"
+      { "day": 2, "type": "volume", "title": "Muscle-up + volume ↘ — début du taper", "ex": [
+        "DERNIÈRE SÉANCE DE VOLUME AVANT LE TEST, ET ELLE EST DÉJÀ ALLÉGÉE : ~50 % du volume de la semaine dernière. Le taper coupe le VOLUME, pas l'intensité — dix jours sans rien toucher de lourd et on arrive plat (note « Deload & taper »).",
+        "1) MUSCLE-UP à froid : 3 séries seulement, format de la S11 ↘ — technique, jamais près de la rep cassée",
+        "2) False grip hang 3x30s",
+        "3) Pyramide montante-descendante 6-8-10-8-6 = 38 reps ↘",
+        "4) Rowing horizontal 3x10 @60 kg ↘",
+        "5) Dips lestés 3x6 @35,5 kg ↘ (80 % du barème)"
       ]},
-      { "day": 4, "type": "explo", "title": "Muscle-up — affûtage", "ex": [
-        "Muscle-up : chercher 2 reps d'affilée, 4-5 tentatives ↗",
-        "Muscle-up négatif complet 4x3 (contrôle de la transition en descente)",
-        "False grip hang 3x30s",
-        "Dips explosifs lestés 3x5",
-        "Volume léger le reste de la semaine — le test final est dans 8 jours"
+      { "day": 4, "type": "explo", "title": "Complément — 20 min", "ex": [
+        "1) Tractions explosives 4x3 jambes immobiles — vitesse, rien de fatigant",
+        "2) Circuit abdos x2 ↘",
+        "Pas de straight bar dips, pas de dips explosifs, pas de false grip long : le test final est dans 8 jours."
       ]},
-      { "day": 5, "type": "course", "title": "Course — sortie longue", "ex": [
-        "13-14 km allure facile"
+      { "day": 5, "type": "course", "title": "Course facile — et pas d'escalade", "ex": [
+        "8 km allure vraiment facile, ou rien",
+        "PAS D'ESCALADE ce week-end : elle a coûté deux lundis de suite en S6 et S7 (avant-bras), et le 1RM final est mercredi prochain."
       ]}
     ],
 
-    /* ------ Semaine 13 — Phase 3 (test final) ------ */
+    /* ------ Semaine 13 — Phase 3 (SEMAINE DU TEST FINAL) ------ */
     [
-      { "day": 0, "type": "deload", "title": "Rappel d'intensité — semaine du test final", "ex": [
-        "Face pulls légers 2x15 + coiffe 2x10 — en échauffement",
-        "Tractions lestées 2x1 à ~92% ↘ — repos 4 min, VITESSE, jamais à l'échec. Volume au plancher, intensité gardée : c'est le protocole validé avant le test de la S9 (note « Deload & taper »).",
-        "Rien d'autre. Pas de false grip, pas de dead hang lourd, pas de soulevé de terre avant vendredi."
+      { "day": 0, "type": "deload", "title": "Rappel d'intensité — en DÉBUT de semaine, exprès", "ex": [
+        "CE RAPPEL EST PLACÉ LE LUNDI ET C'EST UNE LEÇON PAYÉE : celui du vendredi 11 septembre n'a pas été fait (« pas fait, repos »), ce qui a laissé 14 jours sans rien au-dessus de 88 % devant le test. Un rappel d'intensité posé un vendredi a une chance sur deux de sauter.",
+        "1) Face pulls 2x15 légers + coiffe 2x10 @6 kg — en échauffement",
+        "2) Tractions lestées 2x1 @35 kg (92 %) puis 1x2 @30 kg ↘ — repos 4 min, VITESSE à la montée, jamais à l'échec. Volume au plancher, intensité gardée.",
+        "Rien d'autre. Pas de false grip, pas de dead hang lourd, pas de soulevé de terre de toute la semaine."
       ]},
-      { "day": 1, "type": "deload", "title": "Jambes — très léger (semaine de test)", "ex": [
-        "Squat barre léger 2x8 ↘",
-        "Mobilité complète 15 min"
+      { "day": 1, "type": "deload", "title": "Jambes — mobilité seulement", "ex": [
+        "1) Mobilité complète 15 min + hollow hold 2x20s",
+        "2) Squat barre léger 2x8 @40-50 kg ↘",
+        "3) Étirements 10 min"
       ]},
-      { "day": 2, "type": "test", "title": "TEST FINAL 1/2 — 1RM lesté", "ex": [
-        "Même découpage qu'en S4 et S9 (note « Tests ») : échauffement complet → 1RM lesté, et rien d'autre",
-        "Test 1RM lesté tractions (objectif du cycle : 43 kg, départ 35)",
-        "Résultat + poids de corps (objectif : 80 kg, départ 83,8) → « 📈 Ma progression »"
+      { "day": 2, "type": "test", "title": "TEST FINAL 1/3 — 1RM lesté tractions", "ex": [
+        "Échauffement complet, puis la montée, et RIEN D'AUTRE (note « Tests » : jamais deux tests dans la même séance — c'est ce découpage qui a donné 45 kg, puis 23 reps, puis 65 kg aux dips en septembre).",
+        "MAGNÉSIE / craie dans le sac. Si la prise lâche avant les dorsaux, le chiffre mesuré n'est pas ta force.",
+        "Montée ÉCONOME EN PRISE : 5 à vide · 3 @15 · 1 @25 · 1 @35 · 1 @42,5 · 1 @45 · puis +2,5 kg par palier — repos 3-4 min, arrêt au 2e échec. Cible : 47,5 kg (le 14/09 : trois singles à 45 dont deux propres, 47,5 raté de quelques centimètres).",
+        "Surveille l'APPEL DE GENOUX au-dessus de 90 % : s'il devient systématique, c'est la hauteur de tirage qui plafonne, pas la force (note « Muscle-up »).",
+        "Résultat + poids de corps du matin → « 📈 Ma progression » le soir même. Départ du cycle : 35 kg et 83,8 kg."
       ]},
-      { "day": 4, "type": "test", "title": "TEST FINAL 2/2 — max reps, dips & muscle-up", "ex": [
-        "ORDRE : échauffement complet → muscle-up → max reps → dips",
-        "Muscle-up : le maximum de reps enchaînées EN FORME CONSTANTE, même critère d'arrêt qu'au test de la S9 (bras après bras, appel qui augmente, transition qui cale). Chemin parcouru : bras après bras en S3, les deux bras ensemble en S5, 3 d'affilée avec appel léger en S7.",
-        "Test max reps tractions PDC (objectif du cycle : 25, départ 17 — mesuré frais, sans 1RM avant)",
-        "Test 1RM dips lestés",
-        "Les 3 résultats → « 📈 Ma progression », avec celui de mercredi"
+      { "day": 4, "type": "test", "title": "TEST FINAL 2/3 — max reps & dips", "ex": [
+        "ORDRE IMPOSÉ : échauffement long → MAX REPS en ouverture → 15 min de repos → 1RM dips. C'est exactement le couple qui a donné deux records le 16 septembre (23 reps et 65 kg) : musculatures différentes, ils ne se gênent pas. Le muscle-up, lui, a son propre créneau samedi — il ne se mesure pas derrière une série à l'échec.",
+        "1) TEST MAX REPS tractions PDC — UNE série, à froid après l'échauffement long. CIBLE 25, c'est L'OBJECTIF DU CYCLE (17 au départ le 20 juillet, 20 le 14/08, 21 le 26/08, 23 le 16/09). Tu es à deux reps.",
+        "2) TEST 1RM DIPS lestés — cible > 65 kg. Montée 3 @30 · 2 @45 · 1 @57,5 · 1 @65 · puis +2,5 kg, arrêt au 2e échec (le 16/09 : 57,5, 60 et 65 validés, échec à 70).",
+        "Les deux chiffres → « 📈 Ma progression » le soir même."
       ]},
-      { "day": 5, "type": "course", "title": "Course — au choix", "ex": [
-        "Sortie plaisir, distance libre"
+      { "day": 5, "type": "test", "title": "TEST FINAL 3/3 — muscle-up (20 min)", "ex": [
+        "VINGT MINUTES, UNE SEULE LIGNE, et c'est le dernier chiffre du cycle. Le muscle-up a son créneau à lui pour la même raison que le 1RM : mesuré derrière un max reps à l'échec, il mesurerait ta fatigue.",
+        "Échauffement complet (épaules comprises), puis UNE série max de muscle-ups à froid. Critère d'arrêt inchangé depuis le 7 septembre : on ne compte pas des reps « strictes » mais TA forme tant qu'elle reste CONSTANTE — arrêt à la première rep où l'appel de genoux augmente, où les bras passent l'un après l'autre, ou où la transition cale.",
+        "LE CHEMIN PARCOURU, à relire avant de te lancer : bras après bras le 7 août, les deux bras ensemble le 21 août, 3 d'affilée le 4 septembre. En trois mois.",
+        "Puis sortie facile si tu veux, ou rien. Le cycle est fini — le bilan complet s'exporte depuis « 📤 Bilan pour relecture »."
       ]}
     ]
   ]
