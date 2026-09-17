@@ -4,6 +4,37 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-17 (nuit) — Le plan est recalé sur les créneaux réels, pas sur les jours de la semaine
+
+Trois précisions arrivées coup sur coup : **télétravail lundi et vendredi, présentiel mardi-jeudi avec 1 h de trajet et un retour vers 18h30, cours sur site le mercredi 19h30-22h30, visio 1 h le jeudi soir, révisions lundi/mardi/vendredi soir et une partie du week-end** (avec du sport possible après les révisions), et **un 5 km en groupe le dimanche**. Le plan du soir, qui supposait des soirées libres, ne tenait plus.
+
+### Trois principes de placement, et ils ne dépendent plus des jours
+
+1. **La salle va sur les jours de télétravail.** Pas de trajet, créneau choisi, séance à 17h30 puis révisions. Une séance de salle à 21h après une heure de transport, non — et la salle ferme, pas les cours.
+2. **Les jours de bureau reçoivent de la course.** Chaussures et dehors : 40 à 50 min porte à porte, ça se glisse avant ou après les révisions. C'est pour ça que la séance DURE de la semaine est une course et pas une séance de salle.
+3. **Ce qui décide du cycle est sur le lundi** — premier créneau de la semaine, jour le plus fiable du carnet.
+
+### La semaine
+
+LUN (TT) salle 1 : muscle-up + false grip + tractions lourdes + push, 60 min · MAR (bureau) course qualité · MER repos (cours) · JEU (bureau + visio) footing facile ou repos · VEN (TT) salle 2 : EMOM + dips + circuit hyrox, 55 min · SAM libre (révisions, sport) · DIM matin sortie longue.
+
+- **Deux séances de salle au lieu de trois**, la séance jambes séparée disparaît : le squat et le soulevé de terre lourds sortent du programme jusqu'au 22 novembre, la course et le circuit hyrox couvrent les jambes. Arbitrage assumé et écrit, le squat revient après le semi.
+- **Chaque séance de qualité a une version courte de 38-42 min** à côté de la complète — c'est elle qu'on fait un soir chargé, pas rien.
+- **Le samedi est libre exprès** : il devient le jour de révisions et de sport social (escalade, badminton), et la sortie longue passe au dimanche matin — 40 h après le circuit du vendredi, et l'après-midi reste disponible pour bosser.
+- **Le 5 km du dimanche en groupe est intégré à la sortie longue, pas ajouté** : version idéale, il en constitue les 5 derniers kilomètres (un long qui finit plus vite est un excellent exercice de semi) ; version simple, il l'ouvre. Ce qu'il ne faut pas faire : le compter comme la sortie du dimanche.
+
+### Test final recalé une deuxième fois
+
+Il tombait le mercredi (cours), puis le jeudi (bureau + visio). Version finale, posée sur les bons créneaux : **vendredi 16 octobre le 1RM lesté** (télétravail, sans horaire subi), **samedi 17 le muscle-up seul**, **lundi 19 le max reps puis les dips** — encore un jour de télétravail, 48 h après le muscle-up. Le max reps est l'objectif principal du carnet (17 → 25) : trois tests en trois jours d'affilée lui auraient coûté deux ou trois reps.
+
+### Et un garde-fou honnête
+
+Note « Charge totale » complétée : trois heures de cours jusqu'à 22h30 raccourcissent la nuit, et le sommeil passe devant tout le reste. **Si après trois semaines il ne tient que quatre séances sur cinq, ce n'est pas un échec — c'est le signal de passer à quatre séances et de supprimer le footing du jeudi définitivement.** Un plan tenu à 100 % vaut mieux qu'un plan tenu à 70 %.
+
+- `program.js` validé (parse Node OK, 18 semaines, 20 notes, 5 métriques, aucun mercredi occupé).
+
+---
+
 ## 2026-09-17 (soir) — Le mercredi soir tombe : tout ce qui décide du cycle remonte au lundi
 
 Contrainte annoncée le soir même : **cours le mercredi de 19h30 à 22h30 à partir du 23 septembre**, et **visio d'1h le jeudi soir**. Le mercredi soir n'existe plus — or c'est là que le bloc muscle-up venait d'être placé le matin même. Deuxième réorganisation de la journée, et c'est la règle du carnet qui tranche : **ce qui décide du cycle se met sur le jour le plus fiable**.
