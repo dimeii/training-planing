@@ -4,6 +4,39 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-18 (suite) — Stratégie revue : plus de séances, pas moins
+
+J'avais proposé de réduire à quatre séances et de faire du semi la priorité unique. **Ses réponses ont dit l'inverse, et elles sont légitimes** : « je prends du plaisir aux tractions en lourd, et à travailler en volume. Je veux aussi être meilleur en course », « lundi salle, mardi salle/course, jeudi peut-être course, vendredi salle, samedi salle, dimanche run/salle », et « ne raccourcis pas forcément les séances, le lundi midi j'ai le temps ».
+
+Deux informations neuves : **le lundi midi est un vrai créneau** (télétravail, sans horaire) et **le samedi est disponible pour la salle**. J'avais sous-estimé sa capacité et sur-optimisé la réduction.
+
+### La semaine, version définitive
+
+LUN midi — **SALLE 1** : muscle-up + false grip + tractions lourdes + tirage + push + curl, 75 min · MAR — course qualité · MER — repos (cours) · JEU — footing facile, optionnel · VEN — **SALLE 2** : jambes + circuit hyrox · SAM — **SALLE 3** : volume tractions (EMOM, dips, rowing, abdos), 50 min · DIM matin — sortie longue.
+
+Trois séances de salle, deux à trois courses. Les quatre décisions de placement, toutes contraintes :
+
+- **La séance qui décide du cycle est le lundi midi** — meilleur créneau, jour le plus fiable (dix semaines sans exception), et bon ordre physiologique : explosif et technique à froid, force max ensuite, push en dernier.
+- **Les jambes sont le vendredi, jamais le samedi** : il faut 40 h entre des jambes chargées et la sortie longue du dimanche matin. La séance jambes séparée, supprimée hier faute de créneau, est donc de retour avec le soulevé de terre et le circuit hyrox complet.
+- **Le samedi est du haut du corps** : l'EMOM, les dips et le rowing ne coûtent rien aux 19 km du lendemain.
+- **La course dure est le mardi** : zéro logistique un jour de bureau, et cinq jours de recul avant le dimanche.
+
+### Ce que ça change côté contenu
+
+- Le lundi repasse à **7 lignes** (le tirage vertical lourd et le curl reviennent), conformément à « ne raccourcis pas les séances ».
+- Le **soulevé de terre roumain revient** (vendredi, avec gants — la prise sert à l'EMOM du lendemain), ainsi que les **squat jumps** et les **fentes**.
+- Le volume tractions gagne une séance complète au lieu d'être un bloc coincé dans une autre séance : EMOM + dips + rowing prise serrée + circuit abdos.
+- Le test final ne bouge pas : **ven 16/10 le 1RM, sam 17 le muscle-up, lun 19 le max reps + dips**.
+
+### Le garde-fou, réécrit en conséquence
+
+Le plan monte à 5-6 séances plus 3 h de cours et quatre blocs de révisions. Il tient **à une seule condition, écrite dans la note « Charge totale » : que le facile reste facile.** Les deux seules séances dures de course sont le mardi et la fin de la sortie longue ; tout le reste se court à 5:45-6:00/km. Ce n'est pas le volume qui casse un plan comme celui-là, c'est l'absence de récupération. Ordre de coupe en cas de fatigue : footing du jeudi, puis rowing et abdos du samedi, puis circuit hyrox du vendredi, puis push du lundi. Jamais la sortie longue, jamais le mardi, jamais le lundi midi.
+
+- Sept notes réécrites (Structure de semaine, Course, EMOM — passé au samedi, Charge totale, Sports ajoutés — l'escalade remplace désormais le samedi, Ce qui est en dernier, Deload & taper).
+- `program.js` validé, smoke test **53/53 OK**.
+
+---
+
 ## 2026-09-18 — Les cours et les révisions entrent dans le carnet
 
 Demande de Mehdi : pouvoir saisir ses cours et ses révisions dans le carnet, et **afficher sur la même ligne** la séance de sport et la séance de révisions quand elles tombent le même jour, en restant responsive.
