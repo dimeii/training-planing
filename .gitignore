@@ -10,3 +10,6 @@ Thumbs.db
 # Dépendances / build (non utilisés ici, mais au cas où)
 node_modules/
 dist/
+
+# Sortie /brag (vidéo + composition Hyperframes) — local, non versionné
+brag-output/
