@@ -4,6 +4,18 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-18 (fin) — La colonne s'élargit sur grand écran
+
+Demande : élargir la colonne qui contient les séances et les révisions sur les écrans plus grands. Elle était figée à 640 px depuis le début, ce qui suffisait tant qu'une journée n'avait qu'une carte — depuis le regroupement sport + révisions, 612 px de contenu pour deux cartes, c'est serré.
+
+- La largeur passe de l'inline style au CSS (une largeur fixe en style inline ne peut pas varier selon l'écran) : `.page` à **640 px par défaut, 880 px au-delà de 940 px de large, 980 px au-delà de 1300 px**. Concrètement la ligne du lundi passe de 330/210 px à ~520/305 px sur un écran de portable, et ~575/340 px sur un grand moniteur.
+- La carte sport prend `flex-grow: 2` contre 1 pour les révisions : tout l'espace gagné va à 2/3 vers la séance de sport, qui en a besoin.
+- **Garde-fou de lisibilité** : le texte des exercices est borné à `88ch`. Sans ça, une note de trois lignes s'étalerait sur 130 caractères de large dans une carte pleine largeur — techniquement correct, illisible en pratique.
+- Rien ne change sous 940 px : téléphone et petite fenêtre gardent exactement le rendu d'avant, cartes empilées.
+- Smoke test étendu aux points de rupture, à la classe `.page`, à l'absence de `max-width` inline (qui aurait écrasé le CSS) et aux ratios de flex : **62/62 OK**.
+
+---
+
 ## 2026-09-18 (suite) — Stratégie revue : plus de séances, pas moins
 
 J'avais proposé de réduire à quatre séances et de faire du semi la priorité unique. **Ses réponses ont dit l'inverse, et elles sont légitimes** : « je prends du plaisir aux tractions en lourd, et à travailler en volume. Je veux aussi être meilleur en course », « lundi salle, mardi salle/course, jeudi peut-être course, vendredi salle, samedi salle, dimanche run/salle », et « ne raccourcis pas forcément les séances, le lundi midi j'ai le temps ».

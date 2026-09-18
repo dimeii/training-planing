@@ -17,8 +17,8 @@
 <!-- ?v= : horodatage de cache. À BUMPER à chaque modification de program.js / auth.js,
      sinon le navigateur peut servir une version périmée du programme (constaté le 17/09/2026 :
      l'appli affichait encore l'ancien objectif 1RM et l'ancien titre du mercredi). -->
-<script src="./program.js?v=20260918a"></script>
-<script src="./auth.js?v=20260918a"></script>
+<script src="./program.js?v=20260918b"></script>
+<script src="./auth.js?v=20260918b"></script>
 <script>
   /* Force le runtime JSX "classic" (React.createElement) : le runtime
      "automatic", devenu défaut sur les versions récentes de Babel, génère
@@ -542,7 +542,7 @@ function LockScreen(props) {
     }
   };
   return (
-    <div style={S.page}>
+    <div className="page" style={S.page}>
       <style>{CSS}</style>
       <form onSubmit={submit} style={S.lockCard}>
         <div style={S.eyebrow}>Carnet d'entraînement</div>
@@ -1468,13 +1468,13 @@ function Calendar(props) {
   const totalSessions = WEEKS.reduce((a, w) => a + w.length, 0) + customCount;
   if (!loaded) {
     return (
-      <div style={S.page}>
+      <div className="page" style={S.page}>
         <div style={{ textAlign: "center", paddingTop: 80, color: "#5C6470" }}>Chargement du carnet…</div>
       </div>
     );
   }
   return (
-    <div style={S.page}>
+    <div className="page" style={S.page}>
       <style>{CSS}</style>
       <header style={{ marginBottom: 16 }}>
         <div style={S.profileRow}>
@@ -1798,7 +1798,7 @@ function Calendar(props) {
           const openFeedback = noteOpen[id] || done || hasFeedback;
           return (
             <article key={id} style={Object.assign({}, S.card, { borderLeft: "5px solid " + meta.color, opacity: done ? 0.72 : 1 },
-              paired ? { flex: "1 1 " + (study ? 210 : 330) + "px", minWidth: 0 } : null)}>
+              paired ? { flex: (study ? "1 1 210px" : "2 1 330px"), minWidth: 0 } : null)}>
               <div style={S.cardHead}>
                 <div>
                   <div style={S.cardDate}>
@@ -1855,7 +1855,7 @@ function Calendar(props) {
                         </div>
                       ) : (
                         <React.Fragment>
-                          <span style={S.exText}>
+                          <span className="ex-text" style={S.exText}>
                             {renderExText(value)}
                             {modified ? <span style={S.modifiedTag}>ajusté</span> : null}
                           </span>
@@ -1890,7 +1890,7 @@ function Calendar(props) {
                         </div>
                       ) : (
                         <React.Fragment>
-                          <span style={S.exText}>
+                          <span className="ex-text" style={S.exText}>
                             {renderExText(x.text)}
                             <span style={S.addedTag}>ajouté</span>
                           </span>
@@ -2090,7 +2090,7 @@ function ProfileScreen(props) {
     setReg(next);
   };
   return (
-    <div style={S.page}>
+    <div className="page" style={S.page}>
       <style>{CSS}</style>
       <div style={S.profileScreenCard}>
         <div style={S.eyebrow}>Carnet d'entraînement</div>
@@ -2178,6 +2178,14 @@ function App() {
 const CSS = [
   "@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap');",
   "* { box-sizing: border-box; }",
+  /* Largeur de la colonne principale. Elle s'élargit sur grand écran pour
+     que la séance de sport et les révisions du même jour respirent quand
+     elles sont côte à côte ; la mesure du texte, elle, reste bornée par
+     .ex-text pour que les longues notes restent lisibles. */
+  ".page { max-width: 640px; }",
+  "@media (min-width: 940px) { .page { max-width: 880px; } }",
+  "@media (min-width: 1300px) { .page { max-width: 980px; } }",
+  ".ex-text { max-width: 88ch; }",
   "button { cursor: pointer; font-family: inherit; }",
   "button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px solid #1B1D22; outline-offset: 2px; }",
   "textarea, input { font-family: 'Barlow', sans-serif; }",
@@ -2189,7 +2197,6 @@ const S = {
     background: "#EDEEEA",
     color: "#1B1D22",
     minHeight: "100vh",
-    maxWidth: 640,
     margin: "0 auto",
     padding: "20px 14px 40px",
     fontSize: 15,
