@@ -4,6 +4,34 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-21 — Bilan S9 : le muscle-up plafonne, le pectoral parle, la course a deux semaines d'avance
+
+Bilan exporté le 21 septembre, semaine 10/18. Il couvre la semaine de test (S9) et les trois séances que le programme ne connaissait pas encore — il a été écrit les 17 et 18 septembre, avant le test muscle-up du vendredi, le Cindy du samedi et les 16 km du dimanche.
+
+### Les trois faits neufs
+
+- **Test muscle-up du 18 septembre** : 3 MU en forme constante avec un léger appel, puis 3-4 séries de 2-3 reps où « plus on avançait plus je kickais ». Le chiffre est identique au 4 septembre (3 reps) — et c'est normal : entre les deux il y a eu une décharge complète et une semaine de test, donc aucun travail spécifique. Ce n'est pas un plateau, c'est une absence de stimulus. Le déroulé, lui, est un vrai problème : quinze reps avec un appel croissant, c'est un pattern qui s'ancre. Il a aussi ajouté de lui-même des **tractions explosives lestées** (2x4 à vide, @2,5, @5 kg) — exactement le bon outil.
+- **Cindy le samedi 19** (20 min de 5 tractions / 10 pompes / 15 squats) : ressenti « Dur », et « peut-être douleur au pectoral gauche ou grosse courbature ». Premier signal sur le pectoral, à distinguer de l'épaule gauche (réglée depuis la S6).
+- **16 km en 1h20 le dimanche 20**, soit **5:00/km** — arrivé en retard, accéléré pour rattraper le groupe, circuit coupé, kilomètres rajoutés derrière. Ressenti « Dur », quadriceps qui tirent. C'est la **quatrième fois** que la sortie du dimanche part en intensité.
+
+### Ce que ça change dans `program.js`
+
+- **Muscle-up, S10** : le format conditionnel (« 3 reps → 5x2 ; 2 reps → 4x2 ; 1 rep → 6 singles ») est tranché en **5 séries de 2**, sans série max jusqu'au test du 17 octobre. Dix reps propres valent mieux que trois propres suivies de dix sales. La S11 garde les clusters, sa branche conditionnelle disparaît aussi.
+- **Tractions explosives lestées officialisées** au lundi (3x3 @5 kg en S10, @7,5 en S11), en ligne 4 : elles servent de montée en charge au lesté, donc elles ne coûtent pas une minute. Le lundi passe à 8 lignes numérotées.
+- **Nouvelle note « Pectoral gauche »** : le test en dix secondes courbature *vs* lésion (diffus et améliorée par l'échauffement / pointue, localisée, réveillée par l'étirement et la contraction résistée), et la conduite à tenir — développé incliné et dips coupés si c'est pointu, tirage et tractions gardés. Garde-fous posés sur l'incliné du lundi et les dips du samedi.
+- **L'échelle de la sortie longue est recalée sur ce qu'il fait déjà** : repartir de 12 km après en avoir couru 16 n'avait plus de sens. Nouvelle progression **14 · 16 · 17 · 12 (test) · 18 · 14 · 20 (pic le 8/11) · 14 (répétition générale)**, cible du graphique portée de 19 à 20 km, volume hebdo ~28 km en S10 et ~38 km au pic.
+- **Ce qui progresse en premier n'est plus la distance, c'est l'allure — vers le bas.** La distance est acquise, le facile ne l'est pas. Règle ajoutée à la note « Course » : *on ne rattrape jamais un groupe en cours de sortie longue* (partir 10 min avant, les retrouver au point suivant, ou courir seul).
+- **Les 16 km à 5:00 sur jambes fatiguées** valent quand même une information : ça ressemble plus à 1h45-1h48 qu'à 1h50. La cible n'est pas relevée pour autant — elle se tranche le **11 octobre**, sur les 5 km à 5:12 de la sortie longue de la S12, devenue le juge de paix.
+- **Formats à fond** (Cindy, AMRAP, WOD) : ils comptent pour la séance du samedi, jamais en plus, et pas à fond la veille d'une sortie longue de plus de 14 km. Le week-end des 19-20 en donne le prix : une sortie longue « Dur » et un pectoral douloureux.
+- **Garde-fou du jour** ajouté en tête du lundi 21 : il arrive entamé, la séance se fait quand même en entier — ni le Cindy ni les 16 km ne touchent le tirage.
+- Correction au passage : la répétition générale est le **dimanche 15 novembre**, pas le samedi 14 (la note « Tests » et la note « Course » se contredisaient).
+
+### Le point qui ne bouge pas
+
+**Trois records mesurés, zéro saisi.** Max reps 23 (16/09), 1RM dips 65 kg (16/09) et maintenant 16 km (20/09) sont dans les remarques de séance, pas dans « 📈 Ma progression » — deux graphiques sur cinq affichent encore « aucune mesure enregistrée ». Le graphique sortie longue est celui qui prédit le chrono du 22 novembre.
+
+---
+
 ## 2026-09-18 (fin) — La colonne s'élargit sur grand écran
 
 Demande : élargir la colonne qui contient les séances et les révisions sur les écrans plus grands. Elle était figée à 640 px depuis le début, ce qui suffisait tant qu'une journée n'avait qu'une carte — depuis le regroupement sport + révisions, 612 px de contenu pour deux cartes, c'est serré.
