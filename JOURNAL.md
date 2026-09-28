@@ -4,6 +4,50 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-09-28 — Bilan S10 : le coude droit passe devant, le muscle-up en singles, la course à refaire
+
+Bilan exporté le 28 septembre, semaine 11/18. C'est la première semaine du format complet (trois salles, cours du mercredi, révisions), et la rentrée de mercredi l'a bousculée : jambes avancées au mardi, volume avancé au vendredi, qualité de course déplacée au samedi.
+
+### Ce qui s'est passé
+
+- **Lundi 21** : fait presque en entier. Tractions lestées **4x4 @30 kg**, « très bonnes sensations ». Muscle-up : le 5x2 a dérivé dès le début (kick, dernière rep ratée), puis 4 singles dont 2-3 sans kick — « je ne garde pas le gainage, j'ai les jambes qui partent en avant quand je suis en haut ». Les **tractions explosives lestées n'ont pas été faites** : « j'ai pas lu ce paragraphe ». Et en fin de séance, **« douleur énorme au coude droit »** à la descente d'un développé incliné barre à 40 kg.
+- **Mardi 22** (jambes, avancées du vendredi) : squat **4x6 @80**, SDT roumain **3x8 @100**, circuit hyrox 3 tours en 3:15-3:20 mais avec 2-3 min de repos au lieu de 90 s. « Dur », crampe après le hollow.
+- **Jeudi 24** : pas de seuil. Une séance de sport **au travail, à midi** (déjà vue le 10 septembre) — nouveau créneau récurrent.
+- **Vendredi 25** (volume, avancé du samedi) : EMOM **7 x 9 + 10 = 73 reps**. Dips pas faits, circuit cardio à la place des abdos.
+- **Week-end** : 2x800 au seuil + un **400 m en 1'09** le samedi, une séance push volontairement légère « pour pas insister sur la douleur au coude », puis **9 km à 5:44 « chill »** au lieu de 14 le dimanche, et 2 h d'escalade.
+- **Toutes les mesures sont saisies** — max reps 23, dips 65, sortie longue 16, poids 82,4. Le point qui ne bougeait pas depuis août est réglé.
+
+### Ce que ça change dans `program.js`
+
+- **Nouvelle note « Coude droit »**, risque n°1 à 18 jours du 1RM : règle de douleur des tendons (≤ 3/10 et stable pendant, revenu à la normale le lendemain matin), feux vert / orange / rouge, fourmillements dans les deux derniers doigts = nerf ulnaire (dormir bras plus tendu). Garde-fou en tête des lundis S11 et S12, sur les dips du samedi, et au test du 16 : la montée s'arrête au premier palier où le coude parle.
+- **Plus de développé à la barre** : incliné aux haltères prise neutre, 3 séries, coude vert seulement. Curl en prise marteau. La séance push du samedi est suspendue jusqu'aux tests, et **plus d'escalade avant le 19 octobre**, ce que la règle « une semaine sur deux » et la fenêtre fermée du 10-11 imposaient déjà.
+- **Muscle-up en singles jusqu'au test** : 6 le 28/09, 4 le 5/10, un toutes les 90 s, une seule consigne — gainé jusqu'en haut. Le 5x2 ne tient pas, et les clusters de 3 prévus en S11 étaient encore plus durs : supprimés. Le problème n'est plus la montée, c'est la sortie au-dessus de la barre ; le hollow et le gainage latéral passent en tête du vendredi, les abdos du samedi reprennent les relevés de genoux suspendu.
+- **Tractions explosives lestées refaites @5 kg** (pas @7,5 : elles n'ont pas eu lieu). Le lesté monte comme prévu, **5x3 @32 kg** (90 %), 4x3 s'il y a eu de l'escalade la veille.
+- **Course** : le seuil 2x10 de la S10 remplace les 5x1000 du mardi (progression seuil 2x10 → 3x10 → 2x15 → 20 min continues). La sortie longue du 4 octobre redescend de 16 à **14 km**, celle qui n'a pas été finie, à la même allure que les 9 km de dimanche. Le 17 km du 11 octobre (juge de paix de la cible) ne bouge pas.
+- **Jeudi** : footing **ou** la séance de sport du travail, un seul des deux, sans AMRAP à fond.
+- **Jambes** : squat 4x6 @80-85, circuit hyrox à 3 tours avec repos ramené à 2 min au lieu de 4 tours (une variable à la fois). Dips samedi remis à 32,5 kg.
+
+### Deux leçons pour la façon d'écrire le programme
+
+- **Ce qui est long ne se lit pas.** Les explosives étaient noyées dans cinq lignes d'explication. Depuis la S11, une ligne = un exercice, une charge, une consigne ; le pourquoi va dans les notes. Ajouté à la note « Ce qui est en dernier ne se fait pas ».
+- **Le plan n'a pas manqué de séances, il en a eu en trop** : sport au travail, push, escalade. Les deux qui ont rétréci sont les deux courses clés (~15 km courus pour ~28 prévus), et les trois ajouts chargent le coude qui venait de lâcher. Paragraphe ajouté à la note « Charge totale ».
+
+### Précisions reçues le jour même
+
+- **Escalade dimanche : oui.** Les tractions lestées du lundi 28 passent en **4x3 @32 kg** (règle « le lundi qui suit perd une série »).
+- **Push samedi : oui, mais légère pour ménager le coude.** Le coude était donc encore douloureux cinq jours après, et il a enchaîné sur 2 h d'escalade. Le garde-fou du lundi l'annonce : s'attendre à de l'orange (muscle-up à 3-4 singles, pas de développé ni de curl). Seuil d'alerte ajouté à la note : **encore là le lundi 5 octobre → kiné avant la semaine de test.**
+- **Dips de vendredi : pas le temps, il gérait un groupe.** Rien à voir avec le pectoral, qui est bien classé courbature. Nouvelle ligne en tête du samedi : avec un groupe à gérer, l'EMOM et les dips se font d'abord, seul.
+
+### Semaine 11 échangée, à sa demande
+
+Nouvel ordre : **lundi jambes · mardi soir lourd · jeudi seuil · vendredi volume · samedi repos · dimanche 14 km**. Ça tombe bien cette semaine, puisque le lourd arrive 48 h après l'escalade au lieu de 24 : il retrouve son **5x3 @32 kg**.
+
+Deux garde-fous pour protéger la prise du mardi : pas de farmers carry le lundi (40 m de fentes sans charge à la place), et sangles au soulevé de terre roumain. Le seuil va au jeudi autour de la visio (version courte si ça serre), sans la séance sport du travail. Le samedi devient un vrai repos avant les 14 km.
+
+C'est la deuxième semaine d'affilée avec le volume le vendredi. Si ça se confirme en S12, la structure de base change.
+
+---
+
 ## 2026-09-21 — Bilan S9 : le muscle-up plafonne, le pectoral parle, la course a deux semaines d'avance
 
 Bilan exporté le 21 septembre, semaine 10/18. Il couvre la semaine de test (S9) et les trois séances que le programme ne connaissait pas encore — il a été écrit les 17 et 18 septembre, avant le test muscle-up du vendredi, le Cindy du samedi et les 16 km du dimanche.
