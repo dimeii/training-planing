@@ -564,7 +564,8 @@ window.PROGRAM = {
       ]}
     ],
 
-    /* ------ Semaine 12 — Phase 3 (dernière semaine lourde avant le test) ------ */
+    /* ------ Semaine 12 — Phase 3 (dernière semaine lourde avant le test ; recalée le 05/10 à sa
+       demande : 10x400 le lundi soir, jambes avancées au mardi, volume au vendredi, samedi repos) ------ */
     [
       { "day": 0, "type": "force", "title": "SALLE 1 — dernier contact lourd", "ex": [
         "DERNIÈRE SÉANCE LOURDE AVANT LE TEST DU 16 OCTOBRE. Après elle le volume descend et l'intensité reste : c'est tout le principe du taper (note « Deload & taper »).",
@@ -576,12 +577,25 @@ window.PROGRAM = {
         "5) Développé incliné haltères, prise neutre, 3x8 @22-24 kg — coude vert seulement",
         "PAS DE FALSE GRIP cette semaine ni la suivante : la prise est ton facteur limitant n°1 et elle sert trois fois au test."
       ]},
+      { "day": 0, "type": "course", "title": "Course — 10 x 400 m (soir)", "ex": [
+        "DOUBLE SÉANCE : salle à midi, 400 le soir. L'ordre est le bon — la force d'abord, jamais l'inverse. Entre les deux, un VRAI repas glucides et 4-5 h d'écart : des 400 à jeun derrière du 92 %, c'est comme ça qu'on se claque un ischio.",
+        "1) Échauffement 15-20 min à 5:45-6:00 + 3 lignes droites progressives",
+        "2) 10 x 400 m à 1'45 (± 3 s), récup 1'15 trottinée — c'est ton allure 5 km (21:30 = 4:18/km)",
+        "3) Retour au calme 10 min facile. ~9 km, 55 min.",
+        "SI LES 8 PREMIERS SONT À 1'45 SANS FORCER : les 2 derniers à 1'40. RIEN SOUS 1'38 — en dessous c'est de l'allure 1500 m, pas une bonne nouvelle (ton 400 en 1'09 du 26/09 était à 2:52/km).",
+        "SI LE 8e DÉRIVE AU-DELÀ DE 1'50 : tu arrêtes à 8. Huit à 1'45 valent mieux que dix dont trois arrachés, à 6 jours des 17 km.",
+        "CES 400 REMPLACENT le seuil 3x10 de mardi, ils ne s'y ajoutent pas (note « Allures »). Repères : 1'53 = allure 10 km · 1'56 = seuil · 2'05 = allure semi cible · 1'36 = allure sub-20 au 5 km, objectif à terme, travaillé après le 22 novembre et pas avant."
+      ]},
       { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
       ]},
-      { "day": 1, "type": "course", "title": "Course — seuil 3x10 min", "ex": [
-        "20 min d'échauffement, puis 3 x 10 min à 4:50/km ↗, récup 2:30, puis 10 min de retour au calme (~11 km). Version courte : 2 x 10 min.",
-        "La course ne s'allège pas cette semaine : c'est le test de tractions qui est en taper, pas le semi."
+      { "day": 1, "type": "jambes", "title": "SALLE 2 — jambes allégé (avancé du vendredi)", "ex": [
+        "AVANCÉ AU MARDI : 5 jours avant les 17 km de dimanche au lieu de 40 h — c'est mieux pour le juge de paix. Le prix à payer : tu es à 24 h des 400, donc UNE variable en moins, pas deux.",
+        "JOUR DE BUREAU : si tu n'es pas à la salle vers 18h30, la séance repart au vendredi. 45 min suffisent — pas une séance à 21h après une heure de transport.",
+        "1) Hollow hold 3x30s + mobilité 10 min",
+        "2) Squat barre 3x6 @60 kg ↘ — 60 et pas 70 : tu sors des 400 de la veille",
+        "3) CIRCUIT 3 tours ↘, SANS CHRONO : 15 wall balls · 40 m farmers carry · 250 m rameur",
+        "PAS DE SOULEVÉ DE TERRE, plus de fentes lourdes : le 1RM est vendredi prochain et c'est la prise qui décide."
       ]},
       { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
@@ -589,23 +603,22 @@ window.PROGRAM = {
       { "day": 2, "type": "cours", "title": "Cours — 19h30-22h30 (sur site)", "ex": [
         "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
-      { "day": 3, "type": "course", "title": "Footing facile — 6 km (optionnel)", "ex": [
-        "6 km à 6:00/km, ou repos."
+      { "day": 3, "type": "course", "title": "Footing facile — 6 km (ou repos)", "ex": [
+        "6 km à 6:00/km, FACILE POUR DE VRAI. Deux séances dures en 48 h derrière toi (400 lundi, jambes mardi) : c'est le footing OU la séance de sport du travail OU rien, jamais deux, et aucune qualité."
       ]},
-      { "day": 4, "type": "jambes", "title": "SALLE 2 — jambes allégé", "ex": [
-        "1) Hollow hold 3x30s + mobilité 10 min",
-        "2) Squat barre 3x6 @60-70 kg ↘",
-        "3) CIRCUIT 3 tours ↘, sans chercher le temps : 15 wall balls · 40 m farmers carry · 250 m rameur",
-        "PAS DE SOULEVÉ DE TERRE, plus de fentes lourdes : le 1RM est vendredi prochain et c'est la prise qui décide."
+      { "day": 4, "type": "volume", "title": "SALLE 3 — volume ↘ (taper, remonté du samedi)", "ex": [
+        "REMONTÉ AU VENDREDI : c'est ton meilleur créneau (télétravail, sans horaire), celui que les jambes ont libéré — et ça rend le samedi entièrement libre avant les 17 km.",
+        "1) EMOM TRACTIONS 8 min : 6 reps/min ↘ (~48 reps, la moitié du pic). Pas de série libre cette semaine.",
+        "2) Dips lestés 3x6 @35,5 kg ↘ — coude vert seulement (note « Coude droit »)",
+        "3) Circuit abdos x3",
+        "Pas de rowing. Le volume descend, la charge reste — c'est ce qui a fait +5 kg au 1RM entre le 24 août et le 14 septembre."
       ]},
       { "day": 4, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
       ]},
-      { "day": 5, "type": "volume", "title": "SALLE 3 — volume ↘ (taper)", "ex": [
-        "1) EMOM TRACTIONS 8 min : 6 reps/min ↘ (~48 reps, la moitié du pic). Pas de série libre cette semaine.",
-        "2) Dips lestés 3x6 @35,5 kg ↘ — coude vert seulement",
-        "3) Circuit abdos x3",
-        "Pas de rowing. Le volume descend, la charge reste — c'est ce qui a fait +5 kg au 1RM entre le 24 août et le 14 septembre."
+      { "day": 5, "type": "course", "title": "Repos — veille des 17 km", "ex": [
+        "RIEN : pas de salle, pas d'escalade (coude + test le 16), pas de 400. Les 17 km de demain sont la séance de la semaine ET le juge de paix de ta cible semi — ils se méritent reposé.",
+        "Révisions, et c'est tout."
       ]},
       { "day": 5, "type": "revisions", "title": "Révisions — week-end", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
