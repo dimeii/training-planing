@@ -577,14 +577,16 @@ window.PROGRAM = {
         "5) Développé incliné haltères, prise neutre, 3x8 @22-24 kg — coude vert seulement",
         "PAS DE FALSE GRIP cette semaine ni la suivante : la prise est ton facteur limitant n°1 et elle sert trois fois au test."
       ]},
-      { "day": 0, "type": "course", "title": "Course — 10 x 400 m (soir)", "ex": [
+      { "day": 0, "type": "course", "title": "Course — 10 x 400 m en 1'45 / 4:22-km (soir)", "ex": [
         "DOUBLE SÉANCE : salle à midi, 400 le soir. L'ordre est le bon — la force d'abord, jamais l'inverse. Entre les deux, un VRAI repas glucides et 4-5 h d'écart : des 400 à jeun derrière du 92 %, c'est comme ça qu'on se claque un ischio.",
-        "1) Échauffement 15-20 min à 5:45-6:00 + 3 lignes droites progressives",
-        "2) 10 x 400 m à 1'45 (± 3 s), récup 1'15 trottinée — c'est ton allure 5 km (21:30 = 4:18/km)",
-        "3) Retour au calme 10 min facile. ~9 km, 55 min.",
-        "SI LES 8 PREMIERS SONT À 1'45 SANS FORCER : les 2 derniers à 1'40. RIEN SOUS 1'38 — en dessous c'est de l'allure 1500 m, pas une bonne nouvelle (ton 400 en 1'09 du 26/09 était à 2:52/km).",
-        "SI LE 8e DÉRIVE AU-DELÀ DE 1'50 : tu arrêtes à 8. Huit à 1'45 valent mieux que dix dont trois arrachés, à 6 jours des 17 km.",
-        "CES 400 REMPLACENT le seuil 3x10 de mardi, ils ne s'y ajoutent pas (note « Allures »). Repères : 1'53 = allure 10 km · 1'56 = seuil · 2'05 = allure semi cible · 1'36 = allure sub-20 au 5 km, objectif à terme, travaillé après le 22 novembre et pas avant."
+        "1) Échauffement 15-20 min à 5:45-6:00/km + 3 lignes droites progressives",
+        "2) 10 x 400 m en 1'45 = ALLURE 4:22/km. Fourchette OK 1'43-1'48, soit 4:17 à 4:30/km. Récup 1'15 trottinée (~200 m à 6:00-6:30/km).",
+        "L'INTENSITÉ QUE ÇA REPRÉSENTE : 4:22/km, c'est 4 s/km plus lent que ton 5 km actuel (21:30 = 4:18/km). Dur mais tenu : tu dois pouvoir lâcher 3-4 mots entre deux respirations. Si tu ne peux plus parler dès le 3e, tu es à 1'38 sans le savoir — regarde la montre et ralentis.",
+        "3) Retour au calme 10 min à 6:00/km. ~9 km, 55 min, dont 4 km de qualité.",
+        "SI LES 8 PREMIERS SONT À 1'45 SANS FORCER : les 2 derniers en 1'40 = 4:10/km. PLANCHER 1'38 = 4:05/km, rien en dessous — c'est de l'allure 1500 m, pas une bonne nouvelle (ton 400 en 1'09 du 26/09 était à 2:52/km).",
+        "SI LE 8e DÉPASSE 1'50 (4:35/km) : tu arrêtes à 8, 4 km de qualité sont faits. Et le 1er ne part JAMAIS plus vite que le 10e — le premier doit te sembler trop facile, c'est le signe que la séance est bien partie.",
+        "ÉCHELLE POUR SITUER LES 4:22 (note « Allures ») : 5:12 = 2'05 allure semi cible · 4:50 = 1'56 seuil · 4:42 = 1'53 allure 10 km · 4:22 = 1'45 CE SOIR · 4:18 = 1'43 ton 5 km · 4:00 = 1'36 allure sub-20, objectif après le 22 novembre et pas avant. CES 400 REMPLACENT le seuil 3x10 de mardi, ils ne s'y ajoutent pas.",
+        "Sur piste, la montre va sauter de 4:05 à 4:40 dans le même tour : fie-toi au TEMPS AU TOUR. Sur route, à l'allure."
       ]},
       { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
