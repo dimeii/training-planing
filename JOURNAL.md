@@ -28,6 +28,14 @@ Relevé le 12 octobre, semaine 13/18, directement dans les données synchronisé
 - **Volume course de la semaine** : ~23 km (9 km lundi, 14 dimanche), sans le footing du jeudi.
 - `program.js` n'est pas modifié : la semaine 13 était déjà écrite, et le rappel du lundi (2x1 @35 kg) tient tel quel.
 
+### Semaine 13 ajustée le même jour, à sa demande
+
+Les tests ne bougent pas (1RM vendredi 16, muscle-up samedi 17, max reps + dips lundi 19), le rappel du lundi non plus. Ce qui change, c'est la course, qui n'a aucune raison d'être en taper pour un test de tirage :
+
+- **Mardi 13** : le footing de 6 km devient un **seuil 2x10 min à 4:35-4:40**, donné comme repère et couru à l'effort — l'allure réelle des deux blocs servira à réécrire le tableau.
+- **Dimanche 18** : la sortie allégée de 12 km devient **16 km dont 5 à 4:45**, le juge de paix reporté. La sortie longue raccourcissait depuis trois semaines (16, 15, 14 km) à six semaines du semi. Repli écrit dans la carte : s'il accompagne encore quelqu'un, les 5 km à 4:45 passent au mardi 20 à la place du seuil.
+- **Garde-fous de taper** : rien à la barre jeudi ; pas de séance push samedi derrière le muscle-up (1RM dips le lundi) ; au 1RM, 50 kg ne se tente que si 47,5 monte propre.
+
 ---
 
 ## 2026-09-28 — Bilan S10 : le coude droit passe devant, le muscle-up en singles, la course à refaire

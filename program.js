@@ -645,8 +645,11 @@ window.PROGRAM = {
       { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
       ]},
-      { "day": 1, "type": "course", "title": "Footing facile — 6 km", "ex": [
-        "6 km à 6:00/km, tranquille. Pas de qualité cette semaine : le 1RM est vendredi."
+      { "day": 1, "type": "course", "title": "Course — seuil 2x10 min ↗ (à la place du footing)", "ex": [
+        "20 min d'échauffement à 5:45-6:00/km, puis 2 x 10 min à 4:35-4:40/km ↗, récup 3 min trottinée, puis 10 min de retour au calme (~9 km, 55 min).",
+        "POURQUOI ICI : le test de vendredi se joue sur la prise et les dorsaux, pas sur les jambes — et la semaine dernière n'a compté que 23 km. La course n'a pas à être en taper.",
+        "4:35-4:40 EST UN REPÈRE, PAS UNE CIBLE : l'ancien seuil (4:50-4:55) venait du 10 km en 47:00, périmé depuis tes 400. Cale-toi à l'effort — des phrases courtes passent, pas une conversation — et note l'allure réelle des deux blocs : c'est elle qui réécrira le tableau.",
+        "Allure CONSTANTE, le 2e bloc pas plus vite que le 1er."
       ]},
       { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
@@ -655,13 +658,15 @@ window.PROGRAM = {
         "Trois heures de cours sur site — jour de repos, aucun entraînement."
       ]},
       { "day": 3, "type": "course", "title": "Repos", "ex": [
-        "Repos complet. Tu testes demain."
+        "Repos complet. Tu testes demain.",
+        "Ni tractions, ni push, ni isométrie à la barre : les 100 tractions de vendredi dernier et la séance push de samedi sont déjà dans ce taper, il n'y a plus de marge."
       ]},
       { "day": 4, "type": "test", "title": "TEST FINAL 1/3 — 1RM lesté (télétravail)", "ex": [
         "LE TEST EST POSÉ UN VENDREDI DE TÉLÉTRAVAIL, le meilleur créneau de ta semaine : pas de trajet, pas d'horaire subi, et quatre jours pleins depuis le rappel du lundi. En fin de matinée si tu peux — un 1RM à 18h après une journée d'écran vaut moins.",
         "Échauffement complet, puis la montée, et RIEN D'AUTRE. MAGNÉSIE dans le sac.",
         "Montée ÉCONOME EN PRISE : 5 à vide · 3 @15 · 1 @25 · 1 @35 · 1 @42,5 · 1 @45 · 1 @47,5 · puis 50 — repos 3-4 min, arrêt au 2e échec.",
         "CIBLE : 47,5 kg, et tu as demandé 50. Le 14 septembre : trois singles à 45 dont deux propres, 47,5 raté de quelques centimètres. 47,5 est le chiffre attendu, 50 est le pari — et un 1RM honnête vaut mieux qu'un chiffre arraché.",
+        "CE QUE DIT LA S12 : 4x3 @35 passés « limite de l'échec » le 5 octobre — ça confirme 47,5, ça ne promet pas 50. Et le taper a été plus chargé que prévu : 50 ne se tente que si 47,5 monte propre.",
         "Surveille l'APPEL DE GENOUX au-dessus de 90 % : s'il devient systématique, c'est la hauteur de tirage qui plafonne, pas la force.",
         "COUDE DROIT : la montée s'arrête au premier palier où il parle. Un 1RM ne se passe pas contre une douleur.",
         "Résultat + poids de corps du matin → « 📈 Ma progression » le soir même."
@@ -673,13 +678,17 @@ window.PROGRAM = {
         "VINGT MINUTES, UNE SEULE LIGNE. Échauffement complet, puis UNE série max de muscle-ups à froid.",
         "Le muscle-up passe AVANT le max reps (lundi) et jamais après : mesuré derrière une série à l'échec, il mesurerait ta fatigue.",
         "Critère d'arrêt inchangé : on ne compte pas des reps « strictes » mais TA forme tant qu'elle reste CONSTANTE — arrêt à la première rep où l'appel de genoux augmente, où les bras passent l'un après l'autre, ou où la transition cale.",
-        "LE CHEMIN PARCOURU : bras après bras le 7 août, les deux bras ensemble le 21 août, 3 d'affilée le 4 septembre. En trois mois."
+        "LE CHEMIN PARCOURU : bras après bras le 7 août, les deux bras ensemble le 21 août, 3 d'affilée le 4 septembre. En trois mois.",
+        "PAS DE SÉANCE PUSH DERRIÈRE cette semaine : le 1RM dips est lundi, et des triceps à RPE 9 l'avant-veille lui coûteraient le record. Elle revient samedi prochain."
       ]},
       { "day": 5, "type": "revisions", "title": "Révisions — week-end", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
       ]},
-      { "day": 6, "type": "course", "title": "SORTIE LONGUE allégée — 12 km ↘", "ex": [
-        "12 km à 5:50-6:00/km ↘ : 7 km seul + les 5 km du groupe, ou l'inverse. Semaine de test, on ne cherche rien.",
+      { "day": 6, "type": "course", "title": "SORTIE LONGUE — 16 km dont 5 à 4:45 ↗ (le juge de paix, reporté)", "ex": [
+        "16 km ↗ : les 5 premiers avec le groupe, puis 6 km à 5:40/km, puis 5 km à 4:45/km. Dimanche dernier tu as fait passer quelqu'un avant le chrono : le test est simplement reporté ici, et la sortie longue arrête de raccourcir (16, 15, 14 km sur les trois dernières).",
+        "LES 11 PREMIERS KM À 5:40, PAS À 5:00 — tu as tenu 5:38 sur 14 km dimanche, tu sais le faire. Sinon les 5 derniers mesurent ta fatigue.",
+        "5 km à ALLURE CONSTANTE. Verdict : « je pourrais tenir ça longtemps » → cible semi 1h40-1h42 · tu finis entre 4:50 et 5:00 → 1h45 · ça casse avant le 3e km → tu finis à 5:10 et on reste sur sub 1h50. → « 📈 Ma progression ».",
+        "SI TU ACCOMPAGNES ENCORE QUELQU'UN : 16 km à son allure, et les 5 km à 4:45 passent à mardi 20, seul, à la place du seuil.",
         "Elle ne gêne pas le test de demain — ce sont les jambes, pas la prise ni les dorsaux."
       ]}
     ],
