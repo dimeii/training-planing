@@ -4,6 +4,32 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-10-12 — Bilan S12 : le lourd tient, 100 tractions en plein taper, le juge de paix n'a pas eu lieu
+
+Relevé le 12 octobre, semaine 13/18, directement dans les données synchronisées (`dimeii/training-data`, synchro du matin même) — pas d'export collé cette fois. Semaine du 5 au 11 octobre, la dernière lourde avant le test du 16.
+
+### Ce qui s'est passé
+
+- **Lundi 5, midi** (salle lourde) : fait en entier. Muscle-up **4 à 6 singles**. Tractions lestées **4x3 @35 kg** (92 %) : « ok mais limite de l'échec ». Tirage vertical fait. Développé incliné haltères **3x10-12 @26 kg**, « je peux monter à 28 » — coude muet. Ajout : pec deck unilatéral 3x10 à RPE 9.
+- **Lundi 5, soir** : **10 x 400 m** sur piste — 1'35, huit à 1'27-1'28, 1'20, 1'18 (déjà noté le soir même, commits `af08912` et `78198e3`).
+- **Mardi 6** (jambes) : squat **3x8-10 @80-100 kg** pour 3x6 @60 prévus, plus des exercices jambes divers à RPE 7-8. Fait à 24 h des 400, sans retour négatif.
+- **Mercredi 7** : cours. **Jeudi 8** : footing pas fait (il était optionnel).
+- **Vendredi 9** (volume) : à la place de l'EMOM de taper (8 min x 6, ~48 reps), **la pyramide 1-10-1, soit 100 tractions en 15 minutes** — le défi mis de côté en S2 pour « après le test final » — puis du travail isométrique sur le départ de la traction. Dips **3x6 @36 kg**, « bonnes sensations, je peux mettre plus ». Gainage 5x40 s / 20 s de repos.
+- **Samedi 10** (repos prévu) : séance **upper push** — développé incliné haltères 8 @28 kg en superset avec élévations latérales, vis-à-vis poulie haute à RPE 9 + développé militaire Smith 6-8 @35 kg, pec deck unilatéral 3x10 @70-75 kg, superset triceps à la poulie.
+- **Dimanche 11** : **14 km à 5:38/km** au lieu de 17, par manque de temps et pour accompagner quelqu'un jusqu'au bout — « on est solidaire avant de penser aux perfs ». Les 5 km à 4:45 n'ont donc pas été courus.
+- Révisions cochées lundi, mardi et samedi. Aucune nouvelle mesure saisie depuis le 21 septembre (poids 82,4).
+
+### Ce que ça laisse pour la semaine de test
+
+- **Coude droit** : aucune douleur signalée de la semaine, malgré 26-28 kg au développé, 36 kg aux dips et une séance push entière. Il reste éteint.
+- **1RM du vendredi 16** : 35 kg sont passés en 4x3 mais « limite ». Ça confirme 47,5 comme chiffre attendu et 50 comme pari, rien de plus. À garder en tête en lisant le résultat : le taper a été plus chargé que prévu (100 tractions le vendredi et une séance push le samedi, à 6-7 jours du test).
+- **Dips** : 36 kg faciles en 3x6, la cible de 70 kg au 1RM reste crédible.
+- **Allures de course** : le juge de paix n'a pas eu lieu, le tableau d'allures n'est donc pas réécrit et la cible semi reste ouverte. En revanche, première sortie longue réellement courue en facile (5:38) depuis le début du plan — c'était la consigne la plus difficile à tenir.
+- **Volume course de la semaine** : ~23 km (9 km lundi, 14 dimanche), sans le footing du jeudi.
+- `program.js` n'est pas modifié : la semaine 13 était déjà écrite, et le rappel du lundi (2x1 @35 kg) tient tel quel.
+
+---
+
 ## 2026-09-28 — Bilan S10 : le coude droit passe devant, le muscle-up en singles, la course à refaire
 
 Bilan exporté le 28 septembre, semaine 11/18. C'est la première semaine du format complet (trois salles, cours du mercredi, révisions), et la rentrée de mercredi l'a bousculée : jambes avancées au mardi, volume avancé au vendredi, qualité de course déplacée au samedi.
