@@ -720,7 +720,8 @@ window.PROGRAM = {
       { "day": 3, "type": "course", "title": "Footing facile — 6 km (optionnel)", "ex": [
         "6 km à 6:00/km, autour de la visio."
       ]},
-      { "day": 4, "type": "jambes", "title": "SALLE 2 — jambes & circuit hyrox complet", "ex": [
+      { "day": 4, "type": "jambes", "title": "TEST MAX REPS (reporté du lundi) + jambes & circuit hyrox", "ex": [
+        "0) TEST MAX REPS tractions PDC — EN OUVERTURE, reporté de lundi (escalade la veille). Échauffement long, UNE série, cible 25. Prise HABITUELLE (strong grip) pour comparer aux 23 du 16/09 — note la prise dans le commentaire. → « 📈 Ma progression ». 15 min de repos, puis les jambes : musculatures différentes, ça ne se gêne pas.",
         "PHASE 4 : les charges ne montent plus jusqu'au 22 novembre, mais rien n'est supprimé. Entretenir, ce n'est pas arrêter.",
         "1) Gainage 3x40s + hollow 3x30s",
         "2) Squat barre 3x6 @70 kg (entretien, pas de record)",
@@ -732,7 +733,7 @@ window.PROGRAM = {
         "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "volume", "title": "SALLE 3 — volume tractions", "ex": [
-        "1) TEST MUSCLE-UP (reporté du 17 octobre, pas fait) — en OUVERTURE, échauffement complet puis UNE série max à froid. Critère d'arrêt inchangé : ta forme tant qu'elle reste CONSTANTE, arrêt à la première rep où l'appel de genoux augmente, où les bras passent l'un après l'autre ou où la transition cale. Repère : 3 d'affilée le 4 et le 18 septembre. → « 📈 Ma progression ». 10 min de repos avant l'EMOM. Il revient au lundi la semaine prochaine, au format que ce test aura fixé.",
+        "1) MUSCLE-UP : 4 SINGLES à froid, un toutes les 90 s, en strong grip, gainé jusqu'en haut — PAS DE SÉRIE MAX : tu sors du max reps de la veille, il mesurerait ta fatigue. Le test passe au lundi 26, en ouverture.",
         "2) EMOM TRACTIONS 10 min : 8 reps/min sur les 9 premières, minute 10 en série libre",
         "3) Dips lestés 3x8 @32,5 kg",
         "4) Rowing horizontal 4x10 @68 kg, prise serrée",
@@ -751,7 +752,7 @@ window.PROGRAM = {
     [
       { "day": 0, "type": "force", "title": "SALLE 1 — muscle-up & force d'entretien", "ex": [
         "1) Face pulls 3x15 + coiffe 2x10 — en échauffement",
-        "2) MUSCLE-UP à froid : 4-5 séries au format validé par le test du 24 octobre (≥ 3 → séries de 2 ; 1-2 → singles)",
+        "2) TEST MUSCLE-UP (reporté deux fois) — en OUVERTURE, échauffement complet puis UNE série max à froid, strong grip. Arrêt à la première rep où l'appel de genoux augmente, où les bras passent l'un après l'autre ou où la transition cale. Repère : 3 d'affilée le 4 et le 18 septembre. → « 📈 Ma progression ». Il fixe le format des semaines suivantes (≥ 3 → séries de 2 ; 1-2 → singles).",
         "3) False grip hang 3x30s",
         "4) Tractions lestées 4x3 @30 kg (88 %) — charge d'entretien, elle ne bougera plus jusqu'au semi",
         "5) Tirage vertical 3x8-10 à RPE 8",
