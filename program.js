@@ -696,7 +696,7 @@ window.PROGRAM = {
     /* ------ Semaine 14 — Phase 4 : SEMI & HYROX ------ */
     [
       { "day": 0, "type": "test", "title": "TEST FINAL 3/3 — max reps & dips (télétravail)", "ex": [
-        "DERNIER CHIFFRE DU CYCLE, ET IL EST POSÉ ICI EXPRÈS : c'est l'objectif principal du carnet (17 → 25 reps), il mérite le meilleur créneau — télétravail, 48 h après le test de muscle-up, prise et épaules reposées. Trois tests en trois jours d'affilée lui auraient coûté deux ou trois reps.",
+        "DERNIER CHIFFRE DU CYCLE, ET IL EST POSÉ ICI EXPRÈS : c'est l'objectif principal du carnet (17 → 25 reps), il mérite le meilleur créneau — télétravail, 72 h après le 1RM de vendredi (47,5 kg validés), prise et épaules reposées. Le muscle-up, pas fait samedi, passe à samedi prochain : jamais derrière une série à l'échec.",
         "ORDRE IMPOSÉ : échauffement long → MAX REPS en ouverture → 15 min de repos → 1RM dips. C'est le couple qui a donné deux records le 16 septembre : musculatures différentes, ils ne se gênent pas.",
         "1) TEST MAX REPS tractions PDC — UNE série. CIBLE 25, et tu as demandé 25-30 : 25 est l'objectif du cycle (17 au départ, 20 le 14/08, 21 le 26/08, 23 le 16/09), 30 est l'objectif du bloc d'après le semi — c'est l'EMOM qui le construira.",
         "2) TEST 1RM DIPS lestés — cible > 65 kg. Montée 3 @30 · 2 @45 · 1 @57,5 · 1 @65 · puis +2,5 kg, arrêt au 2e échec.",
@@ -705,10 +705,11 @@ window.PROGRAM = {
       { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
       ]},
-      { "day": 1, "type": "course", "title": "Course — seuil 2x15 min", "ex": [
-        "20 min d'échauffement, puis 2 x 15 min à 4:55/km ↗, récup 3 min, puis 10 min de retour au calme (~11 km)",
-        "VERSION COURTE : 12 min d'échauffement · 2 x 12 min · récup 3 min · 8 min de retour au calme (45 min).",
-        "Le seuil est LA séance qui fait progresser sur semi. Si tu ne dois garder qu'une séance de qualité, c'est celle-là."
+      { "day": 1, "type": "course", "title": "Course — JUGE DE PAIX : 5 km à 4:45 (à la place du seuil)", "ex": [
+        "LE REPLI PRÉVU DIMANCHE S'APPLIQUE : 12 km avec le groupe le 18, donc les 5 km à 4:45 n'ont toujours pas été courus — ils passent ici, seuls, et REMPLACENT le seuil 2x15. Trois semaines que la cible semi attend ce chiffre, à cinq semaines du 22 novembre.",
+        "20 min d'échauffement à 5:45-6:00/km + 3 lignes droites, puis 5 km à 4:45/km À ALLURE CONSTANTE, puis 10 min de retour au calme (~10 km, 50 min).",
+        "Pas de sortie longue devant cette fois : le test est plus facile qu'en fin de 16 km, donc le verdict se lit un cran plus sévère. « Je pourrais en faire encore 5 à ce rythme » → cible 1h40-1h42 · tu tiens 4:45 mais tu es à fond au 5e → 1h45 · ça casse avant le 3e km → tu finis à 5:10 et on reste sur sub 1h50.",
+        "Note l'allure réelle et ce que tu as ressenti : c'est ce qui réécrira le tableau d'allures et la sortie de dimanche."
       ]},
       { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
@@ -731,7 +732,7 @@ window.PROGRAM = {
         "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "volume", "title": "SALLE 3 — volume tractions", "ex": [
-        "1) MUSCLE-UP à froid : 4-5 séries au format validé par le test du 17 octobre — il passe ici depuis que le lundi porte les tests, et il revient au lundi la semaine prochaine",
+        "1) TEST MUSCLE-UP (reporté du 17 octobre, pas fait) — en OUVERTURE, échauffement complet puis UNE série max à froid. Critère d'arrêt inchangé : ta forme tant qu'elle reste CONSTANTE, arrêt à la première rep où l'appel de genoux augmente, où les bras passent l'un après l'autre ou où la transition cale. Repère : 3 d'affilée le 4 et le 18 septembre. → « 📈 Ma progression ». 10 min de repos avant l'EMOM. Il revient au lundi la semaine prochaine, au format que ce test aura fixé.",
         "2) EMOM TRACTIONS 10 min : 8 reps/min sur les 9 premières, minute 10 en série libre",
         "3) Dips lestés 3x8 @32,5 kg",
         "4) Rowing horizontal 4x10 @68 kg, prise serrée",
@@ -741,7 +742,7 @@ window.PROGRAM = {
         "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 6, "type": "course", "title": "SORTIE LONGUE — 18 km dont 6 à allure semi", "ex": [
-        "18 km ↗ : pars avec le groupe sur les 5 premiers km, puis 6 km à 5:45/km, puis 6 km à 5:12/km (allure semi), puis 1 km de retour au calme",
+        "18 km ↗ : pars avec le groupe sur les 5 premiers km, puis 6 km à 5:45/km, puis 6 km à TON ALLURE SEMI, puis 1 km de retour au calme. L'allure semi sort du test de mardi : 4:45 tenu facilement → 4:45-4:50 · tenu à fond → 4:58-5:00 · cassé → 5:10. Plus 5:12 par défaut : ce chiffre venait du 10 km en 47:00, périmé.",
         "→ à saisir dans « 📈 Ma progression ». Teste ton ravitaillement : un gel vers le 8e km, un autre vers le 14e."
       ]}
     ],
@@ -750,7 +751,7 @@ window.PROGRAM = {
     [
       { "day": 0, "type": "force", "title": "SALLE 1 — muscle-up & force d'entretien", "ex": [
         "1) Face pulls 3x15 + coiffe 2x10 — en échauffement",
-        "2) MUSCLE-UP à froid : 4-5 séries au format validé par le test du 17 octobre",
+        "2) MUSCLE-UP à froid : 4-5 séries au format validé par le test du 24 octobre (≥ 3 → séries de 2 ; 1-2 → singles)",
         "3) False grip hang 3x30s",
         "4) Tractions lestées 4x3 @30 kg (88 %) — charge d'entretien, elle ne bougera plus jusqu'au semi",
         "5) Tirage vertical 3x8-10 à RPE 8",

@@ -4,6 +4,29 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-10-19 — Bilan S13 : 47,5 kg validés, le muscle-up et le juge de paix reportés
+
+Relevé le 19 octobre, semaine 14/18, dans les données synchronisées. Semaine du 12 au 18 octobre, semaine de test.
+
+### Ce qui s'est passé
+
+- **Lundi 12** (rappel 2x1 @35) et **mardi 13** (seuil 2x10) : rien de coché, aucun commentaire. Je ne sais pas s'ils ont été faits — le tableau d'allures ne peut toujours pas être réécrit.
+- **Mercredi 14** : cours. **Jeudi 15** : repos.
+- **Vendredi 16 — 1RM lesté : 47,5 kg validés, 50 raté** (« 47.5 ok mais 50 pas validé :( »), RPE « correct ». +2,5 kg sur le 14 septembre, la cible du test est atteinte ; 50 était le pari.
+- **Samedi 17 — test muscle-up : pas fait** (« Pas pu le faire »), sans douleur signalée.
+- **Dimanche 18** : **12 km avec le groupe** au lieu de 16 dont 5 à 4:45. Deuxième dimanche de suite sans le juge de paix.
+- Aucune mesure saisie depuis le 21 septembre : le 47,5 n'est pas encore dans « 📈 Ma progression ».
+
+### Semaine 14 ajustée
+
+- **Lundi 19** (aujourd'hui) : test max reps + 1RM dips inchangé — seule la phrase « 48 h après le muscle-up » est corrigée, aucune ligne ajoutée ni retirée.
+- **Mardi 20** : le repli écrit dimanche s'applique — **5 km à 4:45 seuls, à la place du seuil 2x15**. Verdict lu un cran plus sévère (pas de sortie longue devant).
+- **Samedi 24** : le muscle-up devient le **test reporté**, en ouverture, 10 min avant l'EMOM. Le format du lundi S15 en découle (≥ 3 → séries de 2 ; 1-2 → singles).
+- **Dimanche 25** : 18 km maintenus, mais les 6 km d'allure semi suivent le verdict de mardi au lieu du 5:12 périmé.
+- Cache à `v=20261019a`.
+
+---
+
 ## 2026-10-12 — Bilan S12 : le lourd tient, 100 tractions en plein taper, le juge de paix n'a pas eu lieu
 
 Relevé le 12 octobre, semaine 13/18, directement dans les données synchronisées (`dimeii/training-data`, synchro du matin même) — pas d'export collé cette fois. Semaine du 5 au 11 octobre, la dernière lourde avant le test du 16.
