@@ -750,13 +750,12 @@ window.PROGRAM = {
 
     /* ------ Semaine 15 — Phase 4 (semaine d'absorption) ------ */
     [
-      { "day": 0, "type": "force", "title": "SALLE 1 — muscle-up & force d'entretien", "ex": [
+      { "day": 0, "type": "volume", "title": "SALLE 1 — pyramide tractions & volume dips (midi)", "ex": [
         "1) Face pulls 3x15 + coiffe 2x10 — en échauffement",
-        "2) TEST MUSCLE-UP (reporté deux fois) — en OUVERTURE, échauffement complet puis UNE série max à froid, strong grip. Arrêt à la première rep où l'appel de genoux augmente, où les bras passent l'un après l'autre ou où la transition cale. Repère : 3 d'affilée le 4 et le 18 septembre. → « 📈 Ma progression ». Il fixe le format des semaines suivantes (≥ 3 → séries de 2 ; 1-2 → singles).",
-        "3) False grip hang 3x30s",
-        "4) Tractions lestées 4x3 @30 kg (88 %) — charge d'entretien, elle ne bougera plus jusqu'au semi",
-        "5) Tirage vertical 3x8-10 à RPE 8",
-        "6) Développé incliné 4x8 @55 kg"
+        "2) TEST MUSCLE-UP (reporté trois fois) — 10 min, en OUVERTURE et à froid, AVANT la pyramide : une série max, strong grip, arrêt à la première rep où l'appel de genoux augmente ou où la transition cale. → « 📈 Ma progression ». Si tu n'as pas la tête à ça : 4 singles et on passe.",
+        "3) PYRAMIDE TRACTIONS 6-8-10-12-10-8-6 (60 reps), 2 min de repos entre les paliers. Calée sur tes 21 reps : le sommet à 12 est à ~55 % du max. Si le 12 ne passe pas, tu redescends quand même — note le palier qui a lâché.",
+        "4) DIPS VOLUME 4x10 @20 kg, 90 s de repos. Toutes les reps propres, rien à l'échec.",
+        "5) Développé incliné haltères 3x8 @26-28 kg — si le temps le permet"
       ]},
       { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
@@ -774,7 +773,8 @@ window.PROGRAM = {
       { "day": 3, "type": "course", "title": "Footing facile — 6 km (optionnel)", "ex": [
         "6 km à 6:00/km."
       ]},
-      { "day": 4, "type": "jambes", "title": "SALLE 2 — SIMULATION HYROX (course compromise)", "ex": [
+      { "day": 4, "type": "jambes", "title": "SALLE 2 — 4 séries à 80 % + simulation hyrox", "ex": [
+        "0) EN OUVERTURE — 4 SÉRIES À 80 % DU MAX : 4 x 17 tractions PDC (80 % de tes 21), 3 min de repos, même prise que tes 21. Il est normal que la 3e ou la 4e ne fasse pas 17 : tu t'arrêtes à une rep de l'échec et tu notes les quatre chiffres (ex. 17-17-15-13). C'est ce total qui mesurera la progression. 10 min de pause, puis la simulation.",
         "SÉANCE PLAISIR ET SÉANCE UTILE : c'est le format hyrox en vrai, et « courir avec le cardio déjà en l'air » est la qualité n°1 de cette discipline — celle qui ne se travaille dans aucune de tes autres séances. Elle tombe dans une semaine d'absorption, avec une sortie longue allégée derrière : c'est la seule fenêtre du bloc où elle ne coûte rien.",
         "4 tours de : 800 m course (allure 5:00-5:10) + une station à fond pendant 2 min, enchaînés sans pause. Stations dans l'ordre : wall balls · farmers carry · sled push (ou fentes lestées) · rameur. Repos 2 min entre les tours. ~45 min.",
         "Pas de squat ni de fentes cette semaine : la simulation les remplace."
@@ -783,8 +783,8 @@ window.PROGRAM = {
         "Bloc de révisions — note ce que tu as bossé."
       ]},
       { "day": 5, "type": "volume", "title": "SALLE 3 — volume tractions ↗", "ex": [
-        "1) EMOM TRACTIONS 12 min ↗ : 7 reps/min sur les 11 premières, minute 12 en série libre (~85 reps — on allonge la durée avant d'augmenter les reps)",
-        "2) Dips lestés 3x8 @32,5 kg",
+        "1) EMOM TRACTIONS 7 reps/min : 12 min visées, 10 min si les bras sont lourds des 4 séries d'hier. Ton 7 x 15 du week-end dernier était « très challengeant » : on reste à 7 reps, on ne monte à 8 que quand la durée passe proprement. Si une minute lâche, tu descends à 6 et tu notes laquelle.",
+        "2) DIPS VOLUME 4x8 @30 kg, 2 min de repos",
         "3) Rowing horizontal 4x10 @68 kg",
         "4) Circuit abdos x3"
       ]},
