@@ -799,12 +799,13 @@ window.PROGRAM = {
 
     /* ------ Semaine 16 — Phase 4 (PIC DE VOLUME) ------ */
     [
-      { "day": 0, "type": "force", "title": "SALLE 1 — muscle-up & force d'entretien", "ex": [
-        "1) Face pulls 3x15 + coiffe 2x10",
-        "2) MUSCLE-UP à froid : 4-5 séries",
-        "3) False grip hang 3x30s",
-        "4) Tractions lestées 4x3 @30 kg",
-        "5) Développé incliné 4x8 @55 kg"
+      { "day": 0, "type": "force", "title": "SALLE 1 — top set + back-off tractions (midi)", "ex": [
+        "1) Face pulls 2x15 + coiffe 2x10 — en échauffement",
+        "2) MONTÉE (rien de dur) : 5 au poids de corps (1 min) · 3 @+10 kg (1'30) · 2 @+20 kg (2 min) · 1 @+27,5 kg (3 min). Si le single à 27,5 te paraît lourd, le top set sera plus léger aujourd'hui.",
+        "3) TOP SET : 1 x 3 @37,5-40 kg, RPE 8-9 (1-2 reps en réserve, jamais l'échec), puis 4 min de repos complètes. Prise normale = pas de repère : monte par +2,5 kg et arrête-toi au premier triplé dur. Si le 3e rep passe trop facilement, on monte de 2,5 kg la prochaine fois — pas de 2e top set aujourd'hui. → note la charge, c'est elle qui progresse.",
+        "4) BACK-OFF : 3 x 5 à −15 % du top set (ex. 40 → 34 kg), 2'30 de repos. Propre, 2-3 reps en réserve. Si la 3e perd des reps, le top set était trop lourd.",
+        "5) Développé incliné haltères 3x8 @26-28 kg — si le temps le permet",
+        "ADDUCTEUR : leste-toi à la CEINTURE (pas d'haltère serré entre les pieds), jambes immobiles, pas d'élan."
       ]},
       { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
