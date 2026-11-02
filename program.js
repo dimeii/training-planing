@@ -810,9 +810,9 @@ window.PROGRAM = {
       { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
       ]},
-      { "day": 1, "type": "course", "title": "Course — 20 min continu au seuil", "ex": [
-        "20 min d'échauffement, puis 20 min CONTINUES à 4:50-4:55/km ↗, puis 10 min de retour au calme (~11 km)",
-        "Vingt minutes d'affilée au seuil, c'est la séance de référence du semi. Si tu la tiens sans dériver, sub 1h50 est acquis."
+      { "day": 1, "type": "course", "title": "Footing facile — 8-10 km ↘", "ex": [
+        "8-10 km à 5:45-6:00/km ↘, en pouvant parler en phrases complètes. PAS DE SEUIL cette semaine : l'adducteur (blessé le 24/10) ne supporte pas encore l'effort intense.",
+        "Si l'adducteur tire, tu coupes et tu rentres."
       ]},
       { "day": 1, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
