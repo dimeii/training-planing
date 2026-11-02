@@ -4,6 +4,19 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-11-02 — Semaine 15 racontée (rien saisi dans l'appli) : adducteur blessé
+
+Donné de vive voix le 2 novembre, semaine 16/18. Semaine du 26 octobre au 1er novembre, non saisie dans le carnet.
+
+- **Lundi 26** : séance pecs / push — à la place de la pyramide + test muscle-up prévus. **Le test MU n'a toujours pas eu lieu** (quatrième report).
+- **Mardi 27** : **pyramide 1-12-1 (144 tractions)** — à la place des 6x800. Plus gros volume de tractions du cycle (100 le 09/10).
+- **Vendredi 30** : EMOM 7 tractions x 10 min (70 reps) — à la place des 4x17 + simulation hyrox.
+- **Samedi 31** : 10 km course — à la place de l'EMOM du samedi.
+- **Dimanche 1er** : pas de sortie longue (14 km prévus).
+- **Blessure à l'adducteur** (moment et gravité non précisés) : il se repose. À 20 jours du semi, la S16 (seuil 20 min mardi, 20 km dimanche) dépend de l'état de l'adducteur.
+
+---
+
 ## 2026-10-19 — Bilan S13 : 47,5 kg validés, le muscle-up et le juge de paix reportés
 
 Relevé le 19 octobre, semaine 14/18, dans les données synchronisées. Semaine du 12 au 18 octobre, semaine de test.
