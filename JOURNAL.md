@@ -6,6 +6,7 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ## 2026-11-03 — Page « 👥 Mes athlètes »
 
+- **Revu le même jour à sa demande : la page n'est plus rattachée à son carnet.** Entrée « 👥 Suivi des athlètes » sur l'écran « Qui s'entraîne ? » (URL `#athletes`), clé localStorage `carnet-athletes-v1`, fichier `athletes-data.json` dans `dimeii/training-data` (synchro qui réutilise le token d'un carnet déjà connecté sur l'appareil). Migration automatique depuis la clé `athletes` d'un carnet. Tableau « 🎯 Prochains tests » : date, exercices, valeur actuelle + objectif par athlète. Tests du **lundi 30 novembre** préremplis (Aldo, Aris, Mehdi). Smoke test : 14/14 OK.
 - Mehdi encadre des amis : deuxième page dans l'appli (onglets « 📅 Mon carnet / 👥 Mes athlètes », URL `#athletes`) pour suivre leurs maxs. Athlètes + records (exercice, valeur, unité libre, date, note), vue par athlète ou par exercice, mini-courbe et écart depuis la 1re mesure (neutre, sans vert/rouge : un chrono baisse quand on progresse).
 - Stocké dans `data.athletes` du profil actif → suit la synchro privée `dimeii/training-data` et les sauvegardes, rien dans le dépôt public. Smoke test jsdom dédié : 17/17 OK.
 

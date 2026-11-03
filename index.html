@@ -17,8 +17,8 @@
 <!-- ?v= : horodatage de cache. À BUMPER à chaque modification de program.js / auth.js,
      sinon le navigateur peut servir une version périmée du programme (constaté le 17/09/2026 :
      l'appli affichait encore l'ancien objectif 1RM et l'ancien titre du mercredi). -->
-<script src="./program.js?v=20261103b"></script>
-<script src="./auth.js?v=20261103b"></script>
+<script src="./program.js?v=20261103c"></script>
+<script src="./auth.js?v=20261103c"></script>
 <script>
   /* Force le runtime JSX "classic" (React.createElement) : le runtime
      "automatic", devenu défaut sur les versions récentes de Babel, génère
@@ -228,7 +228,6 @@ function normalizeData(parsed) {
     moves: parsed.moves || {},
     custom: parsed.custom || {},
     measures: normMeasures(parsed.measures),
-    athletes: normAthletes(parsed.athletes),
     program: parsed.program || null,
     updatedAt: parsed.updatedAt || 0,
   };
@@ -244,13 +243,23 @@ function normMeasures(m) {
   });
   return out;
 }
-/* Suivi des athlètes encadrés : une liste de personnes et une liste
-   plate de records (personne, exercice, valeur, unité, date). */
+/* Suivi des athlètes encadrés — espace séparé des carnets (sa propre clé
+   localStorage et son propre fichier dans le dépôt de synchro) : une liste
+   de personnes, une liste plate de records (personne, exercice, valeur,
+   unité, date) et le plan de la prochaine séance de tests (objectifs par
+   athlète, clés « <athlète>|<exercice> »). */
 function normAthletes(a) {
   a = a || {};
+  const t = a.tests || {};
   return {
     people: Array.isArray(a.people) ? a.people : [],
     records: Array.isArray(a.records) ? a.records : [],
+    tests: {
+      date: t.date || "",
+      items: Array.isArray(t.items) ? t.items : [],
+      targets: t.targets || {},
+    },
+    updatedAt: a.updatedAt || 0,
   };
 }
 /* -------- Bilan Markdown pour relecture (coach / IA) --------------- */
@@ -1060,7 +1069,7 @@ function AthletesPage(props) {
   const exoNames = [];
   ath.records.forEach((r) => { if (exoNames.indexOf(r.exo) < 0) exoNames.push(r.exo); });
   exoNames.sort((a, b) => a.localeCompare(b, "fr"));
-  const save = (next) => props.onChange(next);
+  const save = (next) => props.onChange(Object.assign({}, ath, next));
   const addPerson = () => {
     const name = newName.trim();
     if (!name) return;
@@ -1155,24 +1164,204 @@ function AthletesPage(props) {
     </div>
   );
 }
-function PageTabs(props) {
+/* Dernière valeur d'un athlète sur un exercice (même unité). */
+function lastRecord(records, who, exo, unit) {
+  const pts = records.filter((r) => r.who === who && r.exo.toLowerCase() === exo.toLowerCase() && r.unit === unit).sort(byDate);
+  return pts.length ? pts[pts.length - 1] : null;
+}
+function TestsPlan(props) {
+  const ath = normAthletes(props.athletes);
+  const t = ath.tests;
+  const people = ath.people;
+  const [exo, setExo] = useState("");
+  const [unit, setUnit] = useState("reps");
+  const save = (tests) => props.onChange(Object.assign({}, ath, { tests: Object.assign({}, t, tests) }));
+  const setTarget = (who, item, raw) => {
+    const targets = Object.assign({}, t.targets);
+    const k = who + "|" + item.exo;
+    const v = parseFloat(String(raw).replace(",", "."));
+    if (raw === "" || isNaN(v)) delete targets[k]; else targets[k] = v;
+    save({ targets: targets });
+  };
+  const addItem = () => {
+    const e = exo.trim();
+    if (!e || t.items.some((i) => i.exo.toLowerCase() === e.toLowerCase())) return;
+    save({ items: t.items.concat([{ exo: e, unit: unit.trim() || "reps" }]) });
+    setExo("");
+  };
+  const delItem = (item) => {
+    const targets = Object.assign({}, t.targets);
+    Object.keys(targets).forEach((k) => { if (k.split("|")[1] === item.exo) delete targets[k]; });
+    save({ items: t.items.filter((i) => i !== item), targets: targets });
+  };
   return (
-    <nav style={S.pageTabs} aria-label="Pages">
-      <button style={Object.assign({}, S.pageTab, props.page === "carnet" ? S.pageTabActive : null)} aria-current={props.page === "carnet" ? "page" : undefined} onClick={() => props.onGo("carnet")}>📅 Mon carnet</button>
-      <button style={Object.assign({}, S.pageTab, props.page === "athletes" ? S.pageTabActive : null)} aria-current={props.page === "athletes" ? "page" : undefined} onClick={() => props.onGo("athletes")}>👥 Mes athlètes</button>
-    </nav>
+    <div style={S.athCard}>
+      <div style={S.metricHead}>
+        <span style={S.metricLabel}>🎯 Prochains tests</span>
+        <input type="date" value={t.date} onChange={(e) => save({ date: e.target.value })} style={S.dateInput} aria-label="Date des prochains tests" />
+      </div>
+      <p style={S.progHint}>
+        Actuel = dernier record saisi · objectif = ce qu'on vise ce jour-là (modifiable). Le jour J, saisis les résultats ci-dessous comme de nouveaux records.
+      </p>
+      {t.items.length && people.length ? (
+        <div style={{ overflowX: "auto" }}>
+          <table style={S.testsTable}>
+            <thead>
+              <tr>
+                <th style={S.testsTh}>Test</th>
+                {people.map((p) => <th key={p.id} style={S.testsTh}>{p.name}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {t.items.map((item) => (
+                <tr key={item.exo}>
+                  <td style={S.testsTd}>
+                    <span style={S.athExo}>{item.exo}</span>
+                    <span style={S.athSub}>{item.unit} · <button style={S.deleteSessionBtn} onClick={() => delItem(item)}>retirer</button></span>
+                  </td>
+                  {people.map((p) => {
+                    const last = lastRecord(ath.records, p.id, item.exo, item.unit);
+                    const target = t.targets[p.id + "|" + item.exo];
+                    return (
+                      <td key={p.id} style={S.testsTd}>
+                        <span style={S.athSub}>actuel {last ? fmtNum(last.v) : "—"}</span>
+                        <input type="number" inputMode="decimal" step="any" defaultValue={target != null ? target : ""}
+                          key={p.id + item.exo + (target != null ? target : "")}
+                          onBlur={(e) => setTarget(p.id, item, e.target.value)}
+                          placeholder="objectif" style={S.testsInput} aria-label={"Objectif " + p.name + " — " + item.exo} />
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p style={S.progHint}>{people.length ? "Ajoute les exercices à tester ci-dessous." : "Ajoute d'abord tes athlètes."}</p>
+      )}
+      <div style={Object.assign({}, S.addRow, { marginTop: 10 })}>
+        <input value={exo} onChange={(e) => setExo(e.target.value)} placeholder="exercice à tester" style={S.numInput} aria-label="Exercice à tester" />
+        <input list="ath-units" value={unit} onChange={(e) => setUnit(e.target.value)} style={Object.assign({}, S.numInput, { flex: "0 1 70px", minWidth: 60 })} aria-label="Unité du test" />
+        <button style={S.smallBtn} onClick={addItem} disabled={!exo.trim()}>+ Test</button>
+      </div>
+    </div>
+  );
+}
+const ATHLETES_KEY = "carnet-athletes-v1";
+const ATHLETES_FILE = "athletes-data.json";
+/* La synchro réutilise le dépôt et le token d'un carnet déjà connecté
+   (le profil historique d'abord), avec un fichier à part. */
+function athletesSyncCfg() {
+  const keys = [LEGACY_SYNC_KEY];
+  const reg = loadProfilesReg();
+  if (reg) reg.profiles.forEach((p) => keys.push(profileSyncKey(p)));
+  for (let i = 0; i < keys.length; i++) {
+    try {
+      const cfg = JSON.parse(localStorage.getItem(keys[i]));
+      if (cfg && cfg.repo && cfg.token) return Object.assign({}, cfg, { path: ATHLETES_FILE });
+    } catch (e) {}
+  }
+  return null;
+}
+/* Première ouverture : reprend les athlètes saisis quand la page vivait
+   dans un carnet (clé « athletes » des données d'un profil). */
+function loadAthletes() {
+  try {
+    const raw = localStorage.getItem(ATHLETES_KEY);
+    if (raw) return normAthletes(JSON.parse(raw));
+  } catch (e) {}
+  const keys = [LEGACY_DATA_KEY];
+  const reg = loadProfilesReg();
+  if (reg) reg.profiles.forEach((p) => keys.push(profileDataKey(p)));
+  for (let i = 0; i < keys.length; i++) {
+    try {
+      const d = JSON.parse(localStorage.getItem(keys[i]));
+      if (d && d.athletes && (d.athletes.people || []).length) return normAthletes(d.athletes);
+    } catch (e) {}
+  }
+  return normAthletes({});
+}
+function AthletesApp(props) {
+  const [data, setData] = useState(loadAthletes);
+  const [status, setStatus] = useState("");
+  const dataRef = React.useRef(data);
+  const cfgRef = React.useRef(athletesSyncCfg());
+  const shaRef = React.useRef(null);
+  const timerRef = React.useRef(null);
+  const adopt = (d) => {
+    const n = normAthletes(d);
+    dataRef.current = n;
+    setData(n);
+    try { localStorage.setItem(ATHLETES_KEY, JSON.stringify(n)); } catch (e) {}
+  };
+  const push = async () => {
+    const cfg = cfgRef.current;
+    try {
+      try {
+        shaRef.current = await ghPutFile(cfg, dataRef.current, shaRef.current);
+      } catch (e) {
+        const remote = await ghGetFile(cfg);
+        shaRef.current = remote.exists ? remote.sha : null;
+        if (remote.exists && (remote.data.updatedAt || 0) > (dataRef.current.updatedAt || 0)) {
+          adopt(remote.data);
+          setStatus("☁️ Version plus récente du cloud adoptée · " + fmtTime());
+          return;
+        }
+        shaRef.current = await ghPutFile(cfg, dataRef.current, shaRef.current);
+      }
+      setStatus("☁️ Sauvegardé · " + fmtTime());
+    } catch (e) {
+      setStatus("⚠️ Synchro échouée : " + (e && e.message ? e.message : e));
+    }
+  };
+  useEffect(() => {
+    const cfg = cfgRef.current;
+    if (!cfg) { setStatus("Données sur cet appareil uniquement (aucun carnet synchronisé ici)"); return; }
+    let alive = true;
+    setStatus("☁️ Synchronisation…");
+    ghGetFile(cfg).then((remote) => {
+      if (!alive) return;
+      if (remote.exists) shaRef.current = remote.sha;
+      if (remote.exists && (remote.data.updatedAt || 0) > (dataRef.current.updatedAt || 0)) {
+        adopt(remote.data);
+        setStatus("☁️ À jour · " + fmtTime());
+      } else if (!remote.exists || (dataRef.current.updatedAt || 0) > (remote.data.updatedAt || 0)) {
+        push();
+      } else {
+        setStatus("☁️ À jour · " + fmtTime());
+      }
+    }).catch((e) => { if (alive) setStatus("⚠️ Synchro échouée : " + (e && e.message ? e.message : e)); });
+    return () => { alive = false; };
+  }, []);
+  const change = (next) => {
+    const n = Object.assign({}, normAthletes(next), { updatedAt: Date.now() });
+    adopt(n);
+    if (cfgRef.current) {
+      setStatus("☁️ Envoi…");
+      clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(push, 1500);
+    }
+  };
+  return (
+    <div className="page" style={S.page}>
+      <style>{CSS}</style>
+      <header style={{ marginBottom: 12 }}>
+        <div style={S.profileRow}>
+          <button style={S.profileSwitch} onClick={props.onBack}>← Profils</button>
+          <span style={{ fontSize: 12.5, color: "#8A8F98" }}>{status}</span>
+        </div>
+        <div style={S.eyebrow}>Coaching</div>
+        <h1 style={S.h1}>Suivi des athlètes</h1>
+      </header>
+      <TestsPlan athletes={data} onChange={change} />
+      <AthletesPage athletes={data} onChange={change} />
+    </div>
   );
 }
 /* ----------------------------- App -------------------------------- */
 function Calendar(props) {
   const [week, setWeek] = useState(currentWeekIndex());
-  const [page, setPage] = useState(() => (window.location.hash === "#athletes" ? "athletes" : "carnet"));
-  useEffect(() => {
-    const onHash = () => setPage(window.location.hash === "#athletes" ? "athletes" : "carnet");
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
-  const goPage = (p) => { window.location.hash = p === "athletes" ? "athletes" : ""; setPage(p); };
   const [data, setData] = useState(emptyData);
   const dataRef = React.useRef(null);
   if (dataRef.current === null) dataRef.current = emptyData();
@@ -1562,9 +1751,6 @@ function Calendar(props) {
       return Object.assign({}, prev, { measures: nextMeasures });
     });
   };
-  const setAthletes = (athletes) => {
-    persist((prev) => Object.assign({}, prev, { athletes: athletes }));
-  };
   const delMeasure = (key, id) => {
     persist((prev) => {
       const measures = normMeasures(prev.measures);
@@ -1673,23 +1859,6 @@ function Calendar(props) {
   Object.keys(data.completed).forEach((k) => { if (data.completed[k]) totalDone++; });
   const customCount = Object.keys(data.custom).reduce((a, k) => a + data.custom[k].length, 0);
   const totalSessions = WEEKS.reduce((a, w) => a + w.length, 0) + customCount;
-  if (loaded && page === "athletes") {
-    return (
-      <div className="page" style={S.page}>
-        <style>{CSS}</style>
-        <header style={{ marginBottom: 12 }}>
-          <div style={S.profileRow}>
-            <span style={S.profileName}>👤 {props.profile ? props.profile.name : "Profil"}</span>
-            <span style={{ fontSize: 13, color: "#8A8F98" }}>{saveMsg}</span>
-          </div>
-          <PageTabs page={page} onGo={goPage} />
-          <h1 style={S.h1}>Mes athlètes</h1>
-          {saveError ? <div style={S.errorBanner}>⚠️ Échec de l'enregistrement : {saveError}</div> : null}
-        </header>
-        <AthletesPage athletes={data.athletes} onChange={setAthletes} />
-      </div>
-    );
-  }
   if (!loaded) {
     return (
       <div className="page" style={S.page}>
@@ -1705,7 +1874,6 @@ function Calendar(props) {
           <span style={S.profileName}>👤 {props.profile ? props.profile.name : "Profil"}</span>
           <button style={S.profileSwitch} onClick={props.onSwitchProfile}>Changer de profil</button>
         </div>
-        <PageTabs page={page} onGo={goPage} />
         <div style={S.eyebrow}>{PROGRAM_SUBTITLE}</div>
         <h1 style={S.h1}>{PROGRAM_TITLE}</h1>
         <div style={S.goals}>
@@ -2335,6 +2503,10 @@ function ProfileScreen(props) {
         ) : (
           <p style={S.lockHint}>Aucun profil sur cet appareil — crée le tien ci-dessous.</p>
         )}
+        <button style={Object.assign({}, S.profileOpenBtn, { width: "100%", marginTop: 8 })} onClick={props.onAthletes}>
+          <span>👥 Suivi des athlètes</span>
+          <span style={S.profileLastTag}>coaching</span>
+        </button>
         <div style={{ marginTop: 14 }}>
           <div style={S.noteLabel}>Nouveau profil</div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -2360,6 +2532,11 @@ function ProfileScreen(props) {
 function App() {
   const [unlocked, setUnlocked] = useState(() => deviceGrant().ok);
   const [profile, setProfile] = useState(null);
+  const [athletes, setAthletes] = useState(() => window.location.hash === "#athletes");
+  const openAthletes = (on) => {
+    try { history.replaceState(null, "", on ? "#athletes" : window.location.pathname + window.location.search); } catch (e) {}
+    setAthletes(on);
+  };
   const openProfile = (p) => {
     activateProfileKeys(p);
     /* Programme du profil : celui embarqué dans ses données s'il est
@@ -2386,8 +2563,10 @@ function App() {
     <Boundary>
       {!unlocked ? (
         <LockScreen onUnlock={() => setUnlocked(true)} />
+      ) : athletes ? (
+        <AthletesApp onBack={() => openAthletes(false)} />
       ) : !profile ? (
-        <ProfileScreen onOpen={openProfile} />
+        <ProfileScreen onOpen={openProfile} onAthletes={() => openAthletes(true)} />
       ) : (
         <Calendar
           key={profile.id}
@@ -2539,9 +2718,10 @@ const S = {
   painBtnActiveYes: { background: "#B3402E", color: "#fff", borderColor: "#B3402E" },
   painBtnActiveNo: { background: "#3C7A4E", color: "#fff", borderColor: "#3C7A4E" },
   feedbackReminder: { fontSize: 12.5, color: "#B3402E", fontWeight: 600, marginTop: 6 },
-  pageTabs: { display: "flex", gap: 6, marginBottom: 12 },
-  pageTab: { flex: 1, border: "1px solid #C9CCD1", background: "#fff", borderRadius: 8, padding: "8px 0", fontSize: 14, fontWeight: 600, color: "#3A3E46" },
-  pageTabActive: { background: "#1B1D22", color: "#fff", border: "1px solid #1B1D22" },
+  testsTable: { borderCollapse: "collapse", width: "100%", minWidth: 360, fontSize: 13.5 },
+  testsTh: { textAlign: "left", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: "#8A8F98", fontWeight: 700, padding: "4px 6px", borderBottom: "1px solid #E4E6E1" },
+  testsTd: { verticalAlign: "top", padding: "6px", borderBottom: "1px dashed #E4E6E1" },
+  testsInput: { width: 72, border: "1px solid #C9CCD1", borderRadius: 6, padding: "4px 6px", fontSize: 13, background: "#fff", marginTop: 2 },
   athCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 10, padding: 12, marginBottom: 12 },
   athForm: { display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" },
   athTabs: { display: "flex", gap: 6, marginBottom: 10 },
