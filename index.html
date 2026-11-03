@@ -17,8 +17,8 @@
 <!-- ?v= : horodatage de cache. À BUMPER à chaque modification de program.js / auth.js,
      sinon le navigateur peut servir une version périmée du programme (constaté le 17/09/2026 :
      l'appli affichait encore l'ancien objectif 1RM et l'ancien titre du mercredi). -->
-<script src="./program.js?v=20261103a"></script>
-<script src="./auth.js?v=20261103a"></script>
+<script src="./program.js?v=20261103b"></script>
+<script src="./auth.js?v=20261103b"></script>
 <script>
   /* Force le runtime JSX "classic" (React.createElement) : le runtime
      "automatic", devenu défaut sur les versions récentes de Babel, génère
@@ -228,6 +228,7 @@ function normalizeData(parsed) {
     moves: parsed.moves || {},
     custom: parsed.custom || {},
     measures: normMeasures(parsed.measures),
+    athletes: normAthletes(parsed.athletes),
     program: parsed.program || null,
     updatedAt: parsed.updatedAt || 0,
   };
@@ -242,6 +243,15 @@ function normMeasures(m) {
     if (!(k in out) && Array.isArray(m[k])) out[k] = m[k];
   });
   return out;
+}
+/* Suivi des athlètes encadrés : une liste de personnes et une liste
+   plate de records (personne, exercice, valeur, unité, date). */
+function normAthletes(a) {
+  a = a || {};
+  return {
+    people: Array.isArray(a.people) ? a.people : [],
+    records: Array.isArray(a.records) ? a.records : [],
+  };
 }
 /* -------- Bilan Markdown pour relecture (coach / IA) --------------- */
 const RPE_LABELS = { facile: "Facile", correct: "Correct", dur: "Dur", echec: "Échec(s)" };
@@ -966,9 +976,203 @@ function ProgressionPanel(props) {
     </div>
   );
 }
+/* ------------------------- Page athlètes -------------------------- */
+const ATH_UNITS = ["reps", "kg", "s", "min", "km", "m", "cm"];
+function newId(prefix) { return prefix + Date.now() + "-" + Math.floor(Math.random() * 100000); }
+function byDate(a, b) { return a.d < b.d ? -1 : a.d > b.d ? 1 : 0; }
+/* Regroupe les records par exercice (+ unité), triés par date. */
+function seriesOf(records) {
+  const map = {};
+  records.forEach((r) => {
+    const k = r.exo.toLowerCase() + "|" + r.unit;
+    (map[k] = map[k] || { exo: r.exo, unit: r.unit, pts: [] }).pts.push(r);
+  });
+  return Object.keys(map).map((k) => {
+    const s = map[k];
+    s.pts.sort(byDate);
+    return s;
+  }).sort((a, b) => a.exo.localeCompare(b.exo, "fr"));
+}
+function Sparkline(props) {
+  const pts = props.pts;
+  if (pts.length < 2) return null;
+  const W = 90, H = 26, pad = 3;
+  const vals = pts.map((p) => p.v);
+  let lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+  if (lo === hi) { lo -= 1; hi += 1; }
+  const d = pts.map((p, i) => (i ? "L" : "M") +
+    (pad + (W - 2 * pad) * i / (pts.length - 1)).toFixed(1) + " " +
+    (pad + (H - 2 * pad) * (1 - (p.v - lo) / (hi - lo))).toFixed(1)).join(" ");
+  return (
+    <svg viewBox={"0 0 " + W + " " + H} width={W} height={H} aria-hidden="true" style={{ flexShrink: 0 }}>
+      <path d={d} fill="none" stroke="#3E5F8A" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
+    </svg>
+  );
+}
+/* Écart neutre (pas de vert/rouge) : selon l'exercice, plus haut n'est pas
+   toujours mieux (un chrono de course, par exemple). */
+function fmtDelta(v, unit) { return (v > 0 ? "+" : "") + fmtNum(v) + " " + unit; }
+function SeriesRow(props) {
+  const s = props.s;
+  const [open, setOpen] = useState(false);
+  const last = s.pts[s.pts.length - 1];
+  const first = s.pts[0];
+  return (
+    <div style={S.athSeries}>
+      <button style={S.athSeriesHead} onClick={() => setOpen(!open)} aria-expanded={open}>
+        <span style={{ minWidth: 0 }}>
+          <span style={S.athExo}>{props.label || s.exo}</span>
+          <span style={S.athSub}>
+            {fmtShort(last.d)}{s.pts.length > 1 ? " · " + fmtDelta(last.v - first.v, s.unit) + " depuis le " + fmtShort(first.d) : " · 1re mesure"}
+          </span>
+        </span>
+        <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <Sparkline pts={s.pts} />
+          <span style={S.athVal}>{fmtNum(last.v)} <span style={S.metricUnit}>{s.unit}</span></span>
+        </span>
+      </button>
+      {open ? (
+        <ul style={S.entryList}>
+          {s.pts.slice().reverse().map((p) => (
+            <li key={p.id} style={S.entryItem}>
+              <span>{fmtShort(p.d)} — <strong>{fmtNum(p.v)} {s.unit}</strong>{p.note ? <span style={{ color: "#5C6470" }}> · {p.note}</span> : null}</span>
+              <button style={S.delX} onClick={() => props.onDel(p.id)} aria-label="Supprimer ce record">×</button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+function AthletesPage(props) {
+  const ath = normAthletes(props.athletes);
+  const people = ath.people;
+  const [view, setView] = useState("athlete");
+  const [newName, setNewName] = useState("");
+  const [who, setWho] = useState("");
+  const [exo, setExo] = useState("");
+  const [val, setVal] = useState("");
+  const [unit, setUnit] = useState("reps");
+  const [date, setDate] = useState(todayStr());
+  const [note, setNote] = useState("");
+  const [armedDel, setArmedDel] = useState(null);
+  const whoId = people.some((p) => p.id === who) ? who : (people[0] ? people[0].id : "");
+  const exoNames = [];
+  ath.records.forEach((r) => { if (exoNames.indexOf(r.exo) < 0) exoNames.push(r.exo); });
+  exoNames.sort((a, b) => a.localeCompare(b, "fr"));
+  const save = (next) => props.onChange(next);
+  const addPerson = () => {
+    const name = newName.trim();
+    if (!name) return;
+    const p = { id: newId("a"), name: name };
+    save({ people: people.concat([p]), records: ath.records });
+    setNewName("");
+    setWho(p.id);
+  };
+  const delPerson = (id) => {
+    if (armedDel !== id) { setArmedDel(id); return; }
+    save({ people: people.filter((p) => p.id !== id), records: ath.records.filter((r) => r.who !== id) });
+    setArmedDel(null);
+  };
+  const addRecord = () => {
+    const v = parseFloat(String(val).replace(",", "."));
+    const e = exo.trim();
+    if (!whoId || !e || isNaN(v)) return;
+    /* Même exercice déjà saisi avec une autre casse : on reprend l'orthographe existante. */
+    const known = exoNames.find((x) => x.toLowerCase() === e.toLowerCase());
+    const rec = { id: newId("r"), who: whoId, exo: known || e, v: v, unit: unit.trim() || "reps", d: date };
+    if (note.trim()) rec.note = note.trim();
+    save({ people: people, records: ath.records.concat([rec]) });
+    setVal("");
+    setNote("");
+  };
+  const delRecord = (id) => save({ people: people, records: ath.records.filter((r) => r.id !== id) });
+  const nameOf = (id) => { const p = people.find((x) => x.id === id); return p ? p.name : "?"; };
+  return (
+    <div>
+      <p style={S.progHint}>
+        Les maxs de tes athlètes, par personne ou par exercice. Les données suivent ta synchronisation et tes sauvegardes, comme le reste du carnet — rien n'est publié sur le site.
+      </p>
+      <div style={S.athCard}>
+        <div style={S.noteLabel}>Ajouter un record</div>
+        {people.length ? (
+          <div style={S.athForm}>
+            <select value={whoId} onChange={(e) => setWho(e.target.value)} style={S.daySelect} aria-label="Athlète">
+              {people.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+            </select>
+            <input list="ath-exos" value={exo} onChange={(e) => setExo(e.target.value)} placeholder="exercice (ex. Tractions)" style={S.numInput} aria-label="Exercice" />
+            <datalist id="ath-exos">{exoNames.map((x) => <option key={x} value={x} />)}</datalist>
+            <input type="number" inputMode="decimal" step="any" value={val} onChange={(e) => setVal(e.target.value)} placeholder="valeur" style={Object.assign({}, S.numInput, { flex: "0 1 90px" })} aria-label="Valeur" />
+            <input list="ath-units" value={unit} onChange={(e) => setUnit(e.target.value)} style={Object.assign({}, S.numInput, { flex: "0 1 70px", minWidth: 60 })} aria-label="Unité" />
+            <datalist id="ath-units">{ATH_UNITS.map((u) => <option key={u} value={u} />)}</datalist>
+            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={S.dateInput} aria-label="Date" />
+            <input value={note} onChange={(e) => setNote(e.target.value)} placeholder="note (facultatif : lesté, élastique…)" style={S.numInput} aria-label="Note" />
+            <button style={S.smallBtnPrimary} onClick={addRecord} disabled={!exo.trim() || val === ""}>Ajouter</button>
+          </div>
+        ) : (
+          <p style={S.progHint}>Commence par ajouter un athlète ci-dessous.</p>
+        )}
+        <div style={Object.assign({}, S.addRow, { marginTop: 10 })}>
+          <input value={newName} onChange={(e) => setNewName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") addPerson(); }} placeholder="prénom du nouvel athlète" style={S.numInput} aria-label="Nouvel athlète" />
+          <button style={S.smallBtn} onClick={addPerson} disabled={!newName.trim()}>+ Athlète</button>
+        </div>
+      </div>
+      {people.length ? (
+        <div style={S.athTabs} role="tablist">
+          <button role="tab" aria-selected={view === "athlete"} style={Object.assign({}, S.rpeBtn, view === "athlete" ? S.rpeBtnActive : null)} onClick={() => setView("athlete")}>Par athlète</button>
+          <button role="tab" aria-selected={view === "exo"} style={Object.assign({}, S.rpeBtn, view === "exo" ? S.rpeBtnActive : null)} onClick={() => setView("exo")}>Par exercice</button>
+        </div>
+      ) : null}
+      {view === "athlete" ? people.map((p) => {
+        const series = seriesOf(ath.records.filter((r) => r.who === p.id));
+        return (
+          <div key={p.id} style={S.athCard}>
+            <div style={S.metricHead}>
+              <span style={S.metricLabel}>{p.name}</span>
+              <button style={S.deleteSessionBtn} onClick={() => delPerson(p.id)} onBlur={() => setArmedDel(null)}>
+                {armedDel === p.id ? "Confirmer la suppression (et ses records)" : "Supprimer"}
+              </button>
+            </div>
+            {series.length ? series.map((s) => (
+              <SeriesRow key={s.exo + s.unit} s={s} onDel={delRecord} />
+            )) : <p style={S.progHint}>Aucun record pour l'instant.</p>}
+          </div>
+        );
+      }) : exoNames.map((x) => {
+        const rows = [];
+        people.forEach((p) => {
+          seriesOf(ath.records.filter((r) => r.who === p.id && r.exo === x)).forEach((s) => rows.push({ p: p, s: s }));
+        });
+        return (
+          <div key={x} style={S.athCard}>
+            <div style={S.metricLabel}>{x}</div>
+            {rows.map((r) => (
+              <SeriesRow key={r.p.id + r.s.unit} s={r.s} label={nameOf(r.p.id)} onDel={delRecord} />
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+function PageTabs(props) {
+  return (
+    <nav style={S.pageTabs} aria-label="Pages">
+      <button style={Object.assign({}, S.pageTab, props.page === "carnet" ? S.pageTabActive : null)} aria-current={props.page === "carnet" ? "page" : undefined} onClick={() => props.onGo("carnet")}>📅 Mon carnet</button>
+      <button style={Object.assign({}, S.pageTab, props.page === "athletes" ? S.pageTabActive : null)} aria-current={props.page === "athletes" ? "page" : undefined} onClick={() => props.onGo("athletes")}>👥 Mes athlètes</button>
+    </nav>
+  );
+}
 /* ----------------------------- App -------------------------------- */
 function Calendar(props) {
   const [week, setWeek] = useState(currentWeekIndex());
+  const [page, setPage] = useState(() => (window.location.hash === "#athletes" ? "athletes" : "carnet"));
+  useEffect(() => {
+    const onHash = () => setPage(window.location.hash === "#athletes" ? "athletes" : "carnet");
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+  const goPage = (p) => { window.location.hash = p === "athletes" ? "athletes" : ""; setPage(p); };
   const [data, setData] = useState(emptyData);
   const dataRef = React.useRef(null);
   if (dataRef.current === null) dataRef.current = emptyData();
@@ -1358,6 +1562,9 @@ function Calendar(props) {
       return Object.assign({}, prev, { measures: nextMeasures });
     });
   };
+  const setAthletes = (athletes) => {
+    persist((prev) => Object.assign({}, prev, { athletes: athletes }));
+  };
   const delMeasure = (key, id) => {
     persist((prev) => {
       const measures = normMeasures(prev.measures);
@@ -1466,6 +1673,23 @@ function Calendar(props) {
   Object.keys(data.completed).forEach((k) => { if (data.completed[k]) totalDone++; });
   const customCount = Object.keys(data.custom).reduce((a, k) => a + data.custom[k].length, 0);
   const totalSessions = WEEKS.reduce((a, w) => a + w.length, 0) + customCount;
+  if (loaded && page === "athletes") {
+    return (
+      <div className="page" style={S.page}>
+        <style>{CSS}</style>
+        <header style={{ marginBottom: 12 }}>
+          <div style={S.profileRow}>
+            <span style={S.profileName}>👤 {props.profile ? props.profile.name : "Profil"}</span>
+            <span style={{ fontSize: 13, color: "#8A8F98" }}>{saveMsg}</span>
+          </div>
+          <PageTabs page={page} onGo={goPage} />
+          <h1 style={S.h1}>Mes athlètes</h1>
+          {saveError ? <div style={S.errorBanner}>⚠️ Échec de l'enregistrement : {saveError}</div> : null}
+        </header>
+        <AthletesPage athletes={data.athletes} onChange={setAthletes} />
+      </div>
+    );
+  }
   if (!loaded) {
     return (
       <div className="page" style={S.page}>
@@ -1481,6 +1705,7 @@ function Calendar(props) {
           <span style={S.profileName}>👤 {props.profile ? props.profile.name : "Profil"}</span>
           <button style={S.profileSwitch} onClick={props.onSwitchProfile}>Changer de profil</button>
         </div>
+        <PageTabs page={page} onGo={goPage} />
         <div style={S.eyebrow}>{PROGRAM_SUBTITLE}</div>
         <h1 style={S.h1}>{PROGRAM_TITLE}</h1>
         <div style={S.goals}>
@@ -2314,6 +2539,17 @@ const S = {
   painBtnActiveYes: { background: "#B3402E", color: "#fff", borderColor: "#B3402E" },
   painBtnActiveNo: { background: "#3C7A4E", color: "#fff", borderColor: "#3C7A4E" },
   feedbackReminder: { fontSize: 12.5, color: "#B3402E", fontWeight: 600, marginTop: 6 },
+  pageTabs: { display: "flex", gap: 6, marginBottom: 12 },
+  pageTab: { flex: 1, border: "1px solid #C9CCD1", background: "#fff", borderRadius: 8, padding: "8px 0", fontSize: 14, fontWeight: 600, color: "#3A3E46" },
+  pageTabActive: { background: "#1B1D22", color: "#fff", border: "1px solid #1B1D22" },
+  athCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 10, padding: 12, marginBottom: 12 },
+  athForm: { display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" },
+  athTabs: { display: "flex", gap: 6, marginBottom: 10 },
+  athSeries: { borderTop: "1px dashed #E4E6E1" },
+  athSeriesHead: { width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, background: "none", border: "none", padding: "8px 0", textAlign: "left" },
+  athExo: { display: "block", fontWeight: 700, fontSize: 14.5, color: "#1B1D22" },
+  athSub: { display: "block", fontSize: 12, color: "#5C6470" },
+  athVal: { fontFamily: "'Barlow Condensed', sans-serif", fontSize: 22, fontWeight: 800, color: "#1B1D22", whiteSpace: "nowrap" },
   footer: { marginTop: 22, fontSize: 13.5, color: "#3A3E46", background: "#fff", border: "1px solid #DDDFDA", borderRadius: 10, padding: "12px 14px" },
 };
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);

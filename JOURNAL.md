@@ -4,6 +4,13 @@ Point d'avancement du projet et du protocole. Entrée la plus récente en haut.
 
 ---
 
+## 2026-11-03 — Page « 👥 Mes athlètes »
+
+- Mehdi encadre des amis : deuxième page dans l'appli (onglets « 📅 Mon carnet / 👥 Mes athlètes », URL `#athletes`) pour suivre leurs maxs. Athlètes + records (exercice, valeur, unité libre, date, note), vue par athlète ou par exercice, mini-courbe et écart depuis la 1re mesure (neutre, sans vert/rouge : un chrono baisse quand on progresse).
+- Stocké dans `data.athletes` du profil actif → suit la synchro privée `dimeii/training-data` et les sauvegardes, rien dans le dépôt public. Smoke test jsdom dédié : 17/17 OK.
+
+---
+
 ## 2026-11-02 — Semaine 15 racontée (rien saisi dans l'appli) : adducteur blessé
 
 Donné de vive voix le 2 novembre, semaine 16/18. Semaine du 26 octobre au 1er novembre, non saisie dans le carnet.
