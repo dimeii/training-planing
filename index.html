@@ -17,8 +17,8 @@
 <!-- ?v= : horodatage de cache. À BUMPER à chaque modification de program.js / auth.js,
      sinon le navigateur peut servir une version périmée du programme (constaté le 17/09/2026 :
      l'appli affichait encore l'ancien objectif 1RM et l'ancien titre du mercredi). -->
-<script src="./program.js?v=20261103c"></script>
-<script src="./auth.js?v=20261103c"></script>
+<script src="./program.js?v=20261103d"></script>
+<script src="./auth.js?v=20261103d"></script>
 <script>
   /* Force le runtime JSX "classic" (React.createElement) : le runtime
      "automatic", devenu défaut sur les versions récentes de Babel, génère
@@ -245,20 +245,13 @@ function normMeasures(m) {
 }
 /* Suivi des athlètes encadrés — espace séparé des carnets (sa propre clé
    localStorage et son propre fichier dans le dépôt de synchro) : une liste
-   de personnes, une liste plate de records (personne, exercice, valeur,
-   unité, date) et le plan de la prochaine séance de tests (objectifs par
-   athlète, clés « <athlète>|<exercice> »). */
+   de personnes et une liste plate de records (personne, exercice, valeur,
+   unité, date) — un journal, sans objectifs. */
 function normAthletes(a) {
   a = a || {};
-  const t = a.tests || {};
   return {
     people: Array.isArray(a.people) ? a.people : [],
     records: Array.isArray(a.records) ? a.records : [],
-    tests: {
-      date: t.date || "",
-      items: Array.isArray(t.items) ? t.items : [],
-      targets: t.targets || {},
-    },
     updatedAt: a.updatedAt || 0,
   };
 }
@@ -1164,90 +1157,6 @@ function AthletesPage(props) {
     </div>
   );
 }
-/* Dernière valeur d'un athlète sur un exercice (même unité). */
-function lastRecord(records, who, exo, unit) {
-  const pts = records.filter((r) => r.who === who && r.exo.toLowerCase() === exo.toLowerCase() && r.unit === unit).sort(byDate);
-  return pts.length ? pts[pts.length - 1] : null;
-}
-function TestsPlan(props) {
-  const ath = normAthletes(props.athletes);
-  const t = ath.tests;
-  const people = ath.people;
-  const [exo, setExo] = useState("");
-  const [unit, setUnit] = useState("reps");
-  const save = (tests) => props.onChange(Object.assign({}, ath, { tests: Object.assign({}, t, tests) }));
-  const setTarget = (who, item, raw) => {
-    const targets = Object.assign({}, t.targets);
-    const k = who + "|" + item.exo;
-    const v = parseFloat(String(raw).replace(",", "."));
-    if (raw === "" || isNaN(v)) delete targets[k]; else targets[k] = v;
-    save({ targets: targets });
-  };
-  const addItem = () => {
-    const e = exo.trim();
-    if (!e || t.items.some((i) => i.exo.toLowerCase() === e.toLowerCase())) return;
-    save({ items: t.items.concat([{ exo: e, unit: unit.trim() || "reps" }]) });
-    setExo("");
-  };
-  const delItem = (item) => {
-    const targets = Object.assign({}, t.targets);
-    Object.keys(targets).forEach((k) => { if (k.split("|")[1] === item.exo) delete targets[k]; });
-    save({ items: t.items.filter((i) => i !== item), targets: targets });
-  };
-  return (
-    <div style={S.athCard}>
-      <div style={S.metricHead}>
-        <span style={S.metricLabel}>🎯 Prochains tests</span>
-        <input type="date" value={t.date} onChange={(e) => save({ date: e.target.value })} style={S.dateInput} aria-label="Date des prochains tests" />
-      </div>
-      <p style={S.progHint}>
-        Actuel = dernier record saisi · objectif = ce qu'on vise ce jour-là (modifiable). Le jour J, saisis les résultats ci-dessous comme de nouveaux records.
-      </p>
-      {t.items.length && people.length ? (
-        <div style={{ overflowX: "auto" }}>
-          <table style={S.testsTable}>
-            <thead>
-              <tr>
-                <th style={S.testsTh}>Test</th>
-                {people.map((p) => <th key={p.id} style={S.testsTh}>{p.name}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              {t.items.map((item) => (
-                <tr key={item.exo}>
-                  <td style={S.testsTd}>
-                    <span style={S.athExo}>{item.exo}</span>
-                    <span style={S.athSub}>{item.unit} · <button style={S.deleteSessionBtn} onClick={() => delItem(item)}>retirer</button></span>
-                  </td>
-                  {people.map((p) => {
-                    const last = lastRecord(ath.records, p.id, item.exo, item.unit);
-                    const target = t.targets[p.id + "|" + item.exo];
-                    return (
-                      <td key={p.id} style={S.testsTd}>
-                        <span style={S.athSub}>actuel {last ? fmtNum(last.v) : "—"}</span>
-                        <input type="number" inputMode="decimal" step="any" defaultValue={target != null ? target : ""}
-                          key={p.id + item.exo + (target != null ? target : "")}
-                          onBlur={(e) => setTarget(p.id, item, e.target.value)}
-                          placeholder="objectif" style={S.testsInput} aria-label={"Objectif " + p.name + " — " + item.exo} />
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <p style={S.progHint}>{people.length ? "Ajoute les exercices à tester ci-dessous." : "Ajoute d'abord tes athlètes."}</p>
-      )}
-      <div style={Object.assign({}, S.addRow, { marginTop: 10 })}>
-        <input value={exo} onChange={(e) => setExo(e.target.value)} placeholder="exercice à tester" style={S.numInput} aria-label="Exercice à tester" />
-        <input list="ath-units" value={unit} onChange={(e) => setUnit(e.target.value)} style={Object.assign({}, S.numInput, { flex: "0 1 70px", minWidth: 60 })} aria-label="Unité du test" />
-        <button style={S.smallBtn} onClick={addItem} disabled={!exo.trim()}>+ Test</button>
-      </div>
-    </div>
-  );
-}
 const ATHLETES_KEY = "carnet-athletes-v1";
 const ATHLETES_FILE = "athletes-data.json";
 /* La synchro réutilise le dépôt et le token d'un carnet déjà connecté
@@ -1354,7 +1263,6 @@ function AthletesApp(props) {
         <div style={S.eyebrow}>Coaching</div>
         <h1 style={S.h1}>Suivi des athlètes</h1>
       </header>
-      <TestsPlan athletes={data} onChange={change} />
       <AthletesPage athletes={data} onChange={change} />
     </div>
   );
@@ -2718,10 +2626,6 @@ const S = {
   painBtnActiveYes: { background: "#B3402E", color: "#fff", borderColor: "#B3402E" },
   painBtnActiveNo: { background: "#3C7A4E", color: "#fff", borderColor: "#3C7A4E" },
   feedbackReminder: { fontSize: 12.5, color: "#B3402E", fontWeight: 600, marginTop: 6 },
-  testsTable: { borderCollapse: "collapse", width: "100%", minWidth: 360, fontSize: 13.5 },
-  testsTh: { textAlign: "left", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: "#8A8F98", fontWeight: 700, padding: "4px 6px", borderBottom: "1px solid #E4E6E1" },
-  testsTd: { verticalAlign: "top", padding: "6px", borderBottom: "1px dashed #E4E6E1" },
-  testsInput: { width: 72, border: "1px solid #C9CCD1", borderRadius: 6, padding: "4px 6px", fontSize: 13, background: "#fff", marginTop: 2 },
   athCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 10, padding: 12, marginBottom: 12 },
   athForm: { display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" },
   athTabs: { display: "flex", gap: 6, marginBottom: 10 },
