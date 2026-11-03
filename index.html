@@ -17,8 +17,8 @@
 <!-- ?v= : horodatage de cache. À BUMPER à chaque modification de program.js / auth.js,
      sinon le navigateur peut servir une version périmée du programme (constaté le 17/09/2026 :
      l'appli affichait encore l'ancien objectif 1RM et l'ancien titre du mercredi). -->
-<script src="./program.js?v=20261103d"></script>
-<script src="./auth.js?v=20261103d"></script>
+<script src="./program.js?v=20261103e"></script>
+<script src="./auth.js?v=20261103e"></script>
 <script>
   /* Force le runtime JSX "classic" (React.createElement) : le runtime
      "automatic", devenu défaut sur les versions récentes de Babel, génère
@@ -1046,10 +1046,51 @@ function SeriesRow(props) {
     </div>
   );
 }
+/* Vue d'ensemble : une ligne par athlète, une colonne par exercice
+   (+ unité), la dernière valeur dans chaque case. */
+function AthletesGrid(props) {
+  const cols = seriesOf(props.records).map((s) => ({ exo: s.exo, unit: s.unit }));
+  if (!props.people.length || !cols.length) return <p style={S.progHint}>Aucun record pour l'instant.</p>;
+  return (
+    <div style={Object.assign({}, S.athCard, { overflowX: "auto" })}>
+      <table style={S.gridTable}>
+        <thead>
+          <tr>
+            <th style={Object.assign({}, S.gridTh, S.gridSticky)}></th>
+            {cols.map((c) => (
+              <th key={c.exo + c.unit} style={S.gridTh}>{c.exo}<span style={S.athSub}>{c.unit}</span></th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {props.people.map((p) => (
+            <tr key={p.id}>
+              <th scope="row" style={Object.assign({}, S.gridRowHead, S.gridSticky)}>{p.name}</th>
+              {cols.map((c) => {
+                const pts = props.records.filter((r) => r.who === p.id && r.exo.toLowerCase() === c.exo.toLowerCase() && r.unit === c.unit).sort(byDate);
+                const last = pts[pts.length - 1];
+                return (
+                  <td key={c.exo + c.unit} style={S.gridTd} title={last && last.note ? last.note : undefined}>
+                    {last ? (
+                      <span>
+                        <span style={S.gridVal}>{fmtNum(last.v)}</span>
+                        <span style={S.athSub}>{fmtShort(last.d)}{pts.length > 1 ? " · " + fmtDelta(last.v - pts[0].v, c.unit) : ""}</span>
+                      </span>
+                    ) : <span style={{ color: "#C9CCD1" }}>—</span>}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 function AthletesPage(props) {
   const ath = normAthletes(props.athletes);
   const people = ath.people;
-  const [view, setView] = useState("athlete");
+  const [view, setView] = useState("table");
   const [newName, setNewName] = useState("");
   const [who, setWho] = useState("");
   const [exo, setExo] = useState("");
@@ -1121,11 +1162,12 @@ function AthletesPage(props) {
       </div>
       {people.length ? (
         <div style={S.athTabs} role="tablist">
+          <button role="tab" aria-selected={view === "table"} style={Object.assign({}, S.rpeBtn, view === "table" ? S.rpeBtnActive : null)} onClick={() => setView("table")}>Tableau</button>
           <button role="tab" aria-selected={view === "athlete"} style={Object.assign({}, S.rpeBtn, view === "athlete" ? S.rpeBtnActive : null)} onClick={() => setView("athlete")}>Par athlète</button>
           <button role="tab" aria-selected={view === "exo"} style={Object.assign({}, S.rpeBtn, view === "exo" ? S.rpeBtnActive : null)} onClick={() => setView("exo")}>Par exercice</button>
         </div>
       ) : null}
-      {view === "athlete" ? people.map((p) => {
+      {view === "table" ? <AthletesGrid people={people} records={ath.records} /> : view === "athlete" ? people.map((p) => {
         const series = seriesOf(ath.records.filter((r) => r.who === p.id));
         return (
           <div key={p.id} style={S.athCard}>
@@ -2626,6 +2668,12 @@ const S = {
   painBtnActiveYes: { background: "#B3402E", color: "#fff", borderColor: "#B3402E" },
   painBtnActiveNo: { background: "#3C7A4E", color: "#fff", borderColor: "#3C7A4E" },
   feedbackReminder: { fontSize: 12.5, color: "#B3402E", fontWeight: 600, marginTop: 6 },
+  gridTable: { borderCollapse: "collapse", fontSize: 13.5, minWidth: "100%" },
+  gridTh: { textAlign: "left", verticalAlign: "bottom", fontSize: 12, fontWeight: 700, color: "#3A3E46", padding: "4px 8px", borderBottom: "1px solid #DDDFDA", minWidth: 84 },
+  gridRowHead: { textAlign: "left", fontFamily: "'Barlow Condensed', sans-serif", fontSize: 17, fontWeight: 700, padding: "6px 8px", borderBottom: "1px dashed #E4E6E1", whiteSpace: "nowrap" },
+  gridSticky: { position: "sticky", left: 0, background: "#fff", zIndex: 1 },
+  gridTd: { verticalAlign: "top", padding: "6px 8px", borderBottom: "1px dashed #E4E6E1" },
+  gridVal: { display: "block", fontFamily: "'Barlow Condensed', sans-serif", fontSize: 20, fontWeight: 800, color: "#1B1D22", lineHeight: 1.1 },
   athCard: { background: "#fff", border: "1px solid #DDDFDA", borderRadius: 10, padding: 12, marginBottom: 12 },
   athForm: { display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" },
   athTabs: { display: "flex", gap: 6, marginBottom: 10 },
