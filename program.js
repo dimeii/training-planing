@@ -850,11 +850,14 @@ window.PROGRAM = {
 
     /* ------ Semaine 17 — Phase 4 (affûtage) ------ */
     [
-      { "day": 0, "type": "force", "title": "SALLE 1 — allégé", "ex": [
-        "1) Face pulls 2x15 + coiffe 2x10",
-        "2) MUSCLE-UP à froid : 3 séries, technique",
-        "3) Tractions lestées 3x3 @30 kg ↘",
-        "L'affûtage commence : le volume descend partout, la vitesse et la charge restent."
+      { "day": 0, "type": "force", "title": "SALLE 1 — top set + back-off, tirage propre", "ex": [
+        "1) Face pulls 2x15 + coiffe 2x10 — en échauffement",
+        "2) MUSCLE-UP à froid : 3 singles, technique (optionnel)",
+        "3) MONTÉE : 5 au poids de corps (1 min) · 3 @+10 kg (1'30) · 2 @+20 kg (2 min) · 1 @+25 kg (3 min)",
+        "4) TOP SET ↘ : 1 x 3 @30-32,5 kg, MAGNÉSIE, menton nettement au-dessus de la barre, aucune rep limite. 4 min de repos. Référence du 02/11 en prise normale : 35 kg x 3, la 3e limite. On repart plus bas pour un tirage propre et on remonte de 2,5 kg seulement quand la séance d'avant est passée nickel.",
+        "5) BACK-OFF : 3 x 5 @25 kg, 2'30 de repos, toutes propres",
+        "6) GRIP : dead hang 3 x 30-45 s (lesté +10-20 kg quand c'est facile) · farmer's hold lourd 3 x 30 s — sans magnésie",
+        "L'affûtage commence côté course : pas de volume de tirage en plus de ce qui est écrit ici."
       ]},
       { "day": 0, "type": "revisions", "title": "Révisions — soir", "ex": [
         "Bloc de révisions — note ce que tu as bossé."
